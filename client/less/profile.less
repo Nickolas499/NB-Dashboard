@@ -1,0 +1,212 @@
+// out:false
+
+//==================================================================//
+//                        PROFILE-CSS                               //
+//==================================================================//
+
+.profile {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: 10px;
+  padding: 10px;
+}
+
+.profile_input {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  padding: 10px;
+  gap: 10px;
+  background-color: @primaryColor;
+}
+
+.profile_chart_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: @primaryColor;
+}
+
+//==================================================================//
+//                        TABS-CSS                                  //
+//==================================================================//
+.tab-list {
+  font-weight: bold;
+  border-bottom: 1px solid @Color;
+  padding-left: 40px;
+}
+
+.tab-list-item {
+  display: inline-block;
+  list-style: none;
+  margin-bottom: -1px;
+  padding: 0.5rem 0.75rem;
+  background-color: @gray;
+  border: 1px solid;
+}
+
+.tab-list-active {
+  background-color: @primaryColor;
+  border: 1px solid @Color;
+  border-width: 1px 1px 0 1px;
+}
+
+.tab-content {
+  display: flex;
+  min-width: 640px;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+}
+
+.label {
+  display: flex;
+  width: 200px;
+  align-items: center;
+  justify-content: left;
+  font-weight: bold;
+  text-align: left;
+  margin-right: 10px;
+}
+
+.Input {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 30px;
+  margin-top: 5px;
+}
+
+.Input_field {
+  width: 50px;
+  text-align: center;
+}
+
+.data_input {
+  display: grid;
+  grid-template-rows: 35px 190px 30px;
+  gap: 5px;
+  align-items: start;
+  padding: 10px;
+  padding-left: 0px;
+  border-radius: 8px;
+  
+  
+
+  .btn-container {
+    display: flex;
+    align-self: start;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px; 
+    
+    .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      border-radius: 5px;
+      border: none;
+      box-shadow: 0 0 1px 0 @blue;
+      background-color: transparent;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: @Color;
+      padding: 4px 10px;
+      &:hover {
+        box-shadow: 0 0 3px 0 @blue;
+        text-shadow: 0 0 3px @blue;
+      }
+    }
+  }
+  h2 {
+    width: 100%;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 40px;
+    padding: 10px 0;
+    margin-bottom: 10px;
+   
+  }
+}
+
+.data {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px 0;
+  
+}
+
+.profile_chart {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 20px);
+  height: calc(50% - 10px);
+}
+.profile_Radar {
+  display: flex;
+  flex-direction: row;
+  width: calc(100% - 20px);
+  height: calc(50% - 10px);
+}
+
+//==================================================================//
+//                        TABLE-CSS                                  //
+//==================================================================//
+
+.profile_table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 auto;
+  height: 200px;
+  border: 1px solid @gray;
+}
+
+.profile_table thead th {
+  height: 60px;
+  padding: 0 10px;
+}
+
+.profile_table th,
+.profile_table td {
+  padding: 0 10px;
+  text-align: center;
+  border-bottom: 1px solid @gray;
+  font-weight: bold;
+}
+
+.profile_table th {
+  background-color: @gray;
+  width: 90px;
+}
+
+.profile_table tr:nth-child(even) {
+  background-color: @lightGray;
+}
+
+.profile_table .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 1px 0 @blue;
+  background-color: transparent;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: @Color;
+  padding: 4px 10px;
+  margin: 5px;
+  &:hover {
+    box-shadow: 0 0 3px 0 @blue;
+    text-shadow: 0 0 3px @blue;
+  }
+}
+.table-container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+}

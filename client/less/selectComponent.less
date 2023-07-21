@@ -1,0 +1,75 @@
+// out:false
+
+.selectComponet {
+  width: 100%;  
+
+  .select {
+    width: 100%;
+    height: 100%;   
+    position: relative;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    box-shadow: 0 0 1px 0 @blue;
+    margin: 0;
+  }
+  .option{        
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    box-shadow: 0 0 1px 0 @blue;        
+   
+    .selected{
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        &:hover{
+            box-shadow: 0 0 3px 0 @blue;
+        }
+    }
+  }
+
+  .select_menu{
+    width: 100%;
+    list-style: none;
+    padding:5px;
+    background-color: @primaryColor;
+    color: @Color;  
+    border-radius: 4px;
+    position: absolute;        
+    top: 40px;
+    left: 75px;
+    width: 100%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: none;
+    transition: all 0.5s ease ;
+    box-shadow: 0 0 1px 0 @blue;
+    z-index: 2;
+  
+    li{
+        width: 100%;
+        border-radius: 4px;
+        padding: 5px;
+        transition: background-color 0.5s ease;
+        font-size: 0.8rem;
+  
+        &:hover , a:hover{          
+            color: @blue;
+            background-color: @gray;
+            font-size: 0.85rem;
+        }
+    }
+  }
+  
+  .active{
+    background-color: @blue;
+  }
+  
+  .menu-open{
+    opacity: 1;
+    display: block;
+  }
+}

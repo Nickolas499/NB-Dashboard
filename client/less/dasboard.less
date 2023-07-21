@@ -1,0 +1,300 @@
+// out:false
+
+@import "./palett.less";
+
+.DashboardContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  gap: 20px;
+  padding: 30px 20px 20px 30px;
+  background-color: @bgColor;  
+}
+
+.Dashboard_KPI {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 20px;  
+  @media (min-width: 1450px) {
+    grid-template-columns: repeat(6, 1fr);
+  }  
+}
+
+.UsersAsigment {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 2fr));
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+  margin-top: 30px;
+  
+
+  .Users {
+    width: 100%;
+    height: 200px;
+    background-color: @primaryColor;
+  }
+}
+.Dashboard_Asigment {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%; 
+  background-color: @primaryColor;
+ 
+  h1 {
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: @lightGray;
+    text-align: center;
+    padding: 10px;
+  }
+
+  div {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 0px;
+    
+    h2 {
+      width: 200px;
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+      
+      border-radius: 8px;
+      margin-right: 20px;
+      span {
+        width: 100%;
+        font-size: 3rem;
+        text-align: center;
+      }
+    }
+  }
+}
+//==================================================================//
+//                           KPICARDS                               //
+//==================================================================//
+
+.Kpicards {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: @primaryColor;
+  font-size: 0.8rem;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  
+}
+
+.Symbol {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  display: flex;
+  width: 60px;
+  height: 60px;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: @green;
+  justify-content: center;
+  align-items: center;
+  font-family: Sigmar;
+  color: @white;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 50%;
+  border-top-right-radius: 50%;
+  box-shadow: 0 0 10px 0 rgba(0, 255, 0, 0.445);
+
+  .circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+    background-color: @white;
+    color: black;
+  }
+}
+
+.CardContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  .CardTitle {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    padding: 10px 20px 0px 60px;
+    justify-content: left;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+    border-bottom-left-radius: 20px;
+  }
+
+  .CardInfo {
+    display: flex;
+    width: 100%;    
+    justify-content: center;    
+    border-bottom: 0px;
+    border-bottom-left-radius: 20px;
+    
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+      background-color: @primaryColor;
+      list-style: none;
+      border-bottom-left-radius: 20px;
+
+      li {
+        display: flex;
+        padding: 1px;
+
+        &:nth-child(odd) {
+          background-color: @lightGray;
+        }
+
+        :nth-child(1) {
+          width: 100%;
+          padding: 0 5px;
+        }
+        :nth-child(2) {
+          width: 50;
+          font-weight: 700;
+          padding: 0 5px;
+        }
+      }
+    }
+  }
+}
+
+//==================================================================//
+//                        USER-ASIGMENT                             //
+//==================================================================//
+
+.UserCards {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: @primaryColor;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+
+  .UserName {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+}
+.UserIcons {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  display: flex;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: @green;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: @white;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 50%;
+  border-top-right-radius: 50%;
+  box-shadow: 0 0 10px 0 rgba(0, 255, 0, 0.445);
+
+  .circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+    background-color: @white;
+    color: black;
+  }
+}
+
+.UserText {
+  display: flex;
+  width: 100%;
+  height: 80px;
+  padding: 10px 10px 0 60px;
+  justify-content: left;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  border-bottom-left-radius: 20px;
+}
+.UserData {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  padding-top: 10px;
+  border-bottom-left-radius: 20px;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background-color: @primaryColor;
+    list-style: none;
+    border-bottom-left-radius: 20px;
+
+    li {
+      display: flex;
+      padding: 1px;
+
+      &:nth-child(odd) {
+        background-color: @lightGray;
+      }
+
+      :nth-child(1) {
+        width: 100%;
+        padding: 0 5px;
+      }
+      :nth-child(2) {
+        width: 50;
+        font-weight: 700;
+        padding: 0 5px;
+      }
+    }
+  }
+}
