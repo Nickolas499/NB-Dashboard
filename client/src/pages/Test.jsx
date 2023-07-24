@@ -1,8 +1,30 @@
+import React, { useState } from "react";
 import { user_data } from "../data/kpi_data";
 import Tabs from "../components/tabs/Tabs";
 import { Register } from "../components/Register";
+import { Select } from "../components/selectComponent/Select";
 
+
+const ColorOption = [
+  { label: "red", value: "#ff0000" },
+  { label: "green", value: "#00ff00" },
+  { label: "blue", value: "#0000ff" },
+  { label: "yellow", value: "#ffff00" },
+  { label: "black", value: "#000000" },
+  { label: "white", value: "#ffffff" },
+  { label: "gray", value: "#808080" },
+  { label: "silver", value: "#c0c0c0" },
+  { label: "maroon", value: "#800000" },
+  { label: "olive", value: "#808000" },
+];
+const AccessOption = [
+  { label: "Admin", value: "admin" },
+  { label: "User", value: "user" },
+];
 export const Test = () => {
+  const [Colorvalue, setColorValue] = useState(ColorOption[0]);
+  const [Accessvalue, setAccessValue] = useState(AccessOption[0]);
+
   return (
     <div className="Test_container">
       <ul className="Table_Asigment">
@@ -71,8 +93,13 @@ export const Test = () => {
               </div>
             </div>
           </div>
-          <div label="TAB2">
-            <div className="container">tab2</div>
+          <div label="SelectComponent">
+            <div className="container">
+              <div className="selectContainer">
+                <Select options={AccessOption} value={Accessvalue} type={"Color"} onChange = {e =>setAccessValue(e)}/>
+                <Select options={ColorOption} value={Colorvalue} type={"text"} onChange = {e =>setColorValue(e) }/>
+              </div>
+            </div>
           </div>
           <div label="Registration">
             <div className="container">
