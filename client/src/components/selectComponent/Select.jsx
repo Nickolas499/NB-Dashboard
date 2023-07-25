@@ -3,14 +3,22 @@ import styles from "./select.module.css";
 
 export const Select = ({ value, onChange, options, type }) => {
   const [isOpen, setIsOpen] = useState(true);
+  const [highlightIndex, setHighlightIndex] = useState(0);
 
   function clearOptions() {
-    onChange(undefined);
+    onChange("");
   }
 
   function selectOption(option) {
     onChange(option);
   }
+
+  function isOptionSelected(option) {
+    return option === value;
+  }
+
+ 
+
   return (
     <>
       <div
@@ -19,7 +27,7 @@ export const Select = ({ value, onChange, options, type }) => {
         onClick={() => setIsOpen((prev) => !prev)}
         tabIndex={0}
       >
-        <span className={styles.value}>{value.label}</span>
+        <span className={styles.value} style={{ backgroundColor: value.value }}>{value.label}</span>
         <button 
         onClick={(e) => {
           e.stopPropagation();
@@ -36,12 +44,17 @@ export const Select = ({ value, onChange, options, type }) => {
               selectOption(option);
               setIsOpen(false);
             }}
-            className={styles.option} key={index}>
+            onMouseEnter={() => setHighlightIndex(index)}
+            className={`${styles.option} ${isOptionSelected(option) ? styles.selected : ""}
+            ${index === highlightIndex ? styles.highlighted : ""}`}
+            key={index}>
               {type === "Color" ? (
                 <span>{option.label}</span>
               ) : (
-                <span style={{ backgroundColor: option.label }}>
-                  {option.label}
+                <span className={styles.colorItems}>
+                  <span>{option.label}</span>
+                  <span className={styles.squareColor} style={{ backgroundColor: option.value }}>
+                  </span>
                 </span>
               )}
             </li>

@@ -18,6 +18,8 @@
 }
 .value{
     flex-grow: 1;
+    font-weight: bold;
+    font-size: 0.8rem;
 }
 
 .clear-btn{
@@ -48,41 +50,75 @@ width: 0.05em;
 
 .options{
     position: absolute;
-    display: none; 
-    margin: 0;
-    padding: 0;
+    display: none;    
     list-style: none;
-    max-height: 15em;
+    max-height: 16em;
     overflow-y: auto;
-    border: .05em solid #01AEF0;
+    box-shadow: 0 0 3px 0 #01AEF0;
     width: 100%;
     left: 0;
     top: calc(100% + .25em);
-    background-color: aliceblue;
+    background-color: #23262D;
+    transition: all 0.5s ease ;
     z-index: 100;
+    padding: 5px;
 }
-.option span{
-    color: rgb(138, 133, 133);
-    font-size: 1rem;
-    font-weight: bold;
-    display: block;
-    padding: .25em .5em;
-}
+
 
 .options.show{
     display: block;
 }
 
 .option{
-    width: 100%;
-    
+    width: 100%;    
     cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+
+   
 }
-.option.highlighted{
-    background-color: #0474a0bb;
-    color: aliceblue;
+.option.highlighted{         
+          background-color: #515257;   
+          transition: all 0.5s ease ;       
 }
 
 .option.selected{
-    background-color: #0474a0;
+    transition: all 0.5s ease ;
+    background-color: #51525765; 
 }
+.option span{
+    width: 100%;
+    color: #b6b6b6;
+    font-size: 1rem;
+    font-weight: bold;
+    display: block;
+    padding: .25em .5em;
+}
+.option .colorItems{
+    display: flex;
+    align-items: center;
+    
+}
+.option .colorItems .squareColor{
+    width: 40px;
+    height: 20px;   
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f100; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888888b4; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #5555555d; 
+  }

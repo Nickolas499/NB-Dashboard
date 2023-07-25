@@ -6,16 +6,16 @@ import { Select } from "../components/selectComponent/Select";
 
 
 const ColorOption = [
-  { label: "red", value: "#ff0000" },
-  { label: "green", value: "#00ff00" },
-  { label: "blue", value: "#0000ff" },
-  { label: "yellow", value: "#ffff00" },
-  { label: "black", value: "#000000" },
-  { label: "white", value: "#ffffff" },
-  { label: "gray", value: "#808080" },
-  { label: "silver", value: "#c0c0c0" },
-  { label: "maroon", value: "#800000" },
-  { label: "olive", value: "#808000" },
+  { label: "red", value: "rgb(0, 255, 0)" },
+  { label: "green", value: "rgb(255, 0, 0)" },
+  { label: "blue", value: "rgb(255, 0, 0)" },
+  { label: "yellow", value: "rgb(0, 255, 0)" },
+  { label: "black", value: "rgb(0, 255, 0)" },
+  { label: "white", value: "rgba(202,81,0)" },
+  { label: "gray", value: "rgba(217,175,139)" },
+  { label: "silver", value: "rgba(98,203,231)" },
+  { label: "maroon", value: "rgb(245,198,82)" },
+  { label: "olive", value: "rgba(1,174,240)" },
 ];
 const AccessOption = [
   { label: "Admin", value: "admin" },
