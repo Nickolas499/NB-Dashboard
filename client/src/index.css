@@ -1052,12 +1052,25 @@ main {
   background-color: #23262D;
   gap: 10px;
 }
+.registerFormContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .registerForm {
   display: flex;
   flex-direction: column;
   width: 300px;
   justify-content: center;
   align-items: center;
+  padding-top: 20px;
+}
+.registerForm form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  gap: 10px;
 }
 .registerForm .input_value {
   width: 100%;
@@ -1076,6 +1089,7 @@ main {
 }
 .registerForm .selectbox {
   display: flex;
+  gap: 10px;
 }
 .registerForm .btn {
   display: flex;
@@ -1088,7 +1102,7 @@ main {
   font-size: 0.8rem;
   font-weight: bold;
   color: #b6b6b6;
-  padding: 4px 10px;
+  padding: 10px;
 }
 .registerForm .btn:hover {
   box-shadow: 0 0 3px 0.5px #01AEF0;

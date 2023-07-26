@@ -77,6 +77,10 @@ width: 0.05em;
 
    
 }
+.option.selected{
+    transition: all 0.5s ease ;
+    background-color: #51525765; 
+}
 .option.highlighted{         
           background-color: #515257;   
           transition: all 0.5s ease ;       

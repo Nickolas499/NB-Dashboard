@@ -29,7 +29,7 @@ export const Test = () => {
     <div className="Test_container">
       <ul className="Table_Asigment">
         <li className="li_header">
-          <span className="span_name">Asigment</span>
+          <span className="span_name">Designers</span>
           <span className="span_value">LS3</span>
           <span className="span_value">Zeiss</span>
           <span className="span_value">3Shape</span>
@@ -103,7 +103,9 @@ export const Test = () => {
           </div>
           <div label="Registration">
             <div className="container">
+              <div className="registerFormContainer">
               <Register />
+              </div>              
             </div>
           </div>
         </Tabs>

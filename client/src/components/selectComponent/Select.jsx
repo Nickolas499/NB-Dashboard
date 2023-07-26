@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./select.module.css";
 
-export const Select = ({ value, onChange, options, type }) => {
-  const [isOpen, setIsOpen] = useState(true);
+export const Select = ({name, value, onChange, options, type }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(0);
 
   function clearOptions() {
@@ -10,12 +10,17 @@ export const Select = ({ value, onChange, options, type }) => {
   }
 
   function selectOption(option) {
-    onChange(option);
+    if (option !== value) onChange(option);
   }
 
   function isOptionSelected(option) {
     return option === value;
   }
+
+  useEffect(() => {
+    if(isOpen)  setHighlightIndex(0);
+    
+  },[isOpen])
 
  
 
