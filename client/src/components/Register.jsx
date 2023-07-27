@@ -1,6 +1,8 @@
 import {useForm} from 'react-hook-form';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {Select} from './selectComponent/Select';
+import { useAuth } from '../context/authContext';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -24,12 +26,23 @@ const AccessOption = [
 export const Register = () => {
   const [Colorvalue, setColorValue] = useState(ColorOption[0]);
   const [Accessvalue, setAccessValue] = useState(AccessOption[0]);
-  const { register, handleSubmit} = useForm();
+  const { register, handleSubmit, formState: { errors }} = useForm();
+  const {Signup, isAuthenticated} = useAuth();
+  const navigate = useNavigate();
 
-  const onSubmit = data => {
+
+  useEffect(() => {
+    if(isAuthenticated){
+      navigate('/');
+    }
+  
+  },[isAuthenticated]);
+
+  const  onSubmit = async data => {
     data.color = Colorvalue.value;
     data.access = Accessvalue.value;
-    console.log(data );
+    await Signup(data);
+    
   }
 
   return (
@@ -37,13 +50,18 @@ export const Register = () => {
         <h2>Register</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
             <input type="text" {...register('username', {required: true})} placeholder='Username' className="input_value"/>
+            {errors.username && <span>This field is required</span>}
             <input type="text" {...register('fname', {required: true})} placeholder='First Name' className="input_value"/>
+            {errors.fname && <span>This field is required</span>}
             <input type="text" {...register('lname', {required: true})} placeholder='Last Name'className="input_value"/>
+            {errors.lname && <span>This field is required</span>}
             <input type="email" {...register('email', {required: true})} placeholder='Email'className="input_value"/>
+            {errors.email && <span>This field is required</span>}
             <input type="password" {...register('password', {required: true})} placeholder='Password' className="input_value"/>
+            {errors.password && <span>This field is required</span>}
             <div className="selectbox">           
-            <Select {...register('access', {required: true})} name="access" options={AccessOption} value={Accessvalue || AccessOption[0]} type={"text"} onChange = {e =>setAccessValue(e)}/>
-            <Select {...register('color', {required: true})} name="color" options={ColorOption} value={Colorvalue || ColorOption[0]} type={"color"} onChange = {e =>setColorValue(e) }/>
+            <Select {...register('access', {required: false})} name="access" options={AccessOption} value={Accessvalue || AccessOption[0]} type={"text"} onChange = {e =>setAccessValue(e)}/>
+            <Select {...register('color', {required: false})} name="color" options={ColorOption} value={Colorvalue || ColorOption[0]} type={"color"} onChange = {e =>setColorValue(e) }/>
             </div>
             <button className='btn' type='submit'>Register</button>           
         </form>

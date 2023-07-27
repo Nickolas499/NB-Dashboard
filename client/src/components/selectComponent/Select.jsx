@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, forwardRef  } from "react";
 import styles from "./select.module.css";
 
-export const Select = ({name, value, onChange, options, type }) => {
+export const Select = forwardRef(({name, value, onChange, options, type }, ref)=> {
   const [isOpen, setIsOpen] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(0);
 
@@ -68,4 +68,4 @@ export const Select = ({name, value, onChange, options, type }) => {
       </div>
     </>
   );
-};
+});

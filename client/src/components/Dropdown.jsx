@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
-export const Dropdown = () => {  
+export const Dropdown = (props) => {  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -28,9 +28,9 @@ export const Dropdown = () => {
     <div className="test">
       <div className="dropdown" ref={menuRef}>
         <div className="userName" onClick={handleSelectClick}>
-          <span className="name">Ezequiel Almonte</span>
+          <span className="name">{props.username}</span>
           <div className="userIcon">
-            <div className="circle">EA</div>
+            <div className="circle">{props.initials}</div>
           </div>
         </div>
         <ul className={isMenuOpen ? "menu menu-open" : "menu"}>
