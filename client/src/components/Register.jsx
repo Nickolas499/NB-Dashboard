@@ -36,7 +36,7 @@ export const Register = () => {
       navigate('/');
     }
   
-  },[isAuthenticated]);
+  },[isAuthenticated, navigate]);
 
   const  onSubmit = async data => {
     data.color = Colorvalue.value;
