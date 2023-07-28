@@ -1044,12 +1044,23 @@ main {
   box-shadow: 0 0 3px 0.5px #01AEF0;
   text-shadow: 0 0 3px #01AEF0;
 }
+.registerContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
 .registerForm {
   display: flex;
   flex-direction: column;
   width: 300px;
   justify-content: center;
   align-items: center;
+}
+.registerForm h2 {
+  padding: 10px;
 }
 .registerForm .input_value {
   width: 100%;
@@ -1068,6 +1079,8 @@ main {
 }
 .registerForm .selectbox {
   display: flex;
+  padding: 10px 0;
+  gap: 10px;
 }
 .registerForm .btn {
   display: flex;
@@ -1081,6 +1094,7 @@ main {
   font-weight: bold;
   color: #b6b6b6;
   padding: 4px 10px;
+  margin-top: 20px;
 }
 .registerForm .btn:hover {
   box-shadow: 0 0 3px 0.5px #01AEF0;

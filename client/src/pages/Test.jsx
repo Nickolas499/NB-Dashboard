@@ -76,7 +76,9 @@ export const Test = () => {
           </div>
           <div label="Registration">
             <div className="container">
-              <Register />
+              <div className="registerContainer">
+                <Register />
+              </div>
             </div>
           </div>
         </Tabs>
