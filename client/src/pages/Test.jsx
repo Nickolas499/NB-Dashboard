@@ -4,7 +4,6 @@ import Tabs from "../components/tabs/Tabs";
 import { Register } from "../components/Register";
 import { Select } from "../components/selectComponent/Select";
 
-
 const ColorOption = [
   { label: "red", value: "rgb(0, 255, 0)" },
   { label: "green", value: "rgb(255, 0, 0)" },
@@ -96,16 +95,26 @@ export const Test = () => {
           <div label="SelectComponent">
             <div className="container">
               <div className="selectContainer">
-                <Select options={AccessOption} value={Accessvalue} type={"Color"} onChange = {e =>setAccessValue(e)}/>
-                <Select options={ColorOption} value={Colorvalue} type={"text"} onChange = {e =>setColorValue(e) }/>
+                <Select
+                  options={AccessOption}
+                  value={Accessvalue}
+                  type={"Color"}
+                  onChange={(e) => setAccessValue(e)}
+                />
+                <Select
+                  options={ColorOption}
+                  value={Colorvalue}
+                  type={"text"}
+                  onChange={(e) => setColorValue(e)}
+                />
               </div>
             </div>
           </div>
           <div label="Registration">
             <div className="container">
               <div className="registerFormContainer">
-              <Register />
-              </div>              
+                <Register />
+              </div>
             </div>
           </div>
         </Tabs>
