@@ -1108,6 +1108,9 @@ main {
   box-shadow: 0 0 3px 0.5px #01AEF0;
   text-shadow: 0 0 3px #01AEF0;
 }
+.registerForm .error {
+  color: red;
+}
 .selectComponet {
   width: 100%;
 }

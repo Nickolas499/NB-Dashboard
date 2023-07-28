@@ -16,6 +16,7 @@ export const useAuth = () =>{
 export const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [errors, setErrors] = useState([]);
     
    
 
@@ -28,12 +29,13 @@ export const AuthProvider = ({children}) => {
         setIsAuthenticated(true);
         console.log(res.data);
         }catch(error){
-            console.log(error);
+            console.log(error.response.data);
+            setErrors(error.response.data);
         }
     }
 
     return (
-        <authContext.Provider value={{Signup,user, isAuthenticated}}>
+        <authContext.Provider value={{Signup,user, isAuthenticated,errors}}>
             {children}
         </authContext.Provider>
     )

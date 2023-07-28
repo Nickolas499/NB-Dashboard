@@ -8,6 +8,16 @@ export const register = async (req, res) => {
   const { username, fname, lname, email, password, access, color } = req.body;
 
   try {
+
+    const userFound = await User.findOne({ username });
+    if(userFound) {
+      return res.status(400).json(["User already exists" ]);
+    }
+    const emailFound = await User.findOne({ email });
+    if(emailFound) {
+      return res.status(400).json(["Email already exists"] );
+    }
+
     const salt = await bcript.genSalt(10);
     const hashs = await bcript.hash(password, salt);
 
@@ -30,7 +40,7 @@ export const register = async (req, res) => {
       color: userSaved.color,
     }
     res.cookie("token", token);
-    res.status(200).json({ message: "User registered successfully", data });
+    res.status(200).json(["User registered successfully"], data );
 
   } catch (error) {
     res.status(500).json({ message: error.message });

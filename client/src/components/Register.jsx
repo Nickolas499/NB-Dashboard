@@ -1,10 +1,8 @@
-import {useForm} from 'react-hook-form';
-import {useState, useEffect} from 'react';
-import {Select} from './selectComponent/Select';
-import { useAuth } from '../context/authContext';
-import { useNavigate } from 'react-router-dom';
-
-
+import { useForm } from "react-hook-form";
+import { useState, useEffect } from "react";
+import { Select } from "./selectComponent/Select";
+import { useAuth } from "../context/authContext";
+import { useNavigate } from "react-router-dom";
 
 const ColorOption = [
   { label: "red", value: "rgb(0, 255, 0)" },
@@ -26,45 +24,94 @@ const AccessOption = [
 export const Register = () => {
   const [Colorvalue, setColorValue] = useState(ColorOption[0]);
   const [Accessvalue, setAccessValue] = useState(AccessOption[0]);
-  const { register, handleSubmit, formState: { errors }} = useForm();
-  const {Signup, isAuthenticated} = useAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const { Signup, isAuthenticated, errors: RegisterErrors } = useAuth();
   const navigate = useNavigate();
 
-
   useEffect(() => {
-    if(isAuthenticated){
-      navigate('/');
+    if (isAuthenticated) {
+      navigate("/");
     }
-  
-  },[isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate]);
 
-  const  onSubmit = async data => {
+  const onSubmit = async (data) => {
     data.color = Colorvalue.value;
     data.access = Accessvalue.value;
     await Signup(data);
-    
-  }
+  };
 
   return (
     <div className="registerForm">
-        <h2>Register</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <input type="text" {...register('username', {required: true})} placeholder='Username' className="input_value"/>
-            {errors.username && <span>This field is required</span>}
-            <input type="text" {...register('fname', {required: true})} placeholder='First Name' className="input_value"/>
-            {errors.fname && <span>This field is required</span>}
-            <input type="text" {...register('lname', {required: true})} placeholder='Last Name'className="input_value"/>
-            {errors.lname && <span>This field is required</span>}
-            <input type="email" {...register('email', {required: true})} placeholder='Email'className="input_value"/>
-            {errors.email && <span>This field is required</span>}
-            <input type="password" {...register('password', {required: true})} placeholder='Password' className="input_value"/>
-            {errors.password && <span>This field is required</span>}
-            <div className="selectbox">           
-            <Select {...register('access', {required: false})} name="access" options={AccessOption} value={Accessvalue || AccessOption[0]} type={"text"} onChange = {e =>setAccessValue(e)}/>
-            <Select {...register('color', {required: false})} name="color" options={ColorOption} value={Colorvalue || ColorOption[0]} type={"color"} onChange = {e =>setColorValue(e) }/>
-            </div>
-            <button className='btn' type='submit'>Register</button>           
-        </form>
+      <h2>Register</h2>
+      <span>
+        {RegisterErrors.map((error, index) => (
+          <p className="error" key={index}>
+            {error}
+          </p>
+        ))}
+      </span>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input
+          type="text"
+          {...register("username", { required: true })}
+          placeholder="Username"
+          className="input_value"
+        />
+        {errors.username && <p className="error">This field is required</p>}
+        <input
+          type="text"
+          {...register("fname", { required: true })}
+          placeholder="First Name"
+          className="input_value"
+        />
+        {errors.fname && <p className="error">This field is required</p>}
+        <input
+          type="text"
+          {...register("lname", { required: true })}
+          placeholder="Last Name"
+          className="input_value"
+        />
+        {errors.lname && <p className="error">This field is required</p>}
+        <input
+          type="email"
+          {...register("email", { required: true })}
+          placeholder="Email"
+          className="input_value"
+        />
+        {errors.email && <p className="error">This field is required</p>}
+        <input
+          type="password"
+          {...register("password", { required: true })}
+          placeholder="Password"
+          className="input_value"
+        />
+        {errors.password && <p className="error">This field is required</p>}
+        <div className="selectbox">
+          <Select
+            {...register("access", { required: false })}
+            name="access"
+            options={AccessOption}
+            value={Accessvalue || AccessOption[0]}
+            type={"text"}
+            onChange={(e) => setAccessValue(e)}
+          />
+          <Select
+            {...register("color", { required: false })}
+            name="color"
+            options={ColorOption}
+            value={Colorvalue || ColorOption[0]}
+            type={"color"}
+            onChange={(e) => setColorValue(e)}
+          />
+        </div>
+        <button className="btn" type="submit">
+          Register
+        </button>
+      </form>
     </div>
-  )
-}
+  );
+};

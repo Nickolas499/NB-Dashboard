@@ -1,0 +1,16 @@
+/* Toast.css */
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #fff;
+    padding: 10px 20px; 
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: all 0.5s; 
+  }
+  
+  .toast.hide {
+    bottom: -100px; 
+  }

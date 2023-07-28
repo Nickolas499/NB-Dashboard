@@ -6,6 +6,7 @@ import { Charts } from "./pages/Charts";
 import { Profile } from "./pages/Profile";
 import { Admin } from "./pages/Admin";
 import { Test } from "./pages/Test";
+import { Login } from "./pages/Login";
 
 function App() {
 //*************************************************************************************//
@@ -33,6 +34,7 @@ function App() {
       <Aside/>
       <main>
         <Routes>
+        <Route path="/login" element={<Login/>}/>
           <Route path="/" element={<Dashboard/>}/>
           <Route path="/charts" element={<Charts/>}/>
           <Route path="/profile" element={<Profile/>}/>
