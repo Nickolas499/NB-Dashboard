@@ -1,0 +1,128 @@
+.container{
+    width: 20em;
+    min-height: 1.5em;   
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    border-radius: .25em;
+    border: 1px solid #01acf079;
+    box-shadow: 0 0 1px 0 #01AEF0;
+    margin: 0;
+    outline: none;
+    padding: 0.5em;
+
+}
+.container:focus{
+    box-shadow: 0 0 3px 0 #01AEF0;
+}
+.value{
+    flex-grow: 1;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.clear-btn{
+    background: none;
+    color:#01AEF0 ;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1.25rem;
+}
+.clear-btn:hover,
+.clear-btn:focus{
+    color: #0474a0;
+}
+
+.divider{
+background-color: #01AEF0;
+align-self: stretch;
+width: 0.05em;
+}
+
+.caret{
+    translate: 0 25%;
+    border: .25rem solid transparent;
+    border-top-color: #01AEF0;
+}
+
+.options{
+    position: absolute;
+    display: none;    
+    list-style: none;
+    max-height: 16em;
+    overflow-y: auto;
+    box-shadow: 0 0 3px 0 #01AEF0;
+    width: 100%;
+    left: 0;
+    top: calc(100% + .25em);
+    background-color: #23262D;
+    transition: all 0.5s ease ;
+    z-index: 100;
+    padding: 5px;
+}
+
+
+.options.show{
+    display: block;
+}
+
+.option{
+    width: 100%;    
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+
+   
+}
+.option.selected{
+    transition: all 0.5s ease ;
+    background-color: #51525765; 
+}
+.option.highlighted{         
+          background-color: #515257;   
+          transition: all 0.5s ease ;       
+}
+
+.option.selected{
+    transition: all 0.5s ease ;
+    background-color: #51525765; 
+}
+.option span{
+    width: 100%;
+    color: #b6b6b6;
+    font-size: 1rem;
+    font-weight: bold;
+    display: block;
+    padding: .25em .5em;
+}
+.option .colorItems{
+    display: flex;
+    align-items: center;
+    
+}
+.option .colorItems .squareColor{
+    width: 40px;
+    height: 20px;   
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f100; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888888b4; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #5555555d; 
+  }

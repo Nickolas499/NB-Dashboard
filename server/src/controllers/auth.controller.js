@@ -5,7 +5,7 @@ import { createAccessToken } from "../libs/jwt.js";
 //                                  REGISTER                                    //
 //==============================================================================//
 export const register = async (req, res) => {
-  const { username, fname, lname, email, password, access } = req.body;
+  const { username, fname, lname, email, password, access, color } = req.body;
 
   try {
     const salt = await bcript.genSalt(10);
@@ -18,11 +18,19 @@ export const register = async (req, res) => {
       email,
       password: hashs,
       access,
+      color,
     });
     const userSaved = await newUser.save();
     const token = await createAccessToken({ id: userSaved._id });
+    const data = {
+      fname: userSaved.fname,
+      lname: userSaved.lname,
+      email: userSaved.email,
+      access: userSaved.access,
+      color: userSaved.color,
+    }
     res.cookie("token", token);
-    res.status(200).json({ message: "User registered successfully" });
+    res.status(200).json({ message: "User registered successfully", data });
 
   } catch (error) {
     res.status(500).json({ message: error.message });
