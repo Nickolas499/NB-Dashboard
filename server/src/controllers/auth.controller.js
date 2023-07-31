@@ -31,19 +31,12 @@ export const register = async (req, res) => {
       color,
     });
     const userSaved = await newUser.save();
-    const token = await createAccessToken({ id: userSaved._id });
-    const data = {
-      fname: userSaved.fname,
-      lname: userSaved.lname,
-      email: userSaved.email,
-      access: userSaved.access,
-      color: userSaved.color,
-    }
+    const token = await createAccessToken({ id: userSaved._id });    
     res.cookie("token", token);
-    res.status(200).json(["User registered successfully"], data );
+    res.status(200).json(["User registered successfully"]);
 
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json([error.message]);
   }
 };
 
@@ -56,23 +49,30 @@ export const login = async (req, res) => {
     try {
       const userFound = await User.findOne({ username });
       if (!userFound) {
-        return res.status(404).json({ message: "User not found" });
+        return res.status(404).json(["User not found" ]);
       }
 
     
       const isMatch = await bcript.compare(password, userFound.password);
 
       if (!isMatch) {
-        return res.status(400).json({ message: "Invalid credentials" });
+        return res.status(400).json(["Invalid credentials"]);
       }  
           
       const token = await createAccessToken({ id: userFound._id });
+      const data = {
+        fname: userFound.fname,
+        lname: userFound.lname,
+        email: userFound.email,
+        access: userFound.access,
+        color: userFound.color,
+      }
 
       res.cookie("token", token);
-      res.status(200).json({ message: "Login successfully" });
+      res.status(200).json(data);
   
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      res.status(500).json([error.message]);
     }
   };
 
@@ -97,7 +97,7 @@ export const profile = async (req, res) => {
   const userFound = await User.findById(req.user.id);
   
   if (!userFound) {
-    return res.status(404).json({ message: "User not found" });
+    return res.status(404).json(["User not found"]);
   }
   
   

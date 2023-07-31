@@ -23,7 +23,7 @@ export const createRegistration = async (req, res) => {
 //==================================================================================//
 export const getRegistration = async (req, res) => {
     const registration = await Registration.findById(req.params.id);
-    if(!registration) return res.status(404).json({ message: "Registration not found" });
+    if(!registration) return res.status(404).json(["Registration not found"]);
     return res.json(registration);
 };
 //==================================================================================//
@@ -31,7 +31,7 @@ export const getRegistration = async (req, res) => {
 //==================================================================================//
 export const updateRegistration = async (req, res) => {
     const registration = await Registration.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if(!registration) return res.status(404).json({ message: "Registration not found" });
+    if(!registration) return res.status(404).json(["Registration not found"]);
     return res.json(registration);
 };
 //==================================================================================//
@@ -39,6 +39,6 @@ export const updateRegistration = async (req, res) => {
 //==================================================================================//
 export const deleteRegistration = async (req, res) => {
     const registration = await Registration.findByIdAndDelete(req.params.id);
-    if(!registration) return res.status(404).json({ message: "Registration not found" });
+    if(!registration) return res.status(404).json(["Registration not found"]);
     return res.status(204).json();
 };

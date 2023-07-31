@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import { useState, useEffect } from "react";
+import { useState,} from "react";
 import { Select } from "./selectComponent/Select";
 import { useAuth } from "../context/authContext";
-import { useNavigate } from "react-router-dom";
+
 
 const ColorOption = [
   { label: "red", value: "rgb(0, 255, 0)" },
@@ -29,14 +29,8 @@ export const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { Signup, isAuthenticated, errors: RegisterErrors } = useAuth();
-  const navigate = useNavigate();
+  const { Signup,  errors: RegisterErrors } = useAuth();
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/");
-    }
-  }, [isAuthenticated, navigate]);
 
   const onSubmit = async (data) => {
     data.color = Colorvalue.value;

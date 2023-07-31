@@ -10,6 +10,26 @@
   font-weight: 400;
   src: url(https://fonts.gstatic.com/s/sigmar/v3/hv-XlzJgIE8a85pUbQ.ttf) format('truetype');
 }
+:root {
+  --primaryColor: #23262D;
+  --secondaryColor: #66666b2d;
+  --bgColor: #4a4c4d;
+  --assentColor: #01AEF0;
+  --Color: #b6b6b6;
+  --blue: #01AEF0;
+  --lightblue: #01acf073;
+  --white: #fff;
+  --black: #000;
+  --red: #FE0102;
+  --green: #6FC308;
+  --yellow: #F6B156;
+  --orange: #F78E57;
+  --gray: #515257;
+  --lightGray: #99999916;
+  --darkGray: #3D3D3D;
+  --inputTextColor: rgba(255, 255, 255, 0.562);
+  --errorColor: #FE010255;
+}
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 1, "opsz" 48;
 }
@@ -31,6 +51,13 @@ body {
   grid-template-columns: 80px repeat(1, 1fr);
   grid-template-rows: 60px repeat(1, 1fr);
   grid-template-areas: "aside header header header header header header header header" "aside main main main main main main main main" "aside main main main main main main main main" "aside main main main main main main main main";
+}
+.Applogin {
+  display: grid;
+  width: 100vw;
+  min-height: calc(100vh - 20px);
+  justify-content: center;
+  align-items: center;
 }
 header {
   grid-area: header;
@@ -219,6 +246,8 @@ aside nav ul li div:hover {
 }
 main {
   grid-area: main;
+  overflow: auto;
+  border: 1px solid #01AEF0;
 }
 .DashboardContainer {
   display: flex;
