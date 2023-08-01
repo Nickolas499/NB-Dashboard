@@ -2,13 +2,14 @@ import {useEffect} from "react";
 import{useAuth} from "./context/authContext";
 import { Header } from "./components/Header";
 import { Aside } from "./components/Aside";
-import { Route, Routes, useLocation, useNavigate  } from "react-router-dom";
+import { Route, Routes, useLocation  } from "react-router-dom";
 import { Dashboard } from "./pages/Dashboard";
 import { Charts } from "./pages/Charts";
 import { Profile } from "./pages/Profile";
 import { Admin } from "./pages/Admin";
 import { Test } from "./pages/Test";
 import { Login } from "./pages/Login";
+import ProtectedRoutes from "./ProtectedRoutes";
 
 function App() {
 //*************************************************************************************//
@@ -16,7 +17,7 @@ function App() {
 //  Define una función para obtener el título según la ruta actual                     //
 //*************************************************************************************//
   const location = useLocation(); 
-  const navigate = useNavigate();
+  
   const getTitle = () => {
     switch(location.pathname) {
       case "/":
@@ -34,9 +35,9 @@ function App() {
 
   const {isAuthenticated} = useAuth();
 
-  useEffect(() => {
+  useEffect(() => {    
     if (isAuthenticated) {
-      navigate("/");
+      <navigate to="/login" replace/>
     }
   }, [isAuthenticated]);
 
@@ -55,10 +56,10 @@ const AppRoutes = (getTitle) => {
   
   return (
     <>
-  <Header title={getTitle}/>
+  <Header title={getTitle()}/>
       <Aside/>
       <main>
-        <Routes>        
+        <Routes element={<ProtectedRoutes/>}>        
           <Route path="/" element={<Dashboard/>}/>
           <Route path="/charts" element={<Charts/>}/>
           <Route path="/profile" element={<Profile/>}/>
@@ -75,6 +76,7 @@ const Applogin = () => {
     <div className="Applogin">
       <Routes>
         <Route path="/login" element={<Login/>}/>
+        <Route path="*" element={<Login />} /> 
       </Routes>   
     </div>
   )

@@ -1,6 +1,10 @@
 import User from "../models/user.model.js";
 import bcript from "bcryptjs";
 import { createAccessToken } from "../libs/jwt.js";
+import jwt from "jsonwebtoken";
+import {TOKEN_SECRET} from "../config.js";
+
+
 //==============================================================================//
 //                                  REGISTER                                    //
 //==============================================================================//
@@ -60,15 +64,14 @@ export const login = async (req, res) => {
       }  
           
       const token = await createAccessToken({ id: userFound._id });
+      res.cookie("token", token);
       const data = {
         fname: userFound.fname,
         lname: userFound.lname,
         email: userFound.email,
         access: userFound.access,
         color: userFound.color,
-      }
-
-      res.cookie("token", token);
+      }      
       res.status(200).json(data);
   
     } catch (error) {
@@ -98,10 +101,31 @@ export const profile = async (req, res) => {
   
   if (!userFound) {
     return res.status(404).json(["User not found"]);
-  }
-  
-  
-    return res.status(200).json({id: userFound._id,fname: userFound.fname, lname: userFound.lname, access: userFound.access});
+  }  
+    return res.status(200).json({id: userFound._id,fname: userFound.fname, lname: userFound.lname, access: userFound.access}); 
+}
 
-  
+
+export const verifyToken = () => async (req, res) => {
+  const {token} = req.cookies;
+ 
+  if (!token)return res.status(401).json(['Authorization denied']);
+
+  jwt.verify(token, TOKEN_SECRET, async (err, user) => {
+
+    if (err) return res.status(401).json(['Invalid token']);
+
+    const userFound = await User.findById(user.id);
+    
+    if (!userFound) return res.status(404).json(['User not found']);
+
+    return res.status(200).json({
+      id: userFound._id,
+      fname: userFound.fname,
+      lname: userFound.lname,
+      access: userFound.access,
+      color: userFound.color,
+    });
+    
+  });
 }

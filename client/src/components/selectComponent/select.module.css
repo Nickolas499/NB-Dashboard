@@ -96,7 +96,7 @@ width: 0.05em;
     font-size: 1rem;
     font-weight: bold;
     display: block;
-    padding: .25em .5em;
+    padding: 2px;
 }
 .option .colorItems{
     display: flex;

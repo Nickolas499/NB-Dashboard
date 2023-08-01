@@ -13,10 +13,6 @@ export const Login = (props) => {
     Signin(data);
     
   });
-
-
-
-console.log(signinErrors);
   return (
     <div className={style.container}>
       <div className={style.login}>

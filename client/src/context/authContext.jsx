@@ -1,6 +1,6 @@
 import {createContext, useState,useContext, useEffect} from 'react';
-import { RegisterRequest, LoginRequest } from '../api/auth';
-
+import { RegisterRequest, LoginRequest, verifyTokenRequest } from '../api/auth.js';
+import Cookies from 'js-cookie';
 
 
 export const authContext = createContext()
@@ -17,15 +17,14 @@ export const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [errors, setErrors] = useState([]); 
-
+    
    
 
     const Signup = async (user) => {
         try{
-        const res = await RegisterRequest(user);
-        setUser(res.data);               
-        }catch(error){
-            console.log(error.response.data);
+        await RegisterRequest(user);
+                       
+        }catch(error){           
             setErrors(error.response.data);
         }
     }
@@ -34,10 +33,8 @@ export const AuthProvider = ({children}) => {
         try{
         const res = await LoginRequest(user);
         setUser(res.data);
-        setIsAuthenticated(true);
-        console.log(res.data);
-        }catch(error){
-            console.log(error.response.data);
+        setIsAuthenticated(true);             
+        }catch(error){            
             setErrors(error.response.data);
         }
     }
@@ -50,6 +47,27 @@ useEffect(()=>{
     return ()=> clearTimeout(timer)
    } 
 },[errors])
+
+const cookies = Cookies.get();
+
+async function checkLogin() {
+  if (cookies.token) {
+    try {
+      const res = await verifyTokenRequest(cookies.token);
+      console.log({"res.data":res});
+      setIsAuthenticated(true);
+      setUser(res.data);
+    } catch (error) {
+      setIsAuthenticated(false);
+      setUser(null);
+      Cookies.remove('token');
+    }
+  }
+}
+
+useEffect(() => {
+  checkLogin();
+}, []);
 
 
     return (

@@ -29,7 +29,7 @@ export const Dropdown = (props) => {
       <div className="dropdown" ref={menuRef}>
         <div className="userName" onClick={handleSelectClick}>
           <span className="name">{props.username}</span>
-          <div className="userIcon">
+          <div className="userIcon" style={{ backgroundColor: props.color,boxShadow: `0 0 5px ${props.color}` }}>
             <div className="circle">{props.initials}</div>
           </div>
         </div>

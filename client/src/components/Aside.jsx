@@ -1,7 +1,9 @@
 import Logo from "../img/logo.svg";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/authContext";
 
 export const Aside = () => {
+  const { user } = useAuth();
   return (
     <aside>
       <div className="logo">
@@ -14,7 +16,7 @@ export const Aside = () => {
           <li><Link to="/profile"><div><span className="material-symbols-outlined">person</span><span>Profile</span></div></Link></li>
           {/* <li><Link to="/"><div><span className="material-symbols-outlined"></span><span></span></div></Link></li> */}
           <li><Link to="/test"><div><span className="material-symbols-outlined">T</span><span>Test</span></div></Link></li>
-          <li><Link to="/admin"><div> <span className="material-symbols-outlined">Shield </span><span>Admin</span></div></Link></li>
+          {user.access === "admin"?<li><Link to="/admin"><div> <span className="material-symbols-outlined">Shield </span><span>Admin</span></div></Link></li>:""}
         </ul>
       </nav>
     </aside>
