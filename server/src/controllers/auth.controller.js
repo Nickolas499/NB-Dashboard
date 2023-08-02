@@ -66,9 +66,9 @@ export const login = async (req, res) => {
       const token = await createAccessToken({ id: userFound._id });
       res.cookie("token", token);
       const data = {
+        id: userFound._id,
         fname: userFound.fname,
         lname: userFound.lname,
-        email: userFound.email,
         access: userFound.access,
         color: userFound.color,
       }      
@@ -106,17 +106,17 @@ export const profile = async (req, res) => {
 }
 
 
-export const verifyToken = () => async (req, res) => {
+export const verify = () => async (req, res) => {
+  
   const {token} = req.cookies;
- 
+  
   if (!token)return res.status(401).json(['Authorization denied']);
 
   jwt.verify(token, TOKEN_SECRET, async (err, user) => {
 
     if (err) return res.status(401).json(['Invalid token']);
 
-    const userFound = await User.findById(user.id);
-    
+    const userFound = await User.findById(user.id);    
     if (!userFound) return res.status(404).json(['User not found']);
 
     return res.status(200).json({

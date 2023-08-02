@@ -36,6 +36,7 @@ function App() {
   const {isAuthenticated} = useAuth();
 
   useEffect(() => {    
+    
     if (isAuthenticated) {
       <navigate to="/login" replace/>
     }
@@ -44,7 +45,8 @@ function App() {
 
   return (
     <div className="AppContainer">
-      {isAuthenticated ? AppRoutes(getTitle) : Applogin()}
+    {isAuthenticated ? AppRoutes(getTitle) : Applogin()}
+      
     </div>
   );
 }
@@ -65,6 +67,7 @@ const AppRoutes = (getTitle) => {
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/admin" element={<Admin/>}/>
           <Route path="/test" element={<Test/>}/>
+          <Route path="/logout" element={<Login/>}/>
         </Routes>
       </main>
   </>
@@ -80,4 +83,4 @@ const Applogin = () => {
       </Routes>   
     </div>
   )
-}
+} 

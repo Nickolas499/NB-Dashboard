@@ -7,10 +7,14 @@ import {radar_data} from '../data/radar-data';
 import Tabs from '../components/tabs/Tabs';
 import Table from '../components/Table';
 import { register_data, scaned_data, design_data, redesign_data } from '../data/table_data';
+import { useRegistration } from '../context/registrationContext';
 
 // =========((PROFILE))=============================================
 export const Profile = () => {
+  const {registration} = useRegistration();
 
+  console.log(registration);
+  
   const [IBO,setIBO] = useState("0");
   const [ABUTMENT,setABUTMENT] = useState("0");
   const [FULL_ARCH_P,setFULL_ARCH_P] = useState("0");

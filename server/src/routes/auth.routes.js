@@ -4,7 +4,7 @@ import {
   login,
   logout,
   profile,
-  verifyToken,
+  verify
 } from "../controllers/auth.controller.js";
 import { authRequired } from "../middlewares/validateToken.js";
 import { validateSchema } from "../middlewares/validator.middleware.js";
@@ -14,7 +14,7 @@ import {registerSchema, loginSchema} from "../schemas/auth.schema.js";
 
 const routes = Router();
 
-routes.get("/verify", verifyToken);
+routes.get("/verify", verify);
 
 routes.post("/register", validateSchema(registerSchema), register);
 

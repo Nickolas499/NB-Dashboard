@@ -59,7 +59,7 @@ export const Dropdown = (props) => {
             </Link>
           </li>
           <li>
-            <Link to="" onClick={() => handleSelectClick()}>
+            <Link to="/logout" onClick={() => handleSelectClick()}>
               <span className="material-symbols-outlined">Logout</span>
               <span>Logout</span>
             </Link>
