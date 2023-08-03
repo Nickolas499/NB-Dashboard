@@ -19,13 +19,12 @@ function Table(props) {
         </tr>
       </thead>
       <tbody>
-        {data.map((row, index) => (
-          console.log(row),
+        {data.map((row, index) => (          
           <tr key={index}>
             {props.columns.map((column, columnIndex) => (
               <td key={columnIndex}>{row[column]}</td>
             ))}
-            <td><button className="btn" onClick={() => handleEdit(row)}>Edit</button></td>
+            <td><button className="btn" onClick={() => handleEdit(index)}>Edit</button></td>
           </tr>
         ))}
       </tbody>

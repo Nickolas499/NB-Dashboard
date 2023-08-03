@@ -246,8 +246,6 @@ aside nav ul li div:hover {
 }
 main {
   grid-area: main;
-  overflow: auto;
-  border: 1px solid #01AEF0;
 }
 .DashboardContainer {
   display: flex;
@@ -638,7 +636,18 @@ main {
 }
 .Input_field {
   width: 50px;
+  height: 25px;
+  margin: 5px 0;
+  border: none;
+  outline: none;
+  border-radius: 4px;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.562);
+  font-weight: bold;
+}
+.Input_field:focus {
+  border: 1px solid #01AEF0;
+  box-shadow: 0 0 3px 0.5px #01AEF0;
 }
 .data_input {
   display: grid;
