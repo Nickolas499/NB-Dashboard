@@ -1,9 +1,14 @@
+import Cookies from "js-cookie";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import cookies from "js-cookie";
+import { useAuth } from "../context/authContext";
 
 export const Dropdown = (props) => {  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
+ 
+  const {Logout} = useAuth();
 
   const handleSelectClick = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -16,6 +21,8 @@ export const Dropdown = (props) => {
       setIsMenuOpen(false);
     }
   };
+
+ 
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutsideMenu);
@@ -59,7 +66,7 @@ export const Dropdown = (props) => {
             </Link>
           </li>
           <li>
-            <Link to="/logout" onClick={() => handleSelectClick()}>
+            <Link to="/" onClick={() => Logout() }>
               <span className="material-symbols-outlined">Logout</span>
               <span>Logout</span>
             </Link>

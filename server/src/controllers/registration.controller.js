@@ -1,13 +1,25 @@
 import Registration from "../models/registration.model.js";
-     
+import moment from "moment";    
 
 //==================================================================================//
 //                Get all registrations data                                        //   
 //==================================================================================//
 export const getRegistrations = async (req, res) => {
-    const registrations = await Registration.find();
-    //const registrations = await Registration.find({USER: req.user.id});
-    return res.json(registrations);
+    //const registrations = await Registration.find();
+    const registrations = await Registration.find({USER: req.user.id});
+
+    const formattedRegistrations = registrations.map(r => {
+    return {
+      ID: r._id,
+      DATE: moment(r.DATE).format('MM/DD/YYYY'),  
+      IBO: r.IBO,
+      ABUT: r.ABUT,
+      FULL_ARCH_P: r.FULL_ARCH_P, 
+      FULL_ARCH_F: r.FULL_ARCH_F
+    }
+  });
+
+  return res.json(formattedRegistrations);
 };
 //==================================================================================//
 //               create registrations data                                          //   
