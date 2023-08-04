@@ -8,7 +8,7 @@ import {
   deleteRegistration,
 } from "../controllers/registration.controller.js";
 import { validateSchema } from "../middlewares/validator.middleware.js";
-import { createRegistrationSchema } from "../schemas/registration.schema.js";
+import { createRegistrationSchema } from "../schemas/Zod.schema.js";
 
 
 const routes = Router();

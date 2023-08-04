@@ -1,7 +1,9 @@
 import { createContext, useContext, useState } from "react";
 import {
-  CreateRegistration,
-  getRegistration  
+  createRegistration,
+  getRegistration,
+  createScaned,
+  getScaned,  
 } from "../api/registration";
 
 const registrationContext = createContext();
@@ -18,17 +20,16 @@ export const useRegistration = () => {
 
 export function RegistrationProvider({ children }) {
   const [registration, setRegistration] = useState([]);
+  const [scaned, setScaned] = useState([]);
   
 
   //======================================((Create Registration API))==============================================//
-
-  const createRegistration = async (data) => {
-    const res = await CreateRegistration(data);
+  const CreateRegistration = async (data) => {
+    const res = await createRegistration(data);
     console.log(res);
   };
 
   //======================================((Get Registration API))==============================================//
-
   const GetRegistration = async () => {
     try {
       const res = await getRegistration();
@@ -42,9 +43,31 @@ export function RegistrationProvider({ children }) {
   //==================================((Update Registration API))===============================================//
   //==================================((Delete Registration API))===============================================//
 
+  
+   //======================================((Create Scaned API))==============================================//
+   const CreateScaned = async (data) => {
+    const res = await createScaned(data);
+    console.log(res);
+  };
+
+  //======================================((Get Scaned API))==============================================//
+  const GetScaned = async () => {
+    try {
+      const res = await getScaned();
+      setScaned(res.data);      
+    } catch (error) {
+      console.log(error);
+    }
+    
+  };
+  //==================================((Get Scaned By Id API))============================================//
+  //==================================((Update Scaned API))===============================================//
+  //==================================((Delete Scaned API))===============================================//
+
+
   return (
     <registrationContext.Provider
-      value={{ registration, createRegistration, GetRegistration }}
+      value={{ registration, CreateRegistration, GetRegistration,scaned,GetScaned,CreateScaned }}
     >
       {children}
     </registrationContext.Provider>

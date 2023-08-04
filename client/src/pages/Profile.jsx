@@ -6,7 +6,7 @@ import Radarchart from '../components/charts/Radar';
 import {radar_data} from '../data/radar-data';
 import Tabs from '../components/tabs/Tabs';
 import Table from '../components/Table';
-import { register_data, scaned_data, design_data, redesign_data } from '../data/table_data';
+import { scaned_data, design_data, redesign_data } from '../data/table_data';
 import { useRegistration } from '../context/registrationContext';
 
 // =========((PROFILE))=============================================
@@ -22,6 +22,12 @@ export const Profile = () => {
   const [ABUT,setABUT] = useState(0);
   const [FULL_ARCH_P,setFULL_ARCH_P] = useState(0);
   const [FULL_ARCH_F,setFULL_ARCH_F] = useState(0);
+  const [LS3, setLS3] = useState(0);
+  const [ZEISS, setZEISS] = useState(0);
+  const [SHAPE, setSHAPE] = useState(0);
+  const [COPY_MILL, setCOPY_MILL] = useState(0);
+  const [FULL_ARCH, setFULL_ARCH] = useState(0);
+
 
 
   useEffect(() => {
@@ -81,17 +87,20 @@ export const Profile = () => {
     const { id, value } = e.target;
 
     switch (id) {
-      case "IBO":
-        setIBO(value);
+      case "LS3":
+        setLS3(value);
         break;
-      case "ABUT":
-        setABUT(value);
+      case "ZEISS":
+        setZEISS(value);
         break;
-      case "FULL_ARCH_P":
-        setFULL_ARCH_P(value);
+      case "SHAPE":
+        setSHAPE(value);
         break;
-      case "FULL_ARCH_F":
-        setFULL_ARCH_F(value);
+      case "COPY_MILL":
+        setCOPY_MILL(value);
+        break;
+      case "FULL_ARCH":
+        setFULL_ARCH(value);
         break;
       default:
         break;
@@ -99,24 +108,28 @@ export const Profile = () => {
   };
   const ScanedSubmit = (e) => {
     e.preventDefault();
-    const IBO = document.getElementById("IBO").value;
-    const ABUT = document.getElementById("ABUT").value;
-    const FULL_ARCH_P = document.getElementById("FULL_ARCH_P").value;
-    const FULL_ARCH_F = document.getElementById("FULL_ARCH_F").value;
-    if (IBO === "" || ABUT === "" || FULL_ARCH_P === "" || FULL_ARCH_F === "") {
+    const LS3 = document.getElementById("LS3").value;
+    const ZEISS = document.getElementById("ZEISS").value;
+    const SHAPE = document.getElementById("SHAPE").value;
+    const COPY_MILL = document.getElementById("COPY_MILL").value;
+    const FULL_ARCH = document.getElementById("FULL_ARCH").value;
+    if (LS3 === "" || ZEISS === "" || SHAPE === "" || COPY_MILL === "" || FULL_ARCH === "") {
       return alert("Please fill all the fields");
     }   
     const formData = {
-      IBO: Number(IBO),
-      ABUT: Number(ABUT),
-      FULL_ARCH_P: Number(FULL_ARCH_P),
-      FULL_ARCH_F: Number(FULL_ARCH_F)
+      LS3: Number(LS3),
+      ZEISS: Number(ZEISS),
+      SHAPE: Number(SHAPE),
+      COPY_MILL: Number(COPY_MILL),
+      FULL_ARCH: Number(FULL_ARCH)
     };
-    setIBO(0);
-    setABUT(0);
-    setFULL_ARCH_P(0);
-    setFULL_ARCH_F(0);
-    createRegistration(formData);//CreateRegistration
+    setLS3(0);
+    setZEISS(0);
+    setSHAPE(0);
+    setCOPY_MILL(0);
+    setFULL_ARCH(0);
+    console.log(formData);
+    //createScaned(formData);//CreateRegistration
   };
 
 
@@ -237,10 +250,10 @@ export const Profile = () => {
       <h2>Scaned</h2>
         <div className="data">
         <Input type="text" placeholder="0" id="LS3" value="0" label="LS3"onChange={ScanedHandleInputChange}/>
-        <Input type="text" placeholder="0" id="Zeiss" value="0" label="Zeiss"onChange={ScanedHandleInputChange}/>
-        <Input type="text" placeholder="0" id="3Shape" value="0" label="3Shape"onChange={ScanedHandleInputChange}/>
-        <Input type="text" placeholder="0" id="Copy_Mill" value="0" label="Copy Mill"onChange={ScanedHandleInputChange}/>
-        <Input type="text" placeholder="0" id="Full_Arch" value="0" label="Full Arch"onChange={ScanedHandleInputChange}/>
+        <Input type="text" placeholder="0" id="ZEISS" value="0" label="Zeiss"onChange={ScanedHandleInputChange}/>
+        <Input type="text" placeholder="0" id="SHAPE" value="0" label="3Shape"onChange={ScanedHandleInputChange}/>
+        <Input type="text" placeholder="0" id="COPY_MILL" value="0" label="Copy Mill"onChange={ScanedHandleInputChange}/>
+        <Input type="text" placeholder="0" id="FULL_ARCH" value="0" label="Full Arch"onChange={ScanedHandleInputChange}/>
         </div>
         <div className='btn-container'>
           <button className='btn' onClick={ScanedSubmit}>Submit</button>

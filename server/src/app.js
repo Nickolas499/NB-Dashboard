@@ -7,6 +7,7 @@ import cookie from "cookie-parser";
 //============================================================================//
 import authRoutes from "./routes/auth.routes.js";
 import registration from "./routes/registration.routes.js";
+import scaned from "./routes/scaned.routes.js";
 
 //============================================================================//
 //                      Express Server CONFIG                                 //
@@ -25,8 +26,9 @@ app.use(cookie());
 //============================================================================//
 //                                  ROUTES                                    //
 //============================================================================//
-app.use('/api',authRoutes)
-app.use('/api',registration)
+app.use('/api', authRoutes)
+app.use('/api', registration)
+app.use('/api', scaned)
 
 //============================================================================//
 //                                  others                                    //
