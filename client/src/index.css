@@ -8,7 +8,7 @@
   font-family: 'Sigmar';
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/sigmar/v3/hv-XlzJgIE8a85pUbQ.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/sigmar/v7/hv-XlzJgIE8a85pUbQ.ttf) format('truetype');
 }
 :root {
   --primaryColor: #23262D;
@@ -733,6 +733,29 @@ main {
 .profile_table tr:nth-child(even) {
   background-color: #99999916;
 }
+.profile_table tfoot {
+  background-color: #515257;
+}
+.profile_table tfoot td {
+  padding: 5px;
+  text-align: center;
+}
+.profile_table tfoot button {
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 1px 0 #01AEF0;
+  background-color: transparent;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #b6b6b6;
+  padding: 4px 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+.profile_table tfoot button:hover {
+  box-shadow: 0 0 3px 0 #01AEF0;
+  text-shadow: 0 0 3px #01AEF0;
+}
 .profile_table .btn {
   display: flex;
   justify-content: center;
@@ -746,10 +769,30 @@ main {
   color: #b6b6b6;
   padding: 4px 10px;
   margin: 5px;
+  cursor: pointer;
 }
 .profile_table .btn:hover {
   box-shadow: 0 0 3px 0 #01AEF0;
   text-shadow: 0 0 3px #01AEF0;
+}
+.profile_table .DelBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 1px 0 #FE0102;
+  background-color: transparent;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #b6b6b6;
+  padding: 4px 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+.profile_table .DelBtn:hover {
+  box-shadow: 0 0 3px 0 #FE0102;
+  text-shadow: 0 0 3px #FE0102;
 }
 .table-container {
   display: grid;
@@ -1143,6 +1186,23 @@ main {
   padding: 10px;
 }
 .registerForm .btn:hover {
+  box-shadow: 0 0 3px 0.5px #01AEF0;
+  text-shadow: 0 0 3px #01AEF0;
+}
+.registerForm .DelBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 2px #01AEF0;
+  background-color: transparent;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #b6b6b6;
+  padding: 10px;
+}
+.registerForm .DelBtn:hover {
   box-shadow: 0 0 3px 0.5px #01AEF0;
   text-shadow: 0 0 3px #01AEF0;
 }

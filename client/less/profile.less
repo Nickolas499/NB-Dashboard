@@ -115,7 +115,7 @@
     width: 100%;
     margin-top: 10px; 
     
-    .btn {
+    .btn{
       display: flex;
       justify-content: center;
       align-items: center;
@@ -199,6 +199,33 @@
   background-color: @lightGray;
 }
 
+.profile_table tfoot {
+  background-color:@gray;
+}
+
+.profile_table tfoot td {
+  padding: 5px;
+  text-align: center;
+}
+
+.profile_table tfoot button { 
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 1px 0 @blue;
+  background-color: transparent;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: @Color;
+  padding: 4px 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.profile_table tfoot button:hover {
+  box-shadow: 0 0 3px 0 @blue;
+    text-shadow: 0 0 3px @blue;
+}
+
 .profile_table .btn {
   display: flex;
   justify-content: center;
@@ -212,9 +239,30 @@
   color: @Color;
   padding: 4px 10px;
   margin: 5px;
+  cursor: pointer;
   &:hover {
     box-shadow: 0 0 3px 0 @blue;
     text-shadow: 0 0 3px @blue;
+  }
+}
+
+.profile_table .DelBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 1px 0 @red;
+  background-color: transparent;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: @Color;
+  padding: 4px 10px;
+  margin: 5px;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 3px 0 @red;
+    text-shadow: 0 0 3px @red;
   }
 }
 .table-container {

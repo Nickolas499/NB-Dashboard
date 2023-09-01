@@ -6,12 +6,12 @@ import Radarchart from '../components/charts/Radar';
 import {radar_data} from '../data/radar-data';
 import Tabs from '../components/tabs/Tabs';
 import Table from '../components/Table';
-import { scaned_data, design_data, redesign_data } from '../data/table_data';
+import { register_data, scaned_data, design_data, redesign_data } from '../data/table_data';
 import { useRegistration } from '../context/registrationContext';
 
 // =========((PROFILE))=============================================
 export const Profile = () => {
-  const {createRegistration, GetRegistration, registration} = useRegistration();
+  const {CreateRegistration, GetRegistration, Registration} = useRegistration();
 
   
   const columns = ['DATE','IBO', 'ABUT', 'FULL_ARCH_P', 'FULL_ARCH_F'];
@@ -32,7 +32,7 @@ export const Profile = () => {
 
   useEffect(() => {
     GetRegistration();
-    console.log(registration);    
+    console.log(Registration);    
   }, []);
   
  
@@ -77,7 +77,8 @@ export const Profile = () => {
     setABUT(0);
     setFULL_ARCH_P(0);
     setFULL_ARCH_F(0);
-    createRegistration(formData);//CreateRegistration
+    CreateRegistration(formData);//CreateRegistration
+    GetRegistration();
   };
 //=
 
@@ -174,7 +175,7 @@ export const Profile = () => {
     setABUT(0);
     setFULL_ARCH_P(0);
     setFULL_ARCH_F(0);
-    createRegistration(formData);//CreateRegistration
+    CreateRegistration(formData);//CreateRegistration
   };
 
   //========================================((REDESIGN HANDLE FUNCTION))==============================================//
@@ -217,7 +218,7 @@ export const Profile = () => {
     setABUT(0);
     setFULL_ARCH_P(0);
     setFULL_ARCH_F(0);
-    createRegistration(formData);//CreateRegistration
+    CreateRegistration(formData);//CreateRegistration
   };
 
       
@@ -240,8 +241,8 @@ export const Profile = () => {
           <button className='btn' onClick={registrationSubmit}>Submit</button>
           </div>
       </section>
-      <div className='table-container'>
-        <Table columns={columns} data={registration} />
+        <div className='table-container'>
+          <Table columns={columns} data={Registration} />
         </div>
         </div>
       {/*====================================(Scaned)======================================================*/}
@@ -304,8 +305,7 @@ export const Profile = () => {
          
           </section>
           <div className='table-container'>
-          <Table columns={columns3} data={redesign_data} />
-          {registration.ma}
+          <Table columns={columns3} data={redesign_data} />          
           </div>          
         </div>  
         {/*==========================================================================================*/}      

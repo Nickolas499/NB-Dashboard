@@ -1,11 +1,11 @@
 import { createContext, useContext, useState } from "react";
 import {
   createRegistration,
-  getRegistration,
-  createScaned,
-  getScaned,  
+  getRegistration,   
 } from "../api/registration";
 
+import {createScaned,
+  getScaned, } from "../api/scaned";
 const registrationContext = createContext();
 
 export const useRegistration = () => {
@@ -19,8 +19,8 @@ export const useRegistration = () => {
 };
 
 export function RegistrationProvider({ children }) {
-  const [registration, setRegistration] = useState([]);
-  const [scaned, setScaned] = useState([]);
+  const [Registration, setRegistration] = useState([]);
+  const [Scaned, setScaned] = useState([]);
   
 
   //======================================((Create Registration API))==============================================//
@@ -67,7 +67,7 @@ export function RegistrationProvider({ children }) {
 
   return (
     <registrationContext.Provider
-      value={{ registration, CreateRegistration, GetRegistration,scaned,GetScaned,CreateScaned }}
+      value={{ Registration, CreateRegistration, GetRegistration, Scaned, GetScaned, CreateScaned }}
     >
       {children}
     </registrationContext.Provider>
