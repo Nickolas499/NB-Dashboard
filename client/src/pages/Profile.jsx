@@ -8,10 +8,11 @@ import Tabs from '../components/tabs/Tabs';
 import Table from '../components/Table';
 import { register_data, scaned_data, design_data, redesign_data } from '../data/table_data';
 import { useRegistration } from '../context/registrationContext';
-
+import {useParams} from 'react-router-dom';
 // =========((PROFILE))=============================================
 export const Profile = () => {
   const {CreateRegistration, GetRegistration, Registration} = useRegistration();
+  const params = useParams();
 
   
   const columns = ['DATE','IBO', 'ABUT', 'FULL_ARCH_P', 'FULL_ARCH_F'];
@@ -32,7 +33,7 @@ export const Profile = () => {
 
   useEffect(() => {
     GetRegistration();
-    console.log(Registration);    
+    console.log(params);    
   }, []);
   
  
@@ -73,7 +74,7 @@ export const Profile = () => {
       FULL_ARCH_P: Number(FULL_ARCH_P),
       FULL_ARCH_F: Number(FULL_ARCH_F)
     };
-    setIBO(0);
+    setIBO(12);
     setABUT(0);
     setFULL_ARCH_P(0);
     setFULL_ARCH_F(0);

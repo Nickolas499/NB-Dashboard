@@ -1,9 +1,13 @@
 import { createContext, useContext, useState } from "react";
 import {
   createRegistration,
-  getRegistration,   
+  getRegistration,
+  getRegistrationById,
+  updateRegistration,
+  deleteRegistration,     
 } from "../api/registration";
 
+// eliminar este codigo===============================================================================
 import {createScaned,
   getScaned, } from "../api/scaned";
 const registrationContext = createContext();
@@ -20,6 +24,7 @@ export const useRegistration = () => {
 
 export function RegistrationProvider({ children }) {
   const [Registration, setRegistration] = useState([]);
+  // eliminar este codigo===============================================================================
   const [Scaned, setScaned] = useState([]);
   
 
@@ -40,10 +45,35 @@ export function RegistrationProvider({ children }) {
     
   };
   //==================================((Get Registration By Id API))============================================//
+const GetRegistrationById = async (id) => {
+  try {
+    const res = await getRegistrationById(id);
+    setRegistration(res.data);
+  } catch (error) {
+    console.log(error);
+  }
+}
   //==================================((Update Registration API))===============================================//
+const UpdateRegistration = async (id, data) => {
+  try {
+    await updateRegistration(id, data);
+  } catch (error) {
+    console.log(error);
+  }
+}
   //==================================((Delete Registration API))===============================================//
+const DeleteRegistration = async (id) => {
+  try {
+    await deleteRegistration(id);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-  
+
+
+
+  // eliminar este codigo===============================================================================
    //======================================((Create Scaned API))==============================================//
    const CreateScaned = async (data) => {
     const res = await createScaned(data);
@@ -67,7 +97,16 @@ export function RegistrationProvider({ children }) {
 
   return (
     <registrationContext.Provider
-      value={{ Registration, CreateRegistration, GetRegistration, Scaned, GetScaned, CreateScaned }}
+      value={{ 
+        Registration,
+        CreateRegistration,
+        GetRegistration, 
+        DeleteRegistration,
+        GetRegistrationById,
+        UpdateRegistration, 
+        Scaned,
+        GetScaned, 
+        CreateScaned }}
     >
       {children}
     </registrationContext.Provider>

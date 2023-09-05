@@ -14,8 +14,8 @@ export const Aside = () => {
           <li><Link to="/"><div><span className="material-symbols-outlined">grid_view</span><span>Dashboard</span></div></Link></li>          
           <li><Link to="/charts"><div><span className="material-symbols-outlined">Monitoring</span><span>Charts</span></div></Link></li>
           <li><Link to="/profile"><div><span className="material-symbols-outlined">person</span><span>Profile</span></div></Link></li>
-          {/* <li><Link to="/"><div><span className="material-symbols-outlined"></span><span></span></div></Link></li> */}
           <li><Link to="/test"><div><span className="material-symbols-outlined">T</span><span>Test</span></div></Link></li>
+          <li><Link to="/test2"><div><span className="material-symbols-outlined">T</span><span>Test2</span></div></Link></li>
           {user.access === "admin"?<li><Link to="/admin"><div> <span className="material-symbols-outlined">Shield </span><span>Admin</span></div></Link></li>:""}
         </ul>
       </nav>

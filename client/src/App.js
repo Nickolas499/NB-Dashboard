@@ -8,6 +8,7 @@ import { Charts } from "./pages/Charts";
 import { Profile } from "./pages/Profile";
 import { Admin } from "./pages/Admin";
 import { Test } from "./pages/Test";
+import { Test2 } from "./pages/Test2";
 import { Login } from "./pages/Login";
 import ProtectedRoutes from "./ProtectedRoutes";
 
@@ -67,6 +68,7 @@ const AppRoutes = (getTitle) => {
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/admin" element={<Admin/>}/>
           <Route path="/test" element={<Test/>}/>
+          <Route path="/test2" element={<Test2/>}/>
           <Route path="/logout" element={<Login/>}/>
         </Routes>
       </main>

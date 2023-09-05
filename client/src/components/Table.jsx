@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
+import { useRegistration } from '../context/registrationContext';
 
 function Table(props) {
   const [currentPage, setCurrentPage] = useState(1); // Variable de estado para la página actual
   const rowsPerPage = 10; // Número de filas por página
+  const {DeleteRegistration,GetRegistration} = useRegistration();
 
   const data = props.data;
 
-  const handleEdit = (index) => {
+  const handleEdit = (id) => {
     // Implementa la funcionalidad de edición aquí
-    console.log(`Editing row ${index}`);
+    console.log(`Editing row ${id}`);
+  };
+  const handleDelete = (id) => {
+    DeleteRegistration(id)
+    GetRegistration();
+    console.log(`Deleting row ${id}`);
   };
 
   return (
@@ -27,8 +34,8 @@ function Table(props) {
             {props.columns.map((column, columnIndex) => (
               <td key={columnIndex}>{row[column]}</td>
             ))}
-            <td><button className="btn" onClick={() => handleEdit(index)}>Edit</button></td>
-            <td><button className="DelBtn" onClick={() => handleEdit(index)}>Delete</button></td>
+            <td><button className="btn" onClick={() => handleEdit(row._id)}>Edit</button></td>
+            <td><button className="DelBtn" onClick={() => handleDelete(row._id)}>Delete</button></td>
           </tr>
         ))}
       </tbody>
