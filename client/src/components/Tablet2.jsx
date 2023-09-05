@@ -48,10 +48,14 @@ function Table2(props) {
               <td key={columnIndex}>
                 {/* Si se está editando la fila, se muestra un input de tipo "text" con el valor actual */}
                 {/* Si no, se muestra el valor actual sin posibilidad de edición */}
-                {isEditing && editedRow._id === row._id ? (
-                  <input className="Input_field" type="text" value={editedRow[column]} onChange={(e) => setEditedRow({ ...editedRow, [column]: e.target.value })} />
-                ) : (
+                {columnIndex === 0 ? (
                   row[column]
+                ) : (
+                  isEditing && editedRow._id === row._id ? (
+                    <input className="Input_field" type="text" value={editedRow[column]} onChange={(e) => setEditedRow({ ...editedRow, [column]: e.target.value })} />
+                  ) : (
+                    row[column]
+                  )
                 )}
               </td>
             ))}
@@ -66,7 +70,7 @@ function Table2(props) {
             </td>
             <td>
             {isEditing && editedRow._id === row._id ? (
-            <button className="DelBtn" onClick={handleCancel}>Cancel</button>
+            <button className="btn" onClick={handleCancel}>Cancel</button>
             ):(
                 <button className="DelBtn" onClick={() => handleDelete(row._id)}>Delete</button>
             )}

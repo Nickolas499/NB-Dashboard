@@ -578,7 +578,6 @@ main {
   height: 100%;
   gap: 10px;
   padding: 10px;
-  border: 3px solid red;
 }
 .profile_input {
   display: flex;
@@ -588,7 +587,6 @@ main {
   padding: 10px;
   gap: 10px;
   background-color: #23262D;
-  border: 3px solid red;
 }
 .profile_chart_container {
   display: flex;
@@ -720,7 +718,7 @@ main {
   border: 1px solid #515257;
 }
 .profile_table .Input_field {
-  width: 100px;
+  width: 50px;
 }
 .profile_table thead th {
   height: 60px;
