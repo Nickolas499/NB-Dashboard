@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { useRegistration } from '../context/registrationContext';
-import { updateRegistration } from '../api/registration';
 
 function Table2(props) {
   const [currentPage, setCurrentPage] = useState(1); // Variable de estado para la página actual
   const [isEditing, setIsEditing] = useState(false); // Variable de estado para saber si se está editando una fila
   const [editedRow, setEditedRow] = useState({}); // Variable de estado para almacenar la fila que se está editando
+  const [editedData, setEditedData] = useState({});
   const rowsPerPage = 10; // Número de filas por página
   const { DeleteRegistration, GetRegistration, UpdateRegistration } = useRegistration();
 
   const data = props.data;
-  const [editedData, setEditedData] = useState({});
 
   const handleEdit = (row) => {
     setIsEditing(true);
     setEditedRow(row);
-    console.log(`Editing row ${row}`);
+    console.log(`Editing row ${row._id}`);
   };
   const handleDelete = (id) => {
     DeleteRegistration(id)
@@ -24,9 +23,8 @@ function Table2(props) {
   };
   const handleSave = (id,data) => {
     UpdateRegistration(id,data)
-    setIsEditing(false);
-
-    console.log('Saving changes...');
+    setIsEditing(false);    
+    console.log(id,data);
     // Aquí se implementaría la lógica para guardar los cambios realizados en la fila
   };
   const handleCancel = () => {
@@ -70,7 +68,7 @@ function Table2(props) {
               {/* Si no se está editando la fila, se muestra el botón "Edit" */}
               {/* Si se está editando la fila, se muestran los botones "Save" y "Cancel" */}
               {isEditing && editedRow._id === row._id ? (
-                  <button className="btn" onClick={handleSave(row._id, editedData)}>Save</button>
+                  <button className="btn" onClick={() => handleSave(row, editedData)}>Save</button>
               ) : (
                 <button className="btn" onClick={() => handleEdit(row)}>Edit</button>
               )}
