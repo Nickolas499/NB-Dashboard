@@ -6,7 +6,7 @@ import Registration from "../models/registration.model.js";
 //==================================================================================//
 export const getRegistrations = async (req, res) => {
   //const registrations = await Registration.find();
-  const registrations = await Registration.find({ USER: req.user.id });
+  const registrations = await Registration.find({ USER: req.user.id }).sort({ createdAt: -1 });
 
   return res.json(registrations);
 };
@@ -14,7 +14,8 @@ export const getRegistrations = async (req, res) => {
 //               create registrations data                                          //
 //==================================================================================//
 export const createRegistration = async (req, res) => {
-  const { IBO, ABUT, FULL_ARCH_P, FULL_ARCH_F, DATE } = req.body;
+  try {
+    const { IBO, ABUT, FULL_ARCH_P, FULL_ARCH_F, DATE } = req.body;
   const newRegistration = new Registration({
     IBO,
     ABUT,
@@ -25,26 +26,38 @@ export const createRegistration = async (req, res) => {
   });
   const registrationSaved = await newRegistration.save();
   return res.json(registrationSaved);
+  } catch (error) {
+    return res.status(404).json(["Registration not found"]);
+  }
 };
 //==================================================================================//
 //                Get registrations data by ID                                      //
 //==================================================================================//
 export const getRegistration = async (req, res) => {
-  const registration = await Registration.findById(req.params.id);
-  if (!registration) return res.status(404).json(["Registration not found"]);
-  return res.json(registration);
+  try{
+    const registration = await Registration.findById(req.params.id);
+    if (!registration) return res.status(404).json(["Registration not found"]);
+    return res.json(registration);
+  }catch (error){
+    return res.status(404).json(["Registration not found"]);
+
+  }
 };
 //==================================================================================//
 //                Update registrations data by ID                                   //
 //==================================================================================//
 export const updateRegistration = async (req, res) => {
-  const registration = await Registration.findByIdAndUpdate(
+ try {
+    const registration = await Registration.findByIdAndUpdate(
     req.params.id,
     req.body,
     { new: true }
   );
   if (!registration) return res.status(404).json(["Registration not found"]);
   return res.json(registration);
+ } catch (error) {
+  return res.status(404).json(["Registration not found"]);
+ }
 };
 //==================================================================================//
 //                Delete registrations data by ID                                   //

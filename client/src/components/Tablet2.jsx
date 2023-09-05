@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
 import { useRegistration } from '../context/registrationContext';
+import { updateRegistration } from '../api/registration';
 
 function Table2(props) {
   const [currentPage, setCurrentPage] = useState(1); // Variable de estado para la página actual
   const [isEditing, setIsEditing] = useState(false); // Variable de estado para saber si se está editando una fila
   const [editedRow, setEditedRow] = useState({}); // Variable de estado para almacenar la fila que se está editando
   const rowsPerPage = 10; // Número de filas por página
-  const { DeleteRegistration, GetRegistration } = useRegistration();
+  const { DeleteRegistration, GetRegistration, UpdateRegistration } = useRegistration();
 
   const data = props.data;
+  const [editedData, setEditedData] = useState({});
 
   const handleEdit = (row) => {
     setIsEditing(true);
     setEditedRow(row);
-    console.log(`Editing row ${row._id}`);
+    console.log(`Editing row ${row}`);
   };
   const handleDelete = (id) => {
     DeleteRegistration(id)
     GetRegistration();
     console.log(`Deleting row ${id}`);
   };
-  const handleSave = () => {
+  const handleSave = (id,data) => {
+    UpdateRegistration(id,data)
     setIsEditing(false);
+
     console.log('Saving changes...');
     // Aquí se implementaría la lógica para guardar los cambios realizados en la fila
   };
@@ -52,7 +56,10 @@ function Table2(props) {
                   row[column]
                 ) : (
                   isEditing && editedRow._id === row._id ? (
-                    <input className="Input_field" type="text" value={editedRow[column]} onChange={(e) => setEditedRow({ ...editedRow, [column]: e.target.value })} />
+                    <input className="Input_field" type="text" value={editedRow[column]} onChange={(e) => {
+                        setEditedRow({ ...editedRow, [column]: e.target.value });
+                        setEditedData({ ...editedData, [column]: e.target.value });
+                    }} />
                   ) : (
                     row[column]
                   )
@@ -63,7 +70,7 @@ function Table2(props) {
               {/* Si no se está editando la fila, se muestra el botón "Edit" */}
               {/* Si se está editando la fila, se muestran los botones "Save" y "Cancel" */}
               {isEditing && editedRow._id === row._id ? (
-                  <button className="btn" onClick={handleSave}>Save</button>
+                  <button className="btn" onClick={handleSave(row._id, editedData)}>Save</button>
               ) : (
                 <button className="btn" onClick={() => handleEdit(row)}>Edit</button>
               )}
