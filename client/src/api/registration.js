@@ -5,7 +5,7 @@ import axios from "./axios";
 export const getRegistration = () => axios.get('/registration');
 export const getRegistrationById = (id) => axios.get(`/registration/${id}`);
 export const createRegistration = (registration) => axios.post('/registration', registration);
-export const updateRegistration = (registration) => axios.put(`/registration/${registration.id}`, registration);
+export const updateRegistration = (id, registration) => axios.put(`/registration/${id}`, registration);
 export const deleteRegistration = (id) => axios.delete(`/registration/${id}`);
 
 

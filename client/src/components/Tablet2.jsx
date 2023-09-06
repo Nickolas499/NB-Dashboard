@@ -21,10 +21,11 @@ function Table2(props) {
     GetRegistration();
     console.log(`Deleting row ${id}`);
   };
-  const handleSave = (id,data) => {
-    UpdateRegistration(id,data)
-    setIsEditing(false);    
-    console.log(id,data);
+  const handleSave = (id, data) => {
+    UpdateRegistration(id._id, data)
+    setIsEditing(false);
+    GetRegistration();    
+    console.log(id._id,data);
     // Aquí se implementaría la lógica para guardar los cambios realizados en la fila
   };
   const handleCancel = () => {
