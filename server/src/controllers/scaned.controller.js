@@ -8,13 +8,13 @@ export const getScaned = async (req, res) => {
   //const scaneds = await Scaned.find();
   const scaned = await Scaned.find({ USER: req.user.id });
 
-  return res.json(scaneds);
+  return res.json(scaned);
 };
 //==================================================================================//
 //                      create Scaned data                                          //
 //==================================================================================//
 export const createScaned = async (req, res) => {
-  const { LS3, ZEISS, SHAPE, COPY_MILL, FULL_ARCH } = req.body;
+  const { LS3, ZEISS, SHAPE, COPY_MILL, FULL_ARCH, DATE } = req.body;
   console.log(req.body);
   const newScaned = new Scaned({
     LS3,

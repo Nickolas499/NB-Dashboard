@@ -1,9 +1,10 @@
 import app from "./app.js";
 import {connectdb} from "./db.js";
-const port = 5000;
+import {IP,PORT} from "./config.js";
+
 
 
 connectdb();
-  app.listen(port,"192.168.1.186", () => {
-    console.log(`Server running on port ${port}`);
+  app.listen(PORT,IP, () => {
+    console.log(`Server running on port ${PORT}`);
   });

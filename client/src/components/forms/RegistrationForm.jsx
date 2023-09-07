@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { Input } from "../Input";
 import { useRegistration } from "../../context/registrationContext";
-import { useParams } from "react-router-dom";
 import Table2 from "../Tablet2";
 export const RegistrationForm = () => {
   const { CreateRegistration, GetRegistration, Registration } = useRegistration();
-  const params = useParams();
+  
 
   const columns = ["DATE", "IBO", "ABUT", "FULL_ARCH_P", "FULL_ARCH_F"];
 
@@ -22,7 +21,7 @@ export const RegistrationForm = () => {
   const actualizar = () => {
     setTimeout(() => {
       setUPDATE(UPDATE + 1);
-    }, 1000); // Espera un segundo (1000 ms) antes de ejecutar la función
+    }, 50); // Espera un segundo (1000 ms) antes de ejecutar la función
   };
   const RegistrationHandleInputChange = (e) => {
     const { id, value } = e.target;

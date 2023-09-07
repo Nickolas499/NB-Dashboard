@@ -1,32 +1,29 @@
+//=========((IMPORTS))=============================================
 import { createContext, useContext, useState } from "react";
 import {
   createRegistration,
   getRegistration,
   getRegistrationById,
   updateRegistration,
-  deleteRegistration,     
+  deleteRegistration,
 } from "../api/registration";
 
-// eliminar este codigo===============================================================================
-import {createScaned,
-  getScaned, } from "../api/scaned";
+//======================================((REGISTRATION CONTEXT))==============================================//
 const registrationContext = createContext();
 
 export const useRegistration = () => {
   const context = useContext(registrationContext);
+  console.log(context);
   if (!context) {
     throw new Error(
-      "useRegistration must be used within a RegistrationProvider"
+      "useRegistration must be used within a Registration Provider"
     );
   }
   return context;
 };
-
+//==================================((REGISTRATION PROVIDER))==============================================//
 export function RegistrationProvider({ children }) {
   const [Registration, setRegistration] = useState([]);
-  // eliminar este codigo===============================================================================
-  const [Scaned, setScaned] = useState([]);
-  
 
   //======================================((Create Registration API))==============================================//
   const CreateRegistration = async (data) => {
@@ -38,75 +35,48 @@ export function RegistrationProvider({ children }) {
   const GetRegistration = async () => {
     try {
       const res = await getRegistration();
-      setRegistration(res.data);      
+      setRegistration(res.data);
     } catch (error) {
       console.log(error);
     }
-    
   };
   //==================================((Get Registration By Id API))============================================//
-const GetRegistrationById = async (id) => {
-  try {
-    const res = await getRegistrationById(id);
-    setRegistration(res.data);
-  } catch (error) {
-    console.log(error);
-  }
-}
-  //==================================((Update Registration API))===============================================//
-const UpdateRegistration = async (id, data) => {
-  try {
-    await updateRegistration(id, data);
-  } catch (error) {
-    console.log(error);
-  }
-}
-  //==================================((Delete Registration API))===============================================//
-const DeleteRegistration = async (id) => {
-  try {
-    await deleteRegistration(id);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-
-
-
-  // eliminar este codigo===============================================================================
-   //======================================((Create Scaned API))==============================================//
-   const CreateScaned = async (data) => {
-    const res = await createScaned(data);
-    console.log(res);
-  };
-
-  //======================================((Get Scaned API))==============================================//
-  const GetScaned = async () => {
+  const GetRegistrationById = async (id) => {
     try {
-      const res = await getScaned();
-      setScaned(res.data);      
+      const res = await getRegistrationById(id);
+      setRegistration(res.data);
     } catch (error) {
       console.log(error);
     }
-    
   };
-  //==================================((Get Scaned By Id API))============================================//
-  //==================================((Update Scaned API))===============================================//
-  //==================================((Delete Scaned API))===============================================//
-
+  //==================================((Update Registration API))===============================================//
+  const UpdateRegistration = async (id, data) => {
+    try {
+      await updateRegistration(id, data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  //==================================((Delete Registration API))===============================================//
+  const DeleteRegistration = async (id) => {
+    try {
+      await deleteRegistration(id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <registrationContext.Provider
-      value={{ 
+      value={{
         Registration,
         CreateRegistration,
-        GetRegistration, 
-        DeleteRegistration,
+        GetRegistration,
         GetRegistrationById,
-        UpdateRegistration, 
-        Scaned,
-        GetScaned, 
-        CreateScaned }}
+        UpdateRegistration,
+        DeleteRegistration,
+        
+      }}
     >
       {children}
     </registrationContext.Provider>
