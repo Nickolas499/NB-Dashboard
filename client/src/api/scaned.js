@@ -6,6 +6,6 @@ import axios from "./axios";
 
 export const getScaned = () => axios.get('/scaned');
 export const getScanedById = (id) => axios.get(`/scaned/${id}`);
-export const createScaned = (registration) => axios.post('/scaned', registration);
-export const updateScaned = (registration) => axios.put(`/scaned/${registration.id}`, registration);
+export const createScaned = (scaned) => axios.post('/scaned', scaned);
+export const updateScaned = (id,scaned) => axios.put(`/scaned/${id}`, scaned);
 export const deleteScaned = (id) => axios.delete(`/scaned/${id}`);

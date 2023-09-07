@@ -32,8 +32,7 @@ export const Profile = () => {
 
 
   useEffect(() => {
-    GetRegistration();
-    console.log(params);    
+    GetRegistration();       
   }, []);
   
  

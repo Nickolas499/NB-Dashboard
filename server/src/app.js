@@ -15,7 +15,7 @@ import scaned from "./routes/scaned.routes.js";
 const app = express();
 app.use(cors(
     {
-        origin: "http://localhost:3000",
+        origin: "http://192.168.1.186:3000",
         credentials: true
     }
 ));

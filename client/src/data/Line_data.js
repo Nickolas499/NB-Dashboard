@@ -175,7 +175,7 @@ export const design_data = [
 
 
 export const profile_data = [
-  {date:'07/01/2023',"IBO SCANED":"9", "IBO DESIGNED": "7", "ABUT SCANED":"14", "ABUT DESIGNED":"11", "FULL ARCH":"4"},
+  {date:'07/01/2023',"IBO SCANED":9, "IBO DESIGNED": "7", "ABUT SCANED":"14", "ABUT DESIGNED":"11", "FULL ARCH":"4"},
   {date:'07/04/2023',"IBO SCANED":"8", "IBO DESIGNED": "3", "ABUT SCANED":"6", "ABUT DESIGNED":"7", "FULL ARCH":"9"},
   {date:'07/05/2023',"IBO SCANED":"2", "IBO DESIGNED": "14", "ABUT SCANED":"10", "ABUT DESIGNED":"2", "FULL ARCH":"12"},
   {date:'07/06/2023',"IBO SCANED":"13", "IBO DESIGNED": "8", "ABUT SCANED":"4", "ABUT DESIGNED":"6", "FULL ARCH":"5"},

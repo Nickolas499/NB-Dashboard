@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRegistration } from '../context/registrationContext';
 
 function Table2(props) {
@@ -11,6 +11,18 @@ function Table2(props) {
 
   const data = props.data;
 
+  const [UPDATE, setUPDATE] = useState(0);
+  useEffect(() => {
+    GetRegistration();
+  }, [UPDATE]);
+
+  const actualizar = () => {
+    setTimeout(() => {
+      setUPDATE(UPDATE + 1);
+    }, 500); // Espera un segundo (1000 ms) antes de ejecutar la función
+  };
+ 
+
   const handleEdit = (row) => {
     setIsEditing(true);
     setEditedRow(row);
@@ -18,13 +30,13 @@ function Table2(props) {
   };
   const handleDelete = (id) => {
     DeleteRegistration(id)
-    GetRegistration();
+    actualizar();
     console.log(`Deleting row ${id}`);
   };
   const handleSave = (id, data) => {
     UpdateRegistration(id._id, data)
     setIsEditing(false);
-    GetRegistration();    
+    actualizar();    
     console.log(id._id,data);
     // Aquí se implementaría la lógica para guardar los cambios realizados en la fila
   };

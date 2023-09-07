@@ -4,6 +4,6 @@ const port = 5000;
 
 
 connectdb();
-  app.listen(port, () => {
+  app.listen(port,"192.168.1.186", () => {
     console.log(`Server running on port ${port}`);
   });
