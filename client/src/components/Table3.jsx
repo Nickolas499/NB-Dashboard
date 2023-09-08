@@ -113,6 +113,7 @@ function Table3(props) {
         </tr>
       </tfoot>
     </table>
+      
   );
 }
 

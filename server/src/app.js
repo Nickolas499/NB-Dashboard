@@ -19,7 +19,7 @@ import redesigned from "./routes/redesigned.routes.js";
 const app = express();
 app.use(cors(
     {
-        origin: "http://localhost:3000",
+        origin: "http://10.62.150.76:3000",
         credentials: true
     }
 ));

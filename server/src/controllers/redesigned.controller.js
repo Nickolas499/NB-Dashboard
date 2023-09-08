@@ -5,7 +5,7 @@ import Redesigned from "../models/redesign.model.js";
 //==================================================================================//
 export const getRedesigned = async (req, res) => {
   //const scaneds = await Redesigned.find();
-  const redesigned = await Redesigned.find({ USER: req.user.id });
+  const redesigned = await Redesigned.find({ USER: req.user.id }).sort({ createdAt: -1 });
 
   return res.json(redesigned);
 };

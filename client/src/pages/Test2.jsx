@@ -1,10 +1,11 @@
-import { useState } from 'react';
 import {ProfileCharts} from "../components/charts/Profile_Charts";
 import Radarchart from '../components/charts/Radar';
 import {radar_data} from '../data/radar-data';
 import Tabs from '../components/tabs/Tabs';
 import { RegistrationForm } from '../components/forms/RegistrationForm';
 import { ScanFrom } from '../components/forms/ScanFrom';
+import { DesignForm } from '../components/forms/DesignForm';
+// import { RedesignForm } from '../components/forms/RedesignForm';
 import { useRegistration } from '../context/registrationContext';
 // =========((PROFILE))=============================================
 export const Test2 = () => {  
@@ -30,11 +31,11 @@ export const Test2 = () => {
         </div>
         {/*====================================(Scaned)======================================================*/}
         <div label="Design">
-        
+        {<DesignForm />}
         </div> 
         {/*====================================(Scaned)======================================================*/}
         <div label="Redesign">
-        
+        {/*<RedesignForm />*/}
         </div>            
       </Tabs> 
     </article>

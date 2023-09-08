@@ -5,7 +5,7 @@ import Designed from "../models/design.model.js";
 //==================================================================================//
 export const getDesigned = async (req, res) => {
   //const scaneds = await Designed.find();
-  const designed = await Designed.find({ USER: req.user.id });
+  const designed = await Designed.find({ USER: req.user.id }).sort({ createdAt: -1 });
 
   return res.json(designed);
 };
@@ -15,24 +15,24 @@ export const getDesigned = async (req, res) => {
 export const createDesigned = async (req, res) => {
   const {
     IBO_DESIGNED,
-    CROWN_RESTORATION,
-    CEMENTE_BRIDGE_RESTORATION,
+    CROWN_REST,
+    CEMENTE_BRIDGE_REST,
     FULL_ARCH_P,
     FULL_ARCH_F,
-    IMPLANT_RESTORATION,
-    IMPLANT_BRIDGE_RESTORATION,
+    IMPLANT_REST,
+    IMPLANT_BRIDGE_REST,
     PRINTED_MODELS,
     DATE,
   } = req.body;
   console.log(req.body);
   const newDesigned = new Designed({
     IBO_DESIGNED,
-    CROWN_RESTORATION,
-    CEMENTE_BRIDGE_RESTORATION,
+    CROWN_REST,
+    CEMENTE_BRIDGE_REST,
     FULL_ARCH_P,
     FULL_ARCH_F,
-    IMPLANT_RESTORATION,
-    IMPLANT_BRIDGE_RESTORATION,
+    IMPLANT_REST,
+    IMPLANT_BRIDGE_REST,
     PRINTED_MODELS,
     DATE,
     USER: req.user.id,

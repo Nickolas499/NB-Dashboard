@@ -6,7 +6,7 @@ import Scaned from "../models/scaned.model.js";
 //==================================================================================//
 export const getScaned = async (req, res) => {
   //const scaneds = await Scaned.find();
-  const scaned = await Scaned.find({ USER: req.user.id });
+  const scaned = await Scaned.find({ USER: req.user.id }).sort({ createdAt: -1 });
 
   return res.json(scaned);
 };

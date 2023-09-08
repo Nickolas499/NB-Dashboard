@@ -6,13 +6,13 @@ import Radarchart from '../components/charts/Radar';
 import {radar_data} from '../data/radar-data';
 import Tabs from '../components/tabs/Tabs';
 import Table from '../components/Table';
-import { register_data, scaned_data, design_data, redesign_data } from '../data/table_data';
+import {  scaned_data, design_data, redesign_data } from '../data/table_data';
 import { useRegistration } from '../context/registrationContext';
-import {useParams} from 'react-router-dom';
+
 // =========((PROFILE))=============================================
 export const Profile = () => {
   const {CreateRegistration, GetRegistration, Registration} = useRegistration();
-  const params = useParams();
+ 
 
   
   const columns = ['DATE','IBO', 'ABUT', 'FULL_ARCH_P', 'FULL_ARCH_F'];
@@ -250,11 +250,11 @@ export const Profile = () => {
         <section className="data_input">
       <h2>Scaned</h2>
         <div className="data">
-        <Input type="text" placeholder="0" id="LS3" value="0" label="LS3"onChange={ScanedHandleInputChange}/>
-        <Input type="text" placeholder="0" id="ZEISS" value="0" label="Zeiss"onChange={ScanedHandleInputChange}/>
-        <Input type="text" placeholder="0" id="SHAPE" value="0" label="3Shape"onChange={ScanedHandleInputChange}/>
-        <Input type="text" placeholder="0" id="COPY_MILL" value="0" label="Copy Mill"onChange={ScanedHandleInputChange}/>
-        <Input type="text" placeholder="0" id="FULL_ARCH" value="0" label="Full Arch"onChange={ScanedHandleInputChange}/>
+        <Input type="text" placeholder="0" id="LS3" value={LS3} label="LS3"onChange={ScanedHandleInputChange}/>
+        <Input type="text" placeholder="0" id="ZEISS" value={ZEISS} label="Zeiss"onChange={ScanedHandleInputChange}/>
+        <Input type="text" placeholder="0" id="SHAPE" value={SHAPE} label="3Shape"onChange={ScanedHandleInputChange}/>
+        <Input type="text" placeholder="0" id="COPY_MILL" value={COPY_MILL} label="Copy Mill"onChange={ScanedHandleInputChange}/>
+        <Input type="text" placeholder="0" id="FULL_ARCH" value={FULL_ARCH} label="Full Arch"onChange={ScanedHandleInputChange}/>
         </div>
         <div className='btn-container'>
           <button className='btn' onClick={ScanedSubmit}>Submit</button>

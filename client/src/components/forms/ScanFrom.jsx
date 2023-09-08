@@ -7,6 +7,7 @@ export const ScanFrom = () => {
   const { CreateScaned, GetScaned, Scaned,UpdateScaned,DeleteScaned } = useScaned();
 
   const columns = ["DATE", "LS3", "ZEISS", "SHAPE", "COPY_MILL", "FULL_ARCH"];
+  const columns2 = [{"DATE":"DATE"}, {"LS3":"LS3"}, {"ZEISS":"ZEISS"}, {"SHAPE":"3SHAPE"}, {"COPY_MILL":" COPY MILL"}, {"FULL_ARCH":" FULL ARCH"}];
 
   const [LS3, setLS3] = useState(0);
   const [ZEISS, setZEISS] = useState(0);
