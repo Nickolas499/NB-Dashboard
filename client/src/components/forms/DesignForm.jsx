@@ -163,7 +163,7 @@ const DesignedSubmit = (e) => {
                     <button className="btn" onClick={DesignedSubmit}>Submit</button>
                 </div>
         </section>
-        <div className="table-container"><Table3 columns={columns} data={Designed} Get={GetDesigned} update={UpdateDesigned} delete={DeleteDesigned}/></div>
+        <div className="table-container"><Table3 columns={columns} th={columns2} data={Designed} Get={GetDesigned} update={UpdateDesigned} delete={DeleteDesigned}/></div>
     </div>
   );
 };

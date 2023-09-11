@@ -94,7 +94,7 @@ export const ScanFrom = () => {
           </div>
       </section>
       <div className='table-container'>
-        <Table3 columns={columns} data={Scaned} Get={GetScaned} update={UpdateScaned} delete={DeleteScaned}/>
+        <Table3 columns={columns} th = {columns2} data={Scaned} Get={GetScaned} update={UpdateScaned} delete={DeleteScaned}/>
         </div>
   </div>
     );
