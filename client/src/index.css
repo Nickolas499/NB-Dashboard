@@ -713,14 +713,18 @@ main {
 .profile_table {
   border-collapse: collapse;
   width: 100%;
-  margin: 0 auto;
-  height: 200px;
+  margin-top: 30px;
+  min-height: 200px;
   border: 1px solid #515257;
 }
 .profile_table .Input_field {
-  width: 50px;
+  width: 100%;
+  height: 60%;
 }
 .profile_table thead th {
+  max-width: 100px;
+  width: 60px;
+  min-width: 50px;
   height: 60px;
   padding: 0 10px;
 }
@@ -734,6 +738,9 @@ main {
 .profile_table th {
   background-color: #515257;
   width: 90px;
+}
+.profile_table .th-btn-right {
+  text-align: right;
 }
 .profile_table tr:nth-child(even) {
   background-color: #99999916;

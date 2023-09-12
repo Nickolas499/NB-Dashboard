@@ -94,7 +94,7 @@ function Table3(props) {
                   )}
                 </td>
               ))}
-              <td>
+              <td className="th-btn-right">
                 {/* Si no se está editando la fila, se muestra el botón "Edit" */}
                 {/* Si se está editando la fila, se muestran los botones "Save"*/}
                 {isEditing && editedRow._id === row._id ? (
@@ -110,7 +110,7 @@ function Table3(props) {
                   </button>
                 )}
               </td>
-              <td>
+              <td className="th-btn-left"> 
                 {/* Si no se está editando la fila, se muestra el botón "Delete" */}
                 {/* Si se está editando la fila, se muestran los botones "Cancel"*/}
                 {isEditing && editedRow._id === row._id ? (
