@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { authRequired } from "../middlewares/validateToken.js";
 import {
+  // getAllScanedData,
   getScaned,
   createScaned,
   getScanedByID,
@@ -14,7 +15,7 @@ import { createScanedSchema } from "../schemas/Zod.schema.js";
 const routes = Router();
 
 //=============================================================================//
-//                        create scaned Routes                           //
+//                        create scaned Routes                                 //
 //=============================================================================//
 routes.post(
   "/scaned",
@@ -23,6 +24,10 @@ routes.post(
   createScaned
 );
 //=============================================================================//
+//                        Get All scaned Data                             //
+//=============================================================================//
+// routes.get("/scaneds", authRequired, getAllScanedData);
+//=============================================================================//
 //                        Get scaned Routes                             //
 //=============================================================================//
 routes.get("/scaned", authRequired, getScaned);
@@ -30,7 +35,6 @@ routes.get("/scaned", authRequired, getScaned);
 //                      Get scaned Routes by ID                          //
 //=============================================================================//
 routes.get("/scaned/:id", authRequired, getScanedByID);
-
 //=============================================================================//
 //                           Delete scaned Routes                        //
 //=============================================================================//

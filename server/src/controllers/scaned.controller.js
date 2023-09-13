@@ -1,14 +1,66 @@
 import Scaned from "../models/scaned.model.js";
 
+// //==================================================================================//
+// //                       Get all Scaned data for graphics                           //
+// //==================================================================================//
+// export const getAllScanedData = async (req, res) => {
+//   const AllScaned = await Scaned.find({});
+//   return res.json(AllScaned);
+// };
 
 //==================================================================================//
-//                       Get all Scaned data                                        //
+//                       Get  Scaned data                                           //
 //==================================================================================//
 export const getScaned = async (req, res) => {
-  //const scaneds = await Scaned.find();
+  const pipeline = [
+    {
+      "$lookup" : {
+          "from" : "designs",
+          "localField" : "USER",
+          "foreignField" : "USER",
+          "as" : "designs"
+      }
+  }, 
+  {
+      "$lookup" : {
+          "from" : "redesigns",
+          "localField" : "USER",
+          "foreignField" : "USER",
+          "as" : "redesigns"
+      }
+  }, 
+  {
+      "$project" : {
+          "DATE" : 1,
+          "IBO_S" : {
+              "$sum" : [
+                  "$LS3",
+                  "$ZEISS",
+                  "$COPY_MILL"
+              ]
+          },
+          "IBO_D" : {
+              "$arrayElemAt" : [
+                  "$designs.IBO_DESIGNED",
+                  0
+              ]
+          },
+          "IBO_R" : {
+              "$arrayElemAt" : [
+                  "$redesigns.IBO_DESIGNED",
+                  0
+              ]
+          }
+      }
+  }
+  ]
+  const graphicsScaned = await Scaned.aggregate(pipeline);
+  const Allscaned = await Scaned.find({}).sort({ createdAt: -1 });
   const scaned = await Scaned.find({ USER: req.user.id }).sort({ createdAt: -1 });
 
-  return res.json(scaned);
+  // console.log(graphicsScaned);
+
+  return res.json({ Allscaned, scaned, graphicsScaned });
 };
 //==================================================================================//
 //                      create Scaned data                                          //

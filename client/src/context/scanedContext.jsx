@@ -13,7 +13,6 @@ const scanedContext = createContext();
 
 export const useScaned = () => {
   const context = useContext(scanedContext);
-  console.log(context);
   if (!context) {
     throw new Error("useScaned must be used within a Scaned Provider");
   }
@@ -22,18 +21,21 @@ export const useScaned = () => {
 //==================================((SCANED PROVIDER))==============================================//
 export function ScanedProvider({ children }) {
   const [Scaned, setScaned] = useState([]);
+  const [AllscanedData, setAllScanedData] = useState([]);
+  const {Graph, SetGraph } = useState([]);
 
   //======================================((Create Scaned API))==============================================//
   const CreateScaned = async (data) => {
     const res = await createScaned(data);
     console.log(res);
   };
-
   //======================================((Get Scaned API))==============================================//
   const GetScaned = async () => {
     try {
       const res = await getScaned();
-      setScaned(res.data);
+      setScaned(res.data.scaned);
+      setAllScanedData(res.data.Allscaned);
+      SetGraph(res.data.graphicsScaned);
     } catch (error) {
       console.log(error);
     }
@@ -67,6 +69,8 @@ export function ScanedProvider({ children }) {
   return (
     <scanedContext.Provider
       value={{
+        Graph,   
+        AllscanedData,     
         Scaned,        
         CreateScaned,
         GetScaned,

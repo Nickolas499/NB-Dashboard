@@ -4,7 +4,7 @@ import { useScaned } from "../../context/scanedContext";
 import Table3 from "../Table3";
 
 export const ScanFrom = () => {
-  const { CreateScaned, GetScaned, Scaned,UpdateScaned,DeleteScaned } = useScaned();
+  const { CreateScaned, GetScaned, Scaned,UpdateScaned,DeleteScaned,AllscanedData} = useScaned();
 
   const columns = ["DATE", "LS3", "ZEISS", "SHAPE", "COPY_MILL", "FULL_ARCH"];
   const columns2 = [{"DATE":"DATE"}, {"LS3":"LS3"}, {"ZEISS":"ZEISS"}, {"SHAPE":"3SHAPE"}, {"COPY_MILL":" COPY MILL"}, {"FULL_ARCH":" FULL ARCH"}];
@@ -17,7 +17,7 @@ export const ScanFrom = () => {
   const [UPDATE, setUPDATE] = useState(0);
   
   useEffect(() => {
-    GetScaned();
+    GetScaned();    
   }, [UPDATE]);
 
 

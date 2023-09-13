@@ -12,8 +12,7 @@ import {
 const registrationContext = createContext();
 
 export const useRegistration = () => {
-  const context = useContext(registrationContext);
-  console.log(context);
+  const context = useContext(registrationContext);  
   if (!context) {
     throw new Error(
       "useRegistration must be used within a Registration Provider"

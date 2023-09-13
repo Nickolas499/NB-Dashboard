@@ -15,23 +15,23 @@ export const getRedesigned = async (req, res) => {
 export const createRedesigned = async (req, res) => {
   const {
     IBO_DESIGNED,
-    CROWN_RESTORATION,
-    CEMENTE_BRIDGE_RESTORATION,
+    CROWN_REST,
+    CEMENTE_BRIDGE_REST,
     FULL_ARCH_P,
     FULL_ARCH_F,
-    IMPLANT_RESTORATION,
-    IMPLANT_BRIDGE_RESTORATION,    
+    IMPLANT_REST,
+    IMPLANT_BRIDGE_REST,    
     DATE,
   } = req.body;
   console.log(req.body);
   const newRedesigned = new Redesigned({
     IBO_DESIGNED,
-    CROWN_RESTORATION,
-    CEMENTE_BRIDGE_RESTORATION,
+    CROWN_REST,
+    CEMENTE_BRIDGE_REST,
     FULL_ARCH_P,
     FULL_ARCH_F,
-    IMPLANT_RESTORATION,
-    IMPLANT_BRIDGE_RESTORATION,    
+    IMPLANT_REST,
+    IMPLANT_BRIDGE_REST,    
     DATE,
     USER: req.user.id,
   });
