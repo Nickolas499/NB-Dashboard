@@ -22,7 +22,7 @@ export const useScaned = () => {
 export function ScanedProvider({ children }) {
   const [Scaned, setScaned] = useState([]);
   const [AllscanedData, setAllScanedData] = useState([]);
-  const {Graph, SetGraph } = useState([]);
+  const [Graph, SetGraph ] = useState([]);
 
   //======================================((Create Scaned API))==============================================//
   const CreateScaned = async (data) => {

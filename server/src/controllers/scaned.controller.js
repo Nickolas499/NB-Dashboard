@@ -39,18 +39,8 @@ export const getScaned = async (req, res) => {
                   "$COPY_MILL"
               ]
           },
-          "IBO_D" : {
-              "$arrayElemAt" : [
-                  "$designs.IBO_DESIGNED",
-                  0
-              ]
-          },
-          "IBO_R" : {
-              "$arrayElemAt" : [
-                  "$redesigns.IBO_DESIGNED",
-                  0
-              ]
-          }
+          "IBO_D" : "$designs.IBO_DESIGNED",
+                "IBO_R" : "$redesigns.IBO_DESIGNED"
       }
   }
   ]

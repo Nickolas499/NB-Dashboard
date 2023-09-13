@@ -20,23 +20,21 @@ export const Test2 = () => {
     
     data.map((item, index) => {
       const DATE = item.DATE
-      const LS3 = item.LS3
-      const ZEISS = item.ZEISS
-      const IBO_S = LS3 + ZEISS
-      DATA.push({DATE, IBO_S})
+      const IBO_S = item.IBO_S
+      const IBO_D = item.IBO_D
+      const IBO_R = item.IBO_R
+      DATA.push({DATE, IBO_S, IBO_D, IBO_R})
     })
-    //  console.log(DATA);
+     console.log(DATA);
     return DATA
     
-  }
-
-  console.log(Graph);
+  } 
   
 useEffect(() => {
   GetScaned();
 },[]) 
-IBO_scaned(AllscanedData)
-IBO_scaned(Scaned)
+IBO_scaned(Graph)
+
 
       
 
@@ -65,7 +63,7 @@ IBO_scaned(Scaned)
     <article className="profile_chart_container">
     <section className="profile_chart">    
     <ProfileCharts
-          data={IBO_scaned(Scaned)}
+          data={IBO_scaned(Graph)}
           title="User Productivity"
           name="Safety"
           height={300}
@@ -81,7 +79,7 @@ IBO_scaned(Scaned)
         {/* <Radarchart data={radar_data} />
         <Radarchart data={radar_data} /> */}
         <ProfileCharts
-          data={IBO_scaned(AllscanedData)}
+          data={IBO_scaned(Graph)}
           title="Golbal Productivity"
           name="Safety"
           height={300}
