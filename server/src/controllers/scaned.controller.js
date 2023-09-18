@@ -14,35 +14,30 @@ import Scaned from "../models/scaned.model.js";
 export const getScaned = async (req, res) => {
   const pipeline = [
     {
-      "$lookup" : {
-          "from" : "designs",
-          "localField" : "USER",
-          "foreignField" : "USER",
-          "as" : "designs"
+      $lookup: {
+        from: "desings",
+        localField: "DATE",
+        foreignField: "DATE",
+        as: "designs"
       }
-  }, 
-  {
-      "$lookup" : {
-          "from" : "redesigns",
-          "localField" : "USER",
-          "foreignField" : "USER",
-          "as" : "redesigns"
+    },
+    {
+      $lookup: {
+        from: "redesigns",
+        localField: "DATE",
+        foreignField: "DATE",
+        as: "redesigns"
       }
-  }, 
-  {
-      "$project" : {
-          "DATE" : 1,
-          "IBO_S" : {
-              "$sum" : [
-                  "$LS3",
-                  "$ZEISS",
-                  "$COPY_MILL"
-              ]
-          },
-          "IBO_D" : "$designs.IBO_DESIGNED",
-                "IBO_R" : "$redesigns.IBO_DESIGNED"
+    },
+    {
+      $project: {
+        _id: 0,
+        DATE: 1,
+        IBO_S: { $sum: ["$LS3", "$ZEISS", "$COPY_MILL"] },
+        IBO_D: { $sum: "$designs.IBO_DESIGNED" },
+        IBO_R: { $sum: "$redesigns.IBO_DESIGNED" }
       }
-  }
+    }
   ]
   const graphicsScaned = await Scaned.aggregate(pipeline);
   const Allscaned = await Scaned.find({}).sort({ createdAt: -1 });

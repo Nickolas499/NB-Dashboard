@@ -3,6 +3,7 @@ import morgan from "morgan";
 import cors from "cors";
 import cookie from "cookie-parser";
 
+
 //============================================================================//
 //                              ROUTES IMPORT                                 //
 //============================================================================//
@@ -11,7 +12,7 @@ import registration from "./routes/registration.routes.js";
 import scaned from "./routes/scaned.routes.js";
 import designed from "./routes/designed.routes.js";
 import redesigned from "./routes/redesigned.routes.js";
-
+import graph from "./routes/graph.routes.js";
 
 //============================================================================//
 //                      Express Server CONFIG                                 //
@@ -35,6 +36,7 @@ app.use('/api', registration)
 app.use('/api', scaned)
 app.use('/api', designed)
 app.use('/api', redesigned)
+app.use('/api', graph)
 
 //============================================================================//
 //                                  others                                    //
