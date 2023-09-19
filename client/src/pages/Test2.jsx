@@ -1,39 +1,31 @@
 import {ProfileCharts} from "../components/charts/Profile_Charts";
-import Radarchart from '../components/charts/Radar';
-import {radar_data} from '../data/radar-data';
 import Tabs from '../components/tabs/Tabs';
 import { RegistrationForm } from '../components/forms/RegistrationForm';
 import { ScanFrom } from '../components/forms/ScanFrom';
 import { DesignForm } from '../components/forms/DesignForm';
 import { RedesignForm } from '../components/forms/RedesignForm';
-import { useRegistration } from '../context/registrationContext';
-import { useScaned } from "../context/scanedContext";
+import { useGraph } from "../context/graphContext";
 import { useEffect } from "react";
-// =========((PROFILE))=============================================
-export const Test2 = () => {  
-  const { Registration } = useRegistration();
-  const {AllscanedData,GetScaned, Scaned, Graph} = useScaned();
+import { useAuth } from "../context/authContext";
 
-  const IBO_scaned =(data) => {
-    // console.log(data);
-    const DATA=[]
-    
-    data.map((item, index) => {
-      const DATE = item.DATE
-      const IBO_S = item.IBO_S
-      const IBO_D = item.IBO_D
-      const IBO_R = item.IBO_R
-      DATA.push({DATE, IBO_S, IBO_D, IBO_R})
-    })
-     console.log(DATA);
-    return DATA
-    
-  } 
+// =========((PROFILE))=============================================
+export const Test2 = () => {
+  const {GetGlobalData, GlobalData, GetUserData, UserData} = useGraph();
+  const { user } = useAuth(); 
+  // console.log(user.id);
+  const IBO_scaned = (data) => {
+    const DATA = data.map((item) => {
+      const { _id, LS3, ZEISS, SHAPE, COPY_MILL, FULL_ARCH } = item;
+      return { _id, LS3, ZEISS, SHAPE, COPY_MILL, FULL_ARCH };
+    });    
+    return DATA;
+  }
   
-useEffect(() => {
-  GetScaned();
+useEffect(() => {  
+  GetGlobalData()
+  GetUserData();
+// eslint-disable-next-line react-hooks/exhaustive-deps
 },[]) 
-IBO_scaned(Graph)
 
 
       
@@ -63,31 +55,31 @@ IBO_scaned(Graph)
     <article className="profile_chart_container">
     <section className="profile_chart">    
     <ProfileCharts
-          data={IBO_scaned(Graph)}
+          data={IBO_scaned(UserData)}
           title="User Productivity"
           name="Safety"
           height={300}
           range={[0,20]}
-          value1="IBO_S"
-          value2="IBO_D"
-          value3="IBO_R"
-          value4="F_A_P"
+          value1="LS3"
+          value2="ZEISS"
+          value3="SHAPE"
+          value4="FULL_ARCH"
+          value5="COPY_MILL"
                     
         />
      </section>
-     <section className="profile_chart">
-        {/* <Radarchart data={radar_data} />
-        <Radarchart data={radar_data} /> */}
+     <section className="profile_chart">        
         <ProfileCharts
-          data={IBO_scaned(Graph)}
+          data={IBO_scaned(GlobalData)}
           title="Golbal Productivity"
           name="Safety"
           height={300}
           range={[0,20]}
-          value1="IBO_S"
-          value2="IBO_D"
-          value3="IBO_R"
-          value4="F_A_P"
+          value1="LS3"
+          value2="ZEISS"
+          value3="SHAPE"
+          value4="FULL_ARCH"
+          value5="COPY_MILL"
                     
         />
         

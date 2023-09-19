@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { getGraphData } from "../api/chartData";
+import { getGlobalData,getUserData } from "../api/chartData";
 
 const graphContext = createContext();
 
@@ -15,13 +15,14 @@ export const useGraph = () => {
 
   export function GraphProvider({ children }) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [GraphData, setGraphData] = useState([]);
+    const [GlobalData, setGlobalData] = useState([]);
+    const [UserData, setUserData] = useState([]);
 
 
-    const GetGraphData= async () => {
+    const GetGlobalData= async () => {
       try {
-        const res = await getGraphData();
-        setGraphData(res.data);
+        const res = await getGlobalData();
+        setGlobalData(res.data);
        
       } catch (error) {
         console.log(error);
@@ -29,11 +30,25 @@ export const useGraph = () => {
     };
 
 
+    const GetUserData= async () => {
+      try {
+        const res = await getUserData();
+        console.log(res.data);
+        setUserData(res.data);
+       
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+
     return (
         <graphContext.Provider
           value={{ 
-            GraphData,
-            GetGraphData
+            GlobalData,
+            GetGlobalData,
+            UserData,
+            GetUserData
             }}
         >
           {children}

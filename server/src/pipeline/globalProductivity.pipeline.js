@@ -1,4 +1,4 @@
-export const  graphPipeline = [
+export const  globalProductivity = [
     {
         "$lookup": {
             "from": "designs",

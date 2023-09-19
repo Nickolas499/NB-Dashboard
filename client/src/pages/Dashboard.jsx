@@ -1,11 +1,11 @@
-import React from "react";
 import { Kpicards } from "../components/Kpicards";
 import { UserCards } from "../components/UserCards";
 import { kpi_data, user_data } from "../data/kpi_data";
 
 
-export const Dashboard = () => {
 
+export const Dashboard = () => { 
+ 
   return (
     <article className="DashboardContainer">
       <section className="Dashboard_KPI">
