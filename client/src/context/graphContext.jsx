@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { getGlobalData,getUserData } from "../api/chartData";
+import { getGlobalData, getUserData, GlobalDatarequest } from "../api/chartData";
 
 const graphContext = createContext();
 
@@ -17,6 +17,7 @@ export const useGraph = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [GlobalData, setGlobalData] = useState([]);
     const [UserData, setUserData] = useState([]);
+    const [GlobalDataApi, setGlobalDataApi] = useState([]);
 
 
     const GetGlobalData= async () => {
@@ -33,8 +34,18 @@ export const useGraph = () => {
     const GetUserData= async () => {
       try {
         const res = await getUserData();
-        console.log(res.data);
+        // console.log(res.data);
         setUserData(res.data);
+       
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    const GlobalApi = async () => {
+      try {
+        const res = await GlobalDatarequest();
+        setGlobalDataApi(res.data);
        
       } catch (error) {
         console.log(error);
@@ -48,7 +59,9 @@ export const useGraph = () => {
             GlobalData,
             GetGlobalData,
             UserData,
-            GetUserData
+            GetUserData,
+            GlobalDataApi,
+            GlobalApi
             }}
         >
           {children}

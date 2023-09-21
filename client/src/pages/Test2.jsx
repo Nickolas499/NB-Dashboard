@@ -6,12 +6,12 @@ import { DesignForm } from '../components/forms/DesignForm';
 import { RedesignForm } from '../components/forms/RedesignForm';
 import { useGraph } from "../context/graphContext";
 import { useEffect } from "react";
-import { useAuth } from "../context/authContext";
+// import { useAuth } from "../context/authContext";
 
 // =========((PROFILE))=============================================
 export const Test2 = () => {
-  const {GetGlobalData, GlobalData, GetUserData, UserData} = useGraph();
-  const { user } = useAuth(); 
+  const {GetGlobalData, GlobalData, GetUserData, UserData, GlobalDataApi, GlobalApi} = useGraph();
+  // const { user } = useAuth(); 
   // console.log(user.id);
   const IBO_scaned = (data) => {
     const DATA = data.map((item) => {
@@ -24,6 +24,7 @@ export const Test2 = () => {
 useEffect(() => {  
   GetGlobalData()
   GetUserData();
+  GlobalApi();
 // eslint-disable-next-line react-hooks/exhaustive-deps
 },[]) 
 
@@ -70,7 +71,7 @@ useEffect(() => {
      </section>
      <section className="profile_chart">        
         <ProfileCharts
-          data={IBO_scaned(GlobalData)}
+          data={IBO_scaned(GlobalDataApi)}
           title="Golbal Productivity"
           name="Safety"
           height={300}

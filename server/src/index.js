@@ -6,5 +6,5 @@ import {IP,PORT} from "./config.js";
 
 connectdb();
   app.listen(PORT,IP, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on ${IP}:${PORT}`);
   });

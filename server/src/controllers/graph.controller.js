@@ -19,8 +19,7 @@ export const getUserData = async (req, res) => {
         const userprodata = await Scaned.aggregate(userProductivity);
         if (!userprodata || userprodata.length === 0) {
             return res.status(404).json(["User not found"]);
-        }
-        console.log(userprodata);
+        }        
         return res.json(userprodata);
     } catch (error) {
         return res.status(500).json(["Internal server error"]);
