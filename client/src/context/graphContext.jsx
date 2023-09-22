@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { getGlobalData, getUserData, GlobalDatarequest } from "../api/chartData";
+import { GlobalDatarequest,UserDatarequest } from "../api/chartData";
 
 const graphContext = createContext();
 
@@ -14,33 +14,9 @@ export const useGraph = () => {
   };
 
   export function GraphProvider({ children }) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [GlobalData, setGlobalData] = useState([]);
-    const [UserData, setUserData] = useState([]);
+    // eslint-disable-next-line react-hooks/rules-of-hooks    
     const [GlobalDataApi, setGlobalDataApi] = useState([]);
-
-
-    const GetGlobalData= async () => {
-      try {
-        const res = await getGlobalData();
-        setGlobalData(res.data);
-       
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-
-    const GetUserData= async () => {
-      try {
-        const res = await getUserData();
-        // console.log(res.data);
-        setUserData(res.data);
-       
-      } catch (error) {
-        console.log(error);
-      }
-    }
+    const [User, setUser] = useState([]);
 
     const GlobalApi = async () => {
       try {
@@ -52,16 +28,24 @@ export const useGraph = () => {
       }
     }
 
+    const UserApi = async (id) => {
+      try {
+        const res = await UserDatarequest(id);
+        setUser(res.data);
+       
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
 
     return (
         <graphContext.Provider
-          value={{ 
-            GlobalData,
-            GetGlobalData,
-            UserData,
-            GetUserData,
+          value={{            
             GlobalDataApi,
-            GlobalApi
+            GlobalApi,
+            User,
+            UserApi
             }}
         >
           {children}

@@ -16,6 +16,7 @@ export const RegistrationForm = () => {
   const [UPDATE, setUPDATE] = useState(0);
   useEffect(() => {
     GetRegistration();
+    // eslint-disable-next-line
   }, [UPDATE]);
 
   const actualizar = () => {

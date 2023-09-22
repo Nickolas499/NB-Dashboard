@@ -1,7 +1,5 @@
-import Cookies from "js-cookie";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import cookies from "js-cookie";
 import { useAuth } from "../context/authContext";
 
 export const Dropdown = (props) => {  

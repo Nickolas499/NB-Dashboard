@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useRegistration } from "../context/registrationContext";
+
 
 function Table3(props) {
   const [currentPage, setCurrentPage] = useState(1); // Variable de estado para la página actual
@@ -21,6 +21,7 @@ function Table3(props) {
   const [UPDATE, setUPDATE] = useState(0);
   useEffect(() => {
     props.Get();
+    // eslint-disable-next-line
   }, [UPDATE]);
 
   const actualizar = () => {

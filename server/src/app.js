@@ -2,9 +2,8 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import cookie from "cookie-parser";
-import {data, databyid} from './test.js';
-const ID1 = "64c3ec50c07c0f61078591f1"
-const ID2 = "64c919266fb9f65786fb484e"
+
+
 
 //============================================================================//
 //                              ROUTES IMPORT                                 //
@@ -16,16 +15,16 @@ import designed from "./routes/designed.routes.js";
 import redesigned from "./routes/redesigned.routes.js";
 import graph from "./routes/graph.routes.js";
 import global from "./routes/global.routes.js";
+
 //============================================================================//
 //                      Express Server CONFIG                                 //
 //============================================================================//
 const app = express();
 
-data();
-databyid(ID2);
+
 app.use(cors(
     {
-        origin: "http://10.62.150.76:3000",
+        origin: ["http://10.62.150.76:3000","http://192.168.1.186:3000"],
         credentials: true
     }
 ));

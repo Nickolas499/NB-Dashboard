@@ -54,7 +54,8 @@ export const DesignForm = () => {
 
 
   useEffect(() => {
-    GetDesigned();    
+    GetDesigned();
+    // eslint-disable-next-line    
   }, [UPDATE]);
 
 

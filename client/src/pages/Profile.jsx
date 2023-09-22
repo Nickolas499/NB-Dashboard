@@ -30,9 +30,10 @@ export const Profile = () => {
   const [FULL_ARCH, setFULL_ARCH] = useState(0);
 
 
-
   useEffect(() => {
-    GetRegistration();       
+    
+    GetRegistration();     
+// eslint-disable-next-line  
   }, []);
   
  

@@ -15,9 +15,8 @@ export const data = async () => {
 
 export const databyid = async (id) => {
     const ScanedData = await Scaned.find({ USER: id });
-    const DesignedData = await Designed.find({ USER: id });
-    console.log(DesignedData);
-    // console.log(processData(ScanedData, DesignedData));
+    const DesignedData = await Designed.find({ USER: id });    
+    console.log(processData(ScanedData, DesignedData));
 }
 
 

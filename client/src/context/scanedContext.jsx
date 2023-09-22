@@ -21,8 +21,6 @@ export const useScaned = () => {
 //==================================((SCANED PROVIDER))==============================================//
 export function ScanedProvider({ children }) {
   const [Scaned, setScaned] = useState([]);
-  const [AllscanedData, setAllScanedData] = useState([]);
-  const [Graph, SetGraph ] = useState([]);
 
   //======================================((Create Scaned API))==============================================//
   const CreateScaned = async (data) => {
@@ -33,9 +31,7 @@ export function ScanedProvider({ children }) {
   const GetScaned = async () => {
     try {
       const res = await getScaned();
-      setScaned(res.data.scaned);
-      setAllScanedData(res.data.Allscaned);
-      SetGraph(res.data.graphicsScaned);
+      setScaned(res.data.scaned);      
     } catch (error) {
       console.log(error);
     }
@@ -68,9 +64,7 @@ export function ScanedProvider({ children }) {
     
   return (
     <scanedContext.Provider
-      value={{
-        Graph,   
-        AllscanedData,     
+      value={{           
         Scaned,        
         CreateScaned,
         GetScaned,

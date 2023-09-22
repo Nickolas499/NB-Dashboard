@@ -51,7 +51,8 @@ export const RedesignForm = () => {
 
 
   useEffect(() => {
-    GetRedesigned();    
+    GetRedesigned(); 
+    // eslint-disable-next-line   
   }, [UPDATE]);
 
 

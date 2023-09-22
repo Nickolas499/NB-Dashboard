@@ -1,12 +1,11 @@
 import axios from "./axios";
 
-//=======================((productivity Chart))==============================================//
-//=======================((Global productivity Chart))==============================================//
-export const getGlobalData = () => axios.get('/globaprodata');
-
-//=======================((User productivity Chart))==============================================//
-export const getUserData = (id) => axios.get(`/userprodata`);
-
+//=======================((GLOBAL PRODUCTIVITY CHART))==============================================//
 
 export const GlobalDatarequest = () => axios.get('/global');
 
+
+//=======================((USER PRODUCTIVITY CHART))==============================================//
+
+
+export const UserDatarequest = (id) => axios.get(`/userdata/${id}`);
