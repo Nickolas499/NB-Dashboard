@@ -9,7 +9,7 @@ import { Profile } from "./pages/Profile";
 import { Admin } from "./pages/Admin";
 import { Test } from "./pages/Test";
 import { Test2 } from "./pages/Test2";
-import { Login } from "./pages/Login";
+import { Login } from "./pages/login";
 import ProtectedRoutes from "./ProtectedRoutes";
 
 function App() {

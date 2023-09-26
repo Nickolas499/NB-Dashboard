@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import cookie from "cookie-parser";
+import {RedesignedUnits} from './test.js';
 
 
 
@@ -21,10 +22,11 @@ import global from "./routes/global.routes.js";
 //============================================================================//
 const app = express();
 
+RedesignedUnits();
 
 app.use(cors(
     {
-        origin: ["http://10.62.150.76:3000","http://192.168.1.186:3000"],
+        origin: ["http://10.62.150.76:3000","http://192.168.1.186:3000","http://localhost:3000"],
         credentials: true
     }
 ));
