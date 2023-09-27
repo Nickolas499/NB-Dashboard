@@ -16,6 +16,7 @@ export const Aside = () => {
           <li><Link to="/profile"><div><span className="material-symbols-outlined">person</span><span>Profile</span></div></Link></li>
           <li><Link to="/test"><div><span className="material-symbols-outlined">T</span><span>Test</span></div></Link></li>
           <li><Link to="/test2"><div><span className="material-symbols-outlined">T</span><span>Test2</span></div></Link></li>
+          <li><Link to="/Asign"><div><span className="material-symbols-outlined">Settings</span><span>Asign</span></div></Link></li>
           {user.access === "admin"?<li><Link to="/admin"><div> <span className="material-symbols-outlined">Shield </span><span>Admin</span></div></Link></li>:""}
         </ul>
       </nav>

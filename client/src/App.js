@@ -10,6 +10,7 @@ import { Admin } from "./pages/Admin";
 import { Test } from "./pages/Test";
 import { Test2 } from "./pages/Test2";
 import { Login } from "./pages/Login";
+import {Asign} from "./pages/Asign";
 import ProtectedRoutes from "./ProtectedRoutes";
 
 function App() {
@@ -70,6 +71,7 @@ const AppRoutes = (getTitle) => {
           <Route path="/test" element={<Test/>}/>
           <Route path="/test2" element={<Test2/>}/>
           <Route path="/logout" element={<Login/>}/>
+          <Route path="/asign" element={<Asign/>} />
         </Routes>
       </main>
   </>
