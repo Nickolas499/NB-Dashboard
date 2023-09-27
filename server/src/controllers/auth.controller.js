@@ -106,9 +106,10 @@ export const profile = async (req, res) => {
 }
 
 
-export const verify = () => async (req, res) => {
+export const verify =  async (req, res) => {
   
   const {token} = req.cookies;
+  
   
   if (!token)return res.status(401).json(['Authorization denied']);
 
@@ -118,7 +119,7 @@ export const verify = () => async (req, res) => {
 
     const userFound = await User.findById(user.id);    
     if (!userFound) return res.status(404).json(['User not found']);
-
+    
     return res.status(200).json({
       id: userFound._id,
       fname: userFound.fname,
