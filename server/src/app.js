@@ -2,7 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import cookie from "cookie-parser";
-import {RedesignedUnits} from './test.js';
+import {DailyProd} from './test.js';
 
 
 
@@ -22,7 +22,7 @@ import global from "./routes/global.routes.js";
 //============================================================================//
 const app = express();
 
-RedesignedUnits();
+DailyProd();
 
 app.use(cors(
     {
