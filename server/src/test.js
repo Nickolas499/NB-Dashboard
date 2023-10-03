@@ -3,8 +3,8 @@ import Designed from "./models/design.model.js";
 import Registration from "./models/registration.model.js";
 import Redesigned from "./models/redesign.model.js";
 import processData from './libs/processData.js';
-import DailyProduction from "../models/dailyproduction.model.js";
-import asignment from "../models/asignment.model.js";
+import DailyProduction from "./models/dailyproduction.model.js";
+import asignment from "./models/asignment.model.js";
 
 
 
@@ -55,63 +55,9 @@ export const RedesignedUnits = async () => {
 
 
 export const DailyProd = async () => {
-    const cases = await DailyProduction.aggregate([
-        {
-          $lookup: {
-            from: "production",
-            localField: "DATE",
-            foreignField: "DATE",
-            as: "production"
-          }
-        },
-        {
-          $unwind: "$production"
-        },
-        {
-          $match: {
-            OFF_DAY: { $ne: true }
-          }
-        },
-        {
-          $project: {
-            _id: 0,
-            DATE: "$DATE",
-            USER: "$USER",
-            LS3: { $ifNull: [ "$production.LS3", 0 ] },
-            ZEISS: { $ifNull: [ "$production.ZEISS", 0 ] },
-            SHAPE: { $ifNull: [ "$production.SHAPE", 0 ] },
-            IBO: { $ifNull: [ "$production.IBO", 0 ] },
-            DIGITAL: {
-              $cond: {
-                if: { $eq: [ { $size: "$DIGITAL" }, 0 ] },
-                then: 0,
-                else: { $divide: [ { $ifNull: [ "$production.DIGITAL", 0 ] }, { $size: "$DIGITAL" } ] }
-              }
-            },
-            PHISICAL: { $ifNull: [ "$production.PHISICAL", 0 ] },
-            FULL_ARCH: { $ifNull: [ "$production.FUll_ARCH", 0 ] }
-          }
-        },
-        {
-          $group: {
-            _id: { DATE: "$DATE", USER: "$USER" },
-            LS3: { $first: "$LS3" },
-            ZEISS: { $first: "$ZEISS" },
-            SHAPE: { $first: "$SHAPE" },
-            IBO: { $sum: "$IBO" },
-            DIGITAL: { $sum: "$DIGITAL" },
-            PHISICAL: { $first: "$PHISICAL" },
-            FULL_ARCH: { $first: "$FULL_ARCH" }
-          }
-        },
-        {
-          $sort: {
-            "_id.DATE": 1,
-            "_id.USER": 1
-          }
-        }
-      ])
-     console.log(cases);
+    
+        
+     console.log("Working...");
 }
 
 

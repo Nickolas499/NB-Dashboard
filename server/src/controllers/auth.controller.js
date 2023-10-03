@@ -130,3 +130,14 @@ export const verify =  async (req, res) => {
     
   });
 }
+
+
+export const getUsers = async (req, res) => {  
+    const userFound = await User.find({});
+    // console.log(userFound);
+    if (!userFound) {
+      return res.status(404).json(["Users not found"]);
+    }  
+      return res.status(200).json(userFound); 
+  
+}
