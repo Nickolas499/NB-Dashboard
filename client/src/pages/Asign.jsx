@@ -10,19 +10,23 @@ export const Asign = () => {
   const users = [
     {
       _id: '1',
-      fname: 'John',
-      lname: 'Doe',
+      fname: 'ezequiel',
+      lname: 'Almonte',
+      color: '#01acf073',
     },
     {
       _id: '2',
-      fname: 'Jane',
-      lname: 'Doe',
+      fname: 'Monica',
+      lname: 'Lopez',
+      color: '#6FC308',
     },
     {
       _id: '3',
-      fname: 'John',
-      lname: 'Doe',
-    }
+      fname: 'Noemie',
+      lname: 'Villajuan',
+      color: '#F78E57',
+    },
+
 
 
     
@@ -36,6 +40,7 @@ export const Asign = () => {
         <div className={asigncss.tab_container}>
           <h1>Work Asignment</h1>
           <WorkForm/>
+          <h1>Workers</h1>
           <UserForm users={users}/>
           </div>
         </div>

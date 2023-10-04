@@ -1,0 +1,43 @@
+@import '../../css/palett.css';
+
+.container{
+    display: flex;
+    padding: 10px 20px;    
+    align-items: center;
+}
+.container:nth-child(odd) {
+    background-color:var(--bgColor);
+  }
+  
+  .container:nth-child(even) {
+    background-color:var(--Primarycolor);
+  }
+.inputContainer{
+    margin: 0 10px;
+    
+}
+
+.label{
+    padding-right: 10px;
+   
+}
+
+.workerList{
+    display: flex;
+    align-items: center;      
+    font-size: 16px; 
+    min-width: 200px;   
+    gap: 20px;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50% 50% 50% 0%;
+    width: 40px;
+    height: 40px;
+    background-color: var(--blue);
+    font-weight: bold;
+    font-size: 25px;
+    color: black;
+}

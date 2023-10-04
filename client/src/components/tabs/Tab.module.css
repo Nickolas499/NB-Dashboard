@@ -1,0 +1,43 @@
+@import '../../css/palett.css';
+
+.tab_list{
+    font-weight: bold;
+    /* border-bottom: 1px solid var(--Color); */
+    padding-left: 10px;
+}
+
+.tab_list_item {
+    display: inline-block;
+    list-style: none;
+    margin-bottom: -1px;
+    padding: 0.5rem 0.75rem;
+    background: var(--primaryColor);
+    background: linear-gradient(220deg, transparent 10px, var(--primaryColor) 10px);
+    box-shadow: -4px 0 0 rgba(0, 0, 0, .2);
+
+}
+
+.tab_list_item:hover {
+    background: var(--primaryColor);
+    background: linear-gradient(220deg, transparent 10px, #ad1c1c 10px);
+    box-shadow: -4px 0 0 rgba(0, 0, 0, .2);
+
+}
+
+.tab_list_active {
+    background: #ad1c1c;
+    background: linear-gradient(220deg, transparent 10px, #ad1c1c 10px);
+    box-shadow: -4px 0 0 rgba(0, 0, 0, .2);
+
+
+}
+
+.tab_content {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 0px;
+    gap: 10px;
+    height: 100%;
+
+}

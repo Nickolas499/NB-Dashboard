@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import style from "./UserForm.module.css"
 
 const UserForm = ({ users }) => {
   const [assignedWork, setAssignedWork] = useState({
@@ -19,13 +20,18 @@ const UserForm = ({ users }) => {
     }));
   };
 
+  function getInitials(firstName, lastName) {
+    const initials = `${firstName[0]}${lastName[0]}`;
+    return initials.toUpperCase();
+  }
+
   return (
-    <div>
+    <div >
       {users.map((user) => (
-        <div key={user._id}>
-          <h3>{`${user.fname} ${user.lname}`}</h3>
-          <label>
-            LS3:
+        <div className={style.container} key={user._id}>
+          <div className={style.workerList} ><div className={style.logo } style={{backgroundColor: `${user.color}`}}>{getInitials(user.fname,user.lname)}</div> <h3>{`${user.fname} ${user.lname}`}</h3></div>
+          <div className={style.inputContainer}>
+          <label className={style.label}>LS3:</label> 
             <input
               type="checkbox"
               name="LS3"
@@ -33,9 +39,9 @@ const UserForm = ({ users }) => {
               checked={assignedWork.LS3.includes(user._id)}
               onChange={handleCheckboxChange}
             />
-          </label>
-          <label>
-            ZEISS:
+          </div>
+          <div className={style.inputContainer}>
+          <label className={style.label}>ZEISS:</label> 
             <input
               type="checkbox"
               name="ZEISS"
@@ -43,9 +49,9 @@ const UserForm = ({ users }) => {
               checked={assignedWork.ZEISS.includes(user._id)}
               onChange={handleCheckboxChange}
             />
-          </label>
-          <label>
-            SHAPE:
+          </div>
+          <div className={style.inputContainer}>
+          <label className={style.label}>3SHAPE:</label> 
             <input
               type="checkbox"
               name="SHAPE"
@@ -53,9 +59,9 @@ const UserForm = ({ users }) => {
               checked={assignedWork.SHAPE.includes(user._id)}
               onChange={handleCheckboxChange}
             />
-          </label>
-          <label>
-            IBOS:
+          </div>
+          <div className={style.inputContainer}>
+          <label className={style.label}>IBOS:</label> 
             <input
               type="checkbox"
               name="IBOS"
@@ -63,9 +69,9 @@ const UserForm = ({ users }) => {
               checked={assignedWork.IBOS.includes(user._id)}
               onChange={handleCheckboxChange}
             />
-          </label>
-          <label>
-            DIGI_ABUT:
+          </div>
+          <div className={style.inputContainer}>
+          <label className={style.label}>DIGI_ABUT:</label> 
             <input
               type="checkbox"
               name="DIGI_ABUT"
@@ -73,9 +79,9 @@ const UserForm = ({ users }) => {
               checked={assignedWork.DIGI_ABUT.includes(user._id)}
               onChange={handleCheckboxChange}
             />
-          </label>
-          <label>
-            PHIS_ABUT:
+          </div>
+          <div className={style.inputContainer}> 
+          <label className={style.label}>PHIS_ABUT:</label> 
             <input
               type="checkbox"
               name="PHIS_ABUT"
@@ -83,9 +89,9 @@ const UserForm = ({ users }) => {
               checked={assignedWork.PHIS_ABUT.includes(user._id)}
               onChange={handleCheckboxChange}
             />
-          </label>
-          <label>
-            FULL_ARCH:
+          </div>
+          <div className={style.inputContainer}>
+          <label className={style.label}>FULL_ARCH:</label> 
             <input
               type="checkbox"
               name="FULL_ARCH"
@@ -93,7 +99,7 @@ const UserForm = ({ users }) => {
               checked={assignedWork.FULL_ARCH.includes(user._id)}
               onChange={handleCheckboxChange}
             />
-          </label>
+          </div>
         </div>
       ))}
     </div>
