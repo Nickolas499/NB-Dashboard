@@ -9,19 +9,19 @@ export const Asign = () => {
 
   const users = [
     {
-      _id: '1',
+      _id: 'eze',
       fname: 'ezequiel',
       lname: 'Almonte',
       color: '#01acf073',
     },
     {
-      _id: '2',
+      _id: '2mon',
       fname: 'Monica',
       lname: 'Lopez',
       color: '#6FC308',
     },
     {
-      _id: '3',
+      _id: 'noe',
       fname: 'Noemie',
       lname: 'Villajuan',
       color: '#F78E57',

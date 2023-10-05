@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./UserForm.module.css"
+import style from "./UserForm.module.css";
 
 const UserForm = ({ users }) => {
   const [assignedWork, setAssignedWork] = useState({
@@ -16,7 +16,9 @@ const UserForm = ({ users }) => {
     const { name, value, checked } = e.target;
     setAssignedWork((prevState) => ({
       ...prevState,
-      [name]: checked ? [...prevState[name], value] : prevState[name].filter(v => v !== value),
+      [name]: checked
+        ? [...prevState[name], value]
+        : prevState[name].filter((v) => v !== value),
     }));
   };
 
@@ -25,83 +27,162 @@ const UserForm = ({ users }) => {
     return initials.toUpperCase();
   }
 
+  function getAssignedWork() {
+    console.log(assignedWork);
+  }
+
   return (
-    <div >
+    <div className={style.frame}>
+      <div className={style.header}>
+        <article className={style.article}>
+          <div>
+            <span className={style.span}></span>
+          </div>
+        </article>
+        <article className={style.article}>
+          <div>
+            <span className={style.span}>LS3</span>
+          </div>
+        </article>
+        <article className={style.article}>
+          <div>
+            <span className={style.span}>ZEISS</span>
+          </div>
+        </article>
+        <article className={style.article}>
+          <div>
+            <span className={style.span}>3SHAPE</span>
+          </div>
+        </article>
+        <article className={style.article}>
+          <div>
+            <span className={style.span}>IBO</span>
+          </div>
+        </article>
+        <article className={style.article}>
+          <div>
+            <span className={style.span}>DIGITAL ABUTMEN</span>
+          </div>
+        </article>
+        <article className={style.article}>
+          <div>
+            <span className={style.span}>PHISICAL ABUTMEN</span>
+          </div>
+        </article>
+        <article className={style.article}>
+          <div>
+            <span className={style.span}>FULL ARCH</span>
+          </div>
+        </article>
+      </div>
       {users.map((user) => (
         <div className={style.container} key={user._id}>
-          <div className={style.workerList} ><div className={style.logo } style={{backgroundColor: `${user.color}`}}>{getInitials(user.fname,user.lname)}</div> <h3>{`${user.fname} ${user.lname}`}</h3></div>
-          <div className={style.inputContainer}>
-          <label className={style.label}>LS3:</label> 
+          <div className={style.workerList}>
+            <div
+              className={style.logo}
+              style={{ backgroundColor: `${user.color}` }}
+            >
+              {getInitials(user.fname, user.lname)}
+            </div>{" "}
+            <h3>{`${user.fname} ${user.lname}`}</h3>
+          </div>
+          <article className={style.article}>
             <input
               type="checkbox"
+              id="feature1"
               name="LS3"
               value={user._id}
               checked={assignedWork.LS3.includes(user._id)}
               onChange={handleCheckboxChange}
             />
-          </div>
-          <div className={style.inputContainer}>
-          <label className={style.label}>ZEISS:</label> 
+            <div>
+              <span className={style.span}>LS3</span>
+            </div>
+          </article>
+          <article className={style.article}>
             <input
               type="checkbox"
+              id="feature1"
               name="ZEISS"
               value={user._id}
               checked={assignedWork.ZEISS.includes(user._id)}
               onChange={handleCheckboxChange}
             />
-          </div>
-          <div className={style.inputContainer}>
-          <label className={style.label}>3SHAPE:</label> 
+            <div>
+              <span className={style.span}>ZEISS</span>
+            </div>
+          </article>
+          <article className={style.article}>
             <input
               type="checkbox"
+              id="feature1"
               name="SHAPE"
               value={user._id}
               checked={assignedWork.SHAPE.includes(user._id)}
               onChange={handleCheckboxChange}
             />
-          </div>
-          <div className={style.inputContainer}>
-          <label className={style.label}>IBOS:</label> 
+            <div>
+              <span className={style.span}>3SHAPE</span>
+            </div>
+          </article>
+          <article className={style.article}>
             <input
               type="checkbox"
+              id="feature1"
               name="IBOS"
               value={user._id}
               checked={assignedWork.IBOS.includes(user._id)}
               onChange={handleCheckboxChange}
             />
-          </div>
-          <div className={style.inputContainer}>
-          <label className={style.label}>DIGI_ABUT:</label> 
+            <div>
+              <span className={style.span}>IBO</span>
+            </div>
+          </article>
+          <article className={style.article}>
             <input
               type="checkbox"
+              id="feature1"
               name="DIGI_ABUT"
               value={user._id}
               checked={assignedWork.DIGI_ABUT.includes(user._id)}
               onChange={handleCheckboxChange}
             />
-          </div>
-          <div className={style.inputContainer}> 
-          <label className={style.label}>PHIS_ABUT:</label> 
+            <div>
+              <span className={style.span}>DIGITAL ABUTMEN</span>
+            </div>
+          </article>
+          <article className={style.article}>
             <input
               type="checkbox"
+              id="feature1"
               name="PHIS_ABUT"
               value={user._id}
               checked={assignedWork.PHIS_ABUT.includes(user._id)}
               onChange={handleCheckboxChange}
             />
-          </div>
-          <div className={style.inputContainer}>
-          <label className={style.label}>FULL_ARCH:</label> 
+            <div>
+              <span className={style.span}>PHISICAL ABUTMEN</span>
+            </div>
+          </article>
+          <article className={style.article}>
             <input
               type="checkbox"
+              id="feature1"
               name="FULL_ARCH"
               value={user._id}
               checked={assignedWork.FULL_ARCH.includes(user._id)}
               onChange={handleCheckboxChange}
             />
-          </div>
+            <div>
+              <span className={style.span}>FULL ARCH</span>
+            </div>
+          </article>
         </div>
       ))}
+      <div className={style.footer}>
+          <button className={style.btn} onClick={getAssignedWork}>Asign</button>
+        </div>
+      
     </div>
   );
 };
