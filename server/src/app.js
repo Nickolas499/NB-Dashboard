@@ -2,7 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import cookie from "cookie-parser";
-import {DailyProd} from './test.js';
+
 
 
 
@@ -23,7 +23,6 @@ import work from "./routes/work.routes.js";
 //============================================================================//
 const app = express();
 
-DailyProd();
 
 app.use(cors(
     {
