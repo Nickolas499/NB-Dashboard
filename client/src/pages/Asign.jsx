@@ -15,7 +15,7 @@ export const Asign = () => {
       color: '#01acf073',
     },
     {
-      _id: '2mon',
+      _id: 'mon',
       fname: 'Monica',
       lname: 'Lopez',
       color: '#6FC308',
@@ -24,6 +24,36 @@ export const Asign = () => {
       _id: 'noe',
       fname: 'Noemie',
       lname: 'Villajuan',
+      color: '#F78E57',
+    },
+    {
+      _id: 'mil',
+      fname: 'Milka',
+      lname: 'Cvetkovic',
+      color: '#F78E57',
+    },
+    {
+      _id: 'lau',
+      fname: 'Lauren',
+      lname: 'LeGrand',
+      color: '#F78E57',
+    },
+    {
+      _id: 'bun',
+      fname: 'Bung',
+      lname: 'Su Choi',
+      color: '#F78E57',
+    },
+    {
+      _id: 'Roux',
+      fname: 'Roux',
+      lname: 'Tadili',
+      color: '#F78E57',
+    },
+    {
+      _id: 'Lucia',
+      fname: 'Lucia',
+      lname: 'Coto',
       color: '#F78E57',
     },
 
