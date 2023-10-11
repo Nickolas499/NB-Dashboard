@@ -623,7 +623,7 @@ main {
   flex-direction: column;
   padding: 0px;
   gap: 10px;
-  height: 100%;
+  height: calc(100% - 20px);
 }
 .label {
   display: flex;

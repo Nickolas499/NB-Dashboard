@@ -16,6 +16,7 @@ const WorkForm = () => {
     DIGI_ABUT: 0,
     PHIS_ABUT: 0,
     FULL_ARCH: 0,
+    DATE: today
   });
 
   const handleInputChange = (e) => {

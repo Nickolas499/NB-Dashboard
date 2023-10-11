@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { authRequired } from "../middlewares/validateToken.js";
-import { createWork } from "../controllers/production.controller.js";
+import { createWork } from "../controllers/work.controller.js";
 
 
 

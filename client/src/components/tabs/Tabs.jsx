@@ -11,7 +11,7 @@ const Tabs = ({ children }) => {
   }
 
   return (
-    <div className="tabs">
+    <div>
       <ol className="tab-list">
         {children.map((child) => {
           const { label } = child.props;

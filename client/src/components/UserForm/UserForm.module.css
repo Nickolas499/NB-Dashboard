@@ -5,12 +5,12 @@
     grid-template-columns: 1fr;
     width: 100%;
     height: 100%;
-    align-items: end;
+    align-items: end;    
 }
 
 .header {
     display: grid;
-    grid-template-columns: 250px repeat(7, 1fr);
+    grid-template-columns: 300px repeat(8, 1fr);
     height: 68px;
     align-items: center;
     background-color: var(--assentColor);
@@ -20,7 +20,7 @@
 
 .container {
     display: grid;
-    grid-template-columns: 250px repeat(7, 1fr);
+    grid-template-columns: 300px repeat(8, 1fr);
     height: 68px;
     align-items: center;
     background-color: var(--bgColor);
@@ -145,5 +145,10 @@
 
 input[type=checkbox]:checked~div {
     background-color: #18ee58;
+    color: #302d2d;
+}
+
+.dayoff input[type=checkbox]:checked~div{
+    background-color: #f12307;
     color: #302d2d;
 }

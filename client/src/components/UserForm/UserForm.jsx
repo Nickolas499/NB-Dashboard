@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import style from "./UserForm.module.css";
+import moment from "moment";
 
 const UserForm = ({ users }) => {
+  const today = moment().format("MM/DD/YYYY");
+
   const [assignedWork, setAssignedWork] = useState({
     LS3: [],
     ZEISS: [],
@@ -10,6 +13,8 @@ const UserForm = ({ users }) => {
     DIGI_ABUT: [],
     PHIS_ABUT: [],
     FULL_ARCH: [],
+    DAY_OFF: [],
+    DATE: today,
   });
 
   const handleCheckboxChange = (e) => {
@@ -72,6 +77,11 @@ const UserForm = ({ users }) => {
         <article className={style.article}>
           <div>
             <span className={style.span}>FULL ARCH</span>
+          </div>
+        </article>
+        <article className={style.article}>
+          <div>
+            <span className={style.span}>OFF</span>
           </div>
         </article>
       </div>
@@ -176,6 +186,19 @@ const UserForm = ({ users }) => {
               />
               <div>
                 <span className={style.span}>FULL ARCH</span>
+              </div>
+            </article>
+            <article className={style.article}>
+              <input
+                type="checkbox"
+                id="feature1"
+                name="DAY_OFF"                
+                value={user._id}
+                checked={assignedWork.DAY_OFF.includes(user._id)}
+                onChange={handleCheckboxChange}
+              />
+              <div>
+                <span className={style.span}>DAY OFF</span>
               </div>
             </article>
           </div>
