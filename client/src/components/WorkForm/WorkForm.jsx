@@ -8,16 +8,12 @@ const WorkForm = () => {
   const today = moment().format("MM/DD/YYYY");
   const { CreateWork, GetWork,  Work} = useWork();
 
-  const [workDate, setWorkDate] = useState(true);
+  const [workDate, setWorkDate] = useState(false);
   
   useEffect(() => {
-    GetWork();
-    
-    if(Work === today){
-      setWorkDate(true);
-    }
-    console.log(workDate);
-  },[workDate])
+    GetWork();   
+    if(Work.DATE === today ? setWorkDate(true) : setWorkDate(false));    
+  },[])
   
   
 
@@ -41,11 +37,9 @@ const WorkForm = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(workData);
+    e.preventDefault();    
     CreateWork(workData);
-    GetWork();
-    
+    GetWork();    
   };
 
   return (
@@ -128,9 +122,9 @@ const WorkForm = () => {
       <label className={styles.label}></label>
       {
   workDate ? (
-    <button type="submit" className={styles.submit}>false</button>
+    <button type="submit" className={styles.submit}>Edit</button>
   ) : (
-    <button type="submit" className={styles.submit}>true</button>
+    <button type="submit" className={styles.submit}>Submit</button>
   )
 }
       </div>
