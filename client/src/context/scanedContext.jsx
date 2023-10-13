@@ -18,6 +18,7 @@ export const useScaned = () => {
   }
   return context;
 };
+
 //==================================((SCANED PROVIDER))==============================================//
 export function ScanedProvider({ children }) {
   const [Scaned, setScaned] = useState([]);

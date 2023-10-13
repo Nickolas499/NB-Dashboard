@@ -47,9 +47,9 @@ body {
 .AppContainer {
   display: grid;
   width: 100%;
-  min-height: calc(100vh - 20px);
-  grid-template-columns: 80px repeat(1, 1fr);
-  grid-template-rows: 60px repeat(1, 1fr);
+  min-height: calc(100vh - 0px);
+  grid-template-columns: 100px repeat(1, 1fr);
+  grid-template-rows: 80px repeat(1, 1fr);
   grid-template-areas: "aside header header header header header header header header" "aside main main main main main main main main" "aside main main main main main main main main" "aside main main main main main main main main";
 }
 .Applogin {
@@ -201,7 +201,7 @@ aside .logo {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px;
+  height: 86px;
   width: 100%;
   padding: 10px;
 }

@@ -1,12 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./WorkForm.module.css";
 import moment from "moment";
 import { useWork } from "../../context/workContext";
+
+
 const WorkForm = () => {
   const today = moment().format("MM/DD/YYYY");
+  const { CreateWork, GetWork,  Work} = useWork();
 
-
-  const { CreateWork} = useWork();
+  const [workDate, setWorkDate] = useState(true);
+  
+  useEffect(() => {
+    GetWork();
+    
+    if(Work === today){
+      setWorkDate(true);
+    }
+    console.log(workDate);
+  },[workDate])
+  
+  
 
   const [workData, setWorkData] = useState({
     LS3: 0,
@@ -31,6 +44,7 @@ const WorkForm = () => {
     e.preventDefault();
     console.log(workData);
     CreateWork(workData);
+    GetWork();
     
   };
 
@@ -112,7 +126,13 @@ const WorkForm = () => {
       </div>
       <div className={styles.frame}>
       <label className={styles.label}></label>
-      <button type="submit" className={styles.submit}>Submit</button>
+      {
+  workDate ? (
+    <button type="submit" className={styles.submit}>false</button>
+  ) : (
+    <button type="submit" className={styles.submit}>true</button>
+  )
+}
       </div>
     </form>
   );

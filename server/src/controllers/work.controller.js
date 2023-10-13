@@ -1,6 +1,5 @@
 import workasingment from "../models/workasignment.model.js";
-
-
+//=====================================((CREATE WORK CONTROLLER))==============================================//
 export const createWork = async (req, res) => {
     const { LS3, ZEISS, SHAPE, DIGI_ABUT, PHIS_ABUT, FULL_ARCH, DATE } = req.body;
     console.log(req.body);
@@ -16,3 +15,11 @@ export const createWork = async (req, res) => {
     const WorkSaved = await newWork.save();
     return res.json(WorkSaved);
   };
+
+//=====================================((GET WORK CONTROLLER))==============================================//
+
+export const getWork = async (req, res) => {
+  const work = await workasingment.findOne({}).sort({ createdAt: -1 });
+    return res.json(work);
+  
+}
