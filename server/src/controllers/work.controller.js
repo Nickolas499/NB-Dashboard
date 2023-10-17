@@ -23,3 +23,13 @@ export const getWork = async (req, res) => {
     return res.json(work);
   
 }
+
+export const updateWork = async (req, res) => {
+  const work = await workasingment.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true }
+  );
+  if (!work) return res.status(404).json(["Work not found"]);
+  return res.json(work);
+}

@@ -15,5 +15,4 @@ const ScanedShema = new mongoose.Schema({
 })
 
 const Scaned = mongoose.model("Scaned", ScanedShema);
-console.log(moment().format('MM/DD/YYYY'));
 export default Scaned

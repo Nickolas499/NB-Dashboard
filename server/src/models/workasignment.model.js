@@ -16,5 +16,4 @@ const WorkAsingmentShema = new mongoose.Schema({
 })
 
 const workasingment = mongoose.model("workasingment", WorkAsingmentShema);
-console.log(moment().format('MM/DD/YYYY'));
 export default workasingment

@@ -17,5 +17,4 @@ const AsingmentShema = new mongoose.Schema({
 })
 
 const Asingment = mongoose.model("Asingment", AsingmentShema);
-console.log(moment().format('MM/DD/YYYY'));
 export default Asingment

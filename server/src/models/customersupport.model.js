@@ -12,5 +12,4 @@ const ProductionSupportShema = new mongoose.Schema({
 })
 
 const ProductionSupport = mongoose.model("ProductionSupport", ProductionSupportShema);
-console.log(moment().format('MM/DD/YYYY'));
 export default ProductionSupport

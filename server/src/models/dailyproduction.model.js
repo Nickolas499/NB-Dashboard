@@ -17,5 +17,4 @@ const DailyProductionShema = new mongoose.Schema({
 })
 
 const DailyProduction = mongoose.model("DailyProduction", DailyProductionShema);
-console.log(moment().format('MM/DD/YYYY'));
 export default DailyProduction

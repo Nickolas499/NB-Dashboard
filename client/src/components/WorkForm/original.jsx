@@ -3,10 +3,18 @@ import styles from "./WorkForm.module.css";
 import moment from "moment";
 import { useWork } from "../../context/workContext";
 
+
 const WorkForm = () => {
   const today = moment().format("MM/DD/YYYY");
-  const { CreateWork, GetWork, Work, UpdateWork } = useWork();
-  const [clean, setClean] = useState(false);
+  const { CreateWork, GetWork,  Work, UpdateWork} = useWork();
+
+  const [workDate, setWorkDate] = useState(false);
+  
+  useEffect(() => {
+    GetWork();          
+  },[])
+  
+  
 
   const [workData, setWorkData] = useState({
     LS3: 0,
@@ -16,68 +24,28 @@ const WorkForm = () => {
     DIGI_ABUT: 0,
     PHIS_ABUT: 0,
     FULL_ARCH: 0,
+    DATE: today
   });
-
-  useEffect(() => {
-    GetWork();
-  }, []);
-
-  useEffect(() => {
-    if (Work && Work.DATE !== today) {
-      setWorkData({
-        ...workData,
-        LS3: Work.LS3,
-        ZEISS: Work.ZEISS,
-        SHAPE: Work.SHAPE,
-        IBOS: Work.IBOS,
-        DIGI_ABUT: Work.DIGI_ABUT,
-        PHIS_ABUT: Work.PHIS_ABUT,
-        FULL_ARCH: Work.FULL_ARCH,
-      });
-      setClean(true);
-    }
-  }, [Work, clean]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setWorkData({
-      ...workData,
+    setWorkData((prevState) => ({
+      ...prevState,
       [name]: value,
-    });
+    }));
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (Work && Work.DATE !== today && clean) {
-      Clean();
-      setClean(false);
-    } else if (Work && Work.DATE !== today) {
-      UpdateWork(Work._id, workData);
-    } else {
-      CreateWork(workData);
-    }
-    GetWork();
+    e.preventDefault();    
+    CreateWork(workData);
+    GetWork();    
   };
-
-  const Clean = () => {
-    setWorkData({
-      LS3: 0,
-      ZEISS: 0,
-      SHAPE: 0,
-      IBOS: 0,
-      DIGI_ABUT: 0,
-      PHIS_ABUT: 0,
-      FULL_ARCH: 0,
-    });
-  };
-
-
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <div className={styles.frame}>
         <label className={styles.label}>Today Date</label>
-        <h1>{Work.DATE}</h1>
+        <h1>{today}</h1>
       </div>
       <div className={styles.frame}>
         <label className={styles.label}>LS3</label>
@@ -150,16 +118,8 @@ const WorkForm = () => {
         />
       </div>
       <div className={styles.frame}>
-        <label className={styles.label}></label>
-        {Work && Work.DATE === today ? (
-          <button type="submit" className={styles.submit}>
-            Edit
-          </button>
-        ) : (
-          <button type="submit" className={styles.submit}>
-            {clean ? "Clean" : "Submit"}
-          </button>
-        )}
+      <label className={styles.label}></label>   
+    <button type="submit" className={styles.submit}>Submit</button>
       </div>
     </form>
   );

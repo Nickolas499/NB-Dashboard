@@ -24,7 +24,6 @@ export const getScaned = async (req, res) => {
 //==================================================================================//
 export const createScaned = async (req, res) => {
   const { LS3, ZEISS, SHAPE, COPY_MILL, FULL_ARCH, DATE } = req.body;
-  console.log(req.body);
   const newScaned = new Scaned({
     LS3,
     ZEISS,

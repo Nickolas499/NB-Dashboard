@@ -14,5 +14,4 @@ const SafetyShema = new mongoose.Schema({
 })
 
 const Safety = mongoose.model("Safety", SafetyShema);
-console.log(moment().format('MM/DD/YYYY'));
 export default Safety
