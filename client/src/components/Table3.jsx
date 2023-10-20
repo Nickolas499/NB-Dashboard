@@ -75,7 +75,8 @@ function Table3(props) {
                   {columnIndex === 0 ? (
                     row[column]
                   ) : isEditing && editedRow._id === row._id ? (
-                    <input
+                    <input 
+                      id={column}
                       className="Input_field"
                       type="text"
                       value={editedRow[column]}

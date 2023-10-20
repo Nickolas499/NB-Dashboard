@@ -100,7 +100,7 @@ const UserForm = ({ users }) => {
             <article className={style.article}>
               <input
                 type="checkbox"
-                id="feature1"
+                id="LS3"
                 name="LS3"
                 value={user._id}
                 checked={assignedWork.LS3.includes(user._id)}
@@ -113,7 +113,7 @@ const UserForm = ({ users }) => {
             <article className={style.article}>
               <input
                 type="checkbox"
-                id="feature1"
+                id="ZEISS"
                 name="ZEISS"
                 value={user._id}
                 checked={assignedWork.ZEISS.includes(user._id)}
@@ -126,7 +126,7 @@ const UserForm = ({ users }) => {
             <article className={style.article}>
               <input
                 type="checkbox"
-                id="feature1"
+                id="SHAPE"
                 name="SHAPE"
                 value={user._id}
                 checked={assignedWork.SHAPE.includes(user._id)}
@@ -139,7 +139,7 @@ const UserForm = ({ users }) => {
             <article className={style.article}>
               <input
                 type="checkbox"
-                id="feature1"
+                id="IBOS"
                 name="IBOS"
                 value={user._id}
                 checked={assignedWork.IBOS.includes(user._id)}
@@ -152,7 +152,7 @@ const UserForm = ({ users }) => {
             <article className={style.article}>
               <input
                 type="checkbox"
-                id="feature1"
+                id="DIGI_ABUT"
                 name="DIGI_ABUT"
                 value={user._id}
                 checked={assignedWork.DIGI_ABUT.includes(user._id)}
@@ -165,7 +165,7 @@ const UserForm = ({ users }) => {
             <article className={style.article}>
               <input
                 type="checkbox"
-                id="feature1"
+                id="PHIS_ABUT"
                 name="PHIS_ABUT"
                 value={user._id}
                 checked={assignedWork.PHIS_ABUT.includes(user._id)}
@@ -178,7 +178,7 @@ const UserForm = ({ users }) => {
             <article className={style.article}>
               <input
                 type="checkbox"
-                id="feature1"
+                id="FULL_ARCH"
                 name="FULL_ARCH"
                 value={user._id}
                 checked={assignedWork.FULL_ARCH.includes(user._id)}
@@ -191,7 +191,7 @@ const UserForm = ({ users }) => {
             <article className={style.article}>
               <input
                 type="checkbox"
-                id="feature1"
+                id="DAY_OFF"
                 name="DAY_OFF"                
                 value={user._id}
                 checked={assignedWork.DAY_OFF.includes(user._id)}

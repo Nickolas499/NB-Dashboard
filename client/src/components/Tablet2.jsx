@@ -68,7 +68,7 @@ function Table2(props) {
                   row[column]
                 ) : (
                   isEditing && editedRow._id === row._id ? (
-                    <input className="Input_field" type="text" value={editedRow[column]} onChange={(e) => {
+                    <input id={column} className="Input_field" type="text" value={editedRow[column]} onChange={(e) => {
                         setEditedRow({ ...editedRow, [column]: e.target.value });
                         setEditedData({ ...editedData, [column]: e.target.value });
                     }} />

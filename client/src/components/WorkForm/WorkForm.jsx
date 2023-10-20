@@ -5,7 +5,7 @@ import { useWork } from "../../context/workContext";
 
 const WorkForm = () => {
   const today = moment().format("MM/DD/YYYY");
-  const { CreateWork, GetWork, Work, UpdateWork } = useWork();
+  const { CreateWork, GetWork, Work, UpdateWork,} = useWork();
   const [clean, setClean] = useState(false);
 
   const [workData, setWorkData] = useState({
@@ -15,7 +15,7 @@ const WorkForm = () => {
     IBOS: 0,
     DIGI_ABUT: 0,
     PHIS_ABUT: 0,
-    FULL_ARCH: 0,
+    FULL_ARCH: 0,    
   });
 
   useEffect(() => {
@@ -24,8 +24,8 @@ const WorkForm = () => {
 
   useEffect(() => {
     if (Work && Work.DATE !== today) {
-      setWorkData({
-        ...workData,
+      setWorkData((prevState) => ({
+        ...prevState,
         LS3: Work.LS3,
         ZEISS: Work.ZEISS,
         SHAPE: Work.SHAPE,
@@ -33,31 +33,34 @@ const WorkForm = () => {
         DIGI_ABUT: Work.DIGI_ABUT,
         PHIS_ABUT: Work.PHIS_ABUT,
         FULL_ARCH: Work.FULL_ARCH,
-      });
+      }));
       setClean(true);
     }
-  }, [Work, clean]);
+  }, [Work,clean]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setWorkData({
-      ...workData,
+    setWorkData((prevState) => ({
+      ...prevState,
       [name]: value,
-    });
+    }));
   };
 
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (Work && Work.DATE !== today && clean) {
-      Clean();
-      setClean(false);
-    } else if (Work && Work.DATE !== today) {
+    if (Work && Work.DATE === today) {
       UpdateWork(Work._id, workData);
+      setClean(false);
+      GetWork();
+    
     } else {
       CreateWork(workData);
+      GetWork();
     }
     GetWork();
   };
+
 
   const Clean = () => {
     setWorkData({
@@ -67,9 +70,9 @@ const WorkForm = () => {
       IBOS: 0,
       DIGI_ABUT: 0,
       PHIS_ABUT: 0,
-      FULL_ARCH: 0,
+      FULL_ARCH: 0        
     });
-  };
+  }
 
 
 
@@ -82,6 +85,7 @@ const WorkForm = () => {
       <div className={styles.frame}>
         <label className={styles.label}>LS3</label>
         <input
+          id="LS3"
           type="number"
           name="LS3"
           value={workData.LS3}
@@ -92,6 +96,7 @@ const WorkForm = () => {
       <div className={styles.frame}>
         <label className={styles.label}>ZEISS</label>
         <input
+          id="ZEISS"
           type="number"
           name="ZEISS"
           value={workData.ZEISS}
@@ -102,6 +107,7 @@ const WorkForm = () => {
       <div className={styles.frame}>
         <label className={styles.label}>3SHAPE</label>
         <input
+          id="SHAPE"
           type="number"
           name="SHAPE"
           value={workData.SHAPE}
@@ -112,6 +118,7 @@ const WorkForm = () => {
       <div className={styles.frame}>
         <label className={styles.label}>IBO</label>
         <input
+          id="IBOS"
           type="number"
           name="IBOS"
           value={workData.IBOS}
@@ -122,6 +129,7 @@ const WorkForm = () => {
       <div className={styles.frame}>
         <label className={styles.label}>DIGITAL ABUT</label>
         <input
+          id="DIGI_ABUT"
           type="number"
           name="DIGI_ABUT"
           value={workData.DIGI_ABUT}
@@ -132,6 +140,7 @@ const WorkForm = () => {
       <div className={styles.frame}>
         <label className={styles.label}>PHISICAL ABUT</label>
         <input
+          id="PHIS_ABUT"
           type="number"
           name="PHIS_ABUT"
           value={workData.PHIS_ABUT}
@@ -142,6 +151,7 @@ const WorkForm = () => {
       <div className={styles.frame}>
         <label className={styles.label}>FULL ARCH</label>
         <input
+          id="FULL_ARCH"
           type="number"
           name="FULL_ARCH"
           value={workData.FULL_ARCH}
@@ -157,7 +167,7 @@ const WorkForm = () => {
           </button>
         ) : (
           <button type="submit" className={styles.submit}>
-            {clean ? "Clean" : "Submit"}
+           Submit
           </button>
         )}
       </div>

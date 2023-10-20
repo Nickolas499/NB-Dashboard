@@ -60,6 +60,7 @@ export const Register = () => {
       </span>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
+          id="username"
           type="text"
           {...register("username", { required: true })}
           placeholder="Username"
@@ -67,6 +68,7 @@ export const Register = () => {
         />
         {errors.username && <p className="error">This field is required</p>}
         <input
+          id="fname"
           type="text"
           {...register("fname", { required: true })}
           placeholder="First Name"
@@ -74,6 +76,7 @@ export const Register = () => {
         />
         {errors.fname && <p className="error">This field is required</p>}
         <input
+          id="lname"
           type="text"
           {...register("lname", { required: true })}
           placeholder="Last Name"
@@ -81,6 +84,7 @@ export const Register = () => {
         />
         {errors.lname && <p className="error">This field is required</p>}
         <input
+          id="email"
           type="email"
           {...register("email", { required: true })}
           placeholder="Email"
@@ -88,6 +92,7 @@ export const Register = () => {
         />
         {errors.email && <p className="error">This field is required</p>}
         <input
+          id="password"
           type="password"
           {...register("password", { required: true })}
           placeholder="Password"
