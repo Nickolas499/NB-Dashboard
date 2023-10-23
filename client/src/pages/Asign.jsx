@@ -3,7 +3,7 @@ import asigncss from '../css/asign.module.css';
 import Tabs from "../components/tabs/Tabs";
 import WorkForm from '../components/WorkForm/WorkForm';
 import UserForm from '../components/UserForm/UserForm';
-
+import Test from '../components/test/Test';
 
 export const Asign = () => {
 
@@ -75,9 +75,10 @@ export const Asign = () => {
           </div>
         </div>
       {/*==================================(Registration)========================================================*/}
-        <div label="#2">
+        <div label="Test">
         <div className={asigncss.tab_container}>
-          <h1>#2</h1>
+          <h1>Test</h1>
+          <Test/>
           </div>
         </div>
       {/*==================================(Registration)========================================================*/}

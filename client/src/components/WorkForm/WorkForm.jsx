@@ -36,7 +36,7 @@ const WorkForm = () => {
       }));
       setClean(true);
     }
-  }, [Work,clean]);
+  }, [Work, today]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -62,17 +62,6 @@ const WorkForm = () => {
   };
 
 
-  const Clean = () => {
-    setWorkData({
-      LS3: 0,
-      ZEISS: 0,
-      SHAPE: 0,
-      IBOS: 0,
-      DIGI_ABUT: 0,
-      PHIS_ABUT: 0,
-      FULL_ARCH: 0        
-    });
-  }
 
 
 
