@@ -43,36 +43,36 @@ export const Test = () => {
           <li className="li_item" key={index}>
             <span className="span_name">{card.name}</span>
             <span className="span_value">
-              <input type="checkbox" />
-              <input className="input_value" type="text" />
+              <input id={index+"LS3"+index} type="checkbox" />
+              <input id={index+"LS3"+index+1} className="input id={}_value" type="text" />
             </span>
             <span className="span_value">
-              <input type="checkbox" />
-              <input className="input_value" type="text" />
+              <input id={ index+"ZEISS"+index} type="checkbox" />
+              <input id={ index+"ZEISS"+index+2} className="input id={}_value" type="text" />
             </span>
             <span className="span_value">
-              <input type="checkbox" />
-              <input className="input_value" type="text" />
+              <input id={   index+"SHAPE"+index} type="checkbox" />
+              <input id={ index+"SHAPE"+index+3} className="input id={}_value" type="text" />
             </span>
             <span className="span_value">
-              <input type="checkbox" />
-              <input className="input_value" type="text" />
+              <input id={ index+"IBOS"+index} type="checkbox" />
+              <input id={ index+"IBOS"+index+4} className="input id={}_value" type="text" />
             </span>
             <span className="span_value">
-              <input type="checkbox" />
-              <input className="input_value" type="text" />
+              <input id={ index+"DIGI_ABUT"+index} type="checkbox" />
+              <input id={ index+"DIGI_ABUT"+index+5} className="input id={}_value" type="text" />
             </span>
             <span className="span_value">
-              <input type="checkbox" />
-              <input className="input_value" type="text" />
+              <input id={ index+"PHISIC_ABUT"+index} type="checkbox" />
+              <input id={ index+"PHISIC_ABUT"+index+6} className="input id={}_value" type="text" />
             </span>
             <span className="span_value">
-              <input type="checkbox" />
-              <input className="input_value" type="text" />
+              <input id={ index+"FULL_ARCH"+index} type="checkbox" />
+              <input id={ index+"FULL_ARCH"+index+7} className="input id={}_value" type="text" />
             </span>
             <span className="span_value">
-              <input type="checkbox" />
-              <input className="input_value" type="text" />
+              <input id={   index+"FULL_ARCH"+index} type="checkbox" />
+              <input id={ index+"FULL_ARCH"+index+8} className="input id={}_value" type="text" />
             </span>
             <span className="span_btn">
               <button className="btn">Asign</button>
@@ -87,7 +87,7 @@ export const Test = () => {
             <div className="tab_asigment_container">
               <div className="control">
                 <span>Creat New Asigment</span>
-                <input type="text" />
+                <input id={2} type="text" />
                 <button className="btn">Create</button>
               </div>
             </div>

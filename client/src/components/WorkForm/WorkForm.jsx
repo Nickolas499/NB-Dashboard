@@ -68,11 +68,11 @@ const WorkForm = () => {
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <div className={styles.frame}>
-        <label className={styles.label}>Today Date</label>
+        <span className={styles.label} fo>Today Date</span>
         <h1>{Work.DATE}</h1>
       </div>
       <div className={styles.frame}>
-        <label className={styles.label}>LS3</label>
+        <label className={styles.label} for="LS3">LS3</label>
         <input
           id="LS3"
           type="number"
@@ -83,7 +83,7 @@ const WorkForm = () => {
         />
       </div>
       <div className={styles.frame}>
-        <label className={styles.label}>ZEISS</label>
+        <label className={styles.label} for="ZEISS">ZEISS</label>
         <input
           id="ZEISS"
           type="number"
@@ -94,7 +94,7 @@ const WorkForm = () => {
         />
       </div>
       <div className={styles.frame}>
-        <label className={styles.label}>3SHAPE</label>
+        <label className={styles.label} for="SHAPE">3SHAPE</label>
         <input
           id="SHAPE"
           type="number"
@@ -105,7 +105,7 @@ const WorkForm = () => {
         />
       </div>
       <div className={styles.frame}>
-        <label className={styles.label}>IBO</label>
+        <label className={styles.label} for="IBOS">IBO</label>
         <input
           id="IBOS"
           type="number"
@@ -116,7 +116,7 @@ const WorkForm = () => {
         />
       </div>
       <div className={styles.frame}>
-        <label className={styles.label}>DIGITAL ABUT</label>
+        <label className={styles.label} for="DIGI_ABUT">DIGITAL ABUT</label>
         <input
           id="DIGI_ABUT"
           type="number"
@@ -127,7 +127,7 @@ const WorkForm = () => {
         />
       </div>
       <div className={styles.frame}>
-        <label className={styles.label}>PHISICAL ABUT</label>
+        <label className={styles.label} for="PHIS_ABUT">PHISICAL ABUT</label>
         <input
           id="PHIS_ABUT"
           type="number"
@@ -138,7 +138,7 @@ const WorkForm = () => {
         />
       </div>
       <div className={styles.frame}>
-        <label className={styles.label}>FULL ARCH</label>
+        <label className={styles.label} for="FULL_ARCH">FULL ARCH</label>
         <input
           id="FULL_ARCH"
           type="number"
@@ -149,7 +149,7 @@ const WorkForm = () => {
         />
       </div>
       <div className={styles.frame}>
-        <label className={styles.label}></label>
+        <span className={styles.label} ></span>
         {Work && Work.DATE === today ? (
           <button type="submit" className={styles.submit}>
             Edit

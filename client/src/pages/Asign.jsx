@@ -5,62 +5,10 @@ import WorkForm from '../components/WorkForm/WorkForm';
 import UserForm from '../components/UserForm/UserForm';
 import Test from '../components/test/Test';
 
+
 export const Asign = () => {
 
-  const users = [
-    {
-      _id: 'eze',
-      fname: 'ezequiel',
-      lname: 'Almonte',
-      color: '#01acf073',
-    },
-    {
-      _id: 'mon',
-      fname: 'Monica',
-      lname: 'Lopez',
-      color: '#6FC308',
-    },
-    {
-      _id: 'noe',
-      fname: 'Noemie',
-      lname: 'Villajuan',
-      color: '#F78E57',
-    },
-    {
-      _id: 'mil',
-      fname: 'Milka',
-      lname: 'Cvetkovic',
-      color: '#F78E57',
-    },
-    {
-      _id: 'lau',
-      fname: 'Lauren',
-      lname: 'LeGrand',
-      color: '#F78E57',
-    },
-    {
-      _id: 'bun',
-      fname: 'Bung',
-      lname: 'Su Choi',
-      color: '#F78E57',
-    },
-    {
-      _id: 'Roux',
-      fname: 'Roux',
-      lname: 'Tadili',
-      color: '#F78E57',
-    },
-    {
-      _id: 'Lucia',
-      fname: 'Lucia',
-      lname: 'Coto',
-      color: '#F78E57',
-    },
-
-
-
-    
-  ]
+  
   return (
     <div className={asigncss.AsingContainer}> 
     <div className={asigncss.Container}>
@@ -71,7 +19,7 @@ export const Asign = () => {
           <h1>Work Asignment</h1>
           <WorkForm/>
           <h1>Workers</h1>
-          <UserForm users={users}/>
+          <UserForm />
           </div>
         </div>
       {/*==================================(Registration)========================================================*/}

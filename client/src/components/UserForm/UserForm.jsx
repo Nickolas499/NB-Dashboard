@@ -1,9 +1,27 @@
 import React, { useState } from "react";
 import style from "./UserForm.module.css";
 import moment from "moment";
+import{useAuth} from "../../context/authContext";
+import { useEffect } from 'react';
 
-const UserForm = ({ users }) => {
+const UserForm = () => {
   const today = moment().format("MM/DD/YYYY");
+
+  const { GetUsers, usuarios  } = useAuth();
+  useEffect(() => {
+    GetUsers();    
+  } , []);
+
+
+  const cantidad =[{
+    "LS3": 5,
+    "ZEISS": 8,
+    "SHAPE": 5,
+    "DIGI_ABUT": 120,
+    "PHIS_ABUT": 5,
+    "FULL_ARCH": 2,
+    "DATE": "10/03/2023"  
+  }]
 
   const [assignedWork, setAssignedWork] = useState({
     LS3: [],
@@ -19,6 +37,7 @@ const UserForm = ({ users }) => {
 
   const handleCheckboxChange = (e) => {
     const { name, value, checked } = e.target;
+    console.log(name, value, checked);
     setAssignedWork((prevState) => ({
       ...prevState,
       [name]: checked
@@ -32,8 +51,13 @@ const UserForm = ({ users }) => {
     return initials.toUpperCase();
   }
 
-  function getAssignedWork() {
-    console.log(assignedWork);
+  const production = (pro,designers)=>{
+    const total = pro / designers
+    return total
+  }
+
+  function getAssignedWork() {    
+        console.log(assignedWork);
   }
 
   return (
@@ -86,7 +110,7 @@ const UserForm = ({ users }) => {
         </article>
       </div>
       <div className={style.workers}>
-        {users.map((user) => (
+        {usuarios.map((user) => (
           <div className={style.container} key={user._id}>
             <div className={style.workerList}>
               <div
@@ -100,7 +124,6 @@ const UserForm = ({ users }) => {
             <article className={style.article}>
               <input
                 type="checkbox"
-                id="LS3"
                 name="LS3"
                 value={user._id}
                 checked={assignedWork.LS3.includes(user._id)}
@@ -113,7 +136,6 @@ const UserForm = ({ users }) => {
             <article className={style.article}>
               <input
                 type="checkbox"
-                id="ZEISS"
                 name="ZEISS"
                 value={user._id}
                 checked={assignedWork.ZEISS.includes(user._id)}
@@ -126,7 +148,6 @@ const UserForm = ({ users }) => {
             <article className={style.article}>
               <input
                 type="checkbox"
-                id="SHAPE"
                 name="SHAPE"
                 value={user._id}
                 checked={assignedWork.SHAPE.includes(user._id)}
@@ -139,7 +160,6 @@ const UserForm = ({ users }) => {
             <article className={style.article}>
               <input
                 type="checkbox"
-                id="IBOS"
                 name="IBOS"
                 value={user._id}
                 checked={assignedWork.IBOS.includes(user._id)}
@@ -152,7 +172,6 @@ const UserForm = ({ users }) => {
             <article className={style.article}>
               <input
                 type="checkbox"
-                id="DIGI_ABUT"
                 name="DIGI_ABUT"
                 value={user._id}
                 checked={assignedWork.DIGI_ABUT.includes(user._id)}
@@ -165,7 +184,6 @@ const UserForm = ({ users }) => {
             <article className={style.article}>
               <input
                 type="checkbox"
-                id="PHIS_ABUT"
                 name="PHIS_ABUT"
                 value={user._id}
                 checked={assignedWork.PHIS_ABUT.includes(user._id)}
@@ -178,7 +196,6 @@ const UserForm = ({ users }) => {
             <article className={style.article}>
               <input
                 type="checkbox"
-                id="FULL_ARCH"
                 name="FULL_ARCH"
                 value={user._id}
                 checked={assignedWork.FULL_ARCH.includes(user._id)}
@@ -191,7 +208,6 @@ const UserForm = ({ users }) => {
             <article className={style.article}>
               <input
                 type="checkbox"
-                id="DAY_OFF"
                 name="DAY_OFF"                
                 value={user._id}
                 checked={assignedWork.DAY_OFF.includes(user._id)}

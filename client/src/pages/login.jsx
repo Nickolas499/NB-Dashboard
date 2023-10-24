@@ -30,13 +30,16 @@ export const Login = (props) => {
           </p>
         ))}
           <input
+            name="username"
             className={style.input_text}
             type="text"
             {...register("username", { required: true })}            
             placeholder="username"
+            autoComplete="true"
           />
           {errors.username && <p className="error">This field is required</p>}
           <input
+            name="password"
             className={style.input_text}
             type="password"
             {...register("password", { required: true })}

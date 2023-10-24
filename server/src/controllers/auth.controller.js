@@ -133,7 +133,7 @@ export const verify =  async (req, res) => {
 
 
 export const getUsers = async (req, res) => {  
-    const userFound = await User.find({});
+    const userFound = await User.find({},'_id fname lname color');
     // console.log(userFound);
     if (!userFound) {
       return res.status(404).json(["Users not found"]);

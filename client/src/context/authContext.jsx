@@ -3,6 +3,7 @@ import {
   RegisterRequest,
   LoginRequest,
   verifyTokenRequest,
+  Users
 } from "../api/auth.js";
 import Cookies from "js-cookie";
 
@@ -18,6 +19,7 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [usuarios, setUsuarios] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -85,9 +87,19 @@ export const AuthProvider = ({ children }) => {
     checkLogin();
   }, []);
 
+  
+    const GetUsers = async ()=> {
+      try {
+        const res = await Users();
+        setUsuarios(res.data);        
+      } catch (error) {
+        console.log(error);
+      }
+    }    
+
   return (
     <authContext.Provider
-      value={{ Signup, Signin, user, isAuthenticated, errors, loading, Logout }}
+      value={{ Signup, Signin, GetUsers, user, usuarios, isAuthenticated, errors, loading, Logout }}
     >
       {children}
     </authContext.Provider>
