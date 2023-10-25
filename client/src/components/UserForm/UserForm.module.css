@@ -127,6 +127,30 @@
     justify-content: center;
     align-items: center;
     transition: .5s ease;
+    border-radius: 4px;
+    border: 1px solid;
+    border-color:  var(--darkGray);
+}
+.header_title{
+    position: relative;
+    width: 100px;
+    height: 48px;
+    margin: 5px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: .5s ease;
+    cursor: pointer;
+    
+}
+
+.header_title div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s ease;
+    border-radius: 4px;
 }
 
 .span {
@@ -136,6 +160,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     text-align: center;
+    
 }
 
 .article input {
@@ -145,6 +170,7 @@
     width: 100px;
     height: 48px;
     opacity: 0;
+    
     cursor: pointer;
 }
 
@@ -153,7 +179,7 @@ input[type=checkbox]:checked~div {
     color: #302d2d;
 }
 
-.dayoff input[type=checkbox]:checked~div{
-    background-color: #f12307;
-    color: #302d2d;
-}
+input[type=checkbox]:not(:checked) ~ div {
+    background-color: var(--gray); 
+    color: var(--textColor);
+  }

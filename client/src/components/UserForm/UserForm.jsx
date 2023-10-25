@@ -1,27 +1,39 @@
 import React, { useState } from "react";
-import style from "./UserForm.module.css";
 import moment from "moment";
-import{useAuth} from "../../context/authContext";
+import style from "./UserForm.module.css";
+import { useAuth } from "../../context/authContext";
+import { useWork } from "../../context/workContext";
 import { useEffect } from 'react';
 
 const UserForm = () => {
   const today = moment().format("MM/DD/YYYY");
 
-  const { GetUsers, usuarios  } = useAuth();
+  
+  const { GetWork, Work, CreateJob } = useWork();
   useEffect(() => {
-    GetUsers();    
-  } , []);
+    GetWork();
+  }, []);
 
+  const { GetUsers, usuarios } = useAuth();
+  useEffect(() => {
+    GetUsers(); 
+    GetWork();   
+  }, []);
+  
 
-  const cantidad =[{
+  const cantidad = [{
     "LS3": 5,
     "ZEISS": 8,
     "SHAPE": 5,
+    "IBOS": 5,
     "DIGI_ABUT": 120,
     "PHIS_ABUT": 5,
-    "FULL_ARCH": 2,
-    "DATE": "10/03/2023"  
-  }]
+    "FULL_ARCH": 2,     
+  }];
+  console.log("Cantidad");
+  console.log(cantidad);
+  console.log("Work");
+  console.log(Work);
 
   const [assignedWork, setAssignedWork] = useState({
     LS3: [],
@@ -32,12 +44,11 @@ const UserForm = () => {
     PHIS_ABUT: [],
     FULL_ARCH: [],
     DAY_OFF: [],
-    DATE: today,
+    DATE: moment().format("MM/DD/YYYY"),
   });
 
   const handleCheckboxChange = (e) => {
-    const { name, value, checked } = e.target;
-    console.log(name, value, checked);
+    const { name, value, checked } = e.target;    
     setAssignedWork((prevState) => ({
       ...prevState,
       [name]: checked
@@ -51,63 +62,81 @@ const UserForm = () => {
     return initials.toUpperCase();
   }
 
-  const production = (pro,designers)=>{
-    const total = pro / designers
-    return total
+  const production = (pro, designers) => {
+    return Math.floor(pro / designers);
+    
   }
-
-  function getAssignedWork() {    
-        console.log(assignedWork);
+  
+  function getAssignedWork() {
+    const assignedData = {};
+    Object.entries(assignedWork).forEach(([key, value]) => {
+      if (key === "DAY_OFF") {
+        assignedData[key] = value.reduce((acc, user) => {
+          acc[user] = true;
+          return acc;
+        }, {});
+      } else if (Array.isArray(value) && value.length > 0) {
+        assignedData[key] = value.reduce((acc, user) => {
+          acc[user] = production(Work[key], value.length);
+          return acc;
+        }, {});
+      } else {
+        assignedData[key] = {};
+      }
+    });
+    assignedData.DATE = today;    
+    CreateJob(assignedData);
   }
+  
 
   return (
     <div className={style.frame}>
       <div className={style.header}>
-        <article className={style.article}>
+        <div className={style.header_title}>
           <div>
             <span className={style.span}></span>
           </div>
-        </article>
-        <article className={style.article}>
+        </div>
+        <div className={style.header_title}>
           <div>
             <span className={style.span}>LS3</span>
           </div>
-        </article>
-        <article className={style.article}>
+        </div>
+        <div className={style.header_title}>
           <div>
             <span className={style.span}>ZEISS</span>
           </div>
-        </article>
-        <article className={style.article}>
+        </div>
+        <div className={style.header_title}>
           <div>
             <span className={style.span}>3SHAPE</span>
           </div>
-        </article>
-        <article className={style.article}>
+        </div>
+        <div className={style.header_title}>
           <div>
             <span className={style.span}>IBO</span>
           </div>
-        </article>
-        <article className={style.article}>
+        </div>
+        <div className={style.header_title}>
           <div>
             <span className={style.span}>DIGITAL ABUTMEN</span>
           </div>
-        </article>
-        <article className={style.article}>
+        </div>
+        <div className={style.header_title}>
           <div>
             <span className={style.span}>PHISICAL ABUTMEN</span>
           </div>
-        </article>
-        <article className={style.article}>
+        </div>
+        <div className={style.header_title}>
           <div>
             <span className={style.span}>FULL ARCH</span>
           </div>
-        </article>
-        <article className={style.article}>
+        </div>
+        <div className={style.header_title}>
           <div>
             <span className={style.span}>OFF</span>
           </div>
-        </article>
+        </div>
       </div>
       <div className={style.workers}>
         {usuarios.map((user) => (
@@ -222,10 +251,10 @@ const UserForm = () => {
       </div>
       <div className={style.footer}>
         <button className={style.btn} onClick={getAssignedWork}>
-          Asign
+          Assign
         </button>
       </div>
-    </div>
+    </div>  
   );
 };
 

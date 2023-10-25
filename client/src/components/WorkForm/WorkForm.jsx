@@ -15,7 +15,8 @@ const WorkForm = () => {
     IBOS: 0,
     DIGI_ABUT: 0,
     PHIS_ABUT: 0,
-    FULL_ARCH: 0,    
+    FULL_ARCH: 0,  
+    DATE: today  
   });
 
   useEffect(() => {
