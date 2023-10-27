@@ -16,23 +16,9 @@ const UserForm = () => {
 
   const { GetUsers, usuarios } = useAuth();
   useEffect(() => {
-    GetUsers(); 
-    GetWork();   
+    GetUsers();       
   }, []);
   
-
-  const cantidad = [{
-    "LS3": 5,
-    "ZEISS": 8,
-    "SHAPE": 5,
-    "IBOS": 5,
-    "DIGI_ABUT": 120,
-    "PHIS_ABUT": 5,
-    "FULL_ARCH": 2,     
-  }];
-  console.log("Cantidad");
-  console.log(cantidad);
-  console.log("Work");
   console.log(Work);
 
   const [assignedWork, setAssignedWork] = useState({
@@ -72,7 +58,7 @@ const UserForm = () => {
     Object.entries(assignedWork).forEach(([key, value]) => {
       if (key === "DAY_OFF") {
         assignedData[key] = value.reduce((acc, user) => {
-          acc[user] = true;
+          acc[user] = 1;
           return acc;
         }, {});
       } else if (Array.isArray(value) && value.length > 0) {

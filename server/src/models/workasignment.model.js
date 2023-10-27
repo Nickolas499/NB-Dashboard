@@ -10,9 +10,6 @@ const WorkAsingmentShema = new mongoose.Schema({
     PHIS_ABUT: {type: Number},
     FULL_ARCH: {type: Number},
     DATE: {type: String, default: moment().format('MM/DD/YYYY')}    
-}, {
-    versionKey: false,
-    timestamps: true
 })
 
 const workasingment = mongoose.model("workasingment", WorkAsingmentShema);

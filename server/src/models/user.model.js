@@ -9,7 +9,9 @@ const userShema = new mongoose.Schema({
     password: {type: String, required: true},
     access: {type: String, required: true},
     color: {type: String, required: true}
-}, {versionKey: false,timestamps: true});
+}, {versionKey: false,
+    timestamps: true
+});
 
 
 

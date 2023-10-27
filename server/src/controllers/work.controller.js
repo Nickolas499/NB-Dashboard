@@ -2,12 +2,13 @@ import workasingment from "../models/workasignment.model.js";
 import jobasigment from "../models/Jobasigment.model.js";
 //=====================================((CREATE WORK CONTROLLER))==============================================//
 export const createWork = async (req, res) => {
-    const { LS3, ZEISS, SHAPE, DIGI_ABUT, PHIS_ABUT, FULL_ARCH, DATE } = req.body;
+    const { LS3, ZEISS, SHAPE,IBOS, DIGI_ABUT, PHIS_ABUT, FULL_ARCH, DATE } = req.body;
     console.log(req.body);
     const newWork = new workasingment({
       LS3,
       ZEISS,
       SHAPE,
+      IBOS,
       DIGI_ABUT,
       PHIS_ABUT,
       FULL_ARCH,
@@ -28,7 +29,8 @@ export const getWork = async (req, res) => {
     IBOS: 1,
     DIGI_ABUT: 1,
     PHIS_ABUT: 1,
-    FULL_ARCH: 1
+    FULL_ARCH: 1,
+    DATE: 1
   }).sort({ createdAt: -1 });
     return res.json(work);
   
