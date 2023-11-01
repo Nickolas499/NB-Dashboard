@@ -27,16 +27,17 @@ export const useWork = () => {
   return context;
 };
 
-//==================================((WORK PROVIDER))==============================================//
+//==================================((WORK PROVIDER))===========================================================//
 export const WorkProvider = ({ children }) => {
   const [Work, setWork] = useState([]);
+  const [Job, setJob] = useState([]);
 
-  //======================================((Create Work API))==============================================//
+  //======================================((Create Work API))===================================================//
   const CreateWork = async (data) => {
     const res = await createWorkasignment(data);
     //console.log(res);
   };
-  //======================================((Get Work API))==============================================//
+  //======================================((Get Work API))======================================================//
   const GetWork = async () => {
     try {
       const res = await getWorkasignment();
@@ -46,40 +47,96 @@ export const WorkProvider = ({ children }) => {
       console.log(error);
     }
   };
-  //======================================((Get Work By Id API))==============================================//
+  //======================================((Get Work By Id API))=================================================//
   const GetWorkById = async (id) => {
     const res = await getWorkasignmentById(id);
     //console.log(res);
   };
-  //======================================((Update Work API))==============================================//
+  //======================================((Update Work API))====================================================//
   const UpdateWork = async (id, data) => {
     const res = await updateWorkasignment(id, data);
     //console.log(res);
   };
-  //======================================((Delete Work API))==============================================//
+  //======================================((Delete Work API))====================================================//
   const DeleteWork = async (id) => {
     const res = await deleteWorkasignment(id);
     //console.log(res);
   };
 
-  //==================================((create JobAsigment API))==============================================//
+  //==================================((create JobAsigment API))=================================================//
 
   const CreateJob = async (data) => {
     const res = await createJobasignment(data);
-    console.log(res);
+    //console.log(res);
   };
 
-  //==================================((Get JobAsigment API))==============================================//
+  //==================================((Get JobAsigment API))====================================================//
+
+  const GetJob = async () => {
+    try {
+      const res = await getJobasignment();
+      setJob(res.data);
+      //console.log(res.data);
+    } catch (error) {
+      //console.log(error);
+    }
+  };
+ 
+
+
+  //==================================((Get JobAsigment By Id API))==============================================//
+
+   const GetJobById = async (id) => {
+    try {
+      const res = await getJobasignmentById(id);
+      //console.log(res);
+    } catch (error) {
+      //console.log(error);
+    }
+    
+   }
+
+
+  //==================================((Update JobAsigment API))=================================================//
+
+  const UpdateJob = async (id, data) => {
+    try {
+      const res = await updateJobasignment(id, data);
+      //console.log(res);
+    } catch (error) {
+      //console.log(error);
+    }
+  }
+
+
+
+
+  //==================================((Delete JobAsigment API))====================================================//
+
+  const DeleteJob = async (id) => {
+    try {
+      const res = await deleteJobasignment(id);
+      //console.log(res);
+    } catch (error) {
+      //console.log(error);
+    }
+  }
+
   return (
     <WorkContext.Provider
       value={{
-        CreateWork,
-        CreateJob,
+        CreateWork,        
         GetWork,
         GetWorkById,
         UpdateWork,
         DeleteWork,
+        CreateJob,
+        GetJob,
+        GetJobById,
+        UpdateJob,
+        DeleteJob,
         Work,
+        Job
       }}
     >
       {children}

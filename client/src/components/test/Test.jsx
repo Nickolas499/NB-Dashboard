@@ -1,136 +1,247 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from "react";
+import moment from "moment";
+import style from "./UserForm.module.css";
+import { useAuth } from "../../context/authContext";
 import { useWork } from "../../context/workContext";
+import { useEffect } from 'react';
 
-const Test = () => {
-  const { CreateWork, GetWork, Work, UpdateWork,} = useWork();
+const UserForm = () => {
+  const today = moment().format("MM/DD/YYYY");
 
-  const [workData, setWorkData] = useState([]);
-  const [userData, setUserData] = useState([]);
-  const [combinedData, setCombinedData] = useState([]);
-
-  const [userAssignments, setUserAssignments] = useState({});
-
+  
+  const { GetWork, Work, CreateJob,UpdateJob,Job } = useWork();
   useEffect(() => {
-    
-      setWorkData();
-      setUserData();
-
-      
-    
-
-    
+    GetWork();
   }, []);
 
-  const handleUserAssignment = (task, user) => {
-    setUserAssignments(prev => ({...prev, [task]: user}));
+  const { GetUsers, usuarios } = useAuth();
+  useEffect(() => {
+    GetUsers();       
+  }, []);
+  
+  console.log(Work);
+
+  const [assignedWork, setAssignedWork] = useState({
+    LS3: [],
+    ZEISS: [],
+    SHAPE: [],
+    IBOS: [],
+    DIGI_ABUT: [],
+    PHIS_ABUT: [],
+    FULL_ARCH: [],
+    DAY_OFF: [],
+    DATE: moment().format("MM/DD/YYYY"),
+  });
+
+  const handleCheckboxChange = (e) => {
+    const { name, value, checked } = e.target;    
+    setAssignedWork((prevState) => ({
+      ...prevState,
+      [name]: checked
+        ? [...prevState[name], value]
+        : prevState[name].filter((v) => v !== value),
+    }));
+  };
+
+  function getInitials(firstName, lastName) {
+    const initials = `${firstName[0]}${lastName[0]}`;
+    return initials.toUpperCase();
   }
 
-  const handleValueChange = (task, value) => {
-    setCombinedData(prev => 
-      prev.map(d => {
-        if (d.ID === task) {
-          return {
-            ...d,
-            [task]: value   
-          }
-        }
-        return d;
-      })
-    );
+  const production = (pro, designers) => {
+    return Math.floor(pro / designers);
+    
   }
+  
+  function getAssignedWork() {
+    const assignedData = {};
+    Object.entries(assignedWork).forEach(([key, value]) => {
+      if (key === "DAY_OFF") {
+        assignedData[key] = value.reduce((acc, user) => {
+          acc[user] = 1;
+          return acc;
+        }, {});
+      } else if (Array.isArray(value) && value.length > 0) {
+        assignedData[key] = value.reduce((acc, user) => {
+          acc[user] = production(Work[key], value.length);
+          return acc;
+        }, {});
+      } else {
+        assignedData[key] = {};
+      }
+    });
+    assignedData.DATE = today;    
+    CreateJob(assignedData);
+  }
+  
 
   return (
-    <div>
-      {combinedData.map(d => (
-        <div key={d.ID}>
-          <h3>{d.DATE}</h3>
-          
+    <div className={style.frame}>
+      <div className={style.header}>
+        <div className={style.header_title}>
           <div>
-            <label>LS3:</label>
-            <select
-              value={userAssignments['LS3']}
-              onChange={e => handleUserAssignment('LS3', e.target.value)}
-            >
-              {userData.map(u => (
-                <option key={u.ID}>{u.USER}</option>
-              ))}
-            </select>
+            <span className={style.span}></span>
           </div>
-
-          <div>
-            <label>ZEISS:</label>
-            <select
-              value={userAssignments['ZEISS']}
-              onChange={e => handleUserAssignment('ZEISS', e.target.value)}
-            >
-              {userData.map(u => (
-                <option key={u.ID}>{u.USER}</option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label>SHAPE:</label>
-            <select
-              value={userAssignments['SHAPE']}
-              onChange={e => handleUserAssignment('SHAPE', e.target.value)}
-            >
-              {userData.map(u => (
-                <option key={u.ID}>{u.USER}</option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label>IBO:</label>
-            <input
-              type="number"
-              value={d.IBO}
-              onChange={e => handleValueChange(d.ID, e.target.value)} 
-            />
-          </div>
-
-          <div>
-            <label>DIGITAL:</label>
-            <input
-              type="number"  
-              value={d.DIGITAL}
-              onChange={e => handleValueChange(d.ID, e.target.value)}
-            />
-          </div>
-
-          <div>
-            <label>PHYSICAL:</label>
-            <input
-              type="number"
-              value={d.PHYSICAL} 
-              onChange={e => handleValueChange(d.ID, e.target.value)}
-            />
-          </div>
-
-          <div>
-            <label>FULL_ARCH:</label>
-            <input 
-              type="number"
-              value={d.FULL_ARCH}
-              onChange={e => handleValueChange(d.ID, e.target.value)} 
-            />
-          </div>
-
-          <div>
-            <label>DAY_OFF:</label>
-            <input 
-              type="checkbox"
-              checked={d.DAY_OFF}
-              onChange={e => handleValueChange(d.ID, e.target.checked)} 
-            />
-          </div>
-
         </div>
-      ))}
-    </div>
+        <div className={style.header_title}>
+          <div>
+            <span className={style.span}>LS3</span>
+          </div>
+        </div>
+        <div className={style.header_title}>
+          <div>
+            <span className={style.span}>ZEISS</span>
+          </div>
+        </div>
+        <div className={style.header_title}>
+          <div>
+            <span className={style.span}>3SHAPE</span>
+          </div>
+        </div>
+        <div className={style.header_title}>
+          <div>
+            <span className={style.span}>IBO</span>
+          </div>
+        </div>
+        <div className={style.header_title}>
+          <div>
+            <span className={style.span}>DIGITAL ABUTMEN</span>
+          </div>
+        </div>
+        <div className={style.header_title}>
+          <div>
+            <span className={style.span}>PHISICAL ABUTMEN</span>
+          </div>
+        </div>
+        <div className={style.header_title}>
+          <div>
+            <span className={style.span}>FULL ARCH</span>
+          </div>
+        </div>
+        <div className={style.header_title}>
+          <div>
+            <span className={style.span}>OFF</span>
+          </div>
+        </div>
+      </div>
+      <div className={style.workers}>
+        {usuarios.map((user) => (
+          <div className={style.container} key={user._id}>
+            <div className={style.workerList}>
+              <div
+                className={style.logo}
+                style={{ backgroundColor: `${user.color}` }}
+              >
+                {getInitials(user.fname, user.lname)}
+              </div>{" "}
+              <h3>{`${user.fname} ${user.lname}`}</h3>
+            </div>
+            <article className={style.article}>
+              <input
+                type="checkbox"
+                name="LS3"
+                value={user._id}
+                checked={assignedWork.LS3.includes(user._id)}
+                onChange={handleCheckboxChange}
+              />
+              <div>
+                <span className={style.span}>LS3</span>
+              </div>
+            </article>
+            <article className={style.article}>
+              <input
+                type="checkbox"
+                name="ZEISS"
+                value={user._id}
+                checked={assignedWork.ZEISS.includes(user._id)}
+                onChange={handleCheckboxChange}
+              />
+              <div>
+                <span className={style.span}>ZEISS</span>
+              </div>
+            </article>
+            <article className={style.article}>
+              <input
+                type="checkbox"
+                name="SHAPE"
+                value={user._id}
+                checked={assignedWork.SHAPE.includes(user._id)}
+                onChange={handleCheckboxChange}
+              />
+              <div>
+                <span className={style.span}>3SHAPE</span>
+              </div>
+            </article>
+            <article className={style.article}>
+              <input
+                type="checkbox"
+                name="IBOS"
+                value={user._id}
+                checked={assignedWork.IBOS.includes(user._id)}
+                onChange={handleCheckboxChange}
+              />
+              <div>
+                <span className={style.span}>IBO</span>
+              </div>
+            </article>
+            <article className={style.article}>
+              <input
+                type="checkbox"
+                name="DIGI_ABUT"
+                value={user._id}
+                checked={assignedWork.DIGI_ABUT.includes(user._id)}
+                onChange={handleCheckboxChange}
+              />
+              <div>
+                <span className={style.span}>DIGITAL ABUTMEN</span>
+              </div>
+            </article>
+            <article className={style.article}>
+              <input
+                type="checkbox"
+                name="PHIS_ABUT"
+                value={user._id}
+                checked={assignedWork.PHIS_ABUT.includes(user._id)}
+                onChange={handleCheckboxChange}
+              />
+              <div>
+                <span className={style.span}>PHISICAL ABUTMEN</span>
+              </div>
+            </article>
+            <article className={style.article}>
+              <input
+                type="checkbox"
+                name="FULL_ARCH"
+                value={user._id}
+                checked={assignedWork.FULL_ARCH.includes(user._id)}
+                onChange={handleCheckboxChange}
+              />
+              <div>
+                <span className={style.span}>FULL ARCH</span>
+              </div>
+            </article>
+            <article className={style.article}>
+              <input
+                type="checkbox"
+                name="DAY_OFF"                
+                value={user._id}
+                checked={assignedWork.DAY_OFF.includes(user._id)}
+                onChange={handleCheckboxChange}
+              />
+              <div>
+                <span className={style.span}>DAY OFF</span>
+              </div>
+            </article>
+          </div>
+        ))}
+      </div>
+      <div className={style.footer}>
+        <button className={style.btn} onClick={getAssignedWork}>
+          Assign
+        </button>
+      </div>
+    </div>  
   );
+};
 
-}
-
-export default Test;
+export default UserForm;

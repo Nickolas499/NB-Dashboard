@@ -48,7 +48,7 @@ export const updateWork = async (req, res) => {
 }
 
 
-//=====================================((CREATE WORL ASIGNMENT))==============================================//
+//=====================================((CREATE JOB ASIGNMENT))==============================================//
 
 export const createJobAssignment = async (req, res) => {
   const { LS3, ZEISS, SHAPE, IBOS, DIGI_ABUT, PHIS_ABUT, FULL_ARCH,DAY_OFF, DATE } = req.body;
@@ -66,4 +66,32 @@ export const createJobAssignment = async (req, res) => {
   });
   const WorkSaved = await newJobAsingment.save();
   return res.json(WorkSaved);
+}
+
+//=====================================((GET JOB ASIGNMENT))==============================================//
+export const getJobAssignment = async (req, res) => {
+  const job = await jobasigment.findOne({}, {
+    _id: 0, 
+    LS3: 1,
+    ZEISS: 1,
+    SHAPE: 1, 
+    IBOS: 1,
+    DIGI_ABUT: 1,
+    PHIS_ABUT: 1,
+    FULL_ARCH: 1,
+    DAY_OFF: 1,
+    DATE: 1
+  }).sort({ createdAt: -1 });
+    return res.json(job);
+}
+
+//=====================================((UPDATE JOB ASIGNMENT))==============================================//
+export const updateJobAssignment = async (req, res) => {
+  const job = await jobasigment.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true }
+  );
+  if (!job) return res.status(404).json(["Job not found"]);
+  return res.json(job);
 }
