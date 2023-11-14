@@ -1,0 +1,110 @@
+.dropdown {
+    width: 200px;
+    position: relative;
+  }
+  .dropdown * {
+    box-sizing: border-box;
+  }
+
+  .userName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  .userName .name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-right: 20px;
+  }
+  .userName .userIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    background-color: #01AEF0;
+    box-shadow: 0 0 5px 0 #01AEF0;
+    transition: box-shadow 0.3s ease-out;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 0px;
+  }
+  .userName .userIcon .circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background-color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 0px;
+  }
+  .userName:hover .userIcon {
+    box-shadow: 0 0 15px 0 #01AEF0;
+  }
+  .select-clicked {
+    border: 2px solid #6FC308;
+    box-shadow: 0 0 10px 0 #6FC308;
+  }
+  .menu {
+    width: 150px;
+    list-style: none;
+    padding: 5px;
+    background-color: #23262D;
+    color: #b6b6b6;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 0%;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 0%;
+    position: absolute;
+    top: 50px;
+    left: 40%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: none;
+    transition: all 0.5s ease;
+    border: 2px solid #01AEF0;
+    box-shadow: 0 0 5px 1px #01AEF0;
+    z-index: 2;
+  }
+  .menu li {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 5px;
+    transition: background-color 0.5s ease;
+    font-size: 0.8rem;
+  }
+  .menu li:hover,
+  .menu li a:hover {
+    color: #01AEF0;
+    background-color: #515257;
+    font-size: 0.9rem;
+  }
+  .menu li a {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: #b6b6b6;
+    text-decoration: none;
+  }
+  .menu li a :nth-child(1) {
+    padding-right: 10px;
+  }
+  .active {
+    background-color: #01AEF0;
+  }
+  .menu-open {
+    opacity: 1;
+    display: block;
+  }

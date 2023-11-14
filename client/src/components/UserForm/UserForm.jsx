@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import style from "./UserForm.module.css";
 import { useAuth } from "../../context/authContext";
 import { useWork } from "../../context/workContext";
+import { useEffect } from 'react';
 
 const UserForm = () => {
   const today = moment().format("MM/DD/YYYY");
 
-  const { GetWork, Work, CreateJob, GetJob, UpdateJob, Job } = useWork();
+  
+  const { GetWork, Work, CreateJob,UpdateJob,Job } = useWork();
   useEffect(() => {
     GetWork();
-    GetJob();
+    
   }, []);
 
   const { GetUsers, usuarios } = useAuth();
   useEffect(() => {
-    GetUsers();
+    GetUsers();       
   }, []);
-
+  
   console.log(Work);
-  console.log(Job);
 
   const [assignedWork, setAssignedWork] = useState({
     LS3: [],
@@ -34,7 +35,7 @@ const UserForm = () => {
   });
 
   const handleCheckboxChange = (e) => {
-    const { name, value, checked } = e.target;
+    const { name, value, checked } = e.target;    
     setAssignedWork((prevState) => ({
       ...prevState,
       [name]: checked
@@ -50,8 +51,9 @@ const UserForm = () => {
 
   const production = (pro, designers) => {
     return Math.floor(pro / designers);
-  };
-
+    
+  }
+  
   function getAssignedWork() {
     const assignedData = {};
     Object.entries(assignedWork).forEach(([key, value]) => {
@@ -69,18 +71,10 @@ const UserForm = () => {
         assignedData[key] = {};
       }
     });
-    assignedData.DATE = today;
-
-    // Verificar si ya existe una asignación para la fecha actual
-    const existingJob =  Job.DATE === today ? true : false;
-    if (existingJob) {
-      // Actualizar la asignación existente
-      UpdateJob(existingJob._id, assignedData);
-    } else {
-      // Crear una nueva asignación
-      CreateJob(assignedData);
-    }
+    assignedData.DATE = today;    
+    CreateJob(assignedData);
   }
+  
 
   return (
     <div className={style.frame}>
@@ -247,7 +241,7 @@ const UserForm = () => {
           Assign
         </button>
       </div>
-    </div>
+    </div>  
   );
 };
 

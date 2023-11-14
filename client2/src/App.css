@@ -1,0 +1,8 @@
+.AppContainer {
+  display: grid;
+  width: 100%;
+  min-height: calc(100vh - 0px);
+  grid-template-columns: 100px repeat(1, 1fr);
+  grid-template-rows: 80px repeat(1, 1fr);
+  grid-template-areas: "aside header header header header header header header header" "aside main main main main main main main main" "aside main main main main main main main main" "aside main main main main main main main main";
+}

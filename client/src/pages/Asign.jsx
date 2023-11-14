@@ -4,6 +4,7 @@ import Tabs from "../components/tabs/Tabs";
 import WorkForm from '../components/WorkForm/WorkForm';
 import UserForm from '../components/UserForm/UserForm';
 //import Test from '../components/test/Test';
+import Asigment2 from '../components/test/asigment2';
 
 
 export const Asign = () => {
@@ -23,16 +24,16 @@ export const Asign = () => {
           </div>
         </div>
       {/*==================================(Registration)========================================================*/}
-        <div label="Test">
+        <div label="TEST_ASIGMENT #1">
         <div className={asigncss.tab_container}>
           <h1>Test</h1>
           {/* <Test/> */}
           </div>
         </div>
       {/*==================================(Registration)========================================================*/}
-      <div label="#3">
+      <div label="TEST_ASIGMENT #2">
         <div className={asigncss.tab_container}>
-          <h1>#3</h1>
+          <Asigment2/>
           </div>
         </div>
       {/*==================================(Registration)========================================================*/}
