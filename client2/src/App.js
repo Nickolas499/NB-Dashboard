@@ -3,6 +3,8 @@ import {useRoutes} from 'react-router-dom';
 import RootLayout from './layouts/RootLayout';
 import LoginLayout from './layouts/LoginLayout';
 
+import {Login} from './pages/login/Login';
+
 
 const routes = [
   {
@@ -29,7 +31,7 @@ const routes = [
       {
         path: '/Login',
         index: true,        
-        element: <h1>Login</h1>
+        element: <Login/>
       }
     ]
   }
