@@ -54,3 +54,9 @@ aside {
     color: #01AEF0;
     font-size: 1rem;
   }
+  .icons {
+    width: 45px;
+    height: 45px;
+    fill: #ff0000;
+  }
+  
