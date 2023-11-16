@@ -2,6 +2,8 @@ import './App.css';
 import {useRoutes} from 'react-router-dom';
 import RootLayout from './layouts/RootLayout';
 import LoginLayout from './layouts/LoginLayout';
+import Charts from './pages/charts/Charts';
+import Dashboard from './pages/dashboard/Dashboard';
 
 import {Login} from './pages/login/Login';
 
@@ -18,8 +20,13 @@ const routes = [
       },
       {
         path: '/dashboard',
-        element: <h1>Dashboard</h1>
+        element: <Dashboard/>
+      },
+      {
+        path: '/charts',
+        element: <Charts/>
       }
+
 
     ]
     
