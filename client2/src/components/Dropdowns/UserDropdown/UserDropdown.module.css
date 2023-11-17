@@ -2,10 +2,6 @@
     width: 200px;
     position: relative;
   }
-  .dropdown * {
-    box-sizing: border-box;
-  }
-
   .userName {
     display: flex;
     justify-content: center;
@@ -14,12 +10,12 @@
     height: 100%;
     cursor: pointer;
   }
-  .userName .name {
+  .name {
     font-size: 1.2rem;
     font-weight: bold;
     padding-right: 20px;
   }
-  .userName .userIcon {
+  .userIcon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +29,7 @@
     border-bottom-right-radius: 50%;
     border-bottom-left-radius: 0px;
   }
-  .userName .userIcon .circle {
+  .circle {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,7 +72,7 @@
     box-shadow: 0 0 5px 1px #01AEF0;
     z-index: 2;
   }
-  .menu li {
+  li {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -85,20 +81,20 @@
     transition: background-color 0.5s ease;
     font-size: 0.8rem;
   }
-  .menu li:hover,
-  .menu li a:hover {
+  li:hover,
+  li a:hover {
     color: #01AEF0;
     background-color: #515257;
     font-size: 0.9rem;
   }
-  .menu li a {
+  li a {
     display: flex;
     justify-content: left;
     align-items: center;
     color: #b6b6b6;
     text-decoration: none;
   }
-  .menu li a :nth-child(1) {
+  li a :nth-child(1) {
     padding-right: 10px;
   }
   .active {

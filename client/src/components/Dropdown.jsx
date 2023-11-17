@@ -30,7 +30,7 @@ export const Dropdown = (props) => {
   }, []);
 
   return (
-    <div className="test">
+    <div>
       <div className="dropdown" ref={menuRef}>
         <div className="userName" onClick={handleSelectClick}>
           <span className="name">{props.username}</span>

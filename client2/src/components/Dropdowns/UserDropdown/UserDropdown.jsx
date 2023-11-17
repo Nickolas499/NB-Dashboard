@@ -2,6 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
 import styles from "./UserDropdown.module.css";
+import {dashboard_icon,charts_icon,profile_icon,assign_icon,test_icon} from '../../../img/icons.js';
+
+
 
 export const Dropdown = (props) => {  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,7 +34,7 @@ export const Dropdown = (props) => {
   }, []);
 
   return (
-    <div className={`${styles.test}`}>
+    <div>
       <div className={`${styles.dropdown}`} ref={menuRef}>
         <div className={`${styles.username}`} onClick={handleSelectClick}>
           <span className={`${styles.name}`}>{props.username}</span>
@@ -66,7 +69,7 @@ export const Dropdown = (props) => {
           </li>
           <li>
             <Link to="/" onClick={() => Logout() }>
-              <span className={`${styles.materialSymbolsOutlined}`}>Logout</span>
+              {dashboard_icon}
               <span>Logout</span>
             </Link>
           </li>

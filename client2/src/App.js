@@ -16,16 +16,33 @@ const routes = [
       {
         path: '/',
         index: true,        
-        element: <h1>Home</h1>
-      },
-      {
-        path: '/dashboard',
         element: <Dashboard/>
-      },
+      },      
       {
         path: '/charts',
         element: <Charts/>
+      },
+      {
+        path: '/profile',
+        element: <h1>Profile</h1>
+      },
+      {
+        path: '/admin',
+        element: <h1>Admin</h1>
+      },
+      {
+        path: '/test',
+        element: <h1>Test</h1>
+      },
+      {
+        path: '/test2',
+        element: <h1>Test2</h1>
+      },
+      {
+        path: '/asign',
+        element: <h1>Asign</h1>
       }
+
 
 
     ]
