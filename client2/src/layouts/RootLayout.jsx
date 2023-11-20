@@ -9,7 +9,7 @@ const RootLayout = () => {
     <div className="AppContainer">
       <Header />
       <SideNavbar />
-      <main>
+      <main className="appMain">
         <Outlet />
       </main>
     </div>

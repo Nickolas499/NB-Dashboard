@@ -1,8 +1,22 @@
-import React from 'react'
+import Tabs from "../../components/tabs/Tabs"
+import Assignmets from "./assiments/Assignmets"
+import ActionPlan from "./actionPlan/ActionPlan"
+import KPI from "./kpi/KPI"
+
 
 const Dashboard = () => {
   return (
-    <h1>Dashboard</h1>
+    <Tabs>
+    <div label="DASHBOARD KPI">
+        <KPI/>
+      </div>
+      <div label="ASSIGMENTS">
+        <Assignmets/>
+      </div>
+      <div label="ACTION PLAN">
+        <ActionPlan/>
+      </div>
+    </Tabs>
   )
 }
 

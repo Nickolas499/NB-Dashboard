@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
 import styles from "./UserDropdown.module.css";
-import {dashboard_icon,charts_icon,profile_icon,assign_icon,test_icon} from '../../../img/icons.js';
+import {dashboard_icon,charts_icon,profile_icon,assign_icon,test_icon,logout_icon} from '../../../img/icons.js';
 
 
 
@@ -45,31 +45,31 @@ export const Dropdown = (props) => {
         <ul className={isMenuOpen ? `${styles.menu } ${styles.menuOpen}` : `${styles.menu}`}>
           <li>
             <Link to="/" onClick={() => handleSelectClick()}>
-              <span className={`${styles.materialSymbolsOutlined}`}>grid_view</span>
+              <div>{dashboard_icon}</div>
               <span>Dashboard</span>
             </Link>
           </li>
           <li>
             <Link to="/charts" onClick={() => handleSelectClick()}>
-              <span className={`${styles.materialSymbolsOutlined}`}>Monitoring</span>
+              <div>{charts_icon}</div>
               <span>Charts</span>
             </Link>
           </li>
           <li>
             <Link to="/profile" onClick={() => handleSelectClick()}>
-              <span className={`${styles.materialSymbolsOutlined}`}>person</span>
+              <div>{profile_icon}</div>
               <span>Profile</span>
             </Link>
           </li>         
           <li>
             <Link to="/test" onClick={() => handleSelectClick()}>
-              <span className={`${styles.materialSymbolsOutlined}`}>T</span>
+              <div>{test_icon}</div>
               <span>Test</span>
             </Link>
           </li>
           <li>
-            <Link to="/" onClick={() => Logout() }>
-              {dashboard_icon}
+            <Link to="/login" onClick={() => Logout() }>
+              <div>{logout_icon}</div>
               <span>Logout</span>
             </Link>
           </li>

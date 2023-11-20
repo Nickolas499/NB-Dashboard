@@ -55,7 +55,7 @@ aside {
     font-size: 1rem;
   }
   svg{
-    fill: #2cd61c;
+    fill: rgb(32, 184, 18);
   }
   a:hover svg {   
     fill: #ff0000;

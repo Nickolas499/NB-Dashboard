@@ -50,7 +50,7 @@ const getTitle = () => {
           username={"Ezequiel Almonte"}
         //   initials={getInitials(fname, lname)}
         initials="EA"
-          color={"#fff"}
+          color={"#ff0000"}
         />
       </div>
     </header>
