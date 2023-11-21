@@ -10,9 +10,10 @@ import {Login} from './pages/login/Login';
 
 const ProtectedRoutes = ({children}) => {
   const { isAuthenticated } = useAuth();
-  if (!isAuthenticated) {
+  if (isAuthenticated) {
     return <Navigate to="/Login" replace />;
   }
+  return children;
 }
 
 
