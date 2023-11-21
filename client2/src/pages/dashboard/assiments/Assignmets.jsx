@@ -1,8 +1,9 @@
-
+import style from './assignment.module.css'
 
 const Assignmets = () => {
   return (
-    <h1>ASSIGMENTS</h1>
+    <div className={style.container}><h1>ASSIGMENTS</h1></div>
+    
   )
 }
 

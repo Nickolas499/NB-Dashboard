@@ -1,17 +1,25 @@
 import './App.css';
-import {useRoutes} from 'react-router-dom';
+import {useRoutes, Navigate} from 'react-router-dom';
 import RootLayout from './layouts/RootLayout';
 import LoginLayout from './layouts/LoginLayout';
 import Charts from './pages/charts/Charts';
 import Dashboard from './pages/dashboard/Dashboard';
+import{useAuth} from "./context/AuthContext";
 
 import {Login} from './pages/login/Login';
+
+const ProtectedRoutes = ({children}) => {
+  const { isAuthenticated } = useAuth();
+  if (!isAuthenticated) {
+    return <Navigate to="/Login" replace />;
+  }
+}
 
 
 const routes = [
   {
     path: '/',
-    element: <RootLayout/>,
+    element: <ProtectedRoutes>,<RootLayout/></ProtectedRoutes>,
     children: [
       {
         path: '/',
@@ -58,6 +66,10 @@ const routes = [
         element: <Login/>
       }
     ]
+  },
+  {
+    path: '*',
+    element: <h1>Not Found</h1>
   }
 ]
 

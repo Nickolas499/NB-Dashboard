@@ -16,6 +16,10 @@ const Dashboard = () => {
       <div label="ACTION PLAN">
         <ActionPlan/>
       </div>
+      <div label="ACTION PLAN">
+        <ActionPlan/>
+      </div>
+      
     </Tabs>
   )
 }

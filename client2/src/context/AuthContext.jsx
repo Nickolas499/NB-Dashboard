@@ -4,7 +4,7 @@ import {
   LoginRequest,
   verifyTokenRequest,
   Users
-} from "../api/Auth.js";
+} from '../api/Auth.js';
 import Cookies from "js-cookie";
 
 export const authContext = createContext();

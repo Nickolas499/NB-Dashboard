@@ -14,9 +14,9 @@ const Tabs = ({ children }) => {
   return (
     <div>
       <ul className={styles.tab_list}>
+        <div>
         {children.map((child) => {
           const { label } = child.props;
-
           return (
             <Tab
               activeTab={activeTab}
@@ -26,6 +26,7 @@ const Tabs = ({ children }) => {
             />
           );
         })}
+        </div>               
       </ul>
       <div className={styles.tab_content}>
         {children.map((child) => {

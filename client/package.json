@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "proxy": "http://10.62.150.76.:5000",
+  "proxy": "http://10.62.150.76:5000",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

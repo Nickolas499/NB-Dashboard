@@ -1,8 +1,8 @@
-import React from 'react'
+import styles from './actionplan.module.css'
 
 const ActionPlan = () => {
   return (
-    <div >ActionPlan</div>
+    <div className={styles.container}><h1>Action Plan</h1></div>
   )
 }
 
