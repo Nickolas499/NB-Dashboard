@@ -5,16 +5,20 @@ import LoginLayout from './layouts/LoginLayout';
 import Charts from './pages/charts/Charts';
 import Dashboard from './pages/dashboard/Dashboard';
 import{useAuth} from "./context/AuthContext";
-
+import ProtectedRoutes from './layouts/ProtectedRoute';
 import {Login} from './pages/login/Login';
+import { useEffect } from 'react';
 
-const ProtectedRoutes = ({children}) => {
-  const { isAuthenticated } = useAuth();
-  if (!isAuthenticated) {
-    return <Navigate to="/Login" replace />;
-  }
-  return children;
-}
+
+// const ProtectedRoutes = ({children}) => {
+//   const { isAuthenticated } = useAuth();
+
+  
+//   if (!isAuthenticated) {
+//     return <Navigate to="/Login" replace />;
+//   }
+//   return children;
+// }
 
 
 const routes = [

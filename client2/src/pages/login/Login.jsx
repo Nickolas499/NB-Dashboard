@@ -3,17 +3,19 @@ import Logo from "../../img/logo.svg";
 import{useForm} from "react-hook-form";
 import style from "./Login.module.css";
 import{useAuth} from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 
 
 export const Login = (props) => {
   const {register,handleSubmit,formState: { errors },} = useForm();
   const {Signin, errors: signinErrors} = useAuth();
+  const navigate = useNavigate();
 
   const  onSubmit = handleSubmit((data)=> {
     console.log(data);
     Signin(data);
-    
+    navigate("/");    
   });
   return (
     <div className={style.container}>

@@ -4,9 +4,7 @@ const KPI = () => {
   return (
     <div className={styles.container}>
       <div className={styles.tabContainer}>
-        <div className={styles.kpiTap}>Tab</div>
-        <div className={styles.kpiTap}>Tab</div>
-        <div className={styles.kpiTap}>Tab</div>
+        <div className={styles.kpiTap}><h1>KPI</h1></div>
       </div>
     </div>
   );

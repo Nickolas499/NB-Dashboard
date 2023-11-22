@@ -1,16 +1,16 @@
 import { Dropdown } from "../../components/Dropdowns/UserDropdown/UserDropdown.jsx";
-// import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import styles from "./Header.module.css";
 import { useLocation } from "react-router-dom";
 
 
 
 export const Header = (props) => {
-  // const { user } = useAuth();
-//   const fname = user.fname;
-//   const lname = user.lname;
-//   const userColor = user.color;
-//   const Username = fname + " " + lname;
+  const { user } = useAuth();
+  const fname = user.fname;
+  const lname = user.lname;
+  const userColor = user.color;
+  const Username = fname + " " + lname;
 const location = useLocation();
 const getTitle = () => {
   switch(location.pathname) {
@@ -33,10 +33,10 @@ const getTitle = () => {
   }
 };
  
-  // function getInitials(firstName, lastName) {
-  //   const initials = `${firstName[0]}${lastName[0]}`;
-  //   return initials.toUpperCase();
-  // }
+  function getInitials(firstName, lastName) {
+    const initials = `${firstName[0]}${lastName[0]}`;
+    return initials.toUpperCase();
+  }
 
   return (
     <header>
@@ -47,10 +47,9 @@ const getTitle = () => {
       <div className={`${styles.dropbox}`}>
         <Dropdown
           logout={props.logout}
-          username={"Ezequiel Almonte"}
-        //   initials={getInitials(fname, lname)}
-        initials="EA"
-          color={"#ff0000"}
+          username={Username}
+          initials={getInitials(fname, lname)}
+          color={userColor}
         />
       </div>
     </header>
