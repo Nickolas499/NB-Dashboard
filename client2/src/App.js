@@ -10,7 +10,7 @@ import {Login} from './pages/login/Login';
 
 const ProtectedRoutes = ({children}) => {
   const { isAuthenticated } = useAuth();
-  if (isAuthenticated) {
+  if (!isAuthenticated) {
     return <Navigate to="/Login" replace />;
   }
   return children;
@@ -20,7 +20,7 @@ const ProtectedRoutes = ({children}) => {
 const routes = [
   {
     path: '/',
-    element: <ProtectedRoutes>,<RootLayout/></ProtectedRoutes>,
+    element: <ProtectedRoutes><RootLayout/></ProtectedRoutes>,
     children: [
       {
         path: '/',
@@ -51,9 +51,6 @@ const routes = [
         path: '/asign',
         element: <h1>Asign</h1>
       }
-
-
-
     ]
     
   },

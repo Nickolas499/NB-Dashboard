@@ -1,6 +1,5 @@
 import Logo from "../../img/logo.svg";
-
-import { useAuth } from "../../context/AuthContext";
+// import { useAuth } from "../../context/AuthContext";
 import styles from  "./SideNavbar.module.css";
 import {dashboard_icon,charts_icon,profile_icon,assign_icon,test_icon} from '../../img/icons.js'
 import NavLink from "../../components/NavLink/NavLink.jsx";

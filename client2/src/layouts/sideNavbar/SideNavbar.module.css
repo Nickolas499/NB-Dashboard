@@ -30,6 +30,9 @@ aside {
     height: 100%;
     font-weight: bold;
   }
+  aside nav ul li {
+    padding: 5px 10px;
+  }
   aside nav ul li a {
     text-decoration: none;
     color: #b6b6b6;
@@ -50,7 +53,7 @@ aside {
     padding: 5px;
   }
   aside nav ul li div:hover {
-    background-color: #515257;
+    background: #515257;
     color: #01AEF0;
     font-size: 1rem;
   }
@@ -60,9 +63,18 @@ aside {
   a:hover svg {   
     fill: #ff0000;
   }
-  .active{    
+  .active{        
     color: #01AEF0;
     
+  }
+  .active div{        
+    background: #515257;
+    color: #01AEF0;
+    font-size: 1rem;
+    
+  }
+  .active svg{        
+    fill: #ff0000;    
   }
 
 

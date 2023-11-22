@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
 import styles from "./UserDropdown.module.css";
-import {dashboard_icon,charts_icon,profile_icon,assign_icon,test_icon,logout_icon} from '../../../img/icons.js';
+import {dashboard_icon,charts_icon,profile_icon,test_icon,logout_icon} from '../../../img/icons.js';
 
 
 

@@ -3,14 +3,12 @@
 .tab_list{
     display:flex;
     flex-direction: row;
-    font-weight: bold;    
-    /* padding-left: 15px;     */
-    padding-top: 8px;
+    font-weight: bold;
 }
 
 .tab_list div{
-    padding: 10px 10px 0 12px;
-    background: linear-gradient(220deg, transparent 30px, var(--darkGray) 10px);
+    padding: 10px 18px 0 10px;
+    background: linear-gradient(220deg, transparent 35px, var(--darkGray) 10px);
 }
 
 

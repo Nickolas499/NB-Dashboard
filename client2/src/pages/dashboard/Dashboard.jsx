@@ -15,11 +15,7 @@ const Dashboard = () => {
       </div>
       <div label="ACTION PLAN">
         <ActionPlan/>
-      </div>
-      <div label="ACTION PLAN">
-        <ActionPlan/>
-      </div>
-      
+      </div>      
     </Tabs>
   )
 }

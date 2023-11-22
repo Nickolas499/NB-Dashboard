@@ -1,12 +1,12 @@
 import { Dropdown } from "../../components/Dropdowns/UserDropdown/UserDropdown.jsx";
-import { useAuth } from "../../context/AuthContext";
+// import { useAuth } from "../../context/AuthContext";
 import styles from "./Header.module.css";
 import { useLocation } from "react-router-dom";
 
 
 
 export const Header = (props) => {
-  const { user } = useAuth();
+  // const { user } = useAuth();
 //   const fname = user.fname;
 //   const lname = user.lname;
 //   const userColor = user.color;
@@ -33,10 +33,10 @@ const getTitle = () => {
   }
 };
  
-  function getInitials(firstName, lastName) {
-    const initials = `${firstName[0]}${lastName[0]}`;
-    return initials.toUpperCase();
-  }
+  // function getInitials(firstName, lastName) {
+  //   const initials = `${firstName[0]}${lastName[0]}`;
+  //   return initials.toUpperCase();
+  // }
 
   return (
     <header>
