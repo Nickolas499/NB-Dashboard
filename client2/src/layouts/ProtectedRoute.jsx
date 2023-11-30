@@ -1,12 +1,10 @@
 import{useAuth} from "../context/AuthContext";
-import {Outlet,Navigate} from "react-router-dom";
+import {Navigate} from "react-router-dom";
 
 
 function ProtectedRoutes({children}) {
   
   const {loading, isAuthenticated } = useAuth();
-  console.log(loading, isAuthenticated);
-  
 
   if(loading) return <div>Loading...</div>;
   if (!loading && !isAuthenticated) 

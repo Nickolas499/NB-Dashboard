@@ -1,0 +1,120 @@
+@import '../../css/ColorPallet.css';
+
+.Kpicards {
+    display: flex;
+    width: 100%;
+    height: 100%;    
+    background-color: var(--primaryColor);
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+
+
+.Symbol {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    display: flex;
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: var(--green);
+    justify-content: center;
+    align-items: center;
+    font-family: Sigmar;
+    color: var(--white);
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+    box-shadow: 0 0 10px 0 rgba(0, 255, 0, 0.445);
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+    background-color: var(--white);
+    color: var(--black);
+}
+
+
+.CardContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.CardTitle {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    padding: 10px 20px 0px 60px;
+    justify-content: left;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    border-bottom-left-radius: 20px;
+}
+
+.CardInfo {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border-bottom: 0px;
+    border-bottom-left-radius: 20px;
+}
+
+
+.CardInfo ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background-color: var(--PrimaryColor);
+    list-style: none;
+    border-bottom-left-radius: 20px;
+}
+
+.CardInfo ul li {
+    display: flex;
+    padding: 1px;
+}
+
+.CardInfo ul li:nth-child(odd) {
+    background-color: var(--lightGray);
+}
+
+.CardInfo ul li:nth-child(1) {
+    width: 100%;
+    padding: 0 5px;
+}
+
+.CardInfo ul li:nth-child(2) {
+    width: 50;
+    font-weight: 700;
+    padding: 0 5px;
+}
+
+.CardInfo ul li .li_card{
+
+}
+
+.CardInfo ul li .span_key{
+
+}
+.CardInfo ul li .span_value{
+    
+}

@@ -1,25 +1,13 @@
 import './App.css';
-import {useRoutes, Navigate} from 'react-router-dom';
+import {useRoutes, useNavigate} from 'react-router-dom';
 import RootLayout from './layouts/RootLayout';
 import LoginLayout from './layouts/LoginLayout';
 import Charts from './pages/charts/Charts';
 import Dashboard from './pages/dashboard/Dashboard';
-import{useAuth} from "./context/AuthContext";
 import ProtectedRoutes from './layouts/ProtectedRoute';
 import {Login} from './pages/login/Login';
-import { useEffect } from 'react';
-
-
-// const ProtectedRoutes = ({children}) => {
-//   const { isAuthenticated } = useAuth();
-
-  
-//   if (!isAuthenticated) {
-//     return <Navigate to="/Login" replace />;
-//   }
-//   return children;
-// }
-
+import {useAuth} from './context/AuthContext';
+import {useEffect} from 'react';
 
 const routes = [
   {
@@ -52,8 +40,8 @@ const routes = [
         element: <h1>Test2</h1>
       },
       {
-        path: '/asign',
-        element: <h1>Asign</h1>
+        path: '/assigments',
+        element: <h1>Assigments</h1>
       }
     ]
     
@@ -76,6 +64,16 @@ const routes = [
 ]
 
 function App() {
+
+  const {isAuthenticated} = useAuth();
+  const Navigate = useNavigate();
+
+  useEffect(() => {    
+    
+    if (isAuthenticated) {
+      Navigate("/");
+    }
+  }, [isAuthenticated, Navigate]);
   return (
     useRoutes(routes)
   );

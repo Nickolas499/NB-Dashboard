@@ -26,8 +26,8 @@ const getTitle = () => {
       return "Test";
     case "/test2":
       return "Test2";
-    case "/Asign":
-      return "Asign";
+    case "/assigments":
+      return "Assigments";
     default:
       return "Dashboard";
   }

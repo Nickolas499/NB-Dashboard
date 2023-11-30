@@ -1,9 +1,18 @@
 @import '../../../css/ColorPallet.css';
-.container{
-    display: flex;
+.Dashboard_KPI {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 100%;
-    background-color:var(--darkGray);
-    
-    
-}
+    padding-top: 20px;
+    padding-left: 20px;
+    gap: 20px;  
+    background-color: var(--darkGray);
+    @media (min-width: 1450px) {
+      grid-template-columns: repeat(6, 1fr);
+    }  
+  }
+
+
+
