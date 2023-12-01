@@ -18,4 +18,19 @@
     --inputTextColor: rgba(255, 255, 255, 0.562);
     --errorColor: #FE010255;
     --assentColor:  #ad1c1c;
+
+    /* new schema */
+
+    --assert:rgb(216,77,46);
+    --background:hwb(203 17% 61%);
+    --background2:rgb(69,30,13);
+    --primary:rgba(0,0,0,0.5);
+    --secondary:rgb(26,33,39);
+    --terciary:rgb(74,92,112);
+    --text1:rgb(113,135,153);
+    --text2:rgb(252,252,252); 
+    --transparent:rgba(0,0,0,0);
+    --whitetransparent:rgba(255,255,255,0.02);
+    --blacktransparent:rgba(0,0,0,0.5);
+  
   }

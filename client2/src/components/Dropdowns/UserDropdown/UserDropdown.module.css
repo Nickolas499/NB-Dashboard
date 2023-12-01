@@ -1,3 +1,4 @@
+@import '../../../css/ColorPallet.css';
 .dropdown {
     width: 200px;
     
@@ -59,7 +60,7 @@
     width: 150px;
     list-style: none;
     padding: 5px;
-    background-color: #23262D;
+    background-color: var(--primary);
     color: #b6b6b6;
     border-top-left-radius: 20px;
     border-top-right-radius: 0%;
@@ -72,8 +73,8 @@
     opacity: 0;
     display: none;
     transition: all 0.5s ease;
-    border: 2px solid #01AEF0;
-    box-shadow: 0 0 5px 1px #01AEF0;
+    border: 2px solid var(--assert);
+    box-shadow: 0 0 5px 1px var(--assert);
     z-index: 2;
   }
   .menu li {
@@ -87,7 +88,7 @@
   }
   .menu li:hover,
   .menu li a:hover {
-    color: #01AEF0;
+    color: var(--assert);
     background-color: #515257;
     font-size: 0.9rem;
   }

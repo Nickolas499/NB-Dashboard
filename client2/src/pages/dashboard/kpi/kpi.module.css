@@ -1,18 +1,60 @@
 @import '../../../css/ColorPallet.css';
+
 .Dashboard_KPI {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding-top: 20px;
-    padding-left: 20px;
-    gap: 20px;  
-    background-color: var(--darkGray);
-    @media (min-width: 1450px) {
-      grid-template-columns: repeat(6, 1fr);
-    }  
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 250px;
+  padding-top: 20px;
+  padding-left: 20px;
+  gap: 20px;
+
+  @media (min-width: 1450px) {
+    grid-template-columns: repeat(6, 1fr);
   }
+}
+.Dashboard_Asigment {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 150px;
+  background-color:var(--terciary);
+}
 
+.Dashboard_Asigment h1 {
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: var(--primary);
+  text-align: center;
+  padding: 10px;
+}
 
+.Dashboard_Asigment div {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  padding-bottom: 0px;
+}
 
+.Dashboard_Asigment div h2 {
+  width: 200px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  border-radius: 8px;
+  /* margin-right: 20px; */
+
+}
+
+.Dashboard_Asigment div h2 span {
+  width: 100%;
+  font-size: 3rem;
+  text-align: center;
+}

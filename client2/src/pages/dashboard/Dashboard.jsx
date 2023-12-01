@@ -7,7 +7,7 @@ import KPI from "./kpi/KPI"
 const Dashboard = () => {
   return (
     <Tabs>
-    <div label="DASHBOARD KPI">
+      <div label="DASHBOARD KPI">
         <KPI/>
       </div>
       <div label="ASSIGMENTS">

@@ -8,12 +8,10 @@
 }
 
 body {
-  background-color: var(--bgColor);
+  background: linear-gradient(  135deg, var(--background) 60%,  var(--background2) );
   color: var(--Color);
   font-size: 1rem;
   font-family: rajdhani;
+ 
 }
 
-main {
-  grid-area: main;  
-}

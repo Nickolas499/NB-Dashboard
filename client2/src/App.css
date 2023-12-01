@@ -1,4 +1,10 @@
 .AppContainer {
+  background: repeating-linear-gradient(
+    -45deg,var(--transparent),
+    var(--transparent)40px,
+    var(--whitetransparent) 0px,
+    var(--whitetransparent) 80px
+  );
   display: grid;
   width: 100%;
   min-height: calc(100vh - 0px);
@@ -18,4 +24,5 @@
 .appMain{
   grid-area: main;
   padding: 10px;
+  height: calc(100dvh -80px);
 }

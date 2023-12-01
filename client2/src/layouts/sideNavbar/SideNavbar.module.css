@@ -1,3 +1,5 @@
+@import '../../css/ColorPallet.css';
+
 aside {
     display: flex;
     flex-direction: column;
@@ -5,7 +7,7 @@ aside {
     width: 100%;
     height: 100%;
     grid-area: aside;
-    background-color: #23262D;
+    background-color: var(--primary);
   }
   aside .logo {
     display: flex;
@@ -58,23 +60,23 @@ aside {
     font-size: 1rem;
   }
   svg{
-    fill: rgb(32, 184, 18);
+    fill:var(--assert);
   }
   a:hover svg {   
-    fill: #ff0000;
+    fill: var(--assert);
   }
   .active{        
-    color: #01AEF0;
+    color: var(--text1);
     
   }
   .active div{        
-    background: #515257;
-    color: #01AEF0;
+    background: var(--assert);
+    color: var(--white);
     font-size: 1rem;
     
   }
   .active svg{        
-    fill: #ff0000;    
+    fill: var(--white);    
   }
 
 

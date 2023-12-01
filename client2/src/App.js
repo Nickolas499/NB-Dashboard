@@ -8,6 +8,7 @@ import ProtectedRoutes from './layouts/ProtectedRoute';
 import {Login} from './pages/login/Login';
 import {useAuth} from './context/AuthContext';
 import {useEffect} from 'react';
+import Test from './pages/test/Test';
 
 const routes = [
   {
@@ -33,7 +34,7 @@ const routes = [
       },
       {
         path: '/test',
-        element: <h1>Test</h1>
+        element: <Test/>
       },
       {
         path: '/test2',
@@ -73,7 +74,7 @@ function App() {
     if (isAuthenticated) {
       Navigate("/");
     }
-  }, [isAuthenticated, Navigate]);
+  }, [isAuthenticated]);
   return (
     useRoutes(routes)
   );

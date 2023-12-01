@@ -4,7 +4,7 @@ header {
     grid-area: header;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    background-color:var(--primaryColor);
+    background-color:var(--primary);
   }
   header .date {
     display: flex;
