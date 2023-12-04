@@ -10,7 +10,7 @@
 body {
   background: linear-gradient(  135deg, var(--background) 60%,  var(--background2) );
   color: var(--Color);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-family: rajdhani;
  
 }

@@ -15,6 +15,7 @@ const Tab = ({ activeTab, label, onClick }) => {
 
   return (
     <li
+      key={label}
       className={className}
       onClick={handleClick}
     >
@@ -27,6 +28,7 @@ Tab.propTypes = {
   activeTab: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  
 };
 
 export default Tab;

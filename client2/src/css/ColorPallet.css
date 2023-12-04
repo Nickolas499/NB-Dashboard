@@ -22,6 +22,8 @@
     /* new schema */
 
     --assert:rgb(216,77,46);
+    --active:rgb(216,77,46);
+    --inactive:var(--bgColor);
     --background:hwb(203 17% 61%);
     --background2:rgb(69,30,13);
     --primary:rgba(0,0,0,0.5);

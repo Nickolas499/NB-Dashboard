@@ -9,7 +9,10 @@
   height: 250px;
   padding-top: 20px;
   padding-left: 20px;
-  gap: 20px;
+  padding-right: 20px;
+  font-size: 1.2rem ;
+  line-height: 1rem;
+  gap: 25px;
 
   @media (min-width: 1450px) {
     grid-template-columns: repeat(6, 1fr);
