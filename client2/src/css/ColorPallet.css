@@ -24,15 +24,15 @@
     --assert:rgb(216,77,46);
     --active:rgb(216,77,46);
     --inactive:var(--bgColor);
-    --background:hwb(203 17% 61%);
+    --background:rgb(43, 78, 99);
     --background2:rgb(69,30,13);
     --primary:rgba(0,0,0,0.5);
     --secondary:rgb(26,33,39);
     --terciary:rgb(74,92,112);
     --text1:rgb(113,135,153);
     --text2:rgb(252,252,252); 
-    --transparent:rgba(0,0,0,0);
-    --whitetransparent:rgba(255,255,255,0.02);
+    --transparent:rgba(0,0,0,0.01);
+    --whitetransparent:rgba(255,255,255,0.01);
     --blacktransparent:rgba(0,0,0,0.5);
   
   }

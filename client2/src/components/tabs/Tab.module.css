@@ -9,7 +9,7 @@
 .tab_list div{
     display: flex;    
     padding: 8px 18px 0 8px;
-    background: linear-gradient(220deg, transparent 35px, var(--primary) 10px);
+    background: linear-gradient(220deg, transparent 35px, var(--blacktransparent) 10px);
     
 }
 

@@ -1,3 +1,5 @@
+@import './css/ColorPallet.css';
+
 .AppContainer {
   background: repeating-linear-gradient(
     -45deg,var(--transparent),
@@ -6,11 +8,31 @@
     var(--whitetransparent) 80px
   );
   display: grid;
+  z-index: 2;
   width: 100%;
   min-height: calc(100vh - 0px);
   grid-template-columns: 100px repeat(1, 1fr);
   grid-template-rows: 80px repeat(1, 1fr);
   grid-template-areas: "aside header header header header header header header header" "aside main main main main main main main main" "aside main main main main main main main main" "aside main main main main main main main main";
+}
+
+.bg {
+  position: fixed;
+  width: 1500px;;
+  height: 1500px;
+  bottom: -750px;
+  left: -750px;
+  background: radial-gradient( circle, rgba(0, 0, 0, 0.562) 0%, rgba(0, 0, 0, 0.473) 10%, rgba(0, 213, 255, 0)60% );
+  z-index: -1;
+}
+.bg2 {
+  position: fixed;
+  width: 2000px;;
+  height: 2000px;
+  top: -1000px;
+  right: -100px;
+  background: radial-gradient( circle, var(--background3) 20%,  rgba(0, 0, 0, 0.11) 70% );
+  z-index: -1;
 }
 
 .Applogin{

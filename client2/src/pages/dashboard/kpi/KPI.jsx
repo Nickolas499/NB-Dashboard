@@ -6,10 +6,19 @@ const KPI = () => {
   return (
     <>
     <section className={kpi.Dashboard_Asigment}>
-        <h1>Asigment</h1>
+        
         <div>
+        <h2>
+            LS3<span>0</span>
+          </h2>
           <h2>
-            IBO Design <span>7</span>
+            ZEISS <span>2</span>
+          </h2>
+          <h2>
+            3SHAPE <span>2</span>
+          </h2>
+          <h2>
+            Design IBO <span>7</span>
           </h2>
           <h2>
             Digital Abutment <span>99</span>
