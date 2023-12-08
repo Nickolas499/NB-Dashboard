@@ -1,0 +1,6 @@
+.assigmentContainer{
+    display: flex;
+    flex-direction: column;
+}.assigmentContainer h1{
+    text-align: center;
+}

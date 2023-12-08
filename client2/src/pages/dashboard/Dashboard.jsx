@@ -4,18 +4,21 @@ import ActionPlan from "./actionPlan/ActionPlan"
 import KPI from "./kpi/KPI"
 
 
-const Dashboard = () => {
+
+
+
+function Dashboard() {
   return (
     <Tabs>
       <div label="DASHBOARD KPI">
-        <KPI/>
+        <KPI />
       </div>
       <div label="ASSIGMENTS">
-        <Assignmets/>
+        <Assignmets />
       </div>
       <div label="ACTION PLAN">
-        <ActionPlan/>
-      </div>      
+        <ActionPlan />
+      </div>
     </Tabs>
   )
 }

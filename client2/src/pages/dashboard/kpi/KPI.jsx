@@ -1,13 +1,15 @@
 import kpi from "./kpi.module.css";
 import { kpi_data } from "../../../data/kpi_data.js";
 import {Kpicards} from "../../../components/KPICards/KPIcards";
-
+import { SquareBtn } from "../../../components/Butons/Buton.jsx";
+import { useAuth } from "../../../context/AuthContext";
 const KPI = () => {
+  const { user } = useAuth();
   return (
     <>
-    <section className={kpi.Dashboard_Asigment}>
-        
-        <div>
+    <section className={kpi.Dashboard_Asigment}>        
+        <div className={kpi.container}> 
+          
         <h2>
             LS3<span>0</span>
           </h2>
@@ -29,7 +31,9 @@ const KPI = () => {
           <h2>
             Full Arch <span>2</span>
           </h2>
-        </div>
+          </div>
+          {user.access === "admin"?<SquareBtn onClick={() => {console.log("click")}}>Assign</SquareBtn>:""}
+        
       </section>
     <section className={kpi.Dashboard_KPI}>
       {kpi_data.map((card, index) => (

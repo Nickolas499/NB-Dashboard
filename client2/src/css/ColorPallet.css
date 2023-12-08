@@ -34,5 +34,10 @@
     --transparent:rgba(0,0,0,0.01);
     --whitetransparent:rgba(255,255,255,0.01);
     --blacktransparent:rgba(0,0,0,0.5);
+    --btn_active:#ff5131;
+    --btn_inactive:#67819c;
+    --btn:#33455d;
+    --btn_light:#a3bed3;
+    
   
   }
