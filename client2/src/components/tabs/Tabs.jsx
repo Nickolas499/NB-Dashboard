@@ -4,7 +4,7 @@ import styles from './Tab.module.css';
 import Tab from './Tab';
 
 
-const Tabs = ({ children }) => {
+const Tabs = ({title, children }) => {
   const [activeTab, setActiveTab] = useState(children[0].props.label);
 
   const onClickTabItem = (tab) => {
@@ -13,6 +13,7 @@ const Tabs = ({ children }) => {
 
   return (
     <div>
+      <div className={styles.tabs}>
       <ul className={styles.tab_list}>
         <div>
         {children.map((child) => {
@@ -25,9 +26,11 @@ const Tabs = ({ children }) => {
               onClick={onClickTabItem}
             />
           );
-        })}
-        </div>               
+        })}        
+        </div>
       </ul>
+      <div className={styles.tab_date}>{title}</div> 
+      </div>
       <div className={styles.tab_content}>
         {children.map((child) => {
           if (child.props.label !== activeTab) return undefined;

@@ -5,50 +5,25 @@ import { SquareBtn } from "../../../components/Butons/Buton.jsx";
 import { useAuth } from "../../../context/AuthContext";
 import Modal from "../../../components/Modal/Modal";
 import { TextInput } from "../../../components/inputs/Inputs.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAssign } from "../../../context/assignContext";
+
+
+
 const KPI = () => {
   const { user } = useAuth();
+  const { assign, GetAssign, CreateAssign  } = useAssign();
+
+  useEffect(() => {
+    GetAssign();
+    
+  },[]);  
 
 
   const [isOpen, setIsOpen] = useState(false);
-  const [products, setProducts] = useState([   
-  
-    {
-      id: 1,
-      name: "LS3",
-      cuantity: 10,
-    },
-    {
-      id: 2,
-      name: "ZEISS",
-      cuantity: 20,
-    },
-    {
-      id: 3,
-      name: "3SHAPE",
-      cuantity: 30,
-    },
-    {
-      id: 4,
-      name: "Phisical Abutment",
-      cuantity: 40,
-    },
-    {
-      id: 5,
-      name: "Digital Abutment",
-      cuantity: 50,
-    },
-    {
-      id: 6,
-      name: "Full Arch",
-      cuantity: 60,
-    },
-    {
-      id: 7,
-      name: "IBO Design",
-      cuantity: 70,
-    }
-  ]);
+  const [products, setProducts] = useState([]);
+
+  console.log(products);
 
   const openModal = () => {
     setIsOpen(true);
@@ -58,22 +33,41 @@ const KPI = () => {
     setIsOpen(false);
   };
 
- 
+  
 
-// funcion para actualizar los valores de la cantidad  de products usando los inputs del modal
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    const updatedProducts = products.map((product) => {
-      if (product.name === name) {
-        return { ...product, cuantity: parseInt(value) };
-      }
-      return product;
-    });
-    setProducts(updatedProducts);
-  } 
+// funcion para guardas en la base de datos los valores del los inputs usando la funcion CreateAssign
+
+const handleCreateNewData = async () => {
+  const newAssignData = {
+    LS3: products.LS3, // Reemplaza 0 con el valor deseado
+    ZEISS: products.ZEISS, // Reemplaza 0 con el valor deseado
+    SHAPE: products.SHAPE, // Reemplaza 0 con el valor deseado
+    PHIS_ABUT: products.PHIS_ABUT, // Reemplaza 0 con el valor deseado
+    DIGI_ABUT:  products.DIGI_ABUT, // Reemplaza 0 con el valor deseado
+    FULL_ARCH: products.FULL_ARCH, // Reemplaza 0 con el valor deseado DATE: "12/14/2023",
+    IBO_DESIGN: products.IBO_DESIGN // Reemplaza "12/14/2023" con la fecha deseada
+  };
+
+  await CreateAssign(newAssignData);
+  GetAssign();
+};
+
+
+
+  // Dentro de la función KPI
+const handleChange = (e) => {
+  const { name, value } = e.target;
+  setProducts((prevProducts) => ({
+    ...prevProducts,
+    [name]: parseInt(value), // Asegúrate de convertir el valor a entero si es necesario
+  }));
+};
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(products);
+    handleCreateNewData();
     closeModal();
   };
 
@@ -81,10 +75,11 @@ const KPI = () => {
     <>
       <section className={kpi.Dashboard_Asigment}>
         <div className={kpi.container}>
-          {products.map((product) => (
-            <h2>
-              {product.name}
-              <span>{product.cuantity}</span>
+        {Object.entries(assign).slice(0, 7).map((key, value) => (
+            <h2 key={key}>
+              {key[0]}
+
+              <span>{key[1]}</span>
             </h2>
           ))}
         </div>
@@ -111,20 +106,21 @@ const KPI = () => {
           <form action="" className={kpi.formAssigment}>
             <TextInput label="LS3" type="text" name="LS3" onChange={handleChange}/>
             <TextInput label="ZEISS" type="text" name="ZEISS" onChange={handleChange}/>
-            <TextInput label="3SHAPE" type="text" name="3SHAPE" onChange={handleChange}/>
-            <TextInput
-              label="Phisical Abutment"
+            <TextInput label="SHAPE" type="text" name="SHAPE" onChange={handleChange}/>
+            <TextInput 
+              label="PHIS_ABUT"
               type="text"
-              name="Phisical Abutment"
+              name="PHIS_ABUT"
               onChange={handleChange}
             />
             <TextInput
-              label="Digital Abutment"
+              label="DIGI_ABUT"
               type="text"
-              name="Digital Abutment"
+              name="DIGI_ABUT"
               onChange={handleChange}
             />
-            <TextInput label="Full Arch" type="text" name="Full Arch"  onChange={handleChange}/>
+            <TextInput label="IBO_DESIGN" type="text" name="IBO_DESIGN"  onChange={handleChange}/>
+            <TextInput label="FULL_ARCH" type="text" name="FULL_ARCH"  onChange={handleChange}/>
             <button onClick={handleSubmit} className={kpi.btnSubmit}>
               Submit
             </button>
