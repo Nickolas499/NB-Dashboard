@@ -55,6 +55,7 @@
   text-align: center;
   flex-direction: column;
   border-radius: 8px;
+  color: var(--white);
 }
 
 
@@ -68,6 +69,7 @@
 .Dashboard_Asigment div h2 span {
   width: 100%;
   font-size: 3rem;
+  color: var(--white);
   text-align: center;
 }
 

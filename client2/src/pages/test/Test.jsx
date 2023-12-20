@@ -3,6 +3,7 @@ import Modal from "../../components/Modal/Modal";
 import { useState } from "react";
 import styles from "./test.module.css";
 import { TextInput } from "../../components/inputs/Inputs";
+import AssignmentApp from "../../components/assignForm/AssignmentApp";
 
 const Test = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +36,7 @@ const Test = () => {
           </Modal>
         </>
       </div>
-      <div label="test2">test2</div>
+      <div label="test2"><AssignmentApp/></div>
       <div label="test3">test3</div>
       <div label="test4">test4</div>
     </Taps>

@@ -39,13 +39,13 @@ const KPI = () => {
 
 const handleCreateNewData = async () => {
   const newAssignData = {
-    LS3: products.LS3, // Reemplaza 0 con el valor deseado
-    ZEISS: products.ZEISS, // Reemplaza 0 con el valor deseado
-    SHAPE: products.SHAPE, // Reemplaza 0 con el valor deseado
-    PHIS_ABUT: products.PHIS_ABUT, // Reemplaza 0 con el valor deseado
-    DIGI_ABUT:  products.DIGI_ABUT, // Reemplaza 0 con el valor deseado
-    FULL_ARCH: products.FULL_ARCH, // Reemplaza 0 con el valor deseado DATE: "12/14/2023",
-    IBO_DESIGN: products.IBO_DESIGN // Reemplaza "12/14/2023" con la fecha deseada
+    LS3: products.LS3, 
+    ZEISS: products.ZEISS,
+    SHAPE: products.SHAPE, 
+    PHIS_ABUT: products.PHIS_ABUT, 
+    DIGI_ABUT:  products.DIGI_ABUT, 
+    FULL_ARCH: products.FULL_ARCH,
+    IBO_DESIGN: products.IBO_DESIGN
   };
 
   await CreateAssign(newAssignData);
