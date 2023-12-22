@@ -4,6 +4,7 @@ import { useState } from "react";
 import styles from "./test.module.css";
 import { TextInput } from "../../components/inputs/Inputs";
 import AssignmentApp from "../../components/assignForm/AssignmentApp";
+import Assing from "../../components/assignTest/assing";
 
 const Test = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +38,7 @@ const Test = () => {
         </>
       </div>
       <div label="test2"><AssignmentApp/></div>
-      <div label="test3">test3</div>
+      <div label="test3"><Assing/></div>
       <div label="test4">test4</div>
     </Taps>
   );
