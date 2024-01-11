@@ -23,7 +23,7 @@ const KPI = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [products, setProducts] = useState([]);
 
-  console.log(products);
+  // console.log(products);
 
   const openModal = () => {
     setIsOpen(true);

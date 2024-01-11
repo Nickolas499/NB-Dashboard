@@ -1,10 +1,12 @@
 import Taps from "../../components/tabs/Tabs";
 import Modal from "../../components/Modal/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./test.module.css";
 import { TextInput } from "../../components/inputs/Inputs";
 import AssignmentApp from "../../components/assignForm/AssignmentApp";
 import Assing from "../../components/assignTest/assing";
+import {useAuth} from './../../context/AuthContext';
+import { useAssign } from "../../context/assignContext";
 
 const Test = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,9 +19,20 @@ const Test = () => {
     setIsOpen(false);
   };
 
+  const {usuarios,GetUsers} = useAuth();
+  const {assign,GetAssign} = useAssign();
+
+  useEffect(() => {
+    GetUsers();
+    GetAssign();
+  },[])
+
+  console.log(assign);
+  console.log(usuarios);
+
   return (
     <Taps>
-      <div label="test1">
+      <div label="MODAL TEST">
         <>
           <button onClick={openModal}>Abrir Ventana Modal</button>
           <Modal isOpen={isOpen} onClose={closeModal} title="Modal de prueba">
@@ -35,10 +48,26 @@ const Test = () => {
               </form>
             </section>
           </Modal>
+          <div>
+            <h1>Usuarios</h1>
+            {usuarios.map((user) => (
+              <p key={user._id}>{user.fname}</p>
+            ))}
+          </div>
+          <div>
+            <h1>Assign</h1>
+            {Object.entries(assign).slice(0, 7).map((key, value) => (
+            <p key={key}>
+              {key[0]}
+
+              <span> : {key[1]}</span>
+            </p>
+          ))}
+          </div>
         </>
       </div>
-      <div label="test2"><AssignmentApp/></div>
-      <div label="test3"><Assing/></div>
+      <div label="ASSIGN TEST #1"><AssignmentApp/></div>
+      <div label="ASSIGN TEST #2"><Assing workers={usuarios} jobs={assign}/></div>
       <div label="test4">test4</div>
     </Taps>
   );

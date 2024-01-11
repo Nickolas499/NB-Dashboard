@@ -1,187 +1,137 @@
 import React, { useState } from "react";
-// import Assignments from "./Assignments";
+import style from "./assign.module.css";
 
 
-const Assing = () => {
-  const [workers, setWorkers] = useState([
-    {
-        id: 1,
-      name: "Ezequiel",
-    },
-    {
-        id: 2,
-      name: "José",
-    },
-    {
-        id: 3,
-      name: "María",
-    },
-  ]);
-  const [jobs, setJobs] = useState([
-    {
-        id: 1,
-      name: "LS3",
-      quantity: 5,
-    },
-    {
-        id: 2,
-      name: "ZEISS",
-      quantity: 4,
-    },
-    {
-        id: 3,
-      name: "IBO",
-      quantity: 10,
-    },
-  ]);
-  const [assignments, setAssignments] = useState([]);
-
-  const [assignment, setAssignment] = useState({
-    worker: "",
-    job: "",
-    quantity: 5,
-  })
- 
-
- 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const worker = event.target.elements.worker.value;
-    const job = event.target.elements.job.value;
-    const quantity = event.target.elements.quantity.value;
-
-    setAssignment({
-        worker,
-        job,
-        quantity,
+function Assing({ workers, jobs }) {
+  const [date, setDate] = useState(new Date());
+  const [assignments, setAssignments] = useState(
+    workers.reduce((acc, worker) => {
+      acc[worker.id] = {};
+      Object.keys(jobs).forEach((job) => {
+        acc[worker.id][job] = 0;
       });
+      return acc;
+    }, {})
+  );
+  const [pending, setPending] = useState(false);
 
-    const existingAssignment = assignments.find((a) => a.worker === worker && a.job === job);
-    if (existingAssignment) {
-      existingAssignment.quantity += quantity;
-    } else {
-      setAssignments([
-        ...assignments,
-        { ...assignment, id: assignments.length + 1 },
-      ]);
+  const sendToBackend = (updatedAssignments) => {
+    // Replace this with the actual code to send the updated assignments to the backend
+    console.log(
+      "Sending updated assignments to the backend:",
+      updatedAssignments
+    );
+    // Example: send data to backend API
+  };
+
+  const handleSubmit = () => {
+    setPending(true);
+
+    // Validaciones
+    let valid = true;
+
+    Object.keys(assignments).forEach((workerId) => {
+      Object.keys(assignments[workerId]).forEach((job) => {
+        if (isNaN(assignments[workerId][job])) {
+          valid = false;
+        }
+      });
+    });
+
+    const totalAssigned = calcTotalAssigned(assignments);
+    const availableJobs = Object.values(jobs).reduce(
+      (acc, val) => acc + val,
+      0
+    );
+    if (totalAssigned > availableJobs) {
+      valid = false;
     }
+
+    if (!valid) {
+      setPending(false);
+      return;
+    }
+
+    // Guardar asignaciones
+    const updatedAssignments = workers.map((worker) => ({
+      ...assignments[worker.id],
+      date: date,
+    }));
+
+    setAssignments(updatedAssignments);
+
+    // Enviar al backend
+    sendToBackend(updatedAssignments);
+
+    setPending(false);
   };
 
-  const Workers = ({ workers }) => {
-    return (
-      <div>
-        <h2>Trabajadores</h2>
-        <ul>
-          {workers.map((worker) => (
-            <li key={worker.id}>{worker.name}</li>
-          ))}
-        </ul>
-      </div>
-    );
-  };
-  
-  const Jobs = ({ jobs }) => {
-    return (
-      <div>
-        <h2>Trabajos</h2>
-        <ul>
-          {jobs.map((job) => (
-            <li key={job.id}>{job.name}: {job.quantity}</li>
-          ))}
-        </ul>
-      </div>
-    );
-  };
+  // Calcular totales asignados
+  function calcTotalAssigned(assignments) {
+    let totalAssigned = 0;
+    assignments.forEach((ass) => {
+      Object.values(ass.quantities).forEach((quantity) => {
+        totalAssigned += parseInt(quantity) || 0;
+      });
+    });
+    return totalAssigned;
+  }
 
-  const WorkerSelect = ({ workers }) => {
-    return (
-      <select name="worker" id="worker">
-        {workers.map((worker) => (
-          <option key={worker.id} value={worker.id}>{worker.name}</option>
-        ))}
-      </select>
-    );
+  // Actualizar cantidades de trabajo asignadas
+  const updateQuantities = (workerId, job, quantity) => {
+    setAssignments((prevAssignments) => {
+      const updatedAssignments = [...prevAssignments];
+      updatedAssignments[workerId] = {
+        ...updatedAssignments[workerId],
+        quantities: {
+          ...updatedAssignments[workerId].quantities,
+          [job]: quantity,
+        },
+      };
+      return updatedAssignments;
+    });
   };
-  
-  const JobSelect = ({ jobs }) => {
-    return (
-      <select name="job" id="job">
-        {jobs.map((job) => (
-          <option key={job.id} value={job.id}>{job.name}: {job.quantity}</option>
-        ))}
-      </select>
-    );
-  };
-  
-  const QuantityInput = ({ value }) => {
-    return (
-      <input
-        type="number"
-        name="quantity"
-        id="quantity"
-        value={value}
-      />
-    );
-  };
-  
 
   return (
-    <div>
-      <h2>Trabajadores</h2>
-      <ul>
-        {workers.map((worker) => (
-          <li key={worker.id}>{worker.name}</li>
-        ))}
-      </ul>
-
-      <h2>Trabajos</h2>
-      <ul>
-        {jobs.map((job) => (
-          <li key={job.id}>{job.name}: {job.quantity}</li>
-        ))}
-      </ul>
-
-      <h2>Asignaciones</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Trabajador</th>
-            <th>Trabajo</th>
-            <th>Cantidad</th>
-          </tr>
-        </thead>
-        <tbody>
-          {assignments.map((assignment) => (
-            <tr key={assignment.id}>
-              <td>{assignment.worker.name}</td>
-              <td>{assignment.job.name}</td>
-              <td>{assignment.quantity}</td>
-            </tr>
+    <div className="assignments-container">
+      <section className={style.workertable}>
+        <div className={style.head}>
+        <div className={style.th1}>Worker</div>
+            {Object.keys(jobs)
+              .slice(0, 7)
+              .map((job, index) => (
+                <div className={style.th} key={index}>{job}</div>
+              ))}
+        </div>
+        <div className={style.body}>
+        {workers.map((worker, index) => (
+            <div className={style.tr} key={index}>
+              <div className={style.td1}>
+                {worker.fname} {worker.lname}
+              </div>
+              {Object.keys(jobs)
+                .slice(0, 7)
+                .map((job, jobIndex) => (
+                  <div className={style.td} key={jobIndex}>
+                    <input className={style.input}
+                      type="number"
+                      name={`${worker.fname}_${job}`}
+                      value={assignments[index]?.quantities[job] || ""}
+                      onChange={(e) =>
+                        updateQuantities(index, job, e.target.value)
+                      }
+                    />
+                  </div>
+                ))}
+            </div>
           ))}
-        </tbody>
-      </table>
-
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Trabajador</label>
-          <WorkerSelect workers={workers} />
         </div>
-        <div>
-          <label>Trabajo</label>
-          <JobSelect jobs={jobs} />
-        </div>
-        <div>
-          <label>Cantidad</label>
-          <QuantityInput value={assignment.quantity} />
-        </div>
-        <button type="submit">Asignar</button>
-      </form>
+        <button className={style.btn} onClick={handleSubmit} disabled={pending}>
+        Submit
+      </button>
+      </section>
     </div>
   );
-};
+}
 
-
-
-
-export default Assing
+export default Assing;
