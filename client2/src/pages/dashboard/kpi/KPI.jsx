@@ -7,20 +7,26 @@ import Modal from "../../../components/Modal/Modal";
 import { TextInput } from "../../../components/inputs/Inputs.jsx";
 import { useEffect, useState } from "react";
 import { useAssign } from "../../../context/assignContext";
+import Assing from "../../../components/assignTest/assing.jsx";
 
 
 
 const KPI = () => {
   const { user } = useAuth();
   const { assign, GetAssign, CreateAssign  } = useAssign();
+  const {usuarios,GetUsers} = useAuth();
+ 
 
   useEffect(() => {
     GetAssign();
+    GetUsers();
+    
     
   },[]);  
 
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
   const [products, setProducts] = useState([]);
 
   // console.log(products);
@@ -32,7 +38,13 @@ const KPI = () => {
   const closeModal = () => {
     setIsOpen(false);
   };
+  const openModal2 = () => {
+    setIsOpen2(true);
+  };
 
+  const closeModal2 = () => {
+    setIsOpen2(false);
+  };
   
 
 // funcion para guardas en la base de datos los valores del los inputs usando la funcion CreateAssign
@@ -85,6 +97,13 @@ const handleChange = (e) => {
         </div>
         {user.access === "admin" ? (
           <SquareBtn onClick={openModal}>Assign</SquareBtn>
+          
+        ) : (
+          ""
+        )}
+        {user.access === "admin" ? (
+          <SquareBtn onClick={openModal2}>Job</SquareBtn>
+          
         ) : (
           ""
         )}
@@ -126,6 +145,9 @@ const handleChange = (e) => {
             </button>
           </form>
         </section>
+      </Modal>
+      <Modal isOpen={isOpen2} onClose={closeModal2} title="Job Assignment">
+      <Assing workers={usuarios} jobs={assign}/>
       </Modal>
     </>
   );
