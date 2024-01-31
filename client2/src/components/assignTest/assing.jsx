@@ -2,101 +2,137 @@ import React, { useState } from "react";
 import style from "./assign.module.css";
 
 
-function Assing({ workers, jobs }) {
-  const [date, setDate] = useState(new Date());
-  const [assignments, setAssignments] = useState(
-    workers.reduce((acc, worker) => {
-      acc[worker.id] = {};
-      Object.keys(jobs).forEach((job) => {
-        acc[worker.id][job] = 0;
-      });
-      return acc;
-    }, {})
+const Input = (props) => {
+  return (
+    <div className="Input">
+      
+      <input
+        id={props.id}
+        name={props.name}
+        className={style.input}
+        type={props.type}
+        placeholder={props.placeholder}
+        value={props.value}
+        onChange={props.onChange}
+      />
+    </div>
   );
+};
+
+
+
+function Assing({ workers, jobs, assing, createAssign }) {
+  // const [date, setDate] = useState(new Date());
+  console.log(workers)
+  console.log(jobs)
+  const [assignments, setAssignments] = useState([
+    {
+      LS3: 0,
+      ZEISS: 0,
+      SHAPE: 0,
+      IBO_DESIGN:0,
+      DIGI_ABUT:0,
+      PHIS_ABUT:0,
+      FULL_ARCH:0
+    }
+  ]);
+
+  const [LS3, setLS3] = useState(0);
+  const [ZEISS, setZEISS] = useState(0);
+  const [SHAPE, setSHAPE] = useState(0);
+  const [IBO_DESIGN, setIBO_DESIGN] = useState(0);
+  const [DIGI_ABUT, setDIGI_ABUT] = useState(0);
+  const [PHIS_ABUT, setPHIS_ABUT] = useState(0);
+  const [FULL_ARCH, setFULL_ARCH] = useState(0);
+  const[woker , setWoker] = useState([]);
+
   const [pending, setPending] = useState(false);
 
-  const sendToBackend = (updatedAssignments) => {
-    // Replace this with the actual code to send the updated assignments to the backend
-    console.log(
-      "Sending updated assignments to the backend:",
-      updatedAssignments
-    );
-    // Example: send data to backend API
-  };
-
-  const handleSubmit = () => {
-    setPending(true);
-
-    // Validaciones
-    let valid = true;
-
-    Object.keys(assignments).forEach((workerId) => {
-      Object.keys(assignments[workerId]).forEach((job) => {
-        if (isNaN(assignments[workerId][job])) {
-          valid = false;
-        }
-      });
-    });
-
-    const totalAssigned = calcTotalAssigned(assignments);
-    const availableJobs = Object.values(jobs).reduce(
-      (acc, val) => acc + val,
-      0
-    );
-    if (totalAssigned > availableJobs) {
-      valid = false;
-    }
-
-    if (!valid) {
-      setPending(false);
-      return;
-    }
-
-    // Guardar asignaciones
-    const updatedAssignments = workers.map((worker) => ({
-      ...assignments[worker.id],
-      date: date,
-    }));
-
-    setAssignments(updatedAssignments);
-
-    // Enviar al backend
-    sendToBackend(updatedAssignments);
-
-    setPending(false);
-  };
-
-  // Calcular totales asignados
-  function calcTotalAssigned(assignments) {
-    let totalAssigned = 0;
-    assignments.forEach((ass) => {
-      Object.values(ass.quantities).forEach((quantity) => {
-        totalAssigned += parseInt(quantity) || 0;
-      });
-    });
-    return totalAssigned;
+  function handleSubmit() {
+    // setPending(true); // Disable the button while submitting
+  
+    // // Fetch current assignments from the database (assuming a function to retrieve them)
+    // assing().then((currentAssignments) => {
+    //   const hasAssignmentsForToday = currentAssignments.some(
+    //     (assignment) => assignment.date === date
+    //   );
+  
+    //   if (!hasAssignmentsForToday) {
+    //     // Create new assignments with the current date
+    //     createAssign(date, assignments).then(() => {
+    //       setPending(false);
+    //       // Handle success (e.g., display a success message)
+    //     }).catch((error) => {
+    //       setPending(false);
+    //       // Handle error (e.g., display an error message)
+    //     });
+    //   } else {
+    //     setPending(false);
+    //     // Handle already existing assignments for today (e.g., display a message)
+    //   }
+    // });
+    console.log(assignments);
   }
 
   // Actualizar cantidades de trabajo asignadas
-  const updateQuantities = (workerId, job, quantity) => {
-    setAssignments((prevAssignments) => {
-      const updatedAssignments = [...prevAssignments];
-      updatedAssignments[workerId] = {
-        ...updatedAssignments[workerId],
-        quantities: {
-          ...updatedAssignments[workerId].quantities,
-          [job]: quantity,
-        },
-      };
-      return updatedAssignments;
-    });
+  const updateQuantities = (e) => {        
+    const { name, value } = e.target;
+
+    switch (name) {
+      case "LS3":
+        console.log(name, value);
+        setLS3(value);
+        break;
+      case "ZEISS":
+        console.log(name, value);
+        setZEISS(value);
+        break;
+      case "SHAPE":
+        console.log(name, value);
+        setSHAPE(value);
+        break;
+      case "IBO_DESIGN":
+        console.log(name, value);
+        setIBO_DESIGN(value);
+        break;
+      case "DIGI_ABUT":
+        console.log(name, value);
+        setDIGI_ABUT(value);
+        break;
+      case "PHIS_ABUT":
+        console.log(name, value);
+        setPHIS_ABUT(value);
+        break;
+      case "FULL_ARCH":
+        console.log(name, value);
+        setFULL_ARCH(value);
+        break;
+      default:
+        break;
+    }
+  };
+  
+
+  const ScanedSubmit = (e) => {
+   
+    const formData = {
+      LS3: Number(LS3),
+      ZEISS: Number(ZEISS),
+      SHAPE: Number(SHAPE),
+      IBO_DESIGN: Number(IBO_DESIGN),
+      DIGI_ABUT: Number(DIGI_ABUT),
+      PHIS_ABUT: Number(PHIS_ABUT),
+      FULL_ARCH: Number(FULL_ARCH)
+        };
+    console.log(formData);
+    
   };
 
   return (
     <div className="assignments-container">
       <section className={style.workertable}>
         <div className={style.head}>
-        <div className={style.th1}>Worker</div>
+        <div className={style.th1}>Workers</div>
             {Object.keys(jobs)
               .slice(0, 7)
               .map((job, index) => (
@@ -113,22 +149,24 @@ function Assing({ workers, jobs }) {
                 .slice(0, 7)
                 .map((job, jobIndex) => (
                   <div className={style.td} key={jobIndex}>
-                    <input className={style.input}
+                    
+                    {/* <input className={style.input}
+                      id={`${job}`}
                       type="number"
                       name={`${worker.fname}_${job}`}
-                      value={assignments[index]?.quantities[job] || ""}
+                      value={assignments}
                       onChange={(e) =>
-                        updateQuantities(index, job, e.target.value)
+                        updateQuantities(e.target.value)
                       }
-                    />
-                  </div>
+                    /> */}
+                    <Input type="text" placeholder="0" id={`${job}_${jobIndex}`} name={`${job}`}  value={assignments[job]} label="IBO Received" onChange={updateQuantities}/>
+                  </div>                  
                 ))}
-            </div>
+                
+            </div>                        
           ))}
         </div>
-        <button className={style.btn} onClick={handleSubmit} disabled={pending}>
-        Submit
-      </button>
+        <button className={style.btn} onClick={ScanedSubmit} disabled={pending}>Submit </button>
       </section>
     </div>
   );

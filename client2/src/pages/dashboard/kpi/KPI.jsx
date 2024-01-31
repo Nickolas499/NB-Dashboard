@@ -82,9 +82,13 @@ const handleChange = (e) => {
     handleCreateNewData();
     closeModal();
   };
+  const createAssign = () => {
+    console.log("hola");
+  }
 
   return (
     <>
+  {/* =====================================(ASSIGMENT CARDS)=============================================== */}
       <section className={kpi.Dashboard_Asigment}>
         <div className={kpi.container}>
         {Object.entries(assign).slice(0, 7).map((key, value) => (
@@ -108,6 +112,7 @@ const handleChange = (e) => {
           ""
         )}
       </section>
+      {/* =====================================(KPI CARDS)=============================================== */}
       <section className={kpi.Dashboard_KPI}>
         {kpi_data.map((card, index) => (
           <Kpicards
@@ -120,6 +125,8 @@ const handleChange = (e) => {
           />
         ))}
       </section>
+
+      {/* ====================================(ASSIGMENT MODAL)================================================ */}
       <Modal isOpen={isOpen} onClose={closeModal} title="Assign">
         <section className={kpi.assigmentContainer}>
           <form action="" className={kpi.formAssigment}>
@@ -146,8 +153,9 @@ const handleChange = (e) => {
           </form>
         </section>
       </Modal>
+      {/* =========================================(JOB MODAL)=========================================== */}
       <Modal isOpen={isOpen2} onClose={closeModal2} title="Job Assignment">
-      <Assing workers={usuarios} jobs={assign}/>
+      <Assing workers={usuarios} jobs={assign} CreateAssign={CreateAssign} assing={assign}/>
       </Modal>
     </>
   );

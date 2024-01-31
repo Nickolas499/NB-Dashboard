@@ -25,10 +25,9 @@ const Test = () => {
   useEffect(() => {
     GetUsers();
     GetAssign();
-  },[])
+  },[])//eslint-disable-line
 
-  console.log(assign);
-  console.log(usuarios);
+ 
 
   return (
     <Taps>
