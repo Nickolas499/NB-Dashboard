@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import UserCards from '../userCard/UserCard';
+// import UserCards from '../userCard/UserCard';
 import style from "./assign.module.css";
 
 
@@ -65,55 +65,41 @@ const AssignJobs = ({ workers, jobs }) => {
   };
 
   return (
-    <div>
-      <h2>Asignación de trabajos</h2>
-      <table className={style.workertable}>
-        <thead className={style.head}>
-          <tr className={style.th1}>
-            <th className={style.th}>Trabajador</th>
-            {Object.keys(jobs).map((jobType, index) => (
-              <th className={style.th} key={index}>{jobType}</th>
+    <div className="assignments-container">      
+      <section className={style.workertable}>
+        <div className={style.head}>
+          
+          <div className={style.th1}>Worker</div>
+            {Object.keys(jobs).slice(0, 7).map((jobType, index) => (
+              <div className={style.th1} key={jobType }>{jobType}</div>
             ))}
-          </tr>
-        </thead>
-        <tbody className={style.body}>
+          
+        </div>
+        <div className={style.body}>
           {workers.map(worker => (
-            <tr className={style.tr} key={worker._id}>
-              <td className={style.td1}>{worker.fname} {worker.lname}</td>
+            <div className={style.tr} key={worker._id}>
+              <div className={style.td1}>{worker.fname} {worker.lname}</div>
               {Object.keys(jobs).slice(0, 7).map((jobType, index) => (
-                <td className={style.td} key={index}>
+                <div className={style.td} key={worker.fname + jobType + index}>
                   <input
                     type="checkbox"
+                    id={worker.fname + index + jobType}
                     checked={!!assignments[worker._id]?.[jobType]}
                     onChange={() => handleAssignmentChange(worker._id, jobType, !assignments[worker._id]?.[jobType])}
                   />
                   <Input
                     type="number"
                     value={assignments[worker._id]?.[jobType]}
-                    id = {worker._id + jobType}
+                    id = {index+ worker.fname + index + jobType}
                     onChange={(e) => handleAssignmentChange(worker._id, jobType, e.target.value)}
                   />
-                </td>
+                </div>
               ))}
-            </tr>
+            </div>
           ))}
-        </tbody>
-      </table>
-      <button className={style.btn} onClick={handleJobAssignment}>Asignar trabajos</button>
-      <section className="UsersAsigment">
-        {UsersAsigment.map((card, index) => (
-        //   <UserCards
-        //     key={index}
-        //     initials={card.fname}
-        //     name={card.fname}
-        //     color={card.color}
-        //     shadow={card.shadow}
-        //     data={card.data}
-        //   />
-        <li>{card.worker}</li>
-        
-        ))}
-      </section>
+        </div>
+        <button className={style.btn} onClick={handleJobAssignment}>Asignar trabajos</button>
+      </section>    
     </div>
   );
 };

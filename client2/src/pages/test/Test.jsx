@@ -7,7 +7,7 @@ import AssignmentApp from "../../components/assignForm/AssignmentApp";
 import Assing from "../../components/assignTest/assing";
 import {useAuth} from './../../context/AuthContext';
 import { useAssign } from "../../context/assignContext";
-import AssignJobs from "../../components/assignTest/assignJob";
+import AssignJobs from "../../components/assignTest/assignJob2";
 
 const Test = () => {
   const [isOpen, setIsOpen] = useState(false);

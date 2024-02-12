@@ -8,6 +8,7 @@ import { TextInput } from "../../../components/inputs/Inputs.jsx";
 import { useEffect, useState } from "react";
 import { useAssign } from "../../../context/assignContext";
 import Assing from "../../../components/assignTest/assing.jsx";
+import AssignJobs from "../../../components/assignTest/assignJob2.jsx";
 
 
 
@@ -155,7 +156,7 @@ const handleChange = (e) => {
       </Modal>
       {/* =========================================(JOB MODAL)=========================================== */}
       <Modal isOpen={isOpen2} onClose={closeModal2} title="Job Assignment">
-      <Assing workers={usuarios} jobs={assign} CreateAssign={CreateAssign} assing={assign}/>
+      <AssignJobs workers={usuarios} jobs={assign} CreateAssign={CreateAssign} assing={assign}/>
       </Modal>
     </>
   );
