@@ -43,20 +43,17 @@ input[type=checkbox]:checked ~ div {
     align-items: center;
     justify-items: center;
     height: 100%;
-    background-color: #0ff10f;
+    background-color: #f06d01;
 }
 input[type="number"]:focus {    
     border: 1px solid #f06d01;
-    background-color: #faefe6e5;    
+    background-color: #f0bf87e5;    
 } 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 } 
-
-
-
 
 /* ========================================================================== */
 

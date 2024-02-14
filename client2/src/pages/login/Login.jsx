@@ -14,7 +14,7 @@ export const Login = (props) => {
   const navigate = useNavigate();
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
+    // console.log(data);
     Signin(data);
     navigate("/");
   });

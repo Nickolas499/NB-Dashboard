@@ -35,7 +35,6 @@ export const AuthProvider = ({ children }) => {
   const Signin = async (user) => {
     try {
       const res = await LoginRequest(user);
-      console.log(res);
       setUser(res.data);
       setIsAuthenticated(true);
     } catch (error) {
@@ -100,8 +99,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <authContext.Provider
-      value={{ Signup, Signin, GetUsers, user, usuarios, isAuthenticated, errors, loading, Logout }}
-    >
+      value={{ Signup, Signin, GetUsers, user, usuarios, isAuthenticated, errors, loading, Logout }}    >
       {children}
     </authContext.Provider>
   );

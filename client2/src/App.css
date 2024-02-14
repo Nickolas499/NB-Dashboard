@@ -3,10 +3,10 @@
 .AppContainer {
   background: repeating-linear-gradient(
     -45deg,var(--transparent),
-    var(--transparent)40px,
+    var(--transparent) 40px,
     var(--whitetransparent) 0px,
     var(--whitetransparent) 80px
-  );
+    );
   display: grid;
   z-index: 2;
   width: 100%;  
@@ -25,6 +25,7 @@
   background: radial-gradient( circle, rgba(0, 0, 0, 0.562) 0%, rgba(0, 0, 0, 0.473) 10%, rgba(0, 213, 255, 0)60% );
   z-index: -1;
 }
+
 .bg2 {
   position: fixed;
   width: 2000px;;
@@ -46,5 +47,7 @@
 .appMain{
   grid-area: main;
   padding: 10px;
-  height: calc(100dvh -80px);
+  height: calc(100dvh - 80px);   
 }
+
+

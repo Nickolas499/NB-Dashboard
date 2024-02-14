@@ -1,67 +1,62 @@
 import React, { useState } from 'react';
-// import UserCards from '../userCard/UserCard';
 import style from "./assign.module.css";
 
 
 
-const Input = (props) => {
-    return (
-      <div className="Input">
-        
-        <input
-          id={props.id}
-          name={props.name}
-          className={style.input}
-          type={props.type}
-          placeholder={props.placeholder}
-          value={props.value}
-          onChange={props.onChange}
-        />
-      </div>
-    );
-  };
+const Input = ({ id, name, type, placeholder, value, onChange }) => {
+  return (
+    <div className="Input">
+      <input
+        id={id}
+        name={name}
+        className={style.input}
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
+    </div>
+  );
+};
 
 const AssignJobs = ({ workers, jobs }) => {
   const [assignments, setAssignments] = useState({});
-  const [UsersAsigment, setUsersAsigment] = useState([]);
-  console.log(UsersAsigment)
+  const [userAssignments, setUserAssignments] = useState([]);
 
   const handleAssignmentChange = (workerId, jobType, value) => {
-    const newAssignments = { ...assignments };
+    setAssignments(prevAssignments => {
+      const newAssignments = { ...prevAssignments };
 
-    if (!newAssignments[workerId]) {
-      newAssignments[workerId] = {};
-    }
+      if (!newAssignments[workerId]) {
+        newAssignments[workerId] = {};
+      }
 
-    newAssignments[workerId][jobType] = value;
+      newAssignments[workerId][jobType] = value;
 
-    setAssignments(newAssignments);
+      return newAssignments;
+    });
   };
 
   const handleJobAssignment = () => {
-    const newAssignments = [];
-
-    workers.forEach(worker => {
-      const workerJobs = [];
-      Object.keys(jobs).forEach(jobType => {
-        if (assignments[worker._id]?.[jobType]) {
-          workerJobs.push({ [jobType]: assignments[worker._id][jobType] });
-        }
-      });
+    const newAssignments = workers.map(worker => {
+      const workerJobs = Object.keys(jobs)
+        .filter(jobType => assignments[worker._id]?.[jobType])
+        .map(jobType => ({ [jobType]: assignments[worker._id][jobType] }));
 
       if (workerJobs.length > 0) {
-        newAssignments.push({
+        return {
           Worker: `${worker.fname} ${worker.lname}`,
           Jobs: workerJobs,
           DATE: jobs.DATE
-        });
+        };
       }
-    });
+      return null;
+    }).filter(Boolean);
 
-    console.log(newAssignments); // Aquí puedes hacer lo que quieras con los resultados
-    setUsersAsigment(newAssignments);
+    setUserAssignments(newAssignments);
+    console.log(newAssignments); // You can do whatever you want with the results
 
-    // Puedes enviar los resultados a una API, guardarlos en el estado, etc.
+    // You can send the results to an API, save them in the state, etc.
   };
 
   return (
@@ -69,9 +64,9 @@ const AssignJobs = ({ workers, jobs }) => {
       <section className={style.workertable}>
         <div className={style.head}>
           
-          <div className={style.th1}>Worker</div>
+          <div className={style.th1}>DESIGNERS</div>
             {Object.keys(jobs).slice(0, 7).map((jobType, index) => (
-              <div className={style.th1} key={jobType }>{jobType}</div>
+              <div className={style.th1} key={index}>{jobType}</div>
             ))}
           
         </div>
@@ -89,7 +84,7 @@ const AssignJobs = ({ workers, jobs }) => {
                   />
                   <Input
                     type="number"
-                    value={assignments[worker._id]?.[jobType]}
+                    value={assignments[worker._id]?.[jobType] || ''}
                     id = {index+ worker.fname + index + jobType}
                     onChange={(e) => handleAssignmentChange(worker._id, jobType, e.target.value)}
                   />
@@ -98,7 +93,7 @@ const AssignJobs = ({ workers, jobs }) => {
             </div>
           ))}
         </div>
-        <button className={style.btn} onClick={handleJobAssignment}>Asignar trabajos</button>
+        <button className={style.btn} onClick={handleJobAssignment}>Assign Jobs</button>
       </section>    
     </div>
   );

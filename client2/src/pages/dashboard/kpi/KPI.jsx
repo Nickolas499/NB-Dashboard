@@ -28,9 +28,7 @@ const KPI = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
-  const [products, setProducts] = useState([]);
-
-  // console.log(products);
+  const [products, setProducts] = useState([]); 
 
   const openModal = () => {
     setIsOpen(true);
@@ -48,7 +46,7 @@ const KPI = () => {
   };
   
 
-// funcion para guardas en la base de datos los valores del los inputs usando la funcion CreateAssign
+
 
 const handleCreateNewData = async () => {
   const newAssignData = {
@@ -126,7 +124,6 @@ const handleChange = (e) => {
           />
         ))}
       </section>
-
       {/* ====================================(ASSIGMENT MODAL)================================================ */}
       <Modal isOpen={isOpen} onClose={closeModal} title="Assign">
         <section className={kpi.assigmentContainer}>

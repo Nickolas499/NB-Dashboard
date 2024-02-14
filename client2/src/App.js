@@ -30,7 +30,7 @@ const workers = ["Ezequiel Almonte","jose Antonio",];
     };
     // Guardar los datos de asignación en otro documento llamado 'asignacion'
     // Código para guardar los datos en el documento 'asignacion' aquí
-    console.log("Asignación guardada:", assignmentData);
+    // console.log("Asignación guardada:", assignmentData);
   };
 
 const routes = [
