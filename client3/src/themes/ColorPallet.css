@@ -1,0 +1,43 @@
+:root {
+    --primaryColor: #23262D;
+    --secondaryColor: #66666b2d;
+    --bgColor: #4a4c4d;
+    --assentColor: #01AEF0;
+    --Color: #b6b6b6;
+    --blue: #01AEF0;
+    --lightblue: #01acf073;
+    --white: #fff;
+    --black: #000;
+    --red: #FE0102;
+    --green: #6FC308;
+    --yellow: #F6B156;
+    --orange: #F78E57;
+    --gray: #515257;
+    --lightGray: #99999916;
+    --darkGray: #353232;
+    --inputTextColor: rgba(255, 255, 255, 0.562);
+    --errorColor: #FE010255;
+    --assentColor:  #ad1c1c;
+
+    /* new schema */
+
+    --assert:rgb(216,77,46);
+    --active:rgb(216,77,46);
+    --inactive:var(--bgColor);
+    --background:rgb(43, 78, 99);
+    --background2:rgb(69,30,13);
+    --primary:rgba(0,0,0,0.5);
+    --secondary:rgb(26,33,39);
+    --terciary:rgb(74,92,112);
+    --text1:rgb(113,135,153);
+    --text2:rgb(252,252,252); 
+    --transparent:rgba(0,0,0,0.01);
+    --whitetransparent:rgba(255,255,255,0.01);
+    --blacktransparent:rgba(0,0,0,0.5);
+    --btn_active:#ff5131;
+    --btn_inactive:#67819c;
+    --btn:#33455d;
+    --btn_light:#a3bed3;
+    
+  
+  }

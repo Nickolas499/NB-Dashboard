@@ -1,0 +1,115 @@
+@import '../../../themes/ColorPallet.css';
+.dropdown {
+    width: 200px;
+    
+    position: relative;
+  }
+  .dropdown .username {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    
+  }
+  .dropdown .name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-right: 20px;
+    
+  }
+  .dropdown .userIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    background-color: #01AEF0;
+    box-shadow: 0 0 5px 0 #01AEF0;
+    transition: box-shadow 0.3s ease-out;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 0px;
+    background: #6FC308;
+  }
+  .dropdown .circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background-color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 0px;
+  }
+  .dropdown .userName:hover .userIcon {
+    box-shadow: 0 0 15px 0 #01AEF0;
+  }
+  .dropdown .select-clicked {
+    border: 2px solid #6FC308;
+    box-shadow: 0 0 10px 0 #6FC308;
+  }
+  .menu {
+    width: 150px;
+    list-style: none;
+    padding: 5px;
+    background-color: var(--primary);
+    color: #b6b6b6;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 0%;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 0%;
+    position: absolute;
+    top: 50px;
+    left: 40%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: none;
+    transition: all 0.5s ease;
+    border: 2px solid var(--assert);
+    box-shadow: 0 0 5px 1px var(--assert);
+    z-index: 2;
+  }
+  .menu li {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 5px;
+    transition: background-color 0.5s ease;
+    font-size: 0.8rem;
+  }
+  .menu li:hover,
+  .menu li a:hover {
+    color: var(--assert);
+    background-color: #515257;
+    font-size: 0.9rem;
+  }
+  .menu li a {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: #b6b6b6;
+    text-decoration: none;
+  }
+  .menu li a div svg{
+    width: 30px;
+    height: 30px;
+  }
+  .menu li a :nth-child(1) {
+    padding-right: 10px;
+  }
+  .active {
+    background-color: #01AEF0;
+  }
+  .menuOpen {
+    opacity: 1;
+    display: block;
+  }

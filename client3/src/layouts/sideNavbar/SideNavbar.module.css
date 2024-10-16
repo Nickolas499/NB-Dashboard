@@ -1,0 +1,84 @@
+@import '../../themes/ColorPallet.css';
+
+aside {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    grid-area: aside;
+    background-color: var(--primary);
+  }
+  aside .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 86px;
+    width: 100%;
+    padding: 10px;
+  }
+  aside .logo img {
+    width: 45px;
+  }
+  aside nav {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0;
+  }
+  aside nav ul {
+    list-style: none;
+    height: 100%;
+    font-weight: bold;
+  }
+  aside nav ul li {
+    padding: 5px 10px;
+  }
+  aside nav ul li a {
+    text-decoration: none;
+    color: #b6b6b6;
+  }
+  aside nav ul li div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80px;
+    padding: 8px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  aside nav ul li div :nth-child(1) {
+    font-size: 1.5rem;
+    padding: 5px;
+  }
+  aside nav ul li div:hover {
+    background: #515257;
+    color: #01AEF0;
+    font-size: 1rem;
+  }
+  svg{
+    fill:var(--assert);
+  }
+  a:hover svg {   
+    fill: var(--assert);
+  }
+  .active{        
+    color: var(--text1);
+    
+  }
+  .active div{        
+    background: var(--assert);
+    color: var(--white);
+    font-size: 1rem;
+    
+  }
+  .active svg{        
+    fill: var(--white);    
+  }
+
+
+
+  

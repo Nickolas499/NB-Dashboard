@@ -3,9 +3,6 @@ import morgan from "morgan";
 import cors from "cors";
 import cookie from "cookie-parser";
 
-
-
-
 //============================================================================//
 //                              ROUTES IMPORT                                 //
 //============================================================================//
@@ -26,12 +23,12 @@ const app = express();
 
 app.use(cors(
     {
-        // origin: ["http://192.168.1.186:4000","http://localhost:4000","http://192.168.1.186:3000","http://localhost:3000"],
-        origin: ["http://10.62.150.76:4000","http://localhost:4000","http://10.62.150.76:3000","http://localhost:3000"],
-        // origin:["http://192.168.1.43:4000","http://localhost:4000",http://192.168.1.43:3000","http://localhost:3000"],
+        
+        origin: ["http://10.62.150.33:4000","http://10.62.150.33:3000","http://localhost:4000","http://10.62.150.33:5173","http://localhost:5173"],             
         credentials: true
     }
 ));
+
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cookie());
@@ -52,9 +49,9 @@ app.use('/api', work)
 //                                  others                                    //
 //============================================================================//
 
-app.get("/", (req, res) => {
-    res.send("Hello World!");
-})
+// app.get("/", (req, res) => {
+//     res.send("Hello World!");
+// })
 
 
 export default app

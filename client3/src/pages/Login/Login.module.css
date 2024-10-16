@@ -1,0 +1,122 @@
+@import '../../themes/ColorPallet.css';
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: repeating-linear-gradient(
+        -45deg,var(--transparent),
+        var(--transparent)40px,
+        var(--whitetransparent) 0px,
+        var(--whitetransparent) 80px
+      );
+    
+}
+.bg {
+    position: fixed;
+    width: 1500px;;
+    height: 1500px;
+    bottom: -750px;
+    left: -750px;
+    background: radial-gradient( circle, rgba(0, 0, 0, 0.562) 0%, rgba(0, 0, 0, 0.473) 10%, rgba(0, 213, 255, 0)60% );
+}
+.bg2 {
+    position: fixed;
+    width: 2000px;;
+    height: 2000px;
+    top: -1000px;
+    right: -100px;
+    background: radial-gradient( circle, rgba(0, 0, 0, 0.562) 0%, rgba(0, 0, 0, 0.473) 10%, rgba(0, 213, 255, 0) 70% );
+}
+.login {
+    position: relative;
+    width: 300px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.login p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin: 5px;
+    background-color: var(--errorColor);
+    font-weight: bold;
+    width: 100%;
+    border-radius: 20px;
+
+}
+
+.login h1 {
+    color: var(--blue);
+    padding: 10px auto;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+    padding: 10px;
+
+}
+.login .logo{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+
+}
+.login .logo img{
+    width: 100%;
+    height: 100%;
+}
+
+.input_text {
+    width: 100%;
+    height: 25px;
+    margin: 5px 0;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    text-align: center;
+    background-color:var(--inputTextColor); 
+    font-weight: bold;
+}
+
+.input_text:focus {
+    border: 1px solid var(--blue);
+    box-shadow: 0 0 3px 0.5px var(--blue);
+}
+
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 2px var(--blue);
+    background-color: transparent;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--Color);
+    padding: 10px;
+  }
+
+.btn:hover {
+    box-shadow: 0 0 3px 0.5px var(--blue);
+    text-shadow: 0 0 3px var(--blue);
+  }
