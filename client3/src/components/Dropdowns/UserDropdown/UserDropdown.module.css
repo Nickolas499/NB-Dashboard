@@ -91,6 +91,7 @@
     color: var(--assert);
     background-color: #515257;
     font-size: 0.9rem;
+    
   }
   .menu li a {
     display: flex;
@@ -99,9 +100,10 @@
     color: #b6b6b6;
     text-decoration: none;
   }
-  .menu li a div svg{
+  .menu li a div img{
     width: 30px;
     height: 30px;
+    color: #b6b6b6;
   }
   .menu li a :nth-child(1) {
     padding-right: 10px;
@@ -112,4 +114,9 @@
   .menuOpen {
     opacity: 1;
     display: block;
+  }
+
+  img{
+    width: 30px;
+    height: 30px;    
   }

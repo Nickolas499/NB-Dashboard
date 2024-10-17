@@ -1,6 +1,6 @@
 {
   "name": "client3",
-  "proxy": "http://10.62.150.33:5000",
+  "proxy": "http://192.168.1.158:5000",
   "private": true,
   "version": "0.0.0",
   "type": "module",

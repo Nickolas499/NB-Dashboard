@@ -5,7 +5,7 @@ import KPI from "./kpi/KPI"
 import momemt from 'moment';
 
 const today = momemt().format('MM/DD/YYYY');
-const yesterday = momemt().subtract(1, 'days').format('MM/DD/YYYY');
+const yesterday = momemt().subtract(1,'days').format('MM/DD/YYYY');
 
 
 

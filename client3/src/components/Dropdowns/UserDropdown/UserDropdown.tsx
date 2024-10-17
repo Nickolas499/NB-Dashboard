@@ -44,31 +44,31 @@ export const Dropdown: React.FC<DropdownProps> = (props) => {
         <ul className={isMenuOpen ? `${styles.menu} ${styles.menuOpen}` : `${styles.menu}`}>
           <li>
             <Link to="/" onClick={handleSelectClick}>
-              <div>{dashboard_icon}</div>
+              <div><img src={dashboard_icon}/></div>
               <span>Dashboard</span>
             </Link>
           </li>
           <li>
             <Link to="/charts" onClick={handleSelectClick}>
-              <div>{charts_icon}</div>
+              <div><img src={charts_icon} /></div>
               <span>Charts</span>
             </Link>
           </li>
           <li>
             <Link to="/profile" onClick={handleSelectClick}>
-              <div>{profile_icon}</div>
+              <div><img src={profile_icon} /></div>
               <span>Profile</span>
             </Link>
           </li>
           <li>
             <Link to="/test" onClick={handleSelectClick}>
-              <div>{test_icon}</div>
+              <div><img src={test_icon}/></div>
               <span>Test</span>
             </Link>
           </li>
           <li>
             <Link to="/login" onClick={() => Logout()}>
-              <div>{logout_icon}</div>
+              <div><img  src={logout_icon} /></div>
               <span>Logout</span>
             </Link>
           </li>

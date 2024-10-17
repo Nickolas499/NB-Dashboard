@@ -1,0 +1,40 @@
+@import '../../themes/ColorPallet.css';
+
+.btn{
+    display: block;
+    width: 100px;
+    height: 40px;
+    background-color: var(--terciary);
+    color: var(--white);    
+    border-radius: 10px;
+    border: 2px solid var(--inactive);
+    font-size: 1rem;
+}
+
+.btn:hover{
+    background-color: var(--active);
+}
+
+
+.sqbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    background-color: var(--btn);
+    color: var(--white);    
+    border-radius: 10px;
+    border: 2px solid var(--inactive);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sqbtn:hover{
+    background-color: var(--btn_active);
+}
+.sqbtn:disabled{
+    background-color: var(--inactive);
+    cursor: not-allowed;
+}
