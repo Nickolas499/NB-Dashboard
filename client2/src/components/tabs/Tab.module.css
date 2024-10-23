@@ -63,7 +63,7 @@
 .tab_content {
     display: flex;
     width: 100%;
-    height: calc(100dvh - 150px);
+    height: calc(100dvh - 140px);
     flex-direction: column;
     padding: 8px;
     gap: 10px;    

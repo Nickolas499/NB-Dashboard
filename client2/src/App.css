@@ -39,15 +39,15 @@
 .Applogin{
   display: grid;
   width: 100vw;
-  min-height: calc(100vh - 20px);    
+  /* min-height: calc(100vh - 10px);     */
   justify-content: center;
   align-items: center;
 }
 
 .appMain{
   grid-area: main;
-  padding: 10px;
-  height: calc(100dvh - 80px);   
+  padding: 5px;
+  height: calc(100dvh - 90px);   
 }
 
 
