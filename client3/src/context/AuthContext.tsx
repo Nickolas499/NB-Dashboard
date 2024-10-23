@@ -7,16 +7,19 @@ import {
 } from '../api/Auth';
 import Cookies from "js-cookie";
 
+// Define las propiedades del objeto User según tu esquema de Mongoose
 interface User {
-  // Define las propiedades del objeto user según tus necesidades
   username: string;
-  password: string;
-  // Añade otras propiedades si es necesario
+  fname: string;
+  lname: string;
+  email: string;  
+  access: string;
+  color: string;
 }
 
 interface AuthContextType {
-  Signup: (user: User) => Promise<void>;
-  Signin: (user: User) => Promise<void>;
+  
+  Signin: (user: Pick<User, 'username'>) => Promise<void>; // Solo username y password para iniciar sesión
   GetUsers: () => Promise<void>;
   user: User | null;
   usuarios: User[];
@@ -47,21 +50,21 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [errors, setErrors] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const Signup = async (user: User) => {
+  const Signup = async (user) => {
     try {
       await RegisterRequest(user);
-    } catch (error: any) {
+    } catch (error: unknown) {
       setErrors(error.response.data);
     }
-  };
+  }
 
-  const Signin = async (user: User) => {
+  const Signin = async (user: Pick<User, 'username'>) => {
     try {
       const res = await LoginRequest(user);
       setUser(res.data);
       setIsAuthenticated(true);
-    } catch (error: any) {
-      setErrors(error.response.data);
+    } catch (error:unknown) {
+      setErrors(error.response?.data || "Unknown Error");
     }
   };
 
@@ -103,6 +106,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         setUser(null);
         setLoading(false);
         Cookies.remove("token");
+        console.log(error)
       }
     }
     checkLogin();

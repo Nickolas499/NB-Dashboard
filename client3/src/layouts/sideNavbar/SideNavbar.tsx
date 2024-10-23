@@ -1,11 +1,11 @@
 import Logo from "../../assets/icons/logo.svg";
-// import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import styles from "./SideNavbar.module.css";
-import { dashboard_icon, charts_icon, profile_icon, assign_icon, test_icon } from '../../assets/icons/icons';
+import { dashboard_icon, charts_icon, profile_icon, assign_icon, test_icon, settings_icon } from '../../assets/icons/icons';
 import NavLink from "../../components/NavLink/NavLink";
 
 const SideNavbar: React.FC = () => {
-//   const { user } = useAuth();
+  const { user } = useAuth();
 
   return (
     <aside>
@@ -44,13 +44,13 @@ const SideNavbar: React.FC = () => {
               <div><img src={assign_icon} alt="" /><span>Assign</span></div>
             </NavLink>
           </li>
-          {/* {user.access === "admin" && (
+          {user?.access === "admin" && (
             <li>
               <NavLink to="/admin" styles={styles.active}>
-                <div>{settings_icon}<span>Admin</span></div>
+                <div><img src={settings_icon} alt="" /><span>Admin</span></div>
               </NavLink>
             </li>
-          )} */}
+          )}
         </ul>
       </nav>
     </aside>

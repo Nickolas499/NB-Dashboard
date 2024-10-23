@@ -10,9 +10,7 @@ const RootLayout = () => {
   return (
     <>
     <div className={style.AppContainer}>      
-      <Header logout={function (): void {
-                  throw new Error("Function not implemented.");
-              } } />
+      <Header logout={function (): void {throw new Error("Function not implemented.");} } />
       <SideNavbar />
       <main className={style.appMain}>
         <Outlet />

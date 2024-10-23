@@ -15,7 +15,9 @@
 
 
 .tab_list_item {
-    list-style: none;    
+    list-style: none; 
+    width: 250px;  
+    text-align: center;
     padding: 12px 75px 0 18px;
     background: linear-gradient(220deg, transparent 45px, var(--inactive) 10px);
     cursor: pointer;

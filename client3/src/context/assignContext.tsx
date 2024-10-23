@@ -6,12 +6,22 @@ import {
     updateJobassignment,
     deleteJobassignment
 } from "../api/jobAssignmets";
+interface WorkData {
+    LS3:number,
+    ZEISS:number,
+    SHAPE:number,
+    IBO_DESIGN:number,
+    DIGI_ABUT:number,
+    PHIS_ABUT:number,
+    FULL_ARCH:number,
+    DATE:string,     
+}
 
 interface AssignContextType {
     GetAssign: () => Promise<void>;
-    assign: any[]; // Cambia 'any' por un tipo más específico si es posible
+    assign: WorkData[]; // Cambia 'any' por un tipo más específico si es posible
     loading: boolean;
-    CreateAssign: (data: any) => Promise<void>; // Cambia 'any' por un tipo más específico si es posible
+    CreateAssign: (data: WorkData) => Promise<void>; // Cambia 'any' por un tipo más específico si es posible
 }
 
 export const assignContext = createContext<AssignContextType | undefined>(undefined);
@@ -29,7 +39,7 @@ interface AssignProviderProps {
 }
 
 export const AssignProvider: React.FC<AssignProviderProps> = ({ children }) => {
-    const [assign, setAssign] = useState<any[]>([]); // Cambia 'any' por un tipo más específico si es posible
+    const [assign, setAssign] = useState<WorkData[]>([]); // Cambia 'any' por un tipo más específico si es posible
     const [loading, setLoading] = useState<boolean>(true);
 
     const GetAssign = async () => {
@@ -42,7 +52,7 @@ export const AssignProvider: React.FC<AssignProviderProps> = ({ children }) => {
         }
     }
 
-    const CreateAssign = async (data: any) => { // Cambia 'any' por un tipo más específico si es posible
+    const CreateAssign = async (data: WorkData) => { // Cambia 'any' por un tipo más específico si es posible
         try {
             await createJobassignment(data);
         } catch (error) {

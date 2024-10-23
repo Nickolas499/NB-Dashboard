@@ -9,6 +9,7 @@ import {Login} from './pages/login/Login';
 import {useAuth} from './context/AuthContext';
 import {useEffect} from 'react';
 import Test from './pages/test/Test';
+import Admin from './pages/admin/Admin';
 import AssignmentForm from "./components/assignForm/AssignmentForm";
 const workers = ["Ezequiel Almonte","jose Antonio",];
   const jobs = {
@@ -53,7 +54,7 @@ const routes = [
       },
       {
         path: '/admin',
-        element: <h1>Admin</h1>
+        element: <Admin/>
       },
       {
         path: '/test',

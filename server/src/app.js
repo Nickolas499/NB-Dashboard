@@ -24,15 +24,10 @@ const app = express();
 app.use(cors(
     {
         
-        // origin: ["http://10.62.150.33:4000","http://10.62.150.33:3000","http://localhost:4000","http://10.62.150.33:5173","http://localhost:5173"],  
-                
+        // origin: ["http://10.62.150.33:4000","http://10.62.150.33:3000","http://localhost:4000","http://10.62.150.33:5173","http://localhost:5173"],                
         //como aceptar todas los origenes
         origin: true,
-
-        //como aceptar todas las credenciales
-        
-
-
+        //como aceptar todas las credenciales 
         credentials: true
     }
 ));

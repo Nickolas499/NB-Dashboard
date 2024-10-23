@@ -72,7 +72,7 @@ const KPI: React.FC = () => {
   return (
     <>
       {/* =====================================(ASSIGMENT CARDS)=============================================== */}
-      {/* <section className={kpi.Dashboard_Asigment}>
+      <section className={kpi.Dashboard_Asigment}>
         <div className={kpi.container}>
           {Object.entries(assign).slice(0, 7).map(([key, value]) => (
             <h2 key={key}>
@@ -87,7 +87,7 @@ const KPI: React.FC = () => {
             <SquareBtn onClick={openModal2}>Job</SquareBtn>
           </>
         )}
-      </section> */}
+      </section>
       {/* =====================================(KPI CARDS)=============================================== */}
       <section className={kpi.Dashboard_KPI}>
         {kpi_data.map((card, index) => (

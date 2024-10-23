@@ -1,9 +1,9 @@
 import kpi from "./kpi.module.css";
 import { kpi_data } from "../../../data/kpi_data.js";
-import { Kpicards } from "../../../components/KPICards/KPIcards";
+import { Kpicards } from "../../../components/KPICards/KPIcards.jsx";
 import { SquareBtn } from "../../../components/Butons/Buton.jsx";
 import { useAuth } from "../../../context/AuthContext";
-import Modal from "../../../components/Modal/Modal";
+import Modal from "../../../components/Modal/Modal.jsx";
 import { TextInput } from "../../../components/inputs/Inputs.jsx";
 import { useEffect, useState } from "react";
 import { useAssign } from "../../../context/assignContext";
@@ -20,9 +20,7 @@ const KPI = () => {
 
   useEffect(() => {
     GetAssign();
-    GetUsers();
-    
-    
+    GetUsers();    
   },[]);  
 
 
