@@ -28,27 +28,27 @@ export const Login = (props) => {
           <form onSubmit={onSubmit}>
             <h1>Login</h1>
             {signinErrors.map((error, index) => (
-              <p className="error" key={index}>
+              <p className={style.error} key={index}>
                 {error}
               </p>
             ))}
             <input
               name="username"
-              className={style.input_text}
+              className={`${style.input_text } ${errors.password && style.error2}`}
               type="text"
               {...register("username", { required: true })}
-              placeholder="username"
+              placeholder= {errors.password ? "This field is required" : "Username" }
               autoComplete="true"
             />
-            {errors.username && <p className="error">This field is required</p>}
+            {/* {errors.username && <p className={style.error}>This field is required</p>} */}
             <input
               name="password"
-              className={style.input_text}
+              className={`${style.input_text } ${errors.password && style.error2}`}
               type="password"
               {...register("password", { required: true })}
-              placeholder="password"
+              placeholder= {errors.password ? "This field is required" : "Password" }
             />
-            {errors.password && <p className="error">This field is required</p>}
+            {/* {errors.password && <p className={style.error}>This field is required</p>} */}
             <button className={style.btn}>Login</button>
           </form>
         </div>

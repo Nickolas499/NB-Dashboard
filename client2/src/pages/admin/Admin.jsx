@@ -1,4 +1,5 @@
 import Tabs from "../../components/tabs/Tabs"
+import { Usersadmin } from "./usersadmin/Usersadmin";
 import momemt from 'moment';
 
 const today = momemt().format('MM/DD/YYYY');
@@ -8,7 +9,7 @@ const Admin = () => {
   return (
     <Tabs title={today}>
     <div label="ADMIN USERS">
-      <h1>Admin</h1>
+      <Usersadmin/>
     </div>
     <div label="ADMIN JOBS">
     <h1>Admin</h1>

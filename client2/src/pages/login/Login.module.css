@@ -12,8 +12,7 @@
         var(--transparent)40px,
         var(--whitetransparent) 0px,
         var(--whitetransparent) 80px
-      );
-    
+      );    
 }
 .bg {
     position: fixed;
@@ -34,19 +33,19 @@
 .login {
     position: relative;
     width: 300px;
-    height: 250px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     
 }
-.login p{
-    display: flex;
+.login .error{    
+    display: flex;    
     justify-content: center;
     align-items: center;
     padding: 5px;
-    margin: 5px;
+    margin: 0 0 5px 0;
     background-color: var(--errorColor);
     font-weight: bold;
     width: 100%;
@@ -119,4 +118,9 @@
 .btn:hover {
     box-shadow: 0 0 3px 0.5px var(--blue);
     text-shadow: 0 0 3px var(--blue);
+  }
+
+.error2::placeholder {
+    color: red;
+    opacity: 1; /* Firefox */
   }
