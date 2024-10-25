@@ -15,7 +15,8 @@
     --gray: #515257;
     --lightGray: #99999916;
     --darkGray: #353232;
-    --inputTextColor: rgba(255, 255, 255, 0.562);
+    --inputTextColor: rgba(255, 255, 255, 0.253);
+    --placeholdercolor:rgba(252, 252, 252, 0.541); 
     --errorColor: #FE010255;
     --assentColor:  #ad1c1c;
 

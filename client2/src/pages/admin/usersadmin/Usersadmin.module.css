@@ -8,17 +8,17 @@
 
 /* =================================[New User Form]=================================================================== */
 .NewUserForm{
-    display: flex;
-    
+    display: flex;    
     width:800px;
     height: 100%;
     padding: 10px;
+    /* background-color: rgba(0, 0, 0, 0.075); */
 }
 
 .Form{
     display: flex;
-    flex-direction: column;
-    justify-content: start;
+    width: 100%;
+    flex-direction: column;   
     align-items: center;
     
 }
@@ -44,6 +44,11 @@ h1{
     text-align: center;
     background-color:var(--inputTextColor); 
     font-weight: bold;
+    color: white;
+}
+
+.input_text::placeholder{
+    color: var(--placeholdercolor);
 }
 
 .Input{
@@ -123,4 +128,50 @@ h1{
     flex-direction: column;
     width: 100%;
     height: 100%;
+    padding: 10px;
+}
+
+.UserListHeader {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    height: 40px;
+    margin: 5px 0 ;  
+    padding: 5px 15px;
+    border-radius: 4px;
+    background-color:var(--inputTextColor); 
+    font-weight: bold;
+    line-height: 30px;
+    color: black;
+}
+.UserList{
+    display: flex;
+    /* justify-content: start; */
+    align-content: center;
+    width: 100%;
+    height: 40px;
+    margin: 5px 0 ;  
+    padding: 5px 15px;
+    border-radius: 4px;
+    background-color:var(--inputTextColor); 
+    font-weight: bold;
+    line-height: 30px;
+    color: black;
+}
+
+.UserList span, .UserListHeader span{
+    width: 100%;
+    padding: 0 20px;
+    border-right: 1px solid white;
+}
+.UserListHeader span{
+    text-align: center;
+    width: 100%;
+    padding: 0 20px;
+}
+.UserList span:last-of-type,.UserListHeader span:last-of-type {
+    width: 100px;
+    justify-self: flex-end;
+    background-color: aliceblue;
 }
