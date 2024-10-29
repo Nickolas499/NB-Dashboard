@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { useAuth } from '../../../context/AuthContext';
 import { Select } from '../../../components/SelectComponet/Select';
+import { Input } from '../../../components/inputs/Inputs';
+import { trash_icon } from '../../../img/icons';
 
 const ColorOption = [
     { label: "Cherry Red", value: "#de2939" },
@@ -36,31 +38,68 @@ export const Usersadmin = () => {
     const { usuarios, GetUsers } = useAuth();
     const [Accessvalue, setAccessValue] = useState(AccessOption[0]);
     const [Colorvalue, setColorValue] = useState(ColorOption[0]);
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+    const { register, formState: { errors }, } = useForm();
+    const [newUser, setNewUser] = useState([])
+    const { Signup, Delete_User , errors: RegisterErrors } = useAuth();
 
-    const { Signup, errors: RegisterErrors } = useAuth();
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        console.log(e.target.value)
+        setNewUser((prev) => ({
+            ...prev,
+            [name]: value,
 
-    const onSubmit = async (data) => {
-        data.color = Colorvalue.value;
-        data.access = Accessvalue.value;
-        await Signup(data);
+        }));
+        console.log(newUser)
     };
+
+
+    const handleCreateNewData = async () => {
+        const newuser = {
+            username: newUser.USERNAME,
+            fname: newUser.FNAME,
+            lname: newUser.LNAME,
+            email: newUser.EMAIL,
+            password: newUser.PASSWORD,
+            access: Accessvalue.value,
+            color: Colorvalue.value
+
+        };
+        console.log(newuser)
+        await Signup(newuser);
+        GetUsers();
+    };
+    const DeleteUser=(id)=>{
+            Delete_User(id)
+    }
+
+    const handleSignUp = (e) => {
+        e.preventDefault();
+        console.log(newUser);
+        handleCreateNewData();
+
+    };
+
+    // const onSubmit = async (data) => {
+    //     data.color = Colorvalue.value;
+    //     data.access = Accessvalue.value;
+    //     console.log(data)
+    //     await Signup(data);
+    // };
 
     useEffect(() => {
         GetUsers();
     }, [])
+    const colores = "#00ff00"
 
-
+    console.log(colores)
 
 
     return (
         <div className={style.Container}>
+            {/* =============================================[USERS FORM]======================================= */}
             <div className={style.NewUserForm}>
-                <form className={style.Form} onSubmit={handleSubmit(onSubmit)}>
+                <form className={style.Form} >
                     <h1>Create New User</h1>
                     <span>
                         {RegisterErrors.map((error, index) => (
@@ -70,64 +109,20 @@ export const Usersadmin = () => {
                         ))}
                     </span>
                     <div className={style.FormInput}>
-                        <div className={style.Input}>
-                            <p>First Name</p>
-                            <input
-                                name="fname"
-                                className={`${style.input_text} ${errors.fname && style.error2}`}
-                                type="text"
-                                placeholder={errors.fname ? "This field is required" : "First Name"}
-                                autoComplete="true"
-                            />
-                        </div>
-                        <div className={style.Input}>
-                            <p>Last Name</p>
-                            <input
-                                name="lname"
-                                className={`${style.input_text} ${errors.lname && style.error2}`}
-                                type="text"
-                                placeholder={errors.lname ? "This field is required" : "Last Name"}
-                            /></div>
+                        <Input label="First Name" name="FNAME" type="text" placeholder="First Name" onChange={handleChange} errors={errors} />
+                        <Input label="Last Name" name="LNAME" type="text" placeholder="Last Name" onChange={handleChange} errors={errors} />
                     </div>
-                    <div className={style.Input}>
-                        <p>Email</p>
-                        <input
-                            name="email"
-                            className={`${style.input_text} ${errors.email && style.error2}`}
-                            type="email"
-                            placeholder={errors.email ? "This field is required" : "Email"}
-                            autoComplete="true"
-                        />
-                    </div>
+                    <Input label="Email" name="EMAIL" type="text" placeholder="Email" onChange={handleChange} errors={errors} />
                     <div className={style.FormInput}>
-                        <div className={style.Input}>
-                            <p>Username</p>
-                            <input
-                                name="username"
-                                className={`${style.input_text} ${errors.password && style.error2}`}
-                                type="text"
-                                placeholder={errors.username ? "This field is required" : "Username"}
-                                autoComplete="true"
-                            />
-                        </div>
-                        <div className={style.Input}>
-                            <p>Password</p>
-                            <input
-                                name="Password"
-                                className={`${style.input_text} ${errors.password && style.error2}`}
-                                type="password"
-                                placeholder={errors.password ? "This field is required" : "Password"}
-                                autoComplete="true"
-                            />
-                        </div>
+                        <Input label="Userame" name="USERNAME" type="text" placeholder="Username" onChange={handleChange} errors={errors} />
+                        <Input label="Password" name="PASSWORD" type="password" placeholder="Password" onChange={handleChange} errors={errors} />
                     </div>
                     <div className={style.FormInput}>
                         <div className={style.Input}>
                             <p>Access Type</p>
-
                             <Select
                                 {...register("access", { required: false })}
-                                name="access"
+                                name="ACCESS"
                                 options={AccessOption}
                                 value={Accessvalue || AccessOption[0]}
                                 type={"text"}
@@ -136,10 +131,9 @@ export const Usersadmin = () => {
                         </div>
                         <div className={style.Input}>
                             <p>Color</p>
-
                             <Select
                                 {...register("color", { required: false })}
-                                name="color"
+                                name="COLOR"
                                 options={ColorOption}
                                 value={Colorvalue || ColorOption[0]}
                                 type={"color"}
@@ -152,11 +146,12 @@ export const Usersadmin = () => {
 
 
                     <div className={style.BtnInput}>
-                        <button className={style.btn} >Create User</button>
+                        <button className={style.btn} onClick={handleSignUp} >Create User</button>
                     </div>
                 </form>
 
             </div>
+            {/* =============================================[USERS LISTS]======================================= */}
             <div className={style.UsersList}>
                 <h1>Usuarios</h1>
                 <ul>
@@ -167,12 +162,13 @@ export const Usersadmin = () => {
                         <span>Edit</span>
                     </li>
                     {usuarios.map((user) => (
-                        <li className={style.UserList} key={user._id}>
+                        <li className={style.UserList} key={user._id} style={{ backgroundColor:user.color+"66"}}>
                             <span>{user.fname}  {user.lname}</span>
                             <span>{user.username}</span>
-                            <span>{user.email}</span>
-                            <span>Edit</span>
+                            <span>{user._id}</span>
+                            <span><button className={style.trash_btn} onClick={() => DeleteUser(user._id)} >{trash_icon}</button></span>
                         </li>
+                        
                     ))}
                 </ul>
             </div>

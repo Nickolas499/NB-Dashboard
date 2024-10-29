@@ -5,7 +5,8 @@ import {
   logout,
   profile,
   verify,
-  getUsers
+  getUsers,
+  deleteUser
 } from "../controllers/auth.controller.js";
 import { authRequired } from "../middlewares/validateToken.js";
 import { validateSchema } from "../middlewares/validator.middleware.js";
@@ -18,6 +19,8 @@ const routes = Router();
 routes.get("/verify", verify);
 
 routes.post("/register", validateSchema(registerSchema), register);
+
+routes.delete("/deleteuser/:id",authRequired, deleteUser)
 
 routes.post("/login", validateSchema(loginSchema), login);
 

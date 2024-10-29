@@ -136,8 +136,27 @@ export const getUsers = async (req, res) => {
     const userFound = await User.find({},'_id fname lname username email color');
     // console.log(userFound);
     if (!userFound) {
-      return res.status(404).json(["Users not found"]);
+      return res.status(401).json(["Users not found"]);
     }  
       return res.status(200).json(userFound); 
   
 }
+
+
+
+export const deleteUser = async (req, res) => {
+  const { id } = req.params;  // Suponiendo que el ID del usuario se pasa como parámetro en la URL
+  
+  try {
+    const userFound = await User.findById(id);
+    if (!userFound) {
+      return res.status(404).json(["User not found"]);
+    }
+
+    await User.findByIdAndDelete(id);
+    return res.status(200).json(["User deleted successfully"]);
+    
+  } catch (error) {
+    res.status(500).json([error.message]);
+  }
+};

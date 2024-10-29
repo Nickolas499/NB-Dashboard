@@ -7,7 +7,7 @@ import Modal from "../../../components/Modal/Modal.jsx";
 import { TextInput } from "../../../components/inputs/Inputs.jsx";
 import { useEffect, useState } from "react";
 import { useAssign } from "../../../context/assignContext";
-import Assing from "../../../components/assignTest/assing.jsx";
+// import Assing from "../../../components/assignTest/assing.jsx";
 import AssignJobs from "../../../components/assignTest/assignJob2.jsx";
 
 
@@ -79,9 +79,7 @@ const handleChange = (e) => {
     handleCreateNewData();
     closeModal();
   };
-  const createAssign = () => {
-    console.log("hola");
-  }
+ 
 
   return (
     <>

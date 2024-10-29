@@ -2,6 +2,7 @@ import { createContext, useState, useContext, useEffect } from "react";
 import {
   RegisterRequest,
   LoginRequest,
+  DeleteUser,
   verifyTokenRequest,
   Users
 } from '../api/Auth.js';
@@ -48,6 +49,26 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   }
 
+  const Delete_User = async (id) => {
+    try {
+      await DeleteUser(id);
+      // Opcional: Actualizar la lista de usuarios después de eliminar
+      GetUsers();
+    } catch (error) {
+      setErrors(error.response.data);
+    }
+  };
+
+
+  const GetUsers = async ()=> {
+    try {
+      const res = await Users();
+      setUsuarios(res.data);        
+    } catch (error) {
+      console.log(error);
+    }
+  } 
+
   useEffect(() => {
     if (errors.length > 0) {
       const timer = setTimeout(() => {
@@ -88,18 +109,14 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   
-    const GetUsers = async ()=> {
-      try {
-        const res = await Users();
-        setUsuarios(res.data);        
-      } catch (error) {
-        console.log(error);
-      }
-    }    
+ 
+    
+    
+   
 
   return (
     <authContext.Provider
-      value={{ Signup, Signin, GetUsers, user, usuarios, isAuthenticated, errors, loading, Logout }}    >
+      value={{ Signup, Signin, GetUsers, Delete_User, user, usuarios, isAuthenticated, errors, loading, Logout }}    >
       {children}
     </authContext.Provider>
   );
