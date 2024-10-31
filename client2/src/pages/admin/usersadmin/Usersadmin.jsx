@@ -35,12 +35,11 @@ const AccessOption = [
 ];
 
 export const Usersadmin = () => {
-    const { usuarios, GetUsers } = useAuth();
+    const { usuarios, GetUsers, Signup, Delete_User , errors: RegisterErrors } = useAuth();
     const [Accessvalue, setAccessValue] = useState(AccessOption[0]);
     const [Colorvalue, setColorValue] = useState(ColorOption[0]);
     const { register, formState: { errors }, } = useForm();
     const [newUser, setNewUser] = useState([])
-    const { Signup, Delete_User , errors: RegisterErrors } = useAuth();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -50,7 +49,6 @@ export const Usersadmin = () => {
             [name]: value,
 
         }));
-        console.log(newUser)
     };
 
 
@@ -65,9 +63,7 @@ export const Usersadmin = () => {
             color: Colorvalue.value
 
         };
-        console.log(newuser)
-        await Signup(newuser);
-        GetUsers();
+        await Signup(newuser);        
     };
     const DeleteUser=(id)=>{
             Delete_User(id)
@@ -75,25 +71,13 @@ export const Usersadmin = () => {
 
     const handleSignUp = (e) => {
         e.preventDefault();
-        console.log(newUser);
         handleCreateNewData();
 
     };
 
-    // const onSubmit = async (data) => {
-    //     data.color = Colorvalue.value;
-    //     data.access = Accessvalue.value;
-    //     console.log(data)
-    //     await Signup(data);
-    // };
-
     useEffect(() => {
         GetUsers();
-    }, [])
-    const colores = "#00ff00"
-
-    console.log(colores)
-
+    }, [])   
 
     return (
         <div className={style.Container}>
