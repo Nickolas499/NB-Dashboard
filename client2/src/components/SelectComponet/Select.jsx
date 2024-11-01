@@ -27,6 +27,7 @@ export const Select = forwardRef(({name, value, onChange, options, type }, ref)=
         onBlur={() => setIsOpen(false)}
         onClick={() => setIsOpen((prev) => !prev)}
         tabIndex={0}
+        
       >
         <span className={styles.value} style={{ backgroundColor: value.value }}>{value.label}</span>       
         <div className={styles.divider}></div>

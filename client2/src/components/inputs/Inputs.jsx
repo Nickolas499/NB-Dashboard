@@ -16,13 +16,44 @@ export const Input = (props) => {
     <div className={styles.Input}>
       <p>{props.label}</p>
       <input
-      id={props.id}
-      name={props.name}
+        id={props.id}
+        name={props.name}
         className={`${styles.input_text} ${props.errors.fname && styles.error2}`}
         type={props.type}
         placeholder={props.errors.fname ? "This field is required" : props.placeholder}
         onChange={props.onChange}
       />
+    </div>
+  )
+}
+
+
+export const Checkbox = (props) => {
+  return (
+    <div className={styles.Checkbox}>
+      <p>{props.label}</p>
+      <input
+        id={props.id}
+        name={props.name}
+        className={`${styles.Checkbox_input} ${props.errors.fname && styles.error2}`}
+        type="checkbox"
+        onChange={props.onChange}
+      />
+    </div>
+  )
+}
+
+
+
+export const Select = (props) => {
+  return(
+    <div className={styles.Select_Input}>
+      <p>{props.label}</p>
+      <select className={styles.input_select} id={props.id} name={props.name} onChange={props.onChange}>
+        <option value="">Select</option>
+        <option value="DAY OFF">DAY OFF</option>
+        <option value="VACATION">VACATION</option>
+    </select>  
     </div>
   )
 }

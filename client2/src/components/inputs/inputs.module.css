@@ -57,3 +57,49 @@
     color: red;
     opacity: 1; /* Firefox */
   }
+
+/* ================================[Select]========================== */
+
+
+.Select_Input{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    width: 200px;
+    height: 100px;
+    font-size: 1.5rem;
+    padding: 10px;
+    
+}
+.input_select {
+    width: 100%;
+    height: 30px;
+    margin: 5px 0 ;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    text-align: center;
+    background-color:var(--inputTextColor); 
+    font-weight: bold;
+    color: white;
+}
+
+.input_select::after {
+   
+       color: #ec0f0f;
+     
+}
+
+.input_select:focus {
+    border: 1px solid var(--blue);
+    box-shadow: 0 0 3px 0.5px var(--blue);
+}
+
+.input_select option {    
+    color: rgb(255, 255, 255);
+    background-color:gray;
+  }
+
+/* ================================[Textarea]========================== */
+

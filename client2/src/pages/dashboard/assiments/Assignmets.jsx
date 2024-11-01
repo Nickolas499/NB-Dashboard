@@ -1,34 +1,32 @@
 import style from './assignment.module.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../../../context/AuthContext';
 import Modal from '../../../components/Modal/Modal';
-import { Input } from '../../../components/inputs/Inputs';
+import { Input, Select } from '../../../components/inputs/Inputs';
+// import { Select } from '../../../components/SelectComponet/Select';
+import moment from 'moment';
 
+const today = moment().format('MM/DD/YYYY');
+console.log(today)
 
-const Assignmetsdata = [
-	{
-		user: "67212f2070f6c98bd78de32f",
-		Assignmets: [{ IBO: 5, }]
-	},
-	{
-		user: "67212f7270f6c98bd78de343",
-		Assignmets: [{ IBO: 5, DIGI_ABUT: 28, }]
-	},
-	{
-		user: "67212fc270f6c98bd78de348",
-		Assignmets: [{ PHIS_ABUT: 5, FULL_ARCH: 5 }]
-	},
-	{
-		user: "67236b01061555221e29cfb7",
-		Assignmets: [{ IBO: 0, DIGI_ABUT: 28, }]
-	},
-]
-
+const initialsdata = []
 
 const Assignmets = () => {
 	const { usuarios, user } = useAuth();
 	const [isOpen, setIsOpen] = useState(false);
 	const [newAssign, setNewAssign] = useState([])
+	const [currentUserId, setCurrentUserId] = useState(null);
+	const [Assignmetsdata, setAssignmetsdata] = useState(initialsdata)
+
+	// useEffect(() => {
+	// 	Assignmetsdata.map((item) => {
+	// 		if (item.user === user._id) {
+	// 			setNewAssign(item.Assignmets)
+	// 		}
+	// 	})
+
+	// })
+
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -40,12 +38,19 @@ const Assignmets = () => {
 		console.log(newAssign)
 	};
 
+
 	const handleSubmit = (id) => {
-		// agregar los datos a Assignmetsdata 
-	}
+		const assign = { user: currentUserId, Assignmets: [newAssign], date: today };
+		setAssignmetsdata(prevData => [...prevData, assign]);
+		setNewAssign([])
+		console.log(Assignmetsdata)
+		closeModal();
+	};
 
 
-	const openModal = () => {
+	const openModal = (userId) => {
+		console.log(userId)
+		setCurrentUserId(userId);
 		setIsOpen(true);
 	};
 
@@ -53,24 +58,20 @@ const Assignmets = () => {
 		setIsOpen(false);
 	};
 
-
-
 	return (
 		<div className={style.container}>
 			<h1>ASSIGMENTS</h1>
 
 			<div className={style.userscards}>
 				{usuarios.map((users, index) => (
-
-
-					<div className={style.UserCard} key={users._id} style={{ borderColor: users.color + "90" }}>
+					<div className={style.UserCard} key={index} style={{ borderColor: users.color + "90" }}>
 						<div className={style.CardTitle}>
 							<span className={style.initials} style={{ backgroundColor: users.color }}>{`${users.fname[0]}${users.lname[0]}`}</span>
 							<span className={style.UserName}>{users.fname}  {users.lname}</span>
 						</div>
 						<div className={style.Assignmetsdata}>
 							{Assignmetsdata.map((assign) => (
-								assign.user === users._id ? (
+								assign.user === users._id && assign.date === today ? (
 									<div key={assign.user}>
 										{assign.Assignmets.map((item, index) => (
 											<div key={index} className={style.assign_container}>
@@ -88,14 +89,15 @@ const Assignmets = () => {
 						</div>
 						{user.access === "admin" ? (
 							<>
-								<button onClick={openModal}>Assign</button>
+								<button onClick={() => openModal(users._id)}>Assign</button>
 								<Modal isOpen={isOpen} onClose={closeModal} title="Job Assignment">
 									<div>
 										<Input label="IBO" name="IBO" type="text" placeholder="0" onChange={handleChange} errors={""} />
 										<Input label="PHIS_ABUT" name="PHIS_ABUT" type="text" placeholder="0" onChange={handleChange} errors={""} />
 										<Input label="DIGI_ABUT" name="DIGI_ABUT" type="text" placeholder="0" onChange={handleChange} errors={""} />
 										<Input label="FULL_ARCH" name="FULL_ARCH" type="text" placeholder="0" onChange={handleChange} errors={""} />
-										<button onClick={() => handleSubmit(users._id)} className={style.btnSubmit}>Assign</button>
+										<Select	label="DAY OFF" name=" "	onChange={handleChange}	/>
+										<button onClick={() => handleSubmit(currentUserId)} className={style.btnSubmit}>Assign</button>
 									</div>
 								</Modal>
 							</>
@@ -114,4 +116,3 @@ const Assignmets = () => {
 }
 
 export default Assignmets
-
