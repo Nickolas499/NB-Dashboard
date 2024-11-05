@@ -16,16 +16,7 @@ const Assignmets = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [newAssign, setNewAssign] = useState([])
 	const [currentUserId, setCurrentUserId] = useState(null);
-	const [Assignmetsdata, setAssignmetsdata] = useState(initialsdata)
-
-	// useEffect(() => {
-	// 	Assignmetsdata.map((item) => {
-	// 		if (item.user === user._id) {
-	// 			setNewAssign(item.Assignmets)
-	// 		}
-	// 	})
-
-	// })
+	const [Assignmetsdata, setAssignmetsdata] = useState(initialsdata)	
 
 
 	const handleChange = (e) => {

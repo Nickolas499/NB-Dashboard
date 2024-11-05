@@ -7,26 +7,22 @@ import Modal from "../../../components/Modal/Modal.jsx";
 import { TextInput } from "../../../components/inputs/Inputs.jsx";
 import { useEffect, useState } from "react";
 import { useAssign } from "../../../context/assignContext";
-// import Assing from "../../../components/assignTest/assing.jsx";
-import AssignJobs from "../../../components/assignTest/assignJob2.jsx";
 
 
 
 const KPI = () => {
   const { user } = useAuth();
-  const { assign, GetAssign, CreateAssign  } = useAssign();
-  const {usuarios,GetUsers} = useAuth();
- 
+  const { assign, GetAssign, CreateAssign } = useAssign();
+
 
   useEffect(() => {
     GetAssign();
-    GetUsers();    
-  },[]);  
+
+  }, []);
 
 
   const [isOpen, setIsOpen] = useState(false);
-  const [isOpen2, setIsOpen2] = useState(false);
-  const [products, setProducts] = useState([]); 
+  const [products, setProducts] = useState([]);
 
   const openModal = () => {
     setIsOpen(true);
@@ -35,42 +31,35 @@ const KPI = () => {
   const closeModal = () => {
     setIsOpen(false);
   };
-  const openModal2 = () => {
-    setIsOpen2(true);
+
+
+
+
+  const handleCreateNewData = async () => {
+    const newAssignData = {
+      LS3: products.LS3,
+      ZEISS: products.ZEISS,
+      SHAPE: products.SHAPE,
+      PHIS_ABUT: products.PHIS_ABUT,
+      DIGI_ABUT: products.DIGI_ABUT,
+      FULL_ARCH: products.FULL_ARCH,
+      IBO_DESIGN: products.IBO_DESIGN
+    };
+
+    await CreateAssign(newAssignData);
+    GetAssign();
   };
-
-  const closeModal2 = () => {
-    setIsOpen2(false);
-  };
-  
-
-
-
-const handleCreateNewData = async () => {
-  const newAssignData = {
-    LS3: products.LS3, 
-    ZEISS: products.ZEISS,
-    SHAPE: products.SHAPE, 
-    PHIS_ABUT: products.PHIS_ABUT, 
-    DIGI_ABUT:  products.DIGI_ABUT, 
-    FULL_ARCH: products.FULL_ARCH,
-    IBO_DESIGN: products.IBO_DESIGN
-  };
-
-  await CreateAssign(newAssignData);
-  GetAssign();
-};
 
 
 
   // Dentro de la función KPI
-const handleChange = (e) => {
-  const { name, value } = e.target;
-  setProducts((prevProducts) => ({
-    ...prevProducts,
-    [name]: parseInt(value), // Asegúrate de convertir el valor a entero si es necesario
-  }));
-};
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setProducts((prevProducts) => ({
+      ...prevProducts,
+      [name]: parseInt(value), // Asegúrate de convertir el valor a entero si es necesario
+    }));
+  };
 
 
   const handleSubmit = (e) => {
@@ -79,33 +68,33 @@ const handleChange = (e) => {
     handleCreateNewData();
     closeModal();
   };
- 
+
 
   return (
     <>
-  {/* =====================================(ASSIGMENT CARDS)=============================================== */}
-      <section className={kpi.Dashboard_Asigment}>
-        <div className={kpi.container}>
-        {Object.entries(assign).slice(0, 7).map((key, value) => (
-            <h2 key={key}>
-              {key[0]}
+      {/* =====================================(ASSIGMENT CARDS)=============================================== */}
 
-              <span>{key[1]}</span>
-            </h2>
-          ))}
+
+      <section className={kpi.Queue}>
+        <div className={kpi.Queue_title}>QUEUE VOLUME</div>
+        <div className={kpi.container}>
+          <div className={kpi.Queue_data}>
+            {Object.entries(assign).slice(0, 7).map((value, key) => (
+              <div className={kpi.Queue_label} key={key}>
+                <span className={kpi.Queue_key}>{value[0]}</span> 
+                <span className={kpi.Queue_value}>{value[1]}</span>
+              </div>
+            ))}
+          </div>
+          <div className={kpi.Queue_btn}>
+          {user.access === "admin" ? (
+            <SquareBtn onClick={openModal}>Assign</SquareBtn>
+
+          ) : (
+            ""
+          )}
+          </div>
         </div>
-        {user.access === "admin" ? (
-          <SquareBtn onClick={openModal}>Assign</SquareBtn>
-          
-        ) : (
-          ""
-        )}
-        {user.access === "admin" ? (
-          <SquareBtn onClick={openModal2}>Job</SquareBtn>
-          
-        ) : (
-          ""
-        )}
       </section>
       {/* =====================================(KPI CARDS)=============================================== */}
       <section className={kpi.Dashboard_KPI}>
@@ -124,10 +113,10 @@ const handleChange = (e) => {
       <Modal isOpen={isOpen} onClose={closeModal} title="Assign">
         <section className={kpi.assigmentContainer}>
           <form action="" className={kpi.formAssigment}>
-            <TextInput label="LS3" type="text" name="LS3" onChange={handleChange}/>
-            <TextInput label="ZEISS" type="text" name="ZEISS" onChange={handleChange}/>
-            <TextInput label="SHAPE" type="text" name="SHAPE" onChange={handleChange}/>
-            <TextInput 
+            <TextInput label="LS3" type="text" name="LS3" onChange={handleChange} />
+            <TextInput label="ZEISS" type="text" name="ZEISS" onChange={handleChange} />
+            <TextInput label="SHAPE" type="text" name="SHAPE" onChange={handleChange} />
+            <TextInput
               label="PHIS_ABUT"
               type="text"
               name="PHIS_ABUT"
@@ -139,17 +128,13 @@ const handleChange = (e) => {
               name="DIGI_ABUT"
               onChange={handleChange}
             />
-            <TextInput label="IBO_DESIGN" type="text" name="IBO_DESIGN"  onChange={handleChange}/>
-            <TextInput label="FULL_ARCH" type="text" name="FULL_ARCH"  onChange={handleChange}/>
+            <TextInput label="IBO_DESIGN" type="text" name="IBO_DESIGN" onChange={handleChange} />
+            <TextInput label="FULL_ARCH" type="text" name="FULL_ARCH" onChange={handleChange} />
             <button onClick={handleSubmit} className={kpi.btnSubmit}>
               Submit
             </button>
           </form>
         </section>
-      </Modal>
-      {/* =========================================(JOB MODAL)=========================================== */}
-      <Modal isOpen={isOpen2} onClose={closeModal2} title="Job Assignment">
-      <AssignJobs workers={usuarios} jobs={assign} CreateAssign={CreateAssign} assing={assign}/>
       </Modal>
     </>
   );
