@@ -3,21 +3,25 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../../../context/AuthContext';
 import Modal from '../../../components/Modal/Modal';
 import { Input, Select } from '../../../components/inputs/Inputs';
-// import { Select } from '../../../components/SelectComponet/Select';
+import { useAssign } from "../../../context/assignContext";
 import moment from 'moment';
 
 const today = moment().format('MM/DD/YYYY');
 console.log(today)
 
-const initialsdata = []
 
 const Assignmets = () => {
-	const { usuarios, user } = useAuth();
+	const { GetUsers, usuarios, user } = useAuth();
+	const { GetUserJobAssignment, userJobAssignment, CreateUserJobAssignment } = useAssign();
 	const [isOpen, setIsOpen] = useState(false);
 	const [newAssign, setNewAssign] = useState([])
 	const [currentUserId, setCurrentUserId] = useState(null);
-	const [Assignmetsdata, setAssignmetsdata] = useState(initialsdata)	
 
+
+	useEffect(() => {
+		GetUsers()
+		GetUserJobAssignment()
+	}, [])
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -31,10 +35,11 @@ const Assignmets = () => {
 
 
 	const handleSubmit = (id) => {
-		const assign = { user: currentUserId, Assignmets: [newAssign], date: today };
-		setAssignmetsdata(prevData => [...prevData, assign]);
+		const assign = { USER: currentUserId, ASSIGMENTS: [newAssign], DATE: today };
+
+		CreateUserJobAssignment(assign);
 		setNewAssign([])
-		console.log(Assignmetsdata)
+		GetUserJobAssignment()
 		closeModal();
 	};
 
@@ -49,10 +54,10 @@ const Assignmets = () => {
 		setIsOpen(false);
 	};
 
+
 	return (
 		<div className={style.container}>
 			<h1>ASSIGMENTS</h1>
-
 			<div className={style.userscards}>
 				{usuarios.map((users, index) => (
 					<div className={style.UserCard} key={index} style={{ borderColor: users.color + "90" }}>
@@ -61,10 +66,10 @@ const Assignmets = () => {
 							<span className={style.UserName}>{users.fname}  {users.lname}</span>
 						</div>
 						<div className={style.Assignmetsdata}>
-							{Assignmetsdata.map((assign) => (
-								assign.user === users._id && assign.date === today ? (
+							{userJobAssignment.map((assign) => (
+								assign.USER === users._id && assign.DATE === today ? (
 									<div key={assign.user}>
-										{assign.Assignmets.map((item, index) => (
+										{assign.ASSIGMENTS.map((item, index) => (
 											<div key={index} className={style.assign_container}>
 												{Object.entries(item).map(([key, value]) => (
 													<div key={key} className={style.assign_data}>
@@ -87,20 +92,15 @@ const Assignmets = () => {
 										<Input label="PHIS_ABUT" name="PHIS_ABUT" type="text" placeholder="0" onChange={handleChange} errors={""} />
 										<Input label="DIGI_ABUT" name="DIGI_ABUT" type="text" placeholder="0" onChange={handleChange} errors={""} />
 										<Input label="FULL_ARCH" name="FULL_ARCH" type="text" placeholder="0" onChange={handleChange} errors={""} />
-										<Select	label="DAY OFF" name=" "	onChange={handleChange}	/>
+										<Select label="DAY OFF" name=" " onChange={handleChange} />
 										<button onClick={() => handleSubmit(currentUserId)} className={style.btnSubmit}>Assign</button>
 									</div>
 								</Modal>
 							</>
 						) : ""}
-
 					</div>
-
 				))}
-
-
 			</div>
-
 		</div>
 
 	)

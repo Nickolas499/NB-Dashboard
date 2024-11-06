@@ -13,7 +13,8 @@ import designed from "./routes/designed.routes.js";
 import redesigned from "./routes/redesigned.routes.js";
 import graph from "./routes/graph.routes.js";
 import global from "./routes/global.routes.js";
-import work from "./routes/work.routes.js";
+import queue from "./routes/queuevolume.routes.js";
+import userjobassigment from "./routes/userjobassigment.routes.js";
 
 //============================================================================//
 //                      Express Server CONFIG                                 //
@@ -46,7 +47,8 @@ app.use('/api', designed)
 app.use('/api', redesigned)
 app.use('/api', graph)
 app.use('/api', global)
-app.use('/api', work)
+app.use('/api', queue)
+app.use('/api', userjobassigment)
 
 //============================================================================//
 //                                  others                                    //

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import moment from "moment";
 
-const WorkAsingmentShema = new mongoose.Schema({
+const QueueVolumeShema = new mongoose.Schema({
     LS3: {type: Number},
     ZEISS: {type: Number},
     SHAPE: {type:Number},
@@ -14,5 +14,5 @@ const WorkAsingmentShema = new mongoose.Schema({
     versionKey: false,
     timestamps: true
 })
-const workasingment = mongoose.model("workasingment", WorkAsingmentShema);
-export default workasingment
+const QueueVolume = mongoose.model("QueueVolume", QueueVolumeShema);
+export default QueueVolume

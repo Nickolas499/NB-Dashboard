@@ -12,11 +12,11 @@ import { useAssign } from "../../../context/assignContext";
 
 const KPI = () => {
   const { user } = useAuth();
-  const { assign, GetAssign, CreateAssign } = useAssign();
+  const { queuevolume, GetQueue, CreateQueue } = useAssign();
 
 
   useEffect(() => {
-    GetAssign();
+    GetQueue();
 
   }, []);
 
@@ -46,8 +46,8 @@ const KPI = () => {
       IBO_DESIGN: products.IBO_DESIGN
     };
 
-    await CreateAssign(newAssignData);
-    GetAssign();
+    await CreateQueue(newAssignData);
+    GetQueue();
   };
 
 
@@ -79,7 +79,7 @@ const KPI = () => {
         <div className={kpi.Queue_title}>QUEUE VOLUME</div>
         <div className={kpi.container}>
           <div className={kpi.Queue_data}>
-            {Object.entries(assign).slice(0, 7).map((value, key) => (
+            {Object.entries(queuevolume).slice(0, 7).map((value, key) => (
               <div className={kpi.Queue_label} key={key}>
                 <span className={kpi.Queue_key}>{value[0]}</span> 
                 <span className={kpi.Queue_value}>{value[1]}</span>

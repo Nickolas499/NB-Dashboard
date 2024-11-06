@@ -1,11 +1,12 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import {
-    createJobassignment,
-    getJobassignment,
-    getJobassignmentById,
-    updateJobassignment,
-    deleteJobassignment
-} from "../api/jobAssignmets";
+    get_queue_volume,
+    post_queue_volume,
+    update_queue_volume,
+    get_userJobAssignment,
+    post_userJobAssignment,
+    update_userJobAssignment
+} from "../api/queuevolume";
 
 export const assignContext = createContext();
 
@@ -20,28 +21,54 @@ export const useAssign = () => {
 
 export const AssignProvider = ({ children }) => {
 
-    const [assign, setAssign] = useState([]);
+    const [queuevolume, setqueuevolume] = useState([]);
+    const [userJobAssignment, setuserJobAssignment] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const GetAssign = async () => {
+//=====================================[ Queue Volume ]=====================================\\
+    const GetQueue = async () => {
         try {
-            const res = await getJobassignment();
-            setAssign(res.data);
+            const res = await get_queue_volume();
+            setqueuevolume(res.data);
             setLoading(false);
         } catch (error) {
             console.log(error);
         }
     }
-    const CreateAssign = async (data) => {
+    const CreateQueue = async (data) => {
         try {
-            await createJobassignment(data);
+            await post_queue_volume(data);
         } catch (error) {
             console.log(error);
         }
     }
 
+//=====================================[ User Job Assignment ]=====================================\\
+    const GetUserJobAssignment = async () => {
+        try {
+            const res = await get_userJobAssignment();
+            setuserJobAssignment(res.data);
+            console.log(res.data);
+            setLoading(false);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const CreateUserJobAssignment = async (data) => {
+        try {
+            await post_userJobAssignment(data);
+            GetUserJobAssignment();
+        } catch (error) {
+            console.log(error);
+        }
+    }   
+
     return (
-        <assignContext.Provider  value={{GetAssign, assign, loading, CreateAssign}}>
+        <assignContext.Provider  value={
+            {GetQueue, queuevolume, loading, CreateQueue,
+             GetUserJobAssignment, userJobAssignment, CreateUserJobAssignment
+             }}>
             {children}
         </assignContext.Provider>
     )
