@@ -64,10 +64,19 @@ export const AssignProvider = ({ children }) => {
         }
     }   
 
+    const UpdateUserJobAssignment = async (id, data) => {
+        try {
+            await update_userJobAssignment(id, data);
+            GetUserJobAssignment();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <assignContext.Provider  value={
             {GetQueue, queuevolume, loading, CreateQueue,
-             GetUserJobAssignment, userJobAssignment, CreateUserJobAssignment
+             GetUserJobAssignment, userJobAssignment, CreateUserJobAssignment, UpdateUserJobAssignment
              }}>
             {children}
         </assignContext.Provider>

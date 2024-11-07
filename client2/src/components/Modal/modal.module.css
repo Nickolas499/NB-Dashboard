@@ -12,6 +12,7 @@
     z-index: 9999;
     backdrop-filter: blur(2px);
     background-color: rgba(0, 0, 0, 0.1);
+    
   }
 
   .close_button {
@@ -43,6 +44,7 @@
     height: auto;
     background-color: var(--background);
     position: relative;
+    padding-bottom: 20px;
   }
   .modalTitle{
     display: flex;

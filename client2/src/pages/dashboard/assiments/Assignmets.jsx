@@ -1,4 +1,4 @@
-import style from './assignment.module.css'
+import style from './assignment.module.css';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../../context/AuthContext';
 import Modal from '../../../components/Modal/Modal';
@@ -7,53 +7,71 @@ import { useAssign } from "../../../context/assignContext";
 import moment from 'moment';
 
 const today = moment().format('MM/DD/YYYY');
-console.log(today)
-
 
 const Assignmets = () => {
 	const { GetUsers, usuarios, user } = useAuth();
-	const { GetUserJobAssignment, userJobAssignment, CreateUserJobAssignment } = useAssign();
+	const { GetUserJobAssignment, userJobAssignment, CreateUserJobAssignment, UpdateUserJobAssignment } = useAssign();
 	const [isOpen, setIsOpen] = useState(false);
-	const [newAssign, setNewAssign] = useState([])
+	const [newAssign, setNewAssign] = useState({});
 	const [currentUserId, setCurrentUserId] = useState(null);
-
+	const [currentAssignmentId, setCurrentAssignmentId] = useState(null);
+	const [isEditing, setIsEditing] = useState(false);
 
 	useEffect(() => {
-		GetUsers()
-		GetUserJobAssignment()
-	}, [])
+		GetUsers();
+		GetUserJobAssignment();
+	}, []);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
-		console.log(e.target.value)
 		setNewAssign((prev) => ({
 			...prev,
 			[name]: value,
 		}));
-		console.log(newAssign)
 	};
 
-
-	const handleSubmit = (id) => {
+	const handleSubmit = () => {
 		const assign = { USER: currentUserId, ASSIGMENTS: [newAssign], DATE: today };
+		const id = currentAssignmentId;
 
-		CreateUserJobAssignment(assign);
-		setNewAssign([])
-		GetUserJobAssignment()
+		if (isEditing) {
+			// Actualizar asignación con el ID correspondiente
+			UpdateUserJobAssignment(id, assign);
+			// console.log(currentAssignmentId, id);
+		} else {
+			// Crear nueva asignación
+			CreateUserJobAssignment(assign);
+		}
+
+		setNewAssign({});
+		GetUserJobAssignment();
 		closeModal();
 	};
 
-
-	const openModal = (userId) => {
-		console.log(userId)
+	const openModal = (userId, isEdit = false) => {
 		setCurrentUserId(userId);
 		setIsOpen(true);
+		setIsEditing(isEdit);
+
+		if (isEdit) {
+			// Cargar datos actuales del usuario
+			const currentAssignment = userJobAssignment.find(assign => assign.USER === userId && assign.DATE === today);
+			if (currentAssignment) {
+				setNewAssign(currentAssignment.ASSIGMENTS[0]); // Asumimos que hay un solo conjunto de asignaciones
+				setCurrentAssignmentId(currentAssignment._id); // Guardar el ID del registro actual
+			} else {
+				setNewAssign({}); // Si no hay asignaciones, inicializar vacío
+				setCurrentAssignmentId(null); // Reiniciar el ID
+			}
+		} else {
+			setNewAssign({}); // Reiniciar para nueva asignación
+			setCurrentAssignmentId(null); // Reiniciar el ID
+		}
 	};
 
 	const closeModal = () => {
 		setIsOpen(false);
 	};
-
 
 	return (
 		<div className={style.container}>
@@ -63,15 +81,15 @@ const Assignmets = () => {
 					<div className={style.UserCard} key={index} style={{ borderColor: users.color + "90" }}>
 						<div className={style.CardTitle}>
 							<span className={style.initials} style={{ backgroundColor: users.color }}>{`${users.fname[0]}${users.lname[0]}`}</span>
-							<span className={style.UserName}>{users.fname}  {users.lname}</span>
+							<span className={style.UserName}>{users.fname} {users.lname}</span>
 						</div>
 						<div className={style.Assignmetsdata}>
-							{userJobAssignment.map((assign) => (
+							{userJobAssignment.map((assign, index) => (
 								assign.USER === users._id && assign.DATE === today ? (
-									<div key={assign.user}>
+									<div key={index}>
 										{assign.ASSIGMENTS.map((item, index) => (
 											<div key={index} className={style.assign_container}>
-												{Object.entries(item).map(([key, value]) => (
+												{Object.entries(item).map(([key, value]) => (													
 													<div key={key} className={style.assign_data}>
 														<span className={style.key}>{key}</span>
 														<span className={style.value}>{value}</span>
@@ -80,20 +98,28 @@ const Assignmets = () => {
 											</div>
 										))}
 									</div>
-								) : null // Retorna null si no se cumple la condición
+								) : null
 							))}
 						</div>
 						{user.access === "admin" ? (
 							<>
-								<button onClick={() => openModal(users._id)}>Assign</button>
+								<button onClick={() => openModal(users._id, false)}>Assign</button>
+								<button onClick={() => openModal(users._id, true)}>Edit</button>
+
 								<Modal isOpen={isOpen} onClose={closeModal} title="Job Assignment">
-									<div>
-										<Input label="IBO" name="IBO" type="text" placeholder="0" onChange={handleChange} errors={""} />
-										<Input label="PHIS_ABUT" name="PHIS_ABUT" type="text" placeholder="0" onChange={handleChange} errors={""} />
-										<Input label="DIGI_ABUT" name="DIGI_ABUT" type="text" placeholder="0" onChange={handleChange} errors={""} />
-										<Input label="FULL_ARCH" name="FULL_ARCH" type="text" placeholder="0" onChange={handleChange} errors={""} />
-										<Select label="DAY OFF" name=" " onChange={handleChange} />
-										<button onClick={() => handleSubmit(currentUserId)} className={style.btnSubmit}>Assign</button>
+									<div className={style.assign_container}>
+										<div className={style.form}>
+											<Input label="IBO" name="IBO" type="text" placeholder="0" value={newAssign.IBO || ''} onChange={handleChange} errors={""} />
+											<Input label="PHIS_ABUT" name="PHIS_ABUT" type="text" placeholder="0" value={newAssign.PHIS_ABUT || ''} onChange={handleChange} errors={""} />
+										</div>
+										<div className={style.form}>
+											<Input label="DIGI_ABUT" name="DIGI_ABUT" type="text" placeholder="0" value={newAssign.DIGI_ABUT || ''} onChange={handleChange} errors={""} />
+											<Input label="FULL_ARCH" name="FULL_ARCH" type="text" placeholder="0" value={newAssign.FULL_ARCH || ''} onChange={handleChange} errors={""} />
+										</div>
+										<div className={style.form}>
+											<Select label="DAY OFF" name="DAY_OFF" value={newAssign.DAY_OFF || ''} onChange={handleChange} />
+										</div>
+										<button onClick={handleSubmit} className={style.btnSubmit}>{isEditing ? 'Update' : 'Assign'}</button>
 									</div>
 								</Modal>
 							</>
@@ -102,8 +128,7 @@ const Assignmets = () => {
 				))}
 			</div>
 		</div>
+	);
+};
 
-	)
-}
-
-export default Assignmets
+export default Assignmets;

@@ -20,11 +20,14 @@ export const post_userJobAssignment = async (req, res) => {
   
   //=====================================((UPDATE JOB ASIGNMENT))==============================================//
   export const update_userJobAssignment = async (req, res) => {
+    console.log(req.params.id);
     const job = await UserJobAssigment.findByIdAndUpdate(
       req.params.id,
       req.body,
       { new: true }
+      
     );
+    console.log(job);
     if (!job) return res.status(404).json(["Job not found"]);
     return res.json(job);
   }

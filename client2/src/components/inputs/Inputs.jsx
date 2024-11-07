@@ -21,6 +21,7 @@ export const Input = (props) => {
         className={`${styles.input_text} ${props.errors.fname && styles.error2}`}
         type={props.type}
         placeholder={props.errors.fname ? "This field is required" : props.placeholder}
+        value={props.value}
         onChange={props.onChange}
       />
     </div>
