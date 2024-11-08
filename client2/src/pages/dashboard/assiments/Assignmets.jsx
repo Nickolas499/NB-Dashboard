@@ -24,9 +24,18 @@ const Assignmets = () => {
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
+		console.log(name, value);
+
+		if (value !== '' || value === 0) {
+			setNewAssign((prev) => ({
+				...prev,
+				[name]: value,
+			}));
+
+		}		
+		console.log(newAssign);	
 		setNewAssign((prev) => ({
-			...prev,
-			[name]: value,
+			...prev
 		}));
 	};
 
@@ -76,7 +85,7 @@ const Assignmets = () => {
 	return (
 		<div className={style.container}>
 			<h1>ASSIGMENTS</h1>
-			<div className={style.userscards}>
+			<div className={style.AssignmetsContent}>
 				{usuarios.map((users, index) => (
 					<div className={style.UserCard} key={index} style={{ borderColor: users.color + "90" }}>
 						<div className={style.CardTitle}>
@@ -102,12 +111,16 @@ const Assignmets = () => {
 							))}
 						</div>
 						{user.access === "admin" ? (
-							<>
-								<button onClick={() => openModal(users._id, false)}>Assign</button>
-								<button onClick={() => openModal(users._id, true)}>Edit</button>
-
+							<div className={style.btnContainer}>
+								{/* is user is all ready assing  show the button Edit, if not user assign or is void  show  the button Assign */}
+								{userJobAssignment.some(assign => assign.USER === users._id && assign.DATE === today) ? (
+									<button className={style.btnAssign} onClick={() => openModal(users._id, true)}>Edit</button>
+								) : (
+									<button className={style.btnAssign} onClick={() => openModal(users._id, false)}>Assign</button>
+								)
+								}	
 								<Modal isOpen={isOpen} onClose={closeModal} title="Job Assignment">
-									<div className={style.assign_container}>
+									<div className={style.modal_container}>
 										<div className={style.form}>
 											<Input label="IBO" name="IBO" type="text" placeholder="0" value={newAssign.IBO || ''} onChange={handleChange} errors={""} />
 											<Input label="PHIS_ABUT" name="PHIS_ABUT" type="text" placeholder="0" value={newAssign.PHIS_ABUT || ''} onChange={handleChange} errors={""} />
@@ -117,12 +130,12 @@ const Assignmets = () => {
 											<Input label="FULL_ARCH" name="FULL_ARCH" type="text" placeholder="0" value={newAssign.FULL_ARCH || ''} onChange={handleChange} errors={""} />
 										</div>
 										<div className={style.form}>
-											<Select label="DAY OFF" name="DAY_OFF" value={newAssign.DAY_OFF || ''} onChange={handleChange} />
+											<Select label="OTHER" name="DAY_OFF" value={newAssign.DAY_OFF || ''} onChange={handleChange} />
 										</div>
 										<button onClick={handleSubmit} className={style.btnSubmit}>{isEditing ? 'Update' : 'Assign'}</button>
 									</div>
 								</Modal>
-							</>
+							</div>
 						) : ""}
 					</div>
 				))}
