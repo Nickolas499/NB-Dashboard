@@ -52,8 +52,10 @@ export const Select = (props) => {
       <p>{props.label}</p>
       <select className={styles.input_select} id={props.id} name={props.name} onChange={props.onChange}>
         <option value="">Select</option>
-        <option value="DAY OFF">DAY OFF</option>
+        <option value="APPROVALS">APPROVALS</option>
         <option value="VACATION">VACATION</option>
+        <option value="TRAINER">TRAINER</option>
+        <option value="DAY OFF">DAY OFF</option>
     </select>  
     </div>
   )

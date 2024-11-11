@@ -24,19 +24,11 @@ const Assignmets = () => {
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
-		console.log(name, value);
-
-		if (value !== '' || value === 0) {
+		console.log(name, value);		
 			setNewAssign((prev) => ({
 				...prev,
 				[name]: value,
-			}));
-
-		}		
-		console.log(newAssign);	
-		setNewAssign((prev) => ({
-			...prev
-		}));
+			}));		
 	};
 
 	const handleSubmit = () => {
@@ -46,7 +38,6 @@ const Assignmets = () => {
 		if (isEditing) {
 			// Actualizar asignación con el ID correspondiente
 			UpdateUserJobAssignment(id, assign);
-			// console.log(currentAssignmentId, id);
 		} else {
 			// Crear nueva asignación
 			CreateUserJobAssignment(assign);
