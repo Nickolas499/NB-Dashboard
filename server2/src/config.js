@@ -1,5 +1,5 @@
-export const TOKEN_SECRET = "NB_secret";
-// export const IP = "192.168.1.43";
-export const IP = "10.62.150.33";
-// export const IP = "192.168.1.158";
-export const PORT = 5000;
+
+
+export const TOKEN_SECRET = process.env.TOKEN_SECRET
+export const IP = process.env.IP;
+export const PORT =process.env.PORT || 5000;

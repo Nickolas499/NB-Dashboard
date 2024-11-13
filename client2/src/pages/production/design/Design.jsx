@@ -31,7 +31,7 @@ const Design = () => {
                             </p>
                         ))} */}
                     </span>
-                    <div className={style.FormInput}>
+                    {/* <div className={style.FormInput}>
                         <Input label="IBO DESIGN" name="PHIS_IBO" type="number" placeholder="" onChange={handleChange} errors={errors} />
                         <Input label="Crown Restoration" name="DIGI_IBO" type="number" placeholder="" onChange={handleChange} errors={errors} />
                         <Input label="Cemented Bridge Rest" name="PHIS_ABUT" type="number" placeholder="" onChange={handleChange} errors={errors} />
@@ -45,6 +45,16 @@ const Design = () => {
                     <div className={style.FormInput}>
                         <Input label="FULL ARCH PROTOTYPE" name="FULL_ARCH_PRO" type="number" placeholder="" onChange={handleChange} errors={errors} />
                         <Input label="FULL ARCH FINAL" name="FULL_ARCH_FINAL" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                    </div> */}
+                    <div className={style.parent}>
+                        <Input label="IBO DESIGN" name="PHIS_IBO" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Crown Restoration" name="DIGI_IBO" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Cemented Bridge Rest" name="PHIS_ABUT" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Implant Restoration" name="DIGI_ABUT" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Implant Bridge Rest" name="PHIS_CROWN" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Printed Models" name="DIGI_CROWN" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Full Arch Prototype" name="FULL_ARCH_PRO" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Full Arch Final" name="FULL_ARCH_FINAL" type="number" placeholder="" onChange={handleChange} errors={errors} />
                     </div>
 
                     <div className={style.BtnInput}>

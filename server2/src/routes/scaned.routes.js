@@ -17,12 +17,7 @@ const routes = Router();
 //=============================================================================//
 //                        create scaned Routes                                 //
 //=============================================================================//
-routes.post(
-  "/scaned",
-  authRequired,
-  validateSchema(createScanedSchema),
-  createScaned
-);
+routes.post("/scaned",authRequired,validateSchema(createScanedSchema), createScaned);
 //=============================================================================//
 //                        Get All scaned Data                             //
 //=============================================================================//

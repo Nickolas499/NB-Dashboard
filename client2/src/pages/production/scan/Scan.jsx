@@ -23,22 +23,13 @@ const Scan = () => {
             {/* =============================================[USERS FORM]======================================= */}
             <div className={style.NewUserForm}>
                 <form className={style.Form} >
-                    <h1>SCANS</h1>
-                    <span>
-                        {/* {RegisterErrors.map((error, index) => (
-                            <p className="error" key={index}>
-                                {error}
-                            </p>
-                        ))} */}
-                    </span>
-                    <div className={style.FormInput}>
+                    <h1>SCANS</h1> 
+                    <div className={style.parent}>
                         <Input label="LS3" name="PHIS_IBO" type="number" placeholder="" onChange={handleChange} errors={errors} />
-                        <Input label="3 SHAPE" name="DIGI_IBO" type="number" placeholder="" onChange={handleChange} errors={errors} />
-                        <Input label="FULL ARCH" name="PHIS_ABUT" type="number" placeholder="" onChange={handleChange} errors={errors} />
-                    </div>
-                    <div className={style.FormInput}>
-                        <Input label="ZEISS" name="FULL_ARCH_PRO" type="number" placeholder="" onChange={handleChange} errors={errors} />
-                        <Input label="COPY MILL" name="FULL_ARCH_FINAL" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="3 Shape" name="DIGI_IBO" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Full Arch" name="PHIS_ABUT" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Zeiss" name="FULL_ARCH_PRO" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Copy Mill" name="FULL_ARCH_FINAL" type="number" placeholder="" onChange={handleChange} errors={errors} />
                     </div>
                     <div className={style.BtnInput}>
                         <button className={style.btn}  >SUBMIT</button>
@@ -46,7 +37,7 @@ const Scan = () => {
                 </form>
 
             </div>
-            {/* =============================================[USERS LISTS]======================================= */}
+            {/* =============================================[DATA LISTS]======================================= */}
             <div className={style.UsersList}>
                 <h1>Scan Submited</h1>
                 <ul>

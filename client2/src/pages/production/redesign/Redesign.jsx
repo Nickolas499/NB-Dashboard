@@ -23,7 +23,7 @@ const Redesign = () => {
             {/* =============================================[USERS FORM]======================================= */}
             <div className={style.NewUserForm}>
                 <form className={style.Form} >
-                    <h1>REDESIGN</h1>
+                    <h1>DESIGN</h1>
                     <span>
                         {/* {RegisterErrors.map((error, index) => (
                             <p className="error" key={index}>
@@ -31,15 +31,31 @@ const Redesign = () => {
                             </p>
                         ))} */}
                     </span>
+                    {/* <div className={style.FormInput}>
+                        <Input label="IBO DESIGN" name="PHIS_IBO" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Crown Restoration" name="DIGI_IBO" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Cemented Bridge Rest" name="PHIS_ABUT" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                    </div>
                     <div className={style.FormInput}>
-                        <Input label="PHISICAL IBO" name="PHIS_IBO" type="number" placeholder="" onChange={handleChange} errors={errors} />
-                        <Input label="DIGITAL IBO" name="DIGI_IBO" type="number" placeholder="" onChange={handleChange} errors={errors} />
-                        <Input label="PHISICAL ABUTMENT" name="PHIS_ABUT" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Implant Restoration" name="DIGI_ABUT" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Implant Bridge Rest" name="PHIS_CROWN" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        
+
                     </div>
                     <div className={style.FormInput}>
                         <Input label="FULL ARCH PROTOTYPE" name="FULL_ARCH_PRO" type="number" placeholder="" onChange={handleChange} errors={errors} />
                         <Input label="FULL ARCH FINAL" name="FULL_ARCH_FINAL" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                    </div> */}
+                    <div className={style.parent}>
+                        <Input label="IBO DESIGN" name="PHIS_IBO" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Crown Restoration" name="DIGI_IBO" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Cemented Bridge Rest" name="PHIS_ABUT" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Implant Restoration" name="DIGI_ABUT" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Implant Bridge Rest" name="PHIS_CROWN" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Full Arch Prototype" name="FULL_ARCH_PRO" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Full Arch Final" name="FULL_ARCH_FINAL" type="number" placeholder="" onChange={handleChange} errors={errors} />
                     </div>
+
                     <div className={style.BtnInput}>
                         <button className={style.btn}  >SUBMIT</button>
                     </div>
@@ -48,15 +64,17 @@ const Redesign = () => {
             </div>
             {/* =============================================[USERS LISTS]======================================= */}
             <div className={style.UsersList}>
-                <h1>Redesign Submited</h1>
+                <h1>Designs Submited</h1>
                 <ul>
                     <li className={style.UserListHeader}>
-                        <span>DATE</span>
-                        <span>PHIS IBO</span>
-                        <span>DIGI IBO</span>
-                        <span>PHIS ABUT</span>
-                        <span>FULL ARCH PRO</span>
-                        <span>FULL ARCH FINAL</span>
+                        <span>IBO Desing</span>
+                        <span>Crown Restoration</span>
+                        <span>Cemented Bridge Rest</span>
+                        <span>Implant Restoration</span>
+                        <span>Implant Bridge Rest</span>
+                        <span>Printed Models</span>
+                        <span>Full Arch Prototype</span>
+                        <span>Full Arch Final</span>
                         <span>Actions</span>
                     </li>
                     {/* {usuarios.map((user) => (

@@ -30,7 +30,7 @@ const Registration = () => {
                             </p>
                         ))} */}
                     </span>
-                    <div className={style.FormInput}>
+                    {/* <div className={style.FormInput}>
                         <Input label="PHISICAL IBO" name="PHIS_IBO" type="number" placeholder="" onChange={handleChange} errors={errors} />
                         <Input label="DIGITAL IBO" name="DIGI_IBO" type="number" placeholder="" onChange={handleChange} errors={errors} />
                         <Input label="PHISICAL ABUTMENT" name="PHIS_ABUT" type="number" placeholder="" onChange={handleChange} errors={errors} />
@@ -38,6 +38,13 @@ const Registration = () => {
                     <div className={style.FormInput}>
                         <Input label="FULL ARCH PROTOTYPE" name="FULL_ARCH_PRO" type="number" placeholder="" onChange={handleChange} errors={errors} />
                         <Input label="FULL ARCH FINAL" name="FULL_ARCH_FINAL" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                    </div> */}
+                    <div className={style.parent}>
+                        <Input label="Phisical IBO" name="PHIS_IBO" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Digital IBO" name="DIGI_IBO" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Phisical Abutment" name="PHIS_ABUT" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Full Arch Prototype" name="FULL_ARCH_PRO" type="number" placeholder="" onChange={handleChange} errors={errors} />
+                        <Input label="Full Arch Final" name="FULL_ARCH_FINAL" type="number" placeholder="" onChange={handleChange} errors={errors} />
                     </div>
                     <div className={style.BtnInput}>
                         <button className={style.btn}  >SUBMIT</button>
