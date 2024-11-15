@@ -27,10 +27,7 @@ def is_text_file(file_path, allowed_extensions):
 
 def generate_markdown(file_path, allowed_extensions):
     markdown_content = f"""
-    estoy creando el siguente proyecto, que es un Editor de codigos como VScode, un poco mas sencillo. pero este consta de un chat bot conectado a un modelo LLM  el cual deberia  crear aplicaciones de forma autonoma  siguiendo las instrucciones del usuario.
-    tengo muchas cosas por hacer y necesito que me ayudes con este proyecto.
-
-    ### Aqui te presento parte de la interfas de mi proyecto.  
+    ### Aqui te presento mi proyecto.  
     # Estructura del fichero:\n\n"""
     
     # Agregar la estructura de directorios
