@@ -8,7 +8,7 @@ import { TOKEN_SECRET } from "../config.js";
 //==============================================================================//
 //                                  REGISTER                                    //
 //==============================================================================//
-export const register = async (req, res) => {
+export const Signup = async (req, res) => {
   const { username, fname, lname, email, password, access, color } = req.body;
 
   try {

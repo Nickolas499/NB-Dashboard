@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {
-  register,
+  Signup,
   login,
   logout,
   profile,
@@ -11,7 +11,7 @@ import {
 } from "../controllers/auth.controller.js";
 import { authRequired } from "../middlewares/validateToken.js";
 import { validateSchema } from "../middlewares/validator.middleware.js";
-import {registerSchema, loginSchema} from "../schemas/auth.schema.js";
+import {SignupSchema, loginSchema} from "../schemas/auth.schema.js";
 
 
 
@@ -19,7 +19,7 @@ const routes = Router();
 
 routes.get("/verify", verify);
 
-routes.post("/register", validateSchema(registerSchema), register);
+routes.post("/register", validateSchema(SignupSchema), Signup);
 
 routes.delete("/deleteuser/:id",authRequired, deleteUser)
 
