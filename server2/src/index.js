@@ -1,7 +1,6 @@
 import app from "./app.js";
 import {connectdb} from "./db.js";
-export const IP = process.env.IP;
-export const PORT =process.env.PORT || 5000;
+import { IP, PORT } from "./config.js";
 
 
 connectdb();
