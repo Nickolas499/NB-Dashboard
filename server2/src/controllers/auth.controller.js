@@ -110,7 +110,6 @@ export const verify = async (req, res) => {
 
   const { token } = req.cookies;
 
-
   if (!token) return res.status(401).json(['Authorization denied']);
 
   jwt.verify(token, TOKEN_SECRET, async (err, user) => {

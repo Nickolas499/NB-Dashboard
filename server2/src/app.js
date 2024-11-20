@@ -22,8 +22,7 @@ app.use(cors(
         //aceptar todas los origenes
         origin: true,
         // aceptar origenes especificos
-        // origin: ["http://10.62.150.33:4000","http://10.62.150.33:3000","http://localhost:4000","http://10.62.150.33:5173","http://localhost:5173"],
-        
+        // origin: ["http://10.62.150.33:4000","http://10.62.150.33:3000","http://localhost:4000","http://10.62.150.33:5173","http://localhost:5173"],        
         //aceptar todas las credenciales 
         credentials: true
     }
