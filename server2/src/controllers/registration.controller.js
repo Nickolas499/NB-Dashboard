@@ -14,12 +14,13 @@ export const getRegistrations = async (req, res) => {
 //=============[create registrations data ]================//
 export const createRegistration = async (req, res) => {
   try {
-    const { IBO, ABUT, FULL_ARCH_P, FULL_ARCH_F, DATE } = req.body;
+    const { PHIS_IBO,DIGI_IBO, PHIS_ABUT, FULL_ARCH_PRO, FULL_ARCH_FINAL, DATE } = req.body;
   const newRegistration = new Registration({
-    IBO,
-    ABUT,
-    FULL_ARCH_P,
-    FULL_ARCH_F,
+    PHIS_IBO,
+    DIGI_IBO,
+    PHIS_ABUT,
+    FULL_ARCH_PRO,
+    FULL_ARCH_FINAL,
     DATE,
     USER: req.user.id,
   });

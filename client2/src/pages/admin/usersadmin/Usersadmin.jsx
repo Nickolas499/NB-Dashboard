@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useAuth } from '../../../context/AuthContext';
 import { Select } from '../../../components/SelectComponet/Select';
 import { Input } from '../../../components/inputs/Inputs';
-import { trash_icon } from '../../../img/icons';
+import { edit_icon, password_icon, trash_icon } from '../../../img/icons';
 
 const ColorOption = [
     { label: "Cherry Red", value: "#de2939" },
@@ -35,7 +35,7 @@ const AccessOption = [
 ];
 
 export const Usersadmin = () => {
-    const { usuarios, GetUsers, Signup, Delete_User , errors: RegisterErrors } = useAuth();
+    const { usuarios, GetUsers, Signup, Delete_User, errors: RegisterErrors } = useAuth();
     const [Accessvalue, setAccessValue] = useState(AccessOption[0]);
     const [Colorvalue, setColorValue] = useState(ColorOption[0]);
     const { register, formState: { errors }, } = useForm();
@@ -63,10 +63,10 @@ export const Usersadmin = () => {
             color: Colorvalue.value
 
         };
-        await Signup(newuser);        
+        await Signup(newuser);
     };
-    const DeleteUser=(id)=>{
-            Delete_User(id)
+    const DeleteUser = (id) => {
+        Delete_User(id)
     }
 
     const handleSignUp = (e) => {
@@ -77,7 +77,7 @@ export const Usersadmin = () => {
 
     useEffect(() => {
         GetUsers();
-    }, [])   
+    }, [])
 
     return (
         <div className={style.Container}>
@@ -146,13 +146,16 @@ export const Usersadmin = () => {
                         <span>Edit</span>
                     </li>
                     {usuarios.map((user) => (
-                        <li className={style.UserList} key={user._id} style={{ backgroundColor:user.color+"66"}}>
+                        <li className={style.UserList} key={user._id} style={{ backgroundColor: user.color + "66" }}>
                             <span>{user.fname}  {user.lname}</span>
                             <span>{user.username}</span>
                             <span>{user._id}</span>
-                            <span><button className={style.trash_btn} onClick={() => DeleteUser(user._id)} >{trash_icon}</button></span>
+                            <span className={style.action}>
+                                <button className={style.trash_btn} onClick={() => DeleteUser(user._id)} >{edit_icon}</button>
+                                <button className={style.trash_btn} onClick={() => DeleteUser(user._id)} >{trash_icon}</button>
+                            </span>
                         </li>
-                        
+
                     ))}
                 </ul>
             </div>

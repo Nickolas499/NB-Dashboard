@@ -50,17 +50,41 @@
     margin-top: 20px;
 }
 
+.Icons_btn{
+    background-color: transparent;
+    color: var(--Color);
+    border: none;
+    cursor: pointer;
+    /* padding: 0 10px; */
+    transform: rotate(0deg);
+    transition:0.2s ease-in;
+}
+
+.Icons_btn:hover{
+    transform: rotate(-45deg);
+    color: #ffffff;    
+  }
+
 /* =================================[User List]=================================================================== */
 
 .UsersList {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
     height: 100%;
     padding: 10px;
 }
+.Table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    overflow-y: scroll;
+}
 
-.UserListHeader {
+.TableHeader, .TableFooter {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,13 +92,13 @@
     height: 65px;    
     padding: 5px 0;
     border-radius: 4px;
-    background-color: var(--inputTextColor);
+    background-color: var(--TableHeader);
     font-weight: bold;
     font-size: 1.3rem;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
-.UserList {
+.TableRow {
     display: flex;
     /* justify-content: start; */
     align-content: center;
@@ -88,26 +112,47 @@
     font-weight: bold;
     line-height: 30px;
     color: var(--Color);
+
+}
+.TableRow:nth-child(odd){
+    background-color: var(--secondaryColor);
+}
+.TableRow:hover{
+    background-color: var(--active);
 }
 
-.UserList span,
-.UserListHeader span {
+.TableRow td,
+.TableHeader th {
     text-align: center;
-    width: 100%;
-    padding: 0 20px;
-    /* border-right: 1px solid white; */
+    width: 100%;     
 }
 
-.UserListHeader span {
-    text-align: center;
+.TableHeader th {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     padding: 0 20px;
     color: var(--Color);
 }
 
-.UserList span:last-of-type,
-.UserListHeader span:last-of-type {
-    width: 100px;
-    justify-self: flex-end;
+.TableRow .action{
+    display: flex;
+   justify-content: center;
+   gap: 20px;
+   /* padding-right: 20px; */
+}
 
+.Tablefooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 65px;
+    padding: 5px 0;
+    border-radius: 4px;
+    background-color: var(--TableHeader);
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: rgb(255, 255, 255);
 }

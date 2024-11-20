@@ -2,10 +2,11 @@ import mongoose from "mongoose";
 import moment from "moment";
 
 const registrationSchema = new mongoose.Schema({
-    IBO: {type: Number},
-    ABUT: {type: Number},
-    FULL_ARCH_P: {type: Number},
-    FULL_ARCH_F: {type: Number},
+    PHIS_IBO: {type: Number},
+    DIGI_IBO:{type: Number},
+    PHIS_ABUT: {type: Number},    
+    FULL_ARCH_PRO: {type: Number},
+    FULL_ARCH_FINAL: {type: Number},
     DATE: {type: String, default:moment().format('MM/DD/YYYY')},
     USER: {type: mongoose.Schema.Types.ObjectId, ref: "User", required: true},   
 }, {

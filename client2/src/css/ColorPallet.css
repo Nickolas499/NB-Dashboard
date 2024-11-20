@@ -23,6 +23,7 @@
     /* new schema */
 
     --assert:rgb(216,77,46);
+    --TableHeader:rgba(216, 77, 46, 0.678);
     --hover:rgb(231, 100, 70);
     --active:rgb(216,77,46);
     --inactive:var(--bgColor);
