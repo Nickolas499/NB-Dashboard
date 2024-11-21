@@ -11,28 +11,29 @@ export const Header = (props) => {
   const lname = user.lname;
   const userColor = user.color;
   const Username = fname + " " + lname;
-const location = useLocation();
-const getTitle = () => {
-  switch(location.pathname) {
-    case "/":
-      return "Dashboard";
-    case "/profile":
-      return "Profile";
-    case "/charts":
-      return "Charts";
+  const location = useLocation();
+
+  const getTitle = () => {
+    switch (location.pathname) {
+      case "/":
+        return "Dashboard";
+      case "/profile":
+        return "Profile";
+      case "/charts":
+        return "Charts";
       case "/admin":
-      return "Admin";
-    case "/test":
-      return "Test";
-    case "/test2":
-      return "Test2";
-    case "/assigments":
-      return "Assigments";
-    default:
-      return "Dashboard";
-  }
-};
- 
+        return "Admin";
+      case "/production":
+        return "Production";
+      case "/test2":
+        return "Test2";
+      case "/assigments":
+        return "Assigments";
+      default:
+        return "Dashboard";
+    }
+  };
+
   function getInitials(firstName, lastName) {
     const initials = `${firstName[0]}${lastName[0]}`;
     return initials.toUpperCase();

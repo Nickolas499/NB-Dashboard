@@ -8,6 +8,9 @@ import cookie from "cookie-parser";
 //============================================================================//
 import authRoutes from "./routes/auth.routes.js";
 import registration from "./routes/registration.routes.js";
+import Scaning from "./routes/scan.routes.js";
+import Design from "./routes/design.routes.js";
+import Redesign from "./routes/redesign.route.js";
 import queue from "./routes/queuevolume.routes.js";
 import userjobassigment from "./routes/userjobassigment.routes.js";
 
@@ -39,6 +42,10 @@ app.use('/api', authRoutes)
 app.use('/api', registration)
 app.use('/api', queue)
 app.use('/api', userjobassigment)
+app.use('/api', Scaning)
+app.use('/api', Design)
+app.use('/api', Redesign)
+
 
 
 

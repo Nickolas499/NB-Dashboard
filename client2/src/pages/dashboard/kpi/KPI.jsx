@@ -4,7 +4,7 @@ import { Kpicards } from "../../../components/KPICards/KPIcards.jsx";
 import { SquareBtn } from "../../../components/Butons/Buton.jsx";
 import { useAuth } from "../../../context/AuthContext";
 import Modal from "../../../components/Modal/Modal.jsx";
-import { TextInput } from "../../../components/inputs/Inputs.jsx";
+import { TextInput, Input } from "../../../components/inputs/Inputs.jsx";
 import { useEffect, useState } from "react";
 import { useAssign } from "../../../context/assignContext";
 
@@ -13,7 +13,8 @@ import { useAssign } from "../../../context/assignContext";
 const KPI = () => {
   const { user } = useAuth();
   const { queuevolume, GetQueue, CreateQueue } = useAssign();
-
+  const [isOpen, setIsOpen] = useState(false);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     GetQueue();
@@ -21,8 +22,7 @@ const KPI = () => {
   }, []);
 
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [products, setProducts] = useState([]);
+
 
   const openModal = () => {
     setIsOpen(true);
@@ -81,18 +81,18 @@ const KPI = () => {
           <div className={kpi.Queue_data}>
             {Object.entries(queuevolume).slice(0, 7).map((value, key) => (
               <div className={kpi.Queue_label} key={key}>
-                <span className={kpi.Queue_key}>{value[0]}</span> 
+                <span className={kpi.Queue_key}>{value[0]}</span>
                 <span className={kpi.Queue_value}>{value[1]}</span>
               </div>
             ))}
           </div>
           <div className={kpi.Queue_btn}>
-          {user.access === "admin" ? (
-            <SquareBtn onClick={openModal}>Assign</SquareBtn>
+            {user.access === "admin" ? (
+              <SquareBtn onClick={openModal}>Assign</SquareBtn>
 
-          ) : (
-            ""
-          )}
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </section>
@@ -113,23 +113,20 @@ const KPI = () => {
       <Modal isOpen={isOpen} onClose={closeModal} title="Assign">
         <section className={kpi.assigmentContainer}>
           <form action="" className={kpi.formAssigment}>
-            <TextInput label="LS3" type="text" name="LS3" onChange={handleChange} />
-            <TextInput label="ZEISS" type="text" name="ZEISS" onChange={handleChange} />
-            <TextInput label="SHAPE" type="text" name="SHAPE" onChange={handleChange} />
-            <TextInput
-              label="PHIS_ABUT"
-              type="text"
-              name="PHIS_ABUT"
-              onChange={handleChange}
-            />
-            <TextInput
-              label="DIGI_ABUT"
-              type="text"
-              name="DIGI_ABUT"
-              onChange={handleChange}
-            />
-            <TextInput label="IBO_DESIGN" type="text" name="IBO_DESIGN" onChange={handleChange} />
-            <TextInput label="FULL_ARCH" type="text" name="FULL_ARCH" onChange={handleChange} />
+            {/* <TextInput label="LS3" type="text" name="LS3" onChange={handleChange} /> */}
+            <Input label="LS3" name="LS3" type="text" placeholder="0" value={products.LS3 || ''} onChange={handleChange} errors={""} />
+            {/* <TextInput label="ZEISS" type="text" name="ZEISS" onChange={handleChange} /> */}
+            <Input label="ZEISS" name="ZEISS" type="text" placeholder="0" value={products.ZEISS || ''} onChange={handleChange} errors={""} />
+            {/* <TextInput label="SHAPE" type="text" name="SHAPE" onChange={handleChange} /> */}
+            <Input label="3SHAPE" name="SHAPE" type="text" placeholder="0" value={products.SHAPE || ''} onChange={handleChange} errors={""} />
+            {/* <TextInput label="PHIS_ABUT" type="text" name="PHIS_ABUT" onChange={handleChange} /> */}
+            <Input label="PHIS ABUT" name="PHIS_ABUT" type="text" placeholder="0" value={products.PHIS_ABUT || ''} onChange={handleChange} errors={""} />
+            {/* <TextInput label="DIGI_ABUT" type="text" name="DIGI_ABUT" onChange={handleChange} /> */}
+            <Input label="DIGI ABUT" name="DIGI_ABUT" type="text" placeholder="0" value={products.DIGI_ABUT || ''} onChange={handleChange} errors={""} />
+            {/* <TextInput label="IBO_DESIGN" type="text" name="IBO_DESIGN" onChange={handleChange} /> */}
+            <Input label="IBO DESIGN" name="IBO_DESIGN" type="text" placeholder="0" value={products.IBO_DESIGN || ''} onChange={handleChange} errors={""} />
+            {/* <TextInput label="FULL_ARCH" type="text" name="FULL_ARCH" onChange={handleChange} /> */}
+            <Input label="FULL ARCH" name="FULL_ARCH" type="text" placeholder="0" value={products.FULL_ARCH || ''} onChange={handleChange} errors={""} />
             <button onClick={handleSubmit} className={kpi.btnSubmit}>
               Submit
             </button>
