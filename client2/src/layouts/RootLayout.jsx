@@ -8,10 +8,11 @@ const RootLayout = () => {
  
   return (
     <>
+    
     <div className="AppContainer">      
       <Header />
       <SideNavbar />
-      <main className="appMain">
+      <main className="appMain">        
         <Outlet />
       </main>
     </div>

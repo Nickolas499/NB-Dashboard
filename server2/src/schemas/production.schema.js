@@ -45,3 +45,14 @@ export const createRedesignSchema = z.object({
     DATE:z.string().datetime({required_error: "DATE is required"}).optional(),
     
 })
+
+
+export const createParetoSchema = z.object({
+    Sales_Order:z.number({required_error: "Sales Order is required"}),
+    Customer_Acount:z.number({required_error: "Customer Acount is required"}),
+    Product_Type:z.string({required_error: "Product Type is required"}),    
+    Category:z.string({required_error: "Category is required"}),
+    Reason:z.string({required_error: "Reason is required"}),
+    DATE:z.string().datetime({required_error: "DATE is required"}).optional(),
+    
+})

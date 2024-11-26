@@ -24,11 +24,11 @@ const Assignmets = () => {
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
-		console.log(name, value);		
-			setNewAssign((prev) => ({
-				...prev,
-				[name]: value,
-			}));		
+		console.log(name, value);
+		setNewAssign((prev) => ({
+			...prev,
+			[name]: value,
+		}));
 	};
 
 	const handleSubmit = () => {
@@ -89,7 +89,7 @@ const Assignmets = () => {
 									<div key={index}>
 										{assign.ASSIGMENTS.map((item, index) => (
 											<div key={index} className={style.assign_container}>
-												{Object.entries(item).map(([key, value]) => (													
+												{Object.entries(item).map(([key, value]) => (
 													<div key={key} className={style.assign_data}>
 														<span className={style.key}>{key}</span>
 														<span className={style.value}>{value}</span>
@@ -109,7 +109,7 @@ const Assignmets = () => {
 								) : (
 									<button className={style.btnAssign} onClick={() => openModal(users._id, false)}>Assign</button>
 								)
-								}	
+								}
 								<Modal isOpen={isOpen} onClose={closeModal} title="Job Assignment">
 									<div className={style.modal_container}>
 										<div className={style.form}>

@@ -109,12 +109,12 @@ const Design = () => {
                         <tr className={style.TableHeader}>
                             <th>DATE</th>
                             <th>IBO</th>
-                            <th>CROWN REST</th>
-                            <th>CEM BRIDGE</th>
-                            <th>IMP REST</th>
-                            <th>IMP BRIDGE</th>
-                            <th>FULL ARCH PRO</th>
-                            <th>FULL ARCH FINAL</th>
+                            <th>Crown Restoration</th>
+                            <th>Cemented Bridge</th>
+                            <th>Implant Restoration</th>
+                            <th>Implant Bridge</th>
+                            <th>Full Arch Provicional</th>
+                            <th>Full Arch Final</th>
                             <th>Actions</th>
                         </tr>
                     </thead>

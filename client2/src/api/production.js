@@ -27,3 +27,10 @@ export const get_redesign = () => axios.get('/redesign');
 export const post_redesign = (data) => axios.post('/redesign', data);
 export const update_redesign = (id,data) => axios.put(`/redesign/${id}`, data);
 export const delete_redesign = (id) => axios.delete(`/redesign/${id}`);
+
+
+//=====================================((PARETO API CONTROLLER))==============================================//
+export const get_pareto = () => axios.get('/pareto');
+export const post_pareto = (data) => axios.post('/pareto', data);
+export const update_pareto = (id,data) => axios.put(`/pareto/${id}`, data);
+export const delete_pareto = (id) => axios.delete(`/pareto/${id}`);

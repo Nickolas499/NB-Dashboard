@@ -108,15 +108,15 @@ const Design = () => {
                 <table className={style.Table}>
                     <thead>
                         <tr className={style.TableHeader}>
-                            <th>DATE</th>
-                            <th>IBO</th>
-                            <th>CROWN REST</th>
-                            <th>CEM BRIDGE</th>
-                            <th>IMP REST</th>
-                            <th>IMP BRIDGE</th>
-                            <th>PRINT MODEL</th>
-                            <th>FULL ARCH PRO</th>
-                            <th>FULL ARCH FINAL</th>
+                            <th>Date</th>
+                            <th>Ibo</th>
+                            <th>Crown Restoration</th>
+                            <th>Cemented Bridge</th>
+                            <th>Implant Restoration</th>
+                            <th>Implant Bridge</th>
+                            <th>Printed Models</th>
+                            <th>Full Arch Provisional</th>
+                            <th>Full Arch Final</th>
                             <th>Actions</th>
                         </tr>
                     </thead>

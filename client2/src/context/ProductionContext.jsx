@@ -4,6 +4,7 @@ import {
     get_scan, post_scan, update_scan, delete_scan,
     get_design, post_design, update_design, delete_design,
     get_redesign, post_redesign, update_redesign, delete_redesign,
+    get_pareto,post_pareto,update_pareto,delete_pareto
 } from "../api/production";
 
 export const ProductionContext = createContext();
@@ -22,6 +23,7 @@ export const ProductionProvider = ({ children }) => {
     const [Scan, setScan] = useState([]);
     const [Design, setDesign] = useState([]);
     const [Redesign, setRedesign] = useState([]);
+    const [Pareto,setPareto] = useState([]);
     const [loading, setLoading] = useState(true);
 
 
@@ -183,7 +185,44 @@ export const ProductionProvider = ({ children }) => {
         }
     };
 
+//=====================================[ PARETO ]=====================================\\
+const get_Pareto = async () => {
+    try {
+        const res = await get_pareto();
+        setPareto(res.data);
+        console.log(res.data);
+        setLoading(false);
+    } catch (error) {
+        console.log(error);
+    }
+}
 
+const Create_Pareto = async (data) => {
+    try {
+        await post_pareto(data);
+        get_Pareto();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const Update_Pareto = async (id, data) => {
+    try {
+        await update_pareto(id, data);
+        get_Pareto();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const Delete_Pareto = async (id) => {
+    try {
+        await delete_pareto(id);
+        get_Pareto();
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 
     return (
@@ -193,6 +232,7 @@ export const ProductionProvider = ({ children }) => {
                 Scan, get_Scan, Create_Scan, Update_Scan, Delete_Scan,
                 Design, get_Design, Create_Design, Update_Design, Delete_Design,
                 Redesign, get_Redesign, Create_Redesign, Update_Redesign, Delete_Redesign,
+                Pareto,get_Pareto,Create_Pareto,Update_Pareto,Delete_Pareto,
                 loading
             }
         }>

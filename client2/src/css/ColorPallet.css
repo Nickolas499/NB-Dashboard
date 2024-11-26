@@ -28,7 +28,8 @@
     --active:rgb(216,77,46);
     --inactive:var(--bgColor);
     --background:rgb(43, 78, 99);
-    --background2:rgb(69,30,13);
+    /* --background2:rgb(69,30,13); */
+    --background2:rgba(255, 255, 255, 0.103);
     --primary:rgba(0,0,0,0.5);
     --secondary:rgb(26,33,39);
     --terciary:rgb(74,92,112);

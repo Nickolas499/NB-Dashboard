@@ -4,7 +4,7 @@ import { Kpicards } from "../../../components/KPICards/KPIcards.jsx";
 import { SquareBtn } from "../../../components/Butons/Buton.jsx";
 import { useAuth } from "../../../context/AuthContext";
 import Modal from "../../../components/Modal/Modal.jsx";
-import { TextInput, Input } from "../../../components/inputs/Inputs.jsx";
+import { Input } from "../../../components/inputs/Inputs.jsx";
 import { useEffect, useState } from "react";
 import { useAssign } from "../../../context/assignContext";
 
@@ -12,21 +12,26 @@ import { useAssign } from "../../../context/assignContext";
 
 const KPI = () => {
   const { user } = useAuth();
-  const { queuevolume, GetQueue, CreateQueue } = useAssign();
+  const { queuevolume, GetQueue, CreateQueue, } = useAssign();
   const [isOpen, setIsOpen] = useState(false);
   const [products, setProducts] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     GetQueue();
-
   }, []);
 
 
 
 
-  const openModal = () => {
+  const openModal = (isEdit = false) => {
     setIsOpen(true);
+    setIsEditing(isEdit);	
   };
+  // const openModal = ( isEdit = false) => {	
+	// 	setIsOpen(true);
+	// 	setIsEditing(isEdit);	
+	// };
 
   const closeModal = () => {
     setIsOpen(false);
@@ -62,12 +67,21 @@ const KPI = () => {
   };
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(products);
-    handleCreateNewData();
-    closeModal();
-  };
+  const handleSubmit = () => {
+		// const id = currentId;
+
+		if (isEditing) {
+			// Actualizar asignación con el ID correspondiente
+			// UpdateUserJobAssignment(id, assign);
+		} else {
+			// Crear nueva asignación
+			handleCreateNewData();
+		}
+
+		// setNewAssign({});
+		// GetUserJobAssignment();
+		closeModal();
+	};
 
 
   return (
@@ -88,7 +102,12 @@ const KPI = () => {
           </div>
           <div className={kpi.Queue_btn}>
             {user.access === "admin" ? (
-              <SquareBtn onClick={openModal}>Assign</SquareBtn>
+              // Object.entries(queuevolume).some((value) => value[1] > 0) ? (
+              //   <SquareBtn onClick={openModal( true)}>Edit</SquareBtn>
+              // ) : (
+              //   <SquareBtn onClick={openModal( true)}>Assign</SquareBtn>
+              // )
+              <SquareBtn onClick={openModal}>{isEditing ? 'Update' : 'Assign'}</SquareBtn>
 
             ) : (
               ""
@@ -110,6 +129,7 @@ const KPI = () => {
         ))}
       </section>
       {/* ====================================(ASSIGMENT MODAL)================================================ */}
+      
       <Modal isOpen={isOpen} onClose={closeModal} title="Assign">
         <section className={kpi.assigmentContainer}>
           <form action="" className={kpi.formAssigment}>
@@ -127,9 +147,8 @@ const KPI = () => {
             <Input label="IBO DESIGN" name="IBO_DESIGN" type="text" placeholder="0" value={products.IBO_DESIGN || ''} onChange={handleChange} errors={""} />
             {/* <TextInput label="FULL_ARCH" type="text" name="FULL_ARCH" onChange={handleChange} /> */}
             <Input label="FULL ARCH" name="FULL_ARCH" type="text" placeholder="0" value={products.FULL_ARCH || ''} onChange={handleChange} errors={""} />
-            <button onClick={handleSubmit} className={kpi.btnSubmit}>
-              Submit
-            </button>
+            {/* <button onClick={handleSubmit} className={kpi.btnSubmit}>Submit</button> */}
+            <button onClick={handleSubmit} className={kpi.btnSubmit}>{isEditing ? 'Update' : 'Assign'}</button>
           </form>
         </section>
       </Modal>

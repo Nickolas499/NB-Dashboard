@@ -3,6 +3,7 @@ import Registration from './registration/Registration';
 import Scan from "./scan/Scan";
 import Design from "./design/Design";
 import Redesign from "./redesign/Redesign";
+import Pareto from "./pareto/Pareto";
 import momemt from 'moment';
 
 const today = momemt().format('MM/DD/YYYY');
@@ -20,6 +21,9 @@ const Production = () => {
       </div>
       <div label="REDESIGNS">
         <Redesign />
+      </div>
+      <div label="PARETO">
+        <Pareto />
       </div>
     </Tabs>
   )

@@ -14,6 +14,13 @@ root.render(
       <ProductionProvider>
         <AssignProvider>
           <BrowserRouter>
+            <div class="background">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
             <App />
           </BrowserRouter>
         </AssignProvider>

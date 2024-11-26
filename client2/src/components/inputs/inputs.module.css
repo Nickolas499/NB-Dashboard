@@ -25,7 +25,11 @@
     outline: none;
 }
 
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .input_text {
     width: 100%;
     height: 30px;
